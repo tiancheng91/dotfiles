@@ -1,0 +1,43 @@
+! some terminal behaviour
+*VT100.modifyCursorKeys: 2
+*VT100.allowSendEvents: true
+*VT100.keepSelection: true
+*VT100.wideChars: true
+URxvt*metaSendsEscape: true
+URxvt*cutNewline: false
+URxvt*vt100.bellIsUrgent: true
+
+! scrolling in urxvt
+URxvt*scrollTtyOutput: false
+URxvt*scrollKey: true
+URxvt*scrollBar: false
+
+! urxvt extensions
+URxvt*perl-lib: /home/dominikh/.urxvt/
+URxvt.perl-ext-common: default
+URxvt.perl-ext        : default,matcher,font-size
+URxvt.urlLauncher     : /usr/bin/chromium
+URxvt.matcher.button  : 1
+URxvt.keysym.C-plus: perl:font:increase
+URxvt.keysym.C-minus: perl:font:decrease
+
+! keep screens/tmuxs scrollback also in urxvts scrollback
+URxvt.secondaryScroll:  true
+
+URxvt*background:  #000000
+URxvt*foreground:  #cfcfcf
+URxvt*cursorColor: #cdc092 ! a somewhat less aggressive cursor
+
+! some color adjustments
+URxvt.color6: #54728e ! cyan
+URxvt.color12: #3b3bff ! bold blue
+
+! weechat colors [Weechat is a urxvt with -name "Weechat"]
+Weechat.color1: #610000 ! red
+Weechat.color6: #54728e ! cyan
+Weechat.color5: #ff6565 ! magenta
+
+! fonts
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
+Emacs.FontBackend: xft
+Emacs.font: Bitstream Vera Sans Mono-10
