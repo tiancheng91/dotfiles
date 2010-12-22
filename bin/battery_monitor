@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+$warning_shown = false
+while true
+  bat = `acpi -b`.match(/(\d+)?%/)[1].to_i
+  if bat <= 5
+    if !$warning_shown
+      $warning_shown = true
+      `( echo "Warning"; echo "Battery empty!" ) | dzen2 -p -l 1 -w 300 -y 340 -x 490 -e 'onstart=uncollapse' -sa c -bg "#ff6565" -fg "black"`
+    end
+  else
+    $warning_shown = false
+  end
+  sleep 120 # 2 minutes
+end
