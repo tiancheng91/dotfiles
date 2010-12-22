@@ -26,16 +26,22 @@ URxvt.secondaryScroll:  true
 
 URxvt*background:  #000000
 URxvt*foreground:  #cfcfcf
-URxvt*cursorColor: #cdc092 ! a somewhat less aggressive cursor
+! a somewhat less aggressive cursor
+URxvt*cursorColor: #cdc092
 
 ! some color adjustments
-URxvt.color6: #54728e ! cyan
-URxvt.color12: #3b3bff ! bold blue
+! cyan
+URxvt.color6: #54728e
+! bold blue
+URxvt.color12: #3b3bff
 
 ! weechat colors [Weechat is a urxvt with -name "Weechat"]
-Weechat.color1: #610000 ! red
-Weechat.color6: #54728e ! cyan
-Weechat.color5: #ff6565 ! magenta
+!red
+Weechat.color1: #610000
+! cyan
+Weechat.color6: #54728e
+! magenta
+Weechat.color5: #ff6565
 
 ! fonts
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
