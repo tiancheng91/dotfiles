@@ -6,6 +6,7 @@
 URxvt*metaSendsEscape: true
 URxvt*cutNewline: false
 URxvt*vt100.bellIsUrgent: true
+URxvt*print-pipe: cat > $HOME/urxvt.print
 
 ! scrolling in urxvt
 URxvt*scrollTtyOutput: false
