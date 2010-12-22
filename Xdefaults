@@ -14,15 +14,15 @@ URxvt*scrollBar: false
 
 ! urxvt extensions
 URxvt*perl-lib: /home/dominikh/.urxvt/
-URxvt.perl-ext-common: default
-URxvt.perl-ext        : default,matcher,font-size
-URxvt.urlLauncher     : /usr/bin/chromium
-URxvt.matcher.button  : 1
-URxvt.keysym.C-plus: perl:font:increase
-URxvt.keysym.C-minus: perl:font:decrease
+URxvt*perl-ext-common: default
+URxvt*perl-ext        : default,matcher,font-size
+URxvt*urlLauncher     : /usr/bin/chromium
+URxvt*matcher.button  : 1
+URxvt*keysym.C-plus: perl:font:increase
+URxvt*keysym.C-minus: perl:font:decrease
 
 ! keep screens/tmuxs scrollback also in urxvts scrollback
-URxvt.secondaryScroll:  true
+URxvt*secondaryScroll:  true
 
 URxvt*background:  #000000
 URxvt*foreground:  #cfcfcf
@@ -31,19 +31,19 @@ URxvt*cursorColor: #cdc092
 
 ! some color adjustments
 ! cyan
-URxvt.color6: #54728e
+URxvt*color6: #54728e
 ! bold blue
-URxvt.color12: #3b3bff
+URxvt*color12: #3b3bff
 
 ! weechat colors [Weechat is a urxvt with -name "Weechat"]
 !red
-Weechat.color1: #610000
+Weechat*color1: #610000
 ! cyan
-Weechat.color6: #54728e
+Weechat*color6: #54728e
 ! magenta
-Weechat.color5: #ff6565
+Weechat*color5: #ff6565
 
 ! fonts
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
-Emacs.FontBackend: xft
-Emacs.font: Bitstream Vera Sans Mono-10
+Emacs*FontBackend: xft
+Emacs*font: Bitstream Vera Sans Mono-10
