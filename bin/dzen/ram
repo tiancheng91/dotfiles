@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+STDOUT.sync = true
+
+while true
+  s = ""
+
+  data = `free -k`.lines.to_a[1..-1]
+  total, used, free, shared, buffers, cached = data.first.scan(/\d+/).map(&:to_f)
+  real_used = used - buffers - cached
+
+  swap_total, swap_used = data.last.scan(/\d+/).map(&:to_f)[0..1]
+
+
+  used_pct = ((used/total) * 100)
+  real_used_pct = (real_used/total) * 100
+  buffers_pct = (buffers/total) * 100
+  cached_pct = (cached/total) * 100
+  swap_pct = (swap_used/swap_total) * 100
+
+
+  h = {
+    "Buffers" => buffers_pct,
+    "Cached" => cached_pct,
+    "Apps" => real_used_pct,
+    "Swap" => swap_pct,
+  }
+
+  max_width = h.keys.map { |s| s.size }.max + 1
+
+  val = `echo #{used_pct.round} | gdbar -w 100 -l "#{"Mem:".ljust(max_width)}" -fg "#54728e" -bg "#909090"`
+  s << val
+
+  h.sort {|a, b| -(a.last <=> b.last) }.each do |label, value|
+    val = `echo #{value.round} | gdbar -w 100 -l "#{(label + ":").ljust(max_width)}" -fg "#54728e" -bg "#909090"`
+    s << val
+  end
+  puts s
+  sleep 1
+end

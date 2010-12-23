@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+require "thread"
+Thread.abort_on_exception = true
+
+PID_FILE="/tmp/dzen_bar_pid"
+File.open(PID_FILE, "w") do |f|
+  f.puts Process.pid
+end
+
+
+STDOUT.sync = true
+$INTERVAL = 60
+$DATA = {}
+
+$QUEUE = Queue.new
+
+trap("SIGUSR1") do
+  $QUEUE.push(:job)
+end
+
+def update_data
+  $DATA[:brightness] = File.read("/proc/acpi/video/GFX0/DD02/brightness").match(/^current: (.+)$/)[1]
+
+  amixout = `amixer get "Master"`.lines.to_a.last
+  vol, _, mute = amixout.scan(/\[(.+?)\]/).flatten
+  if mute == "off"
+    vol = 0
+    icon = "/home/dominikh/.config/subtle/icons/volume_off.xbm"
+  else
+    icon = "/home/dominikh/.config/subtle/icons/volume_on.xbm"
+  end
+
+  $DATA[:volume] = {:icon => icon, :volume => vol.to_i}
+end
+
+def update_bar
+  brightness_bar = gdbar("Brightness:", $DATA[:brightness])
+  volume_bar = gdbar("Volume:", $DATA[:volume][:volume])
+
+  puts " ^fg(#610000)▞^fg() " + "^i(/home/dominikh/.config/subtle/icons/brightness.xbm)" + " " + brightness_bar + " ^fg(#610000)▞^fg() " + "^i(#{$DATA[:volume][:icon]}) " + volume_bar + " "
+end
+
+def update
+  update_data
+  update_bar
+end
+
+def gdbar(title, value)
+  `echo "#{value}" | gdbar -l "#{title}" -w 150 -fg "#54728e" -bg "#909090" -nonl`
+end
+
+Thread.new do
+  while job = $QUEUE.pop
+    update
+  end
+end
+
+while true
+  $QUEUE.push(:job)
+  sleep $INTERVAL
+end

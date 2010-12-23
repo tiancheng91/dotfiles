@@ -1,0 +1,34 @@
+#!/bin/sh
+## setup
+# TODO calculate YPOS, get gapcalc to compile
+YPOS="783" # to display the bar at the bottom of the screen
+BG="#202020"
+FG="white"
+FG_WEECHAT="red"
+FN="-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+
+WIDTH1="490"
+WIDTH2="200"
+WIDTH3="590"
+
+## calculations
+# SCREEN_WIDTH=`xwininfo -metric -root|sed -ne 's/.*geometry \([0-9]*\)x.*/\1/p'`
+SCREEN_HEIGHT=`xwininfo -metric -root|sed -ne 's/.*geometry.*x\([0-9]*\)+.*/\1/p'`
+X1="0"
+X2=`expr $WIDTH1` # 490
+X3=`expr $WIDTH1 + $WIDTH2` # 690
+
+
+## panels
+### IRC highlights
+ssh cinchrb.org "echo `myip` > ip"
+ncat -l -k -p 4321 | ~/bin/process_weechat_log | dzen2 -ta l -w $WIDTH1 -y $YPOS -fn "$FN" -bg "$BG" -fg "$FG_WEECHAT" -x $X1 -u  &
+
+### RAM
+~/bin/dzen/ram | dzen2 -l 4 -ta l -w $WIDTH2 -y $YPOS -fn "$FN" -bg "$BG" -fg "$FG" -x $X2 -u -e "leavetitle=collapse;entertitle=uncollapse;button1=togglestick" &
+
+### brightness/volume
+~/bin/dzen/infos | dzen2 -ta l -x $X3 -y "$YPOS" -w $WIDTH3 -fn "$FN" -bg "$BG" -fg "$FG" &
+
+trap "kill -- -$$" 0
+wait
