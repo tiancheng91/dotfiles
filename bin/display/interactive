@@ -1,0 +1,24 @@
+#!/bin/bash
+tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/dialog$$
+trap "rm -f $tempfile" 0 1 2 5 15
+
+dialog --menu "Select VGA behavior" 13 50 6 1 off 2 "auto, clone" 3 "auto, extend" 2>$tempfile
+ret=$?
+choice=`cat $tempfile`
+case $ret in
+    1) ;; # Cancel - do nothing
+    0)  # User selection
+        case $choice in
+            1) xrandr --output VGA --off;;
+            2) xrandr --output VGA --auto --same-as LVDS;;
+            3) xrandr --output VGA --auto --right-of LVDS;;
+        esac
+        ;;
+    *)  # Shouldnt happen
+        echo "Abnormal ret code from dialog: $ret"
+        ;;
+esac
+
+
+#--no-kill
+#--output-fd
