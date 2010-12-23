@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+modes = %w[anemone
+atunnels
+biof
+coral
+discrete
+euler2d
+fzort
+galaxy
+hop
+ifs
+julia
+kumppa
+noof
+petri
+strange
+thornbird]
+
+mode = modes[rand(modes.length)]
+puts "Using mode '#{mode}'…"
+exec "xlock -mode #{mode}"
