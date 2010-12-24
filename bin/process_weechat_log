@@ -5,7 +5,9 @@ $stdout.sync = true
 while line = $stdin.gets
   # don't display anything if weechat is visible
   next if Subtlext::View.current.name == "terms"
-  puts line.gsub(/^(.+?)\t/, "<\\1> ")
+  line.gsub!(/^(.+?)\t/, "<\\1> ")
+  line.gsub!("^", "^^")
+  puts line
   sleep 10
   puts
 end
