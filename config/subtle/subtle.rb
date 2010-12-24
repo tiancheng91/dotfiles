@@ -14,6 +14,7 @@ set :resize,     true
 set :font,       "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 
 COLOR_BLUEISH = "#54728e"
+ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
 #
 # == Panel
 #
@@ -32,7 +33,7 @@ COLOR_BLUEISH = "#54728e"
 # [*:spacer*]    Variable spacer
 # [*:separator*] Insert separator
 #
-arch_logo = Subtlext::Icon.new("/home/dominikh/.config/subtle/icons/arch.xpm")
+arch_logo = Subtlext::Icon.new("#{ICONS_ROOT}/arch.xpm")
 screen 1 do
   stipple false
   top [:views, :separator, :title, :spacer, :separator, :tray, :sublets, arch_logo]
@@ -370,27 +371,27 @@ end
 
 view "terms" do
   match "terms|irc"
-  icon "/home/dominikh/.config/subtle/icons/terminal.xbm"
+  icon "#{ICONS_ROOT}/terminal.xbm"
 end
 
 view "www" do
   match "browser|default"
-  icon "/home/dominikh/.config/subtle/icons/world.xbm"
+  icon "#{ICONS_ROOT}/world.xbm"
 end
 
 view "news" do
   match "news"
-  icon "/home/dominikh/.config/subtle/icons/rss.xbm"
+  icon "#{ICONS_ROOT}/rss.xbm"
 end
 
 view "dev" do
   match "editor"
-  icon "/home/dominikh/.config/subtle/icons/pencil.xbm"
+  icon "#{ICONS_ROOT}/pencil.xbm"
 end
 
 view "gimp" do
   match "gimp"
-  icon "/home/dominikh/.config/subtle/icons/paint.xbm"
+  icon "#{ICONS_ROOT}/paint.xbm"
 end
 
 view "vm" do
