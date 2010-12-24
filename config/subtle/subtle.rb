@@ -32,10 +32,10 @@ COLOR_BLUEISH = "#54728e"
 # [*:spacer*]    Variable spacer
 # [*:separator*] Insert separator
 #
-
+arch_logo = Subtlext::Icon.new("/home/dominikh/.config/subtle/icons/arch.xpm")
 screen 1 do
   stipple false
-  top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
+  top [:views, :separator, :title, :spacer, :separator, :tray, :sublets, arch_logo]
 end
 
 #
