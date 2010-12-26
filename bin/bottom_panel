@@ -8,6 +8,7 @@ FG_WEECHAT="red"
 FN="-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 
 HIGHLIGHT_RECEIVER="dominikh-laptop"
+WEECHAT_HOST="cinchrb.org"
 
 WIDTH1="490"
 WIDTH2="200"
@@ -29,7 +30,7 @@ then
     # additionally, a port has to be forwarded to said machine, which
     # is why multiple computers behind the same router, or a computer
     # in a foreign network are not able to receive highlights.
-    ssh cinchrb.org "echo `myip` > ip"
+    ssh $WEECHAT_HOST "echo `myip` > ip"
     ncat -l -k -p 4321 | ~/bin/process_weechat_log | dzen2 -ta l -w $WIDTH1 -y $YPOS -fn "$FN" -bg "$BG" -fg "$FG_WEECHAT" -x $X1 -u  &
 fi
 
