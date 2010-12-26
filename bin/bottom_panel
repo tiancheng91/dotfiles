@@ -7,6 +7,8 @@ FG="white"
 FG_WEECHAT="red"
 FN="-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 
+HIGHLIGHT_RECEIVER="dominikh-laptop"
+
 WIDTH1="490"
 WIDTH2="200"
 WIDTH3="590"
@@ -21,8 +23,15 @@ X3=`expr $WIDTH1 + $WIDTH2` # 690
 
 ## panels
 ### IRC highlights
-ssh cinchrb.org "echo `myip` > ip"
-ncat -l -k -p 4321 | ~/bin/process_weechat_log | dzen2 -ta l -w $WIDTH1 -y $YPOS -fn "$FN" -bg "$BG" -fg "$FG_WEECHAT" -x $X1 -u  &
+if [[ "$HIGHLIGHT_RECEIVER" == `hostname` ]];
+then
+    # current setup only allows one machine to receive IRC highlights.
+    # additionally, a port has to be forwarded to said machine, which
+    # is why multiple computers behind the same router, or a computer
+    # in a foreign network are not able to receive highlights.
+    ssh cinchrb.org "echo `myip` > ip"
+    ncat -l -k -p 4321 | ~/bin/process_weechat_log | dzen2 -ta l -w $WIDTH1 -y $YPOS -fn "$FN" -bg "$BG" -fg "$FG_WEECHAT" -x $X1 -u  &
+fi
 
 ### RAM
 ~/bin/dzen/ram | dzen2 -l 4 -ta l -w $WIDTH2 -y $YPOS -fn "$FN" -bg "$BG" -fg "$FG" -x $X2 -u -e "leavetitle=collapse;entertitle=uncollapse;button1=togglestick" &
