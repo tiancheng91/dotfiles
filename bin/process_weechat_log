@@ -8,6 +8,6 @@ while line = $stdin.gets
   line.gsub!(/^(.+?)\t/, "<\\1> ")
   line.gsub!("^", "^^")
   puts line
-  sleep 10
+  sleep 5
   puts
 end
