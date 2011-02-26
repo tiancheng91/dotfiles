@@ -159,6 +159,8 @@ alias mkdir='nocorrect mkdir -p'
 alias apt-cache='nocorrect apt-cache'
 alias apt-search="nocorrect apt-search"
 
+alias ls="ls++"
+
 typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
