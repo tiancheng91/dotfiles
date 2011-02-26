@@ -45,6 +45,9 @@ Weechat*color6: #54728e
 Weechat*color5: #ff6565
 
 ! fonts
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:Kochi Gothic:antialias=false
 Emacs*FontBackend: xft
 Emacs*font: Bitstream Vera Sans Mono-10
+
+! input methods
+URxvt.inputMethod: SCIM
