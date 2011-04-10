@@ -1,9 +1,22 @@
 # -*- coding: utf-8 -*-
-# require "subtle/subtlext"
+require "socket"
 require "subtle/subtlext"
+
+HOST            = Socket.gethostname.freeze
+NUM_SCREENS     = HOST == "dominikh-pc" ? 2 : 1
+VIEWS_ICON_ONLY = HOST == "dominikh-netbook"
+HAS_VM_VIEW     = HOST != "dominikh-netbook"
+BIG_PANEL       = HOST != "dominikh-netbook"
+
+COLOR_BLUEISH = "#54728e"
+ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
+
 set :separator, "▞"
-set :padding, [1, 1, 3, 3]
-set :strut, [0, 0, 0, 16]
+
+if BIG_PANEL
+  set :padding, [1, 1, 3, 3]
+  set :strut, [0, 0, 0, 16]
+end
 
 set :border,     2
 set :step,       5
@@ -13,8 +26,7 @@ set :urgent,     false
 set :resize,     true
 set :font,       "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 
-COLOR_BLUEISH = "#54728e"
-ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
+
 #
 # == Panel
 #
@@ -33,10 +45,18 @@ ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
 # [*:spacer*]    Variable spacer
 # [*:separator*] Insert separator
 #
-arch_logo = Subtlext::Icon.new("#{ICONS_ROOT}/arch.xpm")
-screen 1 do
-  stipple false
-  top [:views, :separator, :title, :spacer, :separator, :tray, :sublets, arch_logo]
+
+1.upto(NUM_SCREENS) do |i|
+  screen i do
+    stipple false
+    case HOST
+    when "dominikh-netbook"
+      top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
+    else
+      arch_logo = Subtlext::Icon.new("#{ICONS_ROOT}/arch.xpm")
+      top [:views, :separator, :title, :spacer, :separator, :tray, :sublets, arch_logo]
+    end
+  end
 end
 
 #
@@ -372,28 +392,35 @@ end
 view "terms" do
   match "terms|irc"
   icon "#{ICONS_ROOT}/terminal.xbm"
+  icon_only VIEWS_ICON_ONLY
 end
 
 view "www" do
   match "browser|default"
   icon "#{ICONS_ROOT}/world.xbm"
+  icon_only VIEWS_ICON_ONLY
 end
 
 view "news" do
   match "news"
   icon "#{ICONS_ROOT}/rss.xbm"
+  icon_only VIEWS_ICON_ONLY
 end
 
 view "dev" do
   match "editor"
   icon "#{ICONS_ROOT}/pencil.xbm"
+  icon_only VIEWS_ICON_ONLY
 end
 
 view "gimp" do
   match "gimp"
   icon "#{ICONS_ROOT}/paint.xbm"
+  icon_only VIEWS_ICON_ONLY
 end
 
-view "vm" do
-  match "vm"
+if HAS_VM_VIEW
+  view "vm" do
+    match "vm"
+  end
 end
