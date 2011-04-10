@@ -19,8 +19,11 @@ fi
 xrdb -merge ~/.Xdefaults &
 
 urxvtd -q -o -f
-urxvtc -name newsbeuter -e ssh -t cinchrb.org 'tmux -2 -u attach -t newsbeuter' &
-urxvtc -name Weechat -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
+
+if [[ "dominikh-netbook" != `hostname` ]]; then
+    urxvtc -name newsbeuter -e ssh -t cinchrb.org 'tmux -2 -u attach -t newsbeuter' &
+    urxvtc -name Weechat -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
+fi
 
 if [[ "dominikh-laptop" = `hostname` ]]; then
     ~/bin/bottom_panel &
