@@ -7,6 +7,12 @@ NUM_SCREENS     = HOST == "dominikh-pc" ? 2 : 1
 VIEWS_ICON_ONLY = HOST == "dominikh-netbook"
 HAS_VM_VIEW     = HOST != "dominikh-netbook"
 BIG_PANEL       = HOST != "dominikh-netbook"
+CUSTOM_BRIGHTNESS_CONTROLS = HOST == "dominikh-laptop"
+VOLUME_CONTROL = case HOST
+                 when "dominikh-lapop": :fancy
+                 when "dominikh-netbook": :simple
+                 else: :none
+                 end
 
 COLOR_BLUEISH = "#54728e"
 ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
@@ -269,13 +275,22 @@ grab "W-F3" do
   end
 end
 
-grab "XF86AudioRaiseVolume", "~/bin/vol -i 1"
-grab "XF86AudioLowerVolume", "~/bin/vol -d 1"
-grab "XF86AudioMute", "~/bin/vol -t"
+case VOLUME_CONTROL
+when :fancy
+  grab "XF86AudioRaiseVolume", "~/bin/vol -i 1"
+  grab "XF86AudioLowerVolume", "~/bin/vol -d 1"
+  grab "XF86AudioMute", "~/bin/vol -t"
+when :simple
+  grab "XF86AudioRaiseVolume", "/usr/bin/amixer -q sset Master 2+"
+  grab "XF86AudioLowerVolume", "/usr/bin/amixer -q sset Master 2-"
+  grab "XF86AudioMute", "/usr/bin/amixer -q sset Master toggle"
+end
 
-grab "XF86MonBrightnessUp", "~/bin/brightness"
-grab "XF86MonBrightnessDown", "~/bin/brightness"
 
+if CUSTOM_BRIGHTNESS_CONTROLS
+  grab "XF86MonBrightnessUp", "~/bin/brightness"
+  grab "XF86MonBrightnessDown", "~/bin/brightness"
+end
 
 grab "XF86Display", "urxvtc -e sh ~/bin/display/interactive"
 grab "XF86Sleep", "sudo hibernate -F /etc/hibernate/ususpend-ram.conf"
