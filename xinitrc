@@ -2,12 +2,14 @@
 export LC_ALL=en_US.UTF-8
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 
-export GTK_IM_MODULE=scim
-export QT_IM_MODULE=scim
-export XIM_PROGRAM="scim -d"
-export XMODIFIERS=@im=SCIM
-scim -d &
-scim-bridge &
+if [[ "dominikh-laptop" = `hostname` ]]; then
+    export GTK_IM_MODULE=scim
+    export QT_IM_MODULE=scim
+    export XIM_PROGRAM="scim -d"
+    export XMODIFIERS=@im=SCIM
+    scim -d &
+    scim-bridge &
+fi
 
 # D-bus
 if which dbus-launch >/dev/null 2>&1 && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
