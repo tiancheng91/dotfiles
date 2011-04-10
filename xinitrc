@@ -1,5 +1,6 @@
 #!/bin/sh
 export LC_ALL=en_US.UTF-8
+export SDL_VIDEO_FULLSCREEN_HEAD=0
 
 export GTK_IM_MODULE=scim
 export QT_IM_MODULE=scim
