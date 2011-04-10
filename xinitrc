@@ -19,8 +19,10 @@ urxvtd -q -o -f
 urxvtc -name newsbeuter -e ssh -t cinchrb.org 'tmux -2 -u attach -t newsbeuter' &
 urxvtc -name Weechat -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
 
-~/bin/bottom_panel &
-~/bin/battery_monitor &
+if [[ "dominikh-laptop" = `hostname` ]]; then
+    ~/bin/bottom_panel &
+    ~/bin/battery_monitor &
+fi
 
 autocutsel -f &
 setxkbmap de
