@@ -9,9 +9,9 @@ HAS_VM_VIEW     = HOST != "dominikh-netbook"
 BIG_PANEL       = HOST != "dominikh-netbook"
 CUSTOM_BRIGHTNESS_CONTROLS = HOST == "dominikh-laptop"
 VOLUME_CONTROL = case HOST
-                 when "dominikh-lapop": :fancy
-                 when "dominikh-netbook": :simple
-                 else: :none
+                 when "dominikh-lapop" then :fancy
+                 when "dominikh-netbook" then :simple
+                 else :none
                  end
 
 COLOR_BLUEISH = "#54728e"
