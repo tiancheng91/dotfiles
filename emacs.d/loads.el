@@ -1,0 +1,26 @@
+(load "~/.emacs.d/contrib/flymake-ruby.el")
+
+(require 'compile)
+(require 'etags-select)
+(require 'flyspell-guess)
+
+(require 'paren)
+(require 'rcodetools)
+(require 'rcov-overlay)
+(require 'run-assoc)
+(require 'saveplace)
+(require 'template)
+(require 'tramp)
+(require 'unit-test)
+
+(require 'glasses)
+(require 'linum)
+(require 'which-func)
+(require 'yasnippet)
+(require 'uniquify)
+(require 'magit)
+(require 'idomenu)
+
+(require 'ruby-block)
+(require 'smtpmail)
+(require 'bbdb)

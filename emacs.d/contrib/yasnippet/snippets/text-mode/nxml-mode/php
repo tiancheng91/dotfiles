@@ -1,0 +1,6 @@
+#contributor : Dominik Honnef <dominikh@fork-bomb.org>
+#name : <?php...?>
+# --
+<?php
+  $0
+?>
