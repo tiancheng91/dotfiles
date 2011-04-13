@@ -1,1 +1,3 @@
 *.elc
+emacs.d/url/
+emacs.d/tramp
