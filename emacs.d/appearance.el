@@ -32,6 +32,7 @@
      (font-lock-type-face ((t (:foreground "#FFB1B3"))))
      )))
 
+(require 'color-theme)
 (color-theme-dominikh)
 
 (dolist (mode '(c-mode
