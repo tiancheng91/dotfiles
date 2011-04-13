@@ -253,6 +253,15 @@ grab "W-c", [:bottom_right, :bottom_right66, :bottom_right33]
 grab "W-Return", "urxvtc"
 grab "W-F2", "dmenu_run -b -fn '-*-*-medium-*-*-*-14-*-*-*-*-*-*-*' -nb '#202020' -nf '#757575' -sb '#{COLOR_BLUEISH}' -sf '#ffffff' -p 'Select:'"
 
+grab "W-Tab" do
+  screens = Subtlext::Screen.all
+  current_screen = Subtlext::Screen.current
+  views = screens.map(&:view)
+  index = screens.index(current_screen)
+
+  screens[index].view = views[(index - 1).abs]
+end
+
 grab "W-F3" do
   require "dmenu"
   require "subtle/subtlext"
