@@ -379,6 +379,10 @@ tag "editor" do
   resize   false
 end
 
+tag "pdf" do
+  match "evince"
+end
+
 tag "stick" do
   match    "mplayer|imagemagick|Xmessage"
   float    true
@@ -434,6 +438,12 @@ end
 view "dev" do
   match "editor"
   icon "#{ICONS_ROOT}/pencil.xbm"
+  icon_only VIEWS_ICON_ONLY
+end
+
+view "pdf" do
+  match "pdf"
+  icon "#{ICONS_ROOT}/binder.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
