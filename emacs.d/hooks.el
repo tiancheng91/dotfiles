@@ -42,3 +42,6 @@
             (add-to-list 'font-latex-match-sectioning-2-keywords-local "Absch")
             (font-latex-match-sectioning-2-make)))
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(eval-after-load "rng-loc"
+  '(add-to-list 'rng-schema-locating-files "~/.emacs.d/contrib/html5-el/schemas.xml"))
+

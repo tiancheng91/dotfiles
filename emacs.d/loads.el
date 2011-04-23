@@ -24,3 +24,4 @@
 (require 'ruby-block)
 (require 'smtpmail)
 (require 'bbdb)
+(require 'whattf-dt)

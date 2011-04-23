@@ -7,4 +7,5 @@
 (add-to-list 'load-path "~/.emacs.d/contrib/bbdb/lisp")
 (add-to-list 'load-path "~/.emacs.d/contrib/mo-git-blame")
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+(add-to-list 'load-path "~/.emacs.d/contrib/html5-el/")
 
