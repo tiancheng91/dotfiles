@@ -25,3 +25,4 @@
 (require 'smtpmail)
 (require 'bbdb)
 (require 'whattf-dt)
+(require 'align)
