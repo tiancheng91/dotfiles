@@ -250,7 +250,7 @@ grab "W-d", [:right, :right66, :right33]
 grab "W-y", [:bottom_left, :bottom_left66, :bottom_left33]
 grab "W-x", [:bottom, :bottom66, :bottom33]
 grab "W-c", [:bottom_right, :bottom_right66, :bottom_right33]
-grab "W-Return", "urxvtc"
+grab "W-Return", "urxvt"
 grab "W-F2", "dmenu_run -b -fn '-*-*-medium-*-*-*-14-*-*-*-*-*-*-*' -nb '#202020' -nf '#757575' -sb '#{COLOR_BLUEISH}' -sf '#ffffff' -p 'Select:'"
 
 grab "W-Tab" do
