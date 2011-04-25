@@ -166,7 +166,7 @@
                (regexp . "\\(\\s-*\\)=\\s-*[^# \t\n]")
                (repeat . t)
                (modes  . '(ruby-mode))))
-(add-to-list 'align-rules-list          ;TODO add to rcodetools.el
+(add-to-list 'align-rules-list
              '(ruby-xmpfilter-mark
                (regexp . "\\(\\s-*\\)# => [^#\t\n]")
                (repeat . nil)
