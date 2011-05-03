@@ -2,7 +2,7 @@
 export LC_ALL=en_US.UTF-8
 export SDL_VIDEO_FULLSCREEN_HEAD=0
 
-if [[ "dominikh-laptop" = `hostname` ]]; then
+if [[ "dominikh-laptop" = `hostname` || "dominikh-pc" = `hostname` ]]; then
     export GTK_IM_MODULE=scim
     export QT_IM_MODULE=scim
     export XIM_PROGRAM="scim -d"
