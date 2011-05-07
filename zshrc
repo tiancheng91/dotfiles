@@ -14,7 +14,6 @@ export LANG="en_US.UTF-8"
 export MANPAGER="less"
 export GEM_PRIVATE_KEY='~/.rubyforge/gem-private_key.pem'
 export GEM_CERTIFICATE_CHAIN='~/.rubyforge/gem-public_cert.pem'
-export AWT_TOOLKIT=MToolkit
 export WORDCHARS=''
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 
