@@ -34,4 +34,4 @@ xmodmap ~/.Xmodmap
 
 display -window root ~/wallpaper.png
 
-subtle
+subtle --no-randr
