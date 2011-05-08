@@ -88,7 +88,7 @@ color :panel,          PANEL_BG
 color :client_active,   COLOR_THEME # border around active client
 color :client_inactive, PANEL_BG # border around inactive client
 
-color :separator,       "#610000"
+color :separator, COLOR_THEME
 
 # Gravities
 gravity :top_left,      [0, 0, 50, 50]
