@@ -203,13 +203,10 @@ modkey   = "W"
 gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
 gravkeys.map! { |g| "#{modkey}-#{g}" }
 
-grab "W-1", :ViewJump1
-grab "W-2", :ViewJump2
-grab "W-3", :ViewJump3
-grab "W-4", :ViewJump4
-grab "W-5", :ViewJump5
-grab "W-6", :ViewJump6
-grab "W-7", :ViewJump7
+1.upto(9) do |n|
+  grab "W-#{n}", "ViewJump#{n}".to_sym
+end
+
 grab "W-A-1", :ScreenJump1
 grab "W-A-2", :ScreenJump2
 grab "W-A-3", :ScreenJump3
