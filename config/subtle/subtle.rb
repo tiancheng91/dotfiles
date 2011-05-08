@@ -259,28 +259,6 @@ grab "W-Tab" do
   screens[index].view = views[(index - 1).abs]
 end
 
-grab "W-F3" do
-  require "dmenu"
-  require "subtle/subtlext"
-
-  view = Subtlext::View.current
-  clients = view.clients
-
-  menu = Dmenu.new
-  menu.position = :bottom
-  menu.font = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
-  menu.prompt = "Select:"
-  menu.selected_background = COLOR_BLUEISH
-  menu.selected_foreground = "#ffffff"
-  menu.background = "#202020"
-  menu.foreground = "#757575"
-  menu.items = clients.map { |c| Dmenu::Item.new("%s (%s) [%s]" % [c.name, c.klass, c.win], c) }
-
-  if item = menu.run
-    item.value.focus
-  end
-end
-
 case VOLUME_CONTROL
 when :fancy
   grab "XF86AudioRaiseVolume", "~/bin/vol -i 1"
