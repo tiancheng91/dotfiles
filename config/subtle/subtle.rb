@@ -22,6 +22,7 @@ SND_PANEL_FG = "#757575"
 COLOR_THEME = "#54728e"
 ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
 FONT = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+BORDER = "#303030"
 
 MODKEY   = "W"
 
@@ -59,27 +60,27 @@ end
 # Colors
 color :focus_fg,         PRI_PANEL_FG
 color :focus_bg,          COLOR_THEME
-color :focus_border,     "#303030"
+color :focus_border,     BORDER
 
 color :title_fg,         PRI_PANEL_FG
 color :title_bg,         PANEL_BG
-color :title_border,     "#303030"
+color :title_border,     BORDER
 
 color :urgent_fg,        PRI_PANEL_FG
 color :urgent_bg,        "#ff6565"
-color :urgent_border,    "#303030"
+color :urgent_border,    BORDER
 
 color :occupied_fg,      SND_PANEL_FG
 color :occupied_bg,      "#111111"
-color :occupied_border,  "#303030"
+color :occupied_border,  BORDER
 
 color :views_fg,         SND_PANEL_FG
 color :views_bg,         PANEL_BG
-color :views_border,     "#303030"
+color :views_border,     BORDER
 
 color :sublets_fg,       SND_PANEL_FG
 color :sublets_bg,       PANEL_BG
-color :sublets_border,   "#303030"
+color :sublets_border,   BORDER
 
 color :stipple,        PRI_PANEL_FG
 color :panel,          PANEL_BG
