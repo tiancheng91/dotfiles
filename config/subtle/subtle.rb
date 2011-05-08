@@ -40,26 +40,6 @@ set :urgent,     false
 set :resize,     true
 set :font, FONT
 
-
-#
-# == Panel
-#
-# The next configuration values determine the layout and placement of the panel. Generally,
-# the panel in subtle consists of two independent bars, one on the top and one at the bottom
-# of the screen. In Xinerama setups there will only be panels visible on the first screen.
-#
-# The top and bottom bar can contain different items and will be hidden when empty.
-#
-# Following items are available:
-#
-# [*:views*]     List of views with buttons
-# [*:title*]     Title of the current active window
-# [*:tray*]      Systray icons
-# [*:sublets*]   Catch-all for installed sublets
-# [*:spacer*]    Variable spacer
-# [*:separator*] Insert separator
-#
-
 1.upto(NUM_SCREENS) do |i|
   screen i do
     stipple false
@@ -72,20 +52,6 @@ set :font, FONT
     end
   end
 end
-
-#
-# == Colors
-#
-# Colors directly define the look of subtle, valid values are:
-#
-# [*hexadecimal*] #0000ff
-# [*decimal*]     (0, 0, 255)
-# [*names*]       blue
-#
-# Whenever there is no valid value for a color set - subtle will use a default one. There
-# is only one exception to this: If no background color is given no color will be set. This
-# will ensure a custom background pixmap won't be overwritten.
-#
 
 color :focus_fg,         PRI_PANEL_FG
 color :focus_bg,          COLOR_THEME
@@ -119,23 +85,7 @@ color :client_inactive, PANEL_BG # border around inactive client
 
 color :separator,       "#610000"
 
-#
-# == Gravities
-#
-# Gravities are predefined sizes a window can be set to. There are several ways to set a
-# certain gravity, most convenient is to define a gravity via a tag or change them during
-# runtime via grab. Subtler and subtlext can also modify gravities.
-#
-# A gravity consists of four values which are a percentage value of the screen size. The first
-# two values are x and y starting at the center of the screen and he last two values are the
-# width and height.
-#
-# === Example
-#
-# Following defines a gravity for a window with 100% width and height:
-#
-#   :example = [ 0, 0, 100, 100 ]
-#
+
 gravity :top_left,      [0, 0, 50, 50]
 gravity :top_left66,    [0, 0, 50, 66]
 gravity :top_left33,    [0, 0, 50, 34]
@@ -164,48 +114,6 @@ gravity :bottom_right,  [100, 100, 50, 50]
 gravity :bottom_right66, [100, 100, 50, 66]
 gravity :bottom_right33, [100, 100, 50, 34]
 
-# == Grabs
-#
-# Grabs are keyboard and mouse actions within subtle, every grab can be assigned either
-# to a key and/or to a mouse button combination. A grab consists of a chain and an action.
-#
-# === Chain
-#
-# A chain is a string of modifiers, mouse buttons and normal keys separated by a hyphen.
-#
-# ==== Modifiers:
-#
-# [*S*] Shift key
-# [*A*] Alt key
-# [*C*] Control key
-# [*W*] Super (Windows key)
-# [*M*] Meta key
-#
-# ==== Mouse buttons:
-#
-# [*B1*] Button1
-# [*B2*] Button2
-# [*B3*] Button3
-# [*B4*] Button4
-# [*B5*] Button5
-#
-# === Action
-#
-# An action is something that happens when a grab is activated, this can be one of the following:
-#
-# [*symbol*] Run a subtle action
-# [*string*] Start a certain program
-# [*array*]  Cycle through gravities
-# [*lambda*] Run a Ruby proc
-#
-# === Example
-#
-# This will create a grab that starts a xterm when Alt+Enter are pressed:
-#
-#   "A-Return" => "xterm"
-#
-
-# Host specific
 
 1.upto(9) do |n|
   grab "W-#{n}", "ViewJump#{n}".to_sym
@@ -290,61 +198,6 @@ grab "XF86Display", "urxvtc -e sh ~/bin/display/interactive"
 grab "XF86Sleep", "sudo hibernate -F /etc/hibernate/ususpend-ram.conf"
 grab "XF86Launch2", "urxvtc -e sh ~/bin/iumount"
 
-#
-# == Tags
-#
-# Tags are generally used in subtle for placement of windows. This placement is strict,
-# that means that - aside from other tiling window managers - windows must have a matching
-# tag to be on a certain view. This also includes that windows that are started on a certain
-# view will not automatically be placed there.
-#
-# There are to ways to define a tag:
-#
-# [*string*] With a WM_CLASS/WM_NAME
-# [*hash*]   With a hash of properties
-#
-# === Default
-#
-# Whenever a window has no tag it will get the default tag and be placed on the default view.
-# The default view can either be set by the user with adding the default tag to a view by
-# choice or otherwise the first defined view will be chosen automatically.
-#
-# === Properties
-#
-# Additionally tags can do a lot more then just control the placement - they also have properties
-# than can define and control some aspects of a window like the default gravity or the default
-# screen per view.
-#
-# [*:float*]   This property either sets the tagged client floating or prevents it from being
-#              floating depending on the value.
-# [*:full*]    This property either sets the tagged client to fullscreen or prevents it from being
-#              set to fullscreen depending on the value.
-# [*:gravity*] This property sets a certain to gravity to the tagged client, but only on views that
-#              have this tag too.
-# [*:match*]   This property influcences the matching of tags, per default tags will only match the
-#              WM_NAME and the WM_CLASS portion of a client. Match expects an array with following
-#              possible values:
-#
-#              [*:name*]       match the WM_NAME
-#              [*:instance*]   match the first (instance) part from WM_CLASS
-#              [*:class*]      match the second (class) part from WM_CLASS
-#              [*:role*]       match the window role
-# [*:regex*]   This property sets the matching pattern for a tag. Matching works either via plain,
-#              regex (see regex) or window id. If a pattern matches more than once ONLY the first
-#              match will be used.
-# [*:resize*]  This property either enables or disables honoring of client resize hints and is
-#              independent of the global option.
-# [*:screen*]  This property sets a certain to screen to the tagged client, but only on views that
-#              have this tag too. Please keep in mind that screen count starts with 0 for the first
-#              screen.
-# [*:size*]    This property sets a certain to size as well as floating to the tagged client, but
-#              only on views that have this tag too. It expects an array with x, y, width and height
-#              values.
-# [*:stick*]   This property either sets the tagged client to stick or prevents it from being set to
-#              stick depending on the value. Stick clients are visible on every view.
-# [*:urgent*]  This property either sets the tagged client to be urgent or prevents it from being
-#              urgent depending on the value. Urgent clients will get keyboard and mouse focus
-#              automatically.
 
 tag "terms" do
   match "xterm|[u]?rxvt"
