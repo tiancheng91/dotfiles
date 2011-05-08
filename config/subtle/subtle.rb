@@ -2,6 +2,7 @@
 require "socket"
 require "subtle/subtlext"
 
+# Host specific options
 HOST            = Socket.gethostname.freeze
 NUM_SCREENS     = HOST == "dominikh-pc" ? 2 : 1
 VIEWS_ICON_ONLY = HOST == "dominikh-netbook"
@@ -21,10 +22,10 @@ SND_PANEL_FG = "#757575"
 COLOR_THEME = "#54728e"
 ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
 FONT = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
-# /Style
 
 MODKEY   = "W"
 
+# Settings
 set :separator, "▞"
 
 if BIG_PANEL
@@ -53,6 +54,7 @@ set :font, FONT
   end
 end
 
+# Colors
 color :focus_fg,         PRI_PANEL_FG
 color :focus_bg,          COLOR_THEME
 color :focus_border,     "#303030"
@@ -85,7 +87,7 @@ color :client_inactive, PANEL_BG # border around inactive client
 
 color :separator,       "#610000"
 
-
+# Gravities
 gravity :top_left,      [0, 0, 50, 50]
 gravity :top_left66,    [0, 0, 50, 66]
 gravity :top_left33,    [0, 0, 50, 34]
@@ -114,17 +116,18 @@ gravity :bottom_right,  [100, 100, 50, 50]
 gravity :bottom_right66, [100, 100, 50, 66]
 gravity :bottom_right33, [100, 100, 50, 34]
 
-
+# Grabs
+## ViewJump1-9
 1.upto(9) do |n|
   grab "W-#{n}", "ViewJump#{n}".to_sym
 end
 
-# TODO anyone got more than 9 screens?
+## TODO anyone got more than 9 screens?
 1.upto(NUM_SCREENS) do |n|
   grab "W-A-#{n}", "ScreenJump#{n}".to_sym
 end
 
-# All simple grabs that start with MODKEY
+## All simple grabs that start with MODKEY
 {
   # Gravities
   ["KP_7", "q"] => [:top_left, :top_left66, :top_left33],
@@ -166,8 +169,8 @@ end
   [*keys].each { |key| grab "#{MODKEY}-#{key}", commands }
 end
 
-# Swap views between two screens
-# TODO support more than two screens
+## Swap views between two screens
+## TODO support more than two screens
 grab "#{MODKEY}-Tab" do
   screens = Subtlext::Screen.all
   current_screen = Subtlext::Screen.current
@@ -198,7 +201,7 @@ grab "XF86Display", "urxvtc -e sh ~/bin/display/interactive"
 grab "XF86Sleep", "sudo hibernate -F /etc/hibernate/ususpend-ram.conf"
 grab "XF86Launch2", "urxvtc -e sh ~/bin/iumount"
 
-
+# Tags
 tag "terms" do
   match "xterm|[u]?rxvt"
   exclude :name => "newsbeuter"
@@ -262,6 +265,8 @@ tag "office" do
   match "libreoffice-writer"
 end
 
+
+# Views
 view "terms" do
   match "terms|irc"
   icon "#{ICONS_ROOT}/terminal.xbm"
@@ -316,6 +321,7 @@ if HAS_VM_VIEW
   end
 end
 
+# Sublets
 sublet :temp do
   separator " – "
 end
