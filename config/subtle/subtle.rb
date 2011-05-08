@@ -16,6 +16,7 @@ VOLUME_CONTROL = case HOST
 
 COLOR_BLUEISH = "#54728e"
 ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
+MODKEY   = "W"
 
 set :separator, "▞"
 
@@ -199,58 +200,57 @@ gravity :bottom_right33, [100, 100, 50, 34]
 
 # Host specific
 
-modkey   = "W"
 gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
-gravkeys.map! { |g| "#{modkey}-#{g}" }
+gravkeys.map! { |g| "#{MODKEY}-#{g}" }
 
 1.upto(9) do |n|
   grab "W-#{n}", "ViewJump#{n}".to_sym
 end
 
-grab "W-A-1", :ScreenJump1
-grab "W-A-2", :ScreenJump2
-grab "W-A-3", :ScreenJump3
-grab "W-A-4", :ScreenJump4
-grab "W-C-r", :SubtleReload
-grab "W-C-S-r", :SubtleRestart
-grab "W-C-q", :SubtleQuit
-grab "W-B1", :WindowMove
-grab "W-B3", :WindowResize
-grab "W-f", :WindowFloat
-grab "W-space", :WindowFull
-grab "W-s", [:center, :center66, :center33]
-grab "W-r", :WindowRaise
-grab "W-l", :WindowLower
-grab "W-Left", :WindowLeft
-grab "W-Down", :WindowDown
-grab "W-Up", :WindowUp
-grab "W-Right", :WindowRight
-grab "W-h", :WindowLeft
-grab "W-j", :WindowDown
-grab "W-u", :WindowUp
-grab "W-k", :WindowRight
-grab "W-S-k", :WindowKill
-grab "W-KP_7", [:top_left, :top_left66, :top_left33]
-grab "W-KP_8", [:top, :top66, :top33]
-grab "W-KP_9", [:top_right, :top_right66, :top_right33]
-grab "W-KP_4", [:left, :left66, :left33]
-grab "W-KP_5", [:center, :center66, :center33]
-grab "W-KP_6", [:right, :right66, :right33]
-grab "W-KP_1", [:bottom_left, :bottom_left66, :bottom_left33]
-grab "W-KP_2", [:bottom, :bottom66, :bottom33]
-grab "W-KP_3", [:bottom_right, :bottom_right66, :bottom_right33]
-grab "W-q", [:top_left, :top_left66, :top_left33]
-grab "W-w", [:top, :top66, :top33]
-grab "W-e", [:top_right, :top_right66, :top_right33]
-grab "W-a", [:left, :left66, :left33]
-grab "W-d", [:right, :right66, :right33]
-grab "W-y", [:bottom_left, :bottom_left66, :bottom_left33]
-grab "W-x", [:bottom, :bottom66, :bottom33]
-grab "W-c", [:bottom_right, :bottom_right66, :bottom_right33]
-grab "W-Return", "urxvt"
-grab "W-F2", "dmenu_run -b -fn '-*-*-medium-*-*-*-14-*-*-*-*-*-*-*' -nb '#202020' -nf '#757575' -sb '#{COLOR_BLUEISH}' -sf '#ffffff' -p 'Select:'"
+grab "#{MODKEY}-A-1", :ScreenJump1
+grab "#{MODKEY}-A-2", :ScreenJump2
+grab "#{MODKEY}-A-3", :ScreenJump3
+grab "#{MODKEY}-A-4", :ScreenJump4
+grab "#{MODKEY}-C-r", :SubtleReload
+grab "#{MODKEY}-C-S-r", :SubtleRestart
+grab "#{MODKEY}-C-q", :SubtleQuit
+grab "#{MODKEY}-B1", :WindowMove
+grab "#{MODKEY}-B3", :WindowResize
+grab "#{MODKEY}-f", :WindowFloat
+grab "#{MODKEY}-space", :WindowFull
+grab "#{MODKEY}-s", [:center, :center66, :center33]
+grab "#{MODKEY}-r", :WindowRaise
+grab "#{MODKEY}-l", :WindowLower
+grab "#{MODKEY}-Left", :WindowLeft
+grab "#{MODKEY}-Down", :WindowDown
+grab "#{MODKEY}-Up", :WindowUp
+grab "#{MODKEY}-Right", :WindowRight
+grab "#{MODKEY}-h", :WindowLeft
+grab "#{MODKEY}-j", :WindowDown
+grab "#{MODKEY}-u", :WindowUp
+grab "#{MODKEY}-k", :WindowRight
+grab "#{MODKEY}-S-k", :WindowKill
+grab "#{MODKEY}-KP_7", [:top_left, :top_left66, :top_left33]
+grab "#{MODKEY}-KP_8", [:top, :top66, :top33]
+grab "#{MODKEY}-KP_9", [:top_right, :top_right66, :top_right33]
+grab "#{MODKEY}-KP_4", [:left, :left66, :left33]
+grab "#{MODKEY}-KP_5", [:center, :center66, :center33]
+grab "#{MODKEY}-KP_6", [:right, :right66, :right33]
+grab "#{MODKEY}-KP_1", [:bottom_left, :bottom_left66, :bottom_left33]
+grab "#{MODKEY}-KP_2", [:bottom, :bottom66, :bottom33]
+grab "#{MODKEY}-KP_3", [:bottom_right, :bottom_right66, :bottom_right33]
+grab "#{MODKEY}-q", [:top_left, :top_left66, :top_left33]
+grab "#{MODKEY}-w", [:top, :top66, :top33]
+grab "#{MODKEY}-e", [:top_right, :top_right66, :top_right33]
+grab "#{MODKEY}-a", [:left, :left66, :left33]
+grab "#{MODKEY}-d", [:right, :right66, :right33]
+grab "#{MODKEY}-y", [:bottom_left, :bottom_left66, :bottom_left33]
+grab "#{MODKEY}-x", [:bottom, :bottom66, :bottom33]
+grab "#{MODKEY}-c", [:bottom_right, :bottom_right66, :bottom_right33]
+grab "#{MODKEY}-Return", "urxvt"
+grab "#{MODKEY}-F2", "dmenu_run -b -fn '-*-*-medium-*-*-*-14-*-*-*-*-*-*-*' -nb '#202020' -nf '#757575' -sb '#{COLOR_BLUEISH}' -sf '#ffffff' -p 'Select:'"
 
-grab "W-Tab" do
+grab "#{MODKEY}-Tab" do
   screens = Subtlext::Screen.all
   current_screen = Subtlext::Screen.current
   views = screens.map(&:view)
