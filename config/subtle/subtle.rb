@@ -387,16 +387,6 @@ tag "vm" do
   match    "VirtualBox"
 end
 
-tag "fixed" do
-  geometry [10, 10, 100, 100]
-  stick    true
-end
-
-tag "resize" do
-  match    "sakura|gvim"
-  resize   true
-end
-
 tag "game" do
   match :name => "ryzom"
 end
