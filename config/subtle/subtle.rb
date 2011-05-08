@@ -430,6 +430,10 @@ tag "gravity" do
   gravity  :center
 end
 
+tag "office" do
+  match "libreoffice-writer"
+end
+
 view "terms" do
   match "terms|irc"
   icon "#{ICONS_ROOT}/terminal.xbm"
@@ -463,6 +467,12 @@ end
 view "pdf" do
   match "pdf"
   icon "#{ICONS_ROOT}/binder.xbm"
+  icon_only VIEWS_ICON_ONLY
+end
+
+view "office" do
+  match "office"
+  icon "#{ICONS_ROOT}/notepad.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
