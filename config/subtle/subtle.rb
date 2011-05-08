@@ -364,11 +364,20 @@ grab "XF86Launch2", "urxvtc -e sh ~/bin/iumount"
 tag "terms" do
   match "xterm|[u]?rxvt"
   exclude :name => "newsbeuter"
+  if HOST == "dominikh-pc"
+    gravity :top66
+  else
+    gravity :top
+  end
 end
 
 tag "irc" do
   match "Weechat"
-  gravity :bottom
+  if HOST == "dominikh-pc"
+    gravity :bottom33
+  else
+    gravity :bottom
+  end
 end
 
 tag "mail", "mutt|thunderbird|lanikai|shredder"
