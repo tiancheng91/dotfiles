@@ -25,6 +25,8 @@ FONT = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 
 MODKEY   = "W"
 
+TERMINAL_EMULATOR = "urxvt"
+
 # Settings
 set :separator, "▞"
 
@@ -163,7 +165,7 @@ end
   "S-k"   => :WindowKill,
 
   # Programs
-  "Return" => "urxvt", # TODO put urxvt into constant
+  "Return" => TERMINAL_EMULATOR,
   "F2"     => "dmenu_run -b -fn '#{FONT}' -nb '#{PANEL_BG}' -nf '#{SND_PANEL_FG}' -sb '#{COLOR_THEME}' -sf '#{PRI_PANEL_FG}' -p 'Select:'", # TODO all colors in constants
 }.each do |keys, commands|
   [*keys].each { |key| grab "#{MODKEY}-#{key}", commands }
@@ -197,9 +199,9 @@ if CUSTOM_BRIGHTNESS_CONTROLS
   grab "XF86MonBrightnessDown", "~/bin/brightness"
 end
 
-grab "XF86Display", "urxvtc -e sh ~/bin/display/interactive"
+grab "XF86Display", "#{TERMINAL_EMULATOR} -e sh ~/bin/display/interactive"
 grab "XF86Sleep", "sudo hibernate -F /etc/hibernate/ususpend-ram.conf"
-grab "XF86Launch2", "urxvtc -e sh ~/bin/iumount"
+grab "XF86Launch2", "#{TERMINAL_EMULATOR} -e sh ~/bin/iumount"
 
 # Tags
 tag "terms" do
