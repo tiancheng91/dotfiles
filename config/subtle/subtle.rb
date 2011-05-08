@@ -422,6 +422,10 @@ tag "resize" do
   resize   true
 end
 
+tag "game" do
+  match :name => "ryzom"
+end
+
 tag "gravity" do
   gravity  :center
 end
@@ -447,6 +451,12 @@ end
 view "dev" do
   match "editor"
   icon "#{ICONS_ROOT}/pencil.xbm"
+  icon_only VIEWS_ICON_ONLY
+end
+
+view "games" do
+  match "game"
+  icon "#{ICONS_ROOT}/game.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
