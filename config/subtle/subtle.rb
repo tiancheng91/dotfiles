@@ -14,8 +14,15 @@ VOLUME_CONTROL = case HOST
                  else :none
                  end
 
-COLOR_BLUEISH = "#54728e"
+# Style
+PANEL_BG = "#202020"
+PRI_PANEL_FG = "#ffffff"
+SND_PANEL_FG = "#757575"
+COLOR_THEME = "#54728e"
 ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
+FONT = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+# /Style
+
 MODKEY   = "W"
 
 set :separator, "▞"
@@ -31,7 +38,7 @@ set :snap,       10
 set :gravity,    :center
 set :urgent,     false
 set :resize,     true
-set :font,       "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+set :font, FONT
 
 
 #
@@ -80,35 +87,35 @@ end
 # will ensure a custom background pixmap won't be overwritten.
 #
 
-color :focus_fg,         "#ffffff"
-color :focus_bg,          COLOR_BLUEISH
+color :focus_fg,         PRI_PANEL_FG
+color :focus_bg,          COLOR_THEME
 color :focus_border,     "#303030"
 
-color :title_fg,         "#ffffff"
-color :title_bg,         "#202020"
+color :title_fg,         PRI_PANEL_FG
+color :title_bg,         PANEL_BG
 color :title_border,     "#303030"
 
-color :urgent_fg,        "#ffffff"
+color :urgent_fg,        PRI_PANEL_FG
 color :urgent_bg,        "#ff6565"
 color :urgent_border,    "#303030"
 
-color :occupied_fg,      "#757575"
+color :occupied_fg,      SND_PANEL_FG
 color :occupied_bg,      "#111111"
 color :occupied_border,  "#303030"
 
-color :views_fg,         "#757575"
-color :views_bg,         "#202020"
+color :views_fg,         SND_PANEL_FG
+color :views_bg,         PANEL_BG
 color :views_border,     "#303030"
 
-color :sublets_fg,       "#757575"
-color :sublets_bg,       "#202020"
+color :sublets_fg,       SND_PANEL_FG
+color :sublets_bg,       PANEL_BG
 color :sublets_border,   "#303030"
 
-color :stipple,        "#ffffff"
-color :panel,          "#202020"
+color :stipple,        PRI_PANEL_FG
+color :panel,          PANEL_BG
 
-color :client_active,   COLOR_BLUEISH # border around active client
-color :client_inactive, "#202020" # border around inactive client
+color :client_active,   COLOR_THEME # border around active client
+color :client_inactive, PANEL_BG # border around inactive client
 
 color :separator,       "#610000"
 
