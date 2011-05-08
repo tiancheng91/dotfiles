@@ -207,56 +207,59 @@ gravity :bottom_right33, [100, 100, 50, 34]
 
 # Host specific
 
-gravkeys = [ "q", "w", "e", "a", "s", "d", "y", "x", "c" ]
-gravkeys.map! { |g| "#{MODKEY}-#{g}" }
-
 1.upto(9) do |n|
   grab "W-#{n}", "ViewJump#{n}".to_sym
 end
 
-grab "#{MODKEY}-A-1", :ScreenJump1
-grab "#{MODKEY}-A-2", :ScreenJump2
-grab "#{MODKEY}-A-3", :ScreenJump3
-grab "#{MODKEY}-A-4", :ScreenJump4
-grab "#{MODKEY}-C-r", :SubtleReload
-grab "#{MODKEY}-C-S-r", :SubtleRestart
-grab "#{MODKEY}-C-q", :SubtleQuit
-grab "#{MODKEY}-B1", :WindowMove
-grab "#{MODKEY}-B3", :WindowResize
-grab "#{MODKEY}-f", :WindowFloat
-grab "#{MODKEY}-space", :WindowFull
-grab "#{MODKEY}-s", [:center, :center66, :center33]
-grab "#{MODKEY}-r", :WindowRaise
-grab "#{MODKEY}-l", :WindowLower
-grab "#{MODKEY}-Left", :WindowLeft
-grab "#{MODKEY}-Down", :WindowDown
-grab "#{MODKEY}-Up", :WindowUp
-grab "#{MODKEY}-Right", :WindowRight
-grab "#{MODKEY}-h", :WindowLeft
-grab "#{MODKEY}-j", :WindowDown
-grab "#{MODKEY}-u", :WindowUp
-grab "#{MODKEY}-k", :WindowRight
-grab "#{MODKEY}-S-k", :WindowKill
-grab "#{MODKEY}-KP_7", [:top_left, :top_left66, :top_left33]
-grab "#{MODKEY}-KP_8", [:top, :top66, :top33]
-grab "#{MODKEY}-KP_9", [:top_right, :top_right66, :top_right33]
-grab "#{MODKEY}-KP_4", [:left, :left66, :left33]
-grab "#{MODKEY}-KP_5", [:center, :center66, :center33]
-grab "#{MODKEY}-KP_6", [:right, :right66, :right33]
-grab "#{MODKEY}-KP_1", [:bottom_left, :bottom_left66, :bottom_left33]
-grab "#{MODKEY}-KP_2", [:bottom, :bottom66, :bottom33]
-grab "#{MODKEY}-KP_3", [:bottom_right, :bottom_right66, :bottom_right33]
-grab "#{MODKEY}-q", [:top_left, :top_left66, :top_left33]
-grab "#{MODKEY}-w", [:top, :top66, :top33]
-grab "#{MODKEY}-e", [:top_right, :top_right66, :top_right33]
-grab "#{MODKEY}-a", [:left, :left66, :left33]
-grab "#{MODKEY}-d", [:right, :right66, :right33]
-grab "#{MODKEY}-y", [:bottom_left, :bottom_left66, :bottom_left33]
-grab "#{MODKEY}-x", [:bottom, :bottom66, :bottom33]
-grab "#{MODKEY}-c", [:bottom_right, :bottom_right66, :bottom_right33]
-grab "#{MODKEY}-Return", "urxvt"
-grab "#{MODKEY}-F2", "dmenu_run -b -fn '-*-*-medium-*-*-*-14-*-*-*-*-*-*-*' -nb '#202020' -nf '#757575' -sb '#{COLOR_BLUEISH}' -sf '#ffffff' -p 'Select:'"
+# TODO anyone got more than 9 screens?
+1.upto(NUM_SCREENS) do |n|
+  grab "W-A-#{n}", "ScreenJump#{n}".to_sym
+end
 
+# All simple grabs that start with MODKEY
+{
+  # Gravities
+  ["KP_7", "q"] => [:top_left, :top_left66, :top_left33],
+  ["KP_8", "w"] => [:top, :top66, :top33],
+  ["KP_9", "e"] => [:top_right, :top_right66, :top_right33],
+  ["KP_4", "a"] => [:left, :left66, :left33],
+  ["KP_5", "s"] => [:center, :center66, :center33],
+  ["KP_6", "d"] => [:right, :right66, :right33],
+  ["KP_1", "y"] => [:bottom_left, :bottom_left66, :bottom_left33],
+  ["KP_2", "x"] => [:bottom, :bottom66, :bottom33], # TODO qwerty
+  ["KP_3", "c"] => [:bottom_right, :bottom_right66, :bottom_right33],
+
+  # Subtle control
+  "C-r"   => :SubtleReload,
+  "C-S-r" => :SubtleRestart,
+  "C-q"   => :SubtleQuit,
+
+  # Windows
+  "B1"    => :WindowMove,
+  "B3"    => :WindowResize,
+  "f"     => :WindowFloat,
+  "space" => :WindowFull,
+  "r"     => :WindowRaise,
+  "l"     => :WindowLower,
+  "Left"  => :WindowLeft,
+  "Down"  => :WindowDown,
+  "Up"    => :WindowUp,
+  "Right" => :WindowRight,
+  "h"     => :WindowLeft,
+  "j"     => :WindowDown,
+  "u"     => :WindowUp,
+  "k"     => :WindowRight,
+  "S-k"   => :WindowKill,
+
+  # Programs
+  "Return" => "urxvt", # TODO put urxvt into constant
+  "F2"     => "dmenu_run -b -fn '#{FONT}' -nb '#{PANEL_BG}' -nf '#{SND_PANEL_FG}' -sb '#{COLOR_THEME}' -sf '#{PRI_PANEL_FG}' -p 'Select:'", # TODO all colors in constants
+}.each do |keys, commands|
+  [*keys].each { |key| grab "#{MODKEY}-#{key}", commands }
+end
+
+# Swap views between two screens
+# TODO support more than two screens
 grab "#{MODKEY}-Tab" do
   screens = Subtlext::Screen.all
   current_screen = Subtlext::Screen.current
