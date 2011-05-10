@@ -11,7 +11,7 @@ BIG_PANEL       = HOST != "dominikh-netbook"
 CUSTOM_BRIGHTNESS_CONTROLS = HOST == "dominikh-laptop"
 VOLUME_CONTROL = case HOST
                  when "dominikh-lapop" then :fancy
-                 when "dominikh-netbook" then :simple
+                 when "dominikh-netbook", "dominikh-pc" then :simple
                  else :none
                  end
 
