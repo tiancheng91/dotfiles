@@ -11,7 +11,7 @@ HAS_VM_VIEW     = HOST != "dominikh-netbook"
 BIG_PANEL       = !SMALL_DEVICE
 CUSTOM_BRIGHTNESS_CONTROLS = HOST == "dominikh-laptop"
 VOLUME_CONTROL = case HOST
-                 when "dominikh-lapop" then :fancy
+                 when "dominikh-laptop" then :fancy
                  when "dominikh-netbook", "dominikh-pc" then :simple
                  else :none
                  end
@@ -48,7 +48,7 @@ set :resize,     true
 set :font, FONT
 
 case HOST
-when "dominikh-lapop", "dominikh-netbook"
+when "dominikh-laptop", "dominikh-netbook"
   screen 1 do
     top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
   end
