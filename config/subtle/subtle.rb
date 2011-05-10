@@ -40,7 +40,7 @@ if BIG_PANEL
   PADDING = [3, 3]
   STRUT   = [0, 0, 16, 0]
 else
-  PADDING = [0, 0, 3, 3]
+  PADDING = [2]
   STRUT   = [0, 0, 0, 0]
 end
 
