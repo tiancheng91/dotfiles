@@ -32,63 +32,89 @@ TERMINAL_EMULATOR = "urxvt"
 set :separator, "▞"
 
 if BIG_PANEL
-  set :padding, [1, 1, 3, 3]
-  set :strut, [0, 0, 0, 16]
+  PADDING = [3, 3]
+  STRUT   = [0, 0, 16, 0]
+else
+  PADDING = [0, 0, 3, 3]
+  STRUT   = [0, 0, 0, 0]
 end
 
-set :border,     2
-set :step,       5
-set :snap,       10
+set :step,       5 # TODO huh?
+set :snap,       10 # TODO huh?
 set :gravity,    :center
 set :urgent,     false
 set :resize,     true
 set :font, FONT
 
-1.upto(NUM_SCREENS) do |i|
-  screen i do
-    stipple false
-    case HOST
-    when "dominikh-netbook"
-      top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
-    else
-      arch_logo = Subtlext::Icon.new("#{ICONS_ROOT}/arch.xpm")
-      top [:views, :separator, :title, :spacer, :separator, :tray, :sublets, arch_logo]
-    end
+case HOST
+when "dominikh-lapop", "dominikh-netbook"
+  screen 1 do
+    top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
+  end
+when "dominikh-pc"
+  screen 1 do
+    top [:views, :separator, :title, :spacer, :separator, :tray, :cpuchart, :separator, :clock]
+  end
+
+  screen 2 do
+    top [:views, :separator, :title, :spacer, :separator, :tray, :temp, :separator, :mpd]
   end
 end
 
 # Colors
-color :focus_fg,         PRI_PANEL_FG
-color :focus_bg,          COLOR_THEME
-color :focus_border,     BORDER
+[:focus, :title, :views, :sublets, :urgent, :occupied].each do |s|
+  style s do
+    padding(*PADDING)
+  end
+end
 
-color :title_fg,         PRI_PANEL_FG
-color :title_bg,         PANEL_BG
-color :title_border,     BORDER
+[:focus, :title, :urgent].each do |s|
+  style s do
+    foreground PRI_PANEL_FG
+  end
+end
 
-color :urgent_fg,        PRI_PANEL_FG
-color :urgent_bg,        "#ff6565"
-color :urgent_border,    BORDER
+[:views, :sublets, :occupied].each do |s|
+  style s do
+    foreground SND_PANEL_FG
+  end
+end
 
-color :occupied_fg,      SND_PANEL_FG
-color :occupied_bg,      "#111111"
-color :occupied_border,  BORDER
+[:views, :title, :sublets, :separator].each do |s|
+  style s do
+    background PANEL_BG
+  end
+end
 
-color :views_fg,         SND_PANEL_FG
-color :views_bg,         PANEL_BG
-color :views_border,     BORDER
+style :focus do
+  background COLOR_THEME
+end
 
-color :sublets_fg,       SND_PANEL_FG
-color :sublets_bg,       PANEL_BG
-color :sublets_border,   BORDER
+style :separator do
+  foreground COLOR_THEME
+  margin 3
+end
 
-color :stipple,        PRI_PANEL_FG
-color :panel,          PANEL_BG
+style :title do
+end
 
-color :client_active,   COLOR_THEME # border around active client
-color :client_inactive, PANEL_BG # border around inactive client
+style :clients do
+  active COLOR_THEME, 2
+  inactive PANEL_BG, 2
+end
 
-color :separator, COLOR_THEME
+style :urgent do
+  background "#ff6565"
+end
+
+style :occupied do
+  background "#111111"
+end
+
+style :subtle do
+  padding(*STRUT)
+  panel PANEL_BG
+end
 
 # Gravities
 gravity :top_left,      [0, 0, 50, 50]
