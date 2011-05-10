@@ -4,10 +4,11 @@ require "subtle/subtlext"
 
 # Host specific options
 HOST            = Socket.gethostname.freeze
+SMALL_DEVICE    = HOST == "dominikh-netbook"
 NUM_SCREENS     = HOST == "dominikh-pc" ? 2 : 1
-VIEWS_ICON_ONLY = HOST == "dominikh-netbook"
+VIEWS_ICON_ONLY = SMALL_DEVICE
 HAS_VM_VIEW     = HOST != "dominikh-netbook"
-BIG_PANEL       = HOST != "dominikh-netbook"
+BIG_PANEL       = !SMALL_DEVICE
 CUSTOM_BRIGHTNESS_CONTROLS = HOST == "dominikh-laptop"
 VOLUME_CONTROL = case HOST
                  when "dominikh-lapop" then :fancy
@@ -87,7 +88,12 @@ end
 end
 
 style :focus do
-  background COLOR_THEME
+  if BIG_PANEL
+    background PANEL_BG
+    border_bottom COLOR_THEME, 3
+  else
+    background COLOR_THEME
+  end
 end
 
 style :separator do
@@ -108,7 +114,12 @@ style :urgent do
 end
 
 style :occupied do
-  background "#111111"
+  if BIG_PANEL
+    background PANEL_BG
+    border_bottom "#bbbbbb", 3
+  else
+    background "#111111"
+  end
 end
 
 style :subtle do
