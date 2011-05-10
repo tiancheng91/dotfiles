@@ -40,8 +40,8 @@ else
   STRUT   = [0, 0, 0, 0]
 end
 
-set :step,       5 # TODO huh?
-set :snap,       10 # TODO huh?
+set :step,       5
+set :snap,       10
 set :gravity,    :center
 set :urgent,     false
 set :resize,     true
