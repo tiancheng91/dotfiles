@@ -17,15 +17,15 @@ VOLUME_CONTROL = case HOST
                  end
 
 # Style
-PANEL_BG = "#202020"
+PANEL_BG     = "#202020"
 PRI_PANEL_FG = "#ffffff"
 SND_PANEL_FG = "#757575"
-COLOR_THEME = "#54728e"
-ICONS_ROOT = "/home/dominikh/.config/subtle/icons"
-FONT = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
-BORDER = "#303030"
+COLOR_THEME  = "#54728e"
+ICONS_ROOT   = "/home/dominikh/.config/subtle/icons"
+FONT         = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+BORDER       = "#303030"
 
-MODKEY   = "W"
+MODKEY = "W"
 
 TERMINAL_EMULATOR = "urxvt"
 
@@ -37,19 +37,19 @@ else
 end
 
 if BIG_PANEL
-  PADDING = [3, 3]
+  PADDING = [3]
   STRUT   = [0, 0, 16, 0]
 else
   PADDING = [2]
-  STRUT   = [0, 0, 0, 0]
+  STRUT   = [0]
 end
 
-set :step,       5
-set :snap,       10
-set :gravity,    :center
-set :urgent,     false
-set :resize,     true
-set :font, FONT
+set :step,    5
+set :snap,    10
+set :gravity, :center
+set :urgent,  false
+set :resize,  true
+set :font,    FONT
 
 case HOST
 when "dominikh-laptop", "dominikh-netbook"
@@ -93,7 +93,7 @@ end
 
 style :focus do
   if BIG_PANEL
-    background PANEL_BG
+    background    PANEL_BG
     border_bottom COLOR_THEME, 3
   else
     background COLOR_THEME
@@ -102,15 +102,15 @@ end
 
 style :separator do
   foreground COLOR_THEME
-  margin 3
+  margin     3
 end
 
 style :title do
 end
 
 style :clients do
-  active COLOR_THEME, 2
-  inactive PANEL_BG, 2
+  active   COLOR_THEME, 2
+  inactive PANEL_BG,    2
 end
 
 style :urgent do
@@ -119,7 +119,7 @@ end
 
 style :occupied do
   if BIG_PANEL
-    background PANEL_BG
+    background    PANEL_BG
     border_bottom "#bbbbbb", 3
   else
     background "#111111"
@@ -132,33 +132,33 @@ style :subtle do
 end
 
 # Gravities
-gravity :top_left,      [0, 0, 50, 50]
-gravity :top_left66,    [0, 0, 50, 66]
-gravity :top_left33,    [0, 0, 50, 34]
-gravity :top,           [0, 0, 100, 50]
-gravity :top66,         [0, 0, 100, 66]
-gravity :top33,         [0, 0, 100, 34]
-gravity :top_right,     [100, 0, 50, 50]
-gravity :top_right66,   [100, 0, 50, 66]
-gravity :top_right33,   [100, 0, 50, 34]
-gravity :left,          [0, 0, 50, 100]
-gravity :left66,        [0, 50, 50, 34]
-gravity :left33,        [0, 50, 25, 34]
-gravity :center,        [0, 0, 100, 100]
-gravity :center66,      [0, 50, 100, 34]
-gravity :center33,      [50, 50, 50, 34]
-gravity :right,         [100, 0, 50, 100]
-gravity :right66,       [100, 50, 50, 34]
-gravity :right33,       [100, 50, 25, 34]
-gravity :bottom_left,   [0, 100, 50, 50]
-gravity :bottom_left66, [0, 100, 50, 66]
-gravity :bottom_left33, [0, 100, 50, 34]
-gravity :bottom,        [0, 100, 100, 50]
-gravity :bottom66,      [0, 100, 100, 66]
-gravity :bottom33,      [0, 100, 100, 34]
-gravity :bottom_right,  [100, 100, 50, 50]
-gravity :bottom_right66, [100, 100, 50, 66]
-gravity :bottom_right33, [100, 100, 50, 34]
+gravity :top_left,       [0,   0,   50,  50]
+gravity :top_left66,     [0,   0,   50,  66]
+gravity :top_left33,     [0,   0,   50,  34]
+gravity :top,            [0,   0,   100, 50]
+gravity :top66,          [0,   0,   100, 66]
+gravity :top33,          [0,   0,   100, 34]
+gravity :top_right,      [100, 0,   50,  50]
+gravity :top_right66,    [100, 0,   50,  66]
+gravity :top_right33,    [100, 0,   50,  34]
+gravity :left,           [0,   0,   50,  100]
+gravity :left66,         [0,   50,  50,  34]
+gravity :left33,         [0,   50,  25,  34]
+gravity :center,         [0,   0,   100, 100]
+gravity :center66,       [0,   50,  100, 34]
+gravity :center33,       [50,  50,  50,  34]
+gravity :right,          [100, 0,   50,  100]
+gravity :right66,        [100, 50,  50,  34]
+gravity :right33,        [100, 50,  25,  34]
+gravity :bottom_left,    [0,   100, 50,  50]
+gravity :bottom_left66,  [0,   100, 50,  66]
+gravity :bottom_left33,  [0,   100, 50,  34]
+gravity :bottom,         [0,   100, 100, 50]
+gravity :bottom66,       [0,   100, 100, 66]
+gravity :bottom33,       [0,   100, 100, 34]
+gravity :bottom_right,   [100, 100, 50,  50]
+gravity :bottom_right66, [100, 100, 50,  66]
+gravity :bottom_right33, [100, 100, 50,  34]
 
 # Grabs
 ## ViewJump1-9
@@ -216,10 +216,10 @@ end
 ## Swap views between two screens
 ## TODO support more than two screens
 grab "#{MODKEY}-Tab" do
-  screens = Subtlext::Screen.all
+  screens        = Subtlext::Screen.all
   current_screen = Subtlext::Screen.current
-  views = screens.map(&:view)
-  index = screens.index(current_screen)
+  views          = screens.map(&:view)
+  index          = screens.index(current_screen)
 
   screens[index].view = views[(index - 1).abs]
 end
@@ -228,21 +228,21 @@ case VOLUME_CONTROL
 when :fancy
   grab "XF86AudioRaiseVolume", "~/bin/vol -i 1"
   grab "XF86AudioLowerVolume", "~/bin/vol -d 1"
-  grab "XF86AudioMute", "~/bin/vol -t"
+  grab "XF86AudioMute",        "~/bin/vol -t"
 when :simple
   grab "XF86AudioRaiseVolume", "/usr/bin/amixer -q sset Master 2+"
   grab "XF86AudioLowerVolume", "/usr/bin/amixer -q sset Master 2-"
-  grab "XF86AudioMute", "/usr/bin/amixer -q sset Master toggle"
+  grab "XF86AudioMute",        "/usr/bin/amixer -q sset Master toggle"
 end
 
 
 if CUSTOM_BRIGHTNESS_CONTROLS
-  grab "XF86MonBrightnessUp", "~/bin/brightness"
+  grab "XF86MonBrightnessUp",   "~/bin/brightness"
   grab "XF86MonBrightnessDown", "~/bin/brightness"
 end
 
 grab "XF86Display", "#{TERMINAL_EMULATOR} -e sh ~/bin/display/interactive"
-grab "XF86Sleep", "sudo hibernate -F /etc/hibernate/ususpend-ram.conf"
+grab "XF86Sleep",   "sudo hibernate -F /etc/hibernate/ususpend-ram.conf"
 grab "XF86Launch2", "#{TERMINAL_EMULATOR} -e sh ~/bin/iumount"
 
 # Tags
@@ -265,8 +265,8 @@ tag "irc" do
   end
 end
 
-tag "mail", "mutt|thunderbird|lanikai|shredder"
-tag "news", "newsbeuter"
+tag "mail",    "mutt|thunderbird|lanikai|shredder"
+tag "news",    "newsbeuter"
 tag "browser", "uzbl|opera|firefox|navigator|chromium"
 tag "editor" do
   match    "[g]?vim|emacs"
@@ -312,57 +312,57 @@ end
 
 # Views
 view "terms" do
-  match "terms|irc"
-  icon "#{ICONS_ROOT}/terminal.xbm"
+  match     "terms|irc"
+  icon      "#{ICONS_ROOT}/terminal.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "www" do
-  match "browser|default"
-  icon "#{ICONS_ROOT}/world.xbm"
+  match     "browser|default"
+  icon      "#{ICONS_ROOT}/world.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "news" do
-  match "news"
-  icon "#{ICONS_ROOT}/rss.xbm"
+  match     "news"
+  icon      "#{ICONS_ROOT}/rss.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "dev" do
-  match "editor"
-  icon "#{ICONS_ROOT}/pencil.xbm"
+  match     "editor"
+  icon      "#{ICONS_ROOT}/pencil.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "games" do
-  match "game"
-  icon "#{ICONS_ROOT}/game.xbm"
+  match     "game"
+  icon      "#{ICONS_ROOT}/game.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "pdf" do
-  match "pdf"
-  icon "#{ICONS_ROOT}/binder.xbm"
+  match     "pdf"
+  icon      "#{ICONS_ROOT}/binder.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "office" do
-  match "office"
-  icon "#{ICONS_ROOT}/notepad.xbm"
+  match     "office"
+  icon      "#{ICONS_ROOT}/notepad.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 view "gimp" do
-  match "gimp"
-  icon "#{ICONS_ROOT}/paint.xbm"
+  match     "gimp"
+  icon      "#{ICONS_ROOT}/paint.xbm"
   icon_only VIEWS_ICON_ONLY
 end
 
 if HAS_VM_VIEW
   view "vm" do
-    match "vm"
-    icon "#{ICONS_ROOT}/cpu.xbm"
+    match     "vm"
+    icon      "#{ICONS_ROOT}/cpu.xbm"
     icon_only VIEWS_ICON_ONLY
   end
 end
