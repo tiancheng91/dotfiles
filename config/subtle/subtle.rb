@@ -30,7 +30,7 @@ MODKEY   = "W"
 TERMINAL_EMULATOR = "urxvt"
 
 # Settings
-set :separator, "▞"
+set :separator, "◯"
 
 if BIG_PANEL
   PADDING = [3, 3]
