@@ -247,8 +247,7 @@ grab "XF86Launch2", "#{TERMINAL_EMULATOR} -e sh ~/bin/iumount"
 
 # Tags
 tag "terms" do
-  match "xterm|[u]?rxvt"
-  exclude :name => "newsbeuter"
+  match :instance => "xterm|[u]?rxvt"
   if HOST == "dominikh-pc"
     gravity :top66
   else
