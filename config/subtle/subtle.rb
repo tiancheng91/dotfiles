@@ -67,10 +67,9 @@ when "dominikh-pc"
 end
 
 # Colors
-[:focus, :title, :views, :sublets, :urgent, :occupied].each do |s|
-  style s do
-    padding(*PADDING)
-  end
+## [:focus, :title, :views, :sublets, :urgent, :occupied, :separator] inherit from :all
+style :all do
+  padding(*PADDING)
 end
 
 [:focus, :title, :urgent].each do |s|
@@ -102,6 +101,7 @@ end
 
 style :separator do
   foreground COLOR_THEME
+  padding    0
   margin     3
 end
 
