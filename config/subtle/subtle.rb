@@ -3,17 +3,40 @@ require "socket"
 require "subtle/subtlext"
 
 # Host specific options
+
+# This configuration has been written with three different devices in
+# mind, which can be distinguished by their host names.
+#
+# If you want to change the behaviour for the different devices, do so
+# by adjusting the constants.
+#
+# Do not forget to add the correct hostnames.
+
 HOST            = Socket.gethostname.freeze
-SMALL_DEVICE    = HOST == "dominikh-netbook"
-NUM_SCREENS     = HOST == "dominikh-pc" ? 2 : 1
+
+## mapping of devices to host names
+DEVICES = {
+  "desktop" => ["dominikh-pc"],
+  "notebook" => ["dominikh-laptop"],
+  "netbook" => ["dominikh-netbook"],
+}
+
+DEVICE = DEVICES.find {|k,v| v.include?(HOST)}.first
+
+def is_device?(device)
+  DEVICES[device].include?(HOST)
+end
+
+SMALL_DEVICE    = is_device?("netbook")
+NUM_SCREENS     = Subtlext::Screen.all.size
 VIEWS_ICON_ONLY = SMALL_DEVICE
-HAS_VM_VIEW     = HOST != "dominikh-netbook"
+HAS_VM_VIEW     = is_device?("netbook")
 BIG_PANEL       = !SMALL_DEVICE
-CUSTOM_BRIGHTNESS_CONTROLS = HOST == "dominikh-laptop"
-VOLUME_CONTROL = case HOST
-                 when "dominikh-laptop" then :fancy
-                 when "dominikh-netbook", "dominikh-pc" then :simple
-                 else :none
+CUSTOM_BRIGHTNESS_CONTROLS = is_device?("notebook")
+VOLUME_CONTROL = if is_device?("notebook")
+                   :fancy
+                 else
+                   :none
                  end
 
 # Style
@@ -51,12 +74,12 @@ set :urgent,  false
 set :resize,  true
 set :font,    FONT
 
-case HOST
-when "dominikh-laptop", "dominikh-netbook"
+case DEVICE
+when "notebook", "netbook"
   screen 1 do
     top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
   end
-when "dominikh-pc"
+when "desktop"
   screen 1 do
     top [:views, :separator, :title, :spacer, :separator, :tray, :cpuchart, :separator, :clock]
   end
@@ -248,7 +271,7 @@ grab "XF86Launch2", "#{TERMINAL_EMULATOR} -e sh ~/bin/iumount"
 # Tags
 tag "terms" do
   match :instance => "xterm|[u]?rxvt"
-  if HOST == "dominikh-pc"
+  if is_device?("desktop")
     gravity :top66
   else
     gravity :top
@@ -257,7 +280,7 @@ end
 
 tag "irc" do
   match "Weechat"
-  if HOST == "dominikh-pc"
+  if is_device?("desktop")
     gravity :bottom33
   else
     gravity :bottom
