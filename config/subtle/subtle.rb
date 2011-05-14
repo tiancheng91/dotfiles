@@ -182,7 +182,9 @@ gravity :bottom33,       [   0,  67, 100,  33 ]
 gravity :bottom_right,   [  50,  50,  50,  50 ]
 gravity :bottom_right66, [  50,  34,  50,  66 ]
 gravity :bottom_right33, [  50,  67,  50,  33 ]
-
+gravity :gimp_image,     [  10,   0,  80, 100 ]
+gravity :gimp_toolbox,   [   0,   0,  10, 100 ]
+gravity :gimp_dock,      [  90,   0,  10, 100 ]
 # Grabs
 ## ViewJump1-9
 1.upto(9) do |n|
@@ -331,6 +333,22 @@ tag "office" do
   match "libreoffice-writer"
 end
 
+
+# Gimp
+tag "gimp_image" do
+  match   :role => "gimp-image-window"
+  gravity :gimp_image
+end
+
+tag "gimp_toolbox" do
+  match   :role => "gimp-toolbox$"
+  gravity :gimp_toolbox
+end
+
+tag "gimp_dock" do
+  match   :role => "gimp-dock"
+  gravity :gimp_dock
+end
 
 # Views
 view "terms" do
