@@ -30,7 +30,7 @@ end
 SMALL_DEVICE    = is_device?("netbook")
 NUM_SCREENS     = Subtlext::Screen.all.size
 VIEWS_ICON_ONLY = SMALL_DEVICE
-HAS_VM_VIEW     = is_device?("netbook")
+HAS_VM_VIEW     = is_device?("desktop")
 BIG_PANEL       = !SMALL_DEVICE
 CUSTOM_BRIGHTNESS_CONTROLS = is_device?("notebook")
 VOLUME_CONTROL = if is_device?("notebook")
