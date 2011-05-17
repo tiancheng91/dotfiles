@@ -330,7 +330,7 @@ tag "gravity" do
 end
 
 tag "office" do
-  match "libreoffice-writer"
+  match "libreoffice-.+"
 end
 
 
