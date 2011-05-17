@@ -26,15 +26,15 @@
                         '(
                           ("^ *# *\\(@.+$\\)" 1 font-lock-yard-face prepend)
                           ;; tags
-                          ("^ *# *\\(@[a-z]+\\)" 1 font-lock-keyword-face prepend)
+                          ("^ *# *\\(@[a-z_]+\\)" 1 font-lock-keyword-face prepend)
                           ;; types ("@tag [Type] ...")
-                          ("^ *# *@[a-z]+ +\\(\\[.+?\\]\\)" 1 font-lock-type-face prepend)
+                          ("^ *# *@[a-z_]+ +\\(\\[.+?\\]\\)" 1 font-lock-type-face prepend)
                           ;; name of params ("@tag [Type] argname Description")
                           ("^ *# *@\\(param\\|yieldparam\\|attr\\|attr_reader\\|attr_writer\\)[ ]+\\[.+?\\] +\\([^ ]+\\)" 2 font-lock-yard-param-name-face prepend)
                           ;; references
                           ("^ *# *@see +\\(.+\\)" 1 font-lock-doc-face prepend)
                           ;; references
-                          ("^ *# *@[a-z]+ +\\((see .+)\\)" 1 font-lock-doc-face prepend)
+                          ("^ *# *@[a-z_]+ +\\((see .+)\\)" 1 font-lock-doc-face prepend)
                           ;; @option hash names
                           ("^ *# *@option +\\([^ ]+\\)" 1 font-lock-yard-param-name-face prepend)
                           ;; @option param types
