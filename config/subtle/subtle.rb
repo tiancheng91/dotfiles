@@ -411,3 +411,8 @@ end
 sublet :temp do
   separator " – "
 end
+
+sublet :mpd do
+  draw_icons true
+  use_colors true
+end
