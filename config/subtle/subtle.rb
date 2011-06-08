@@ -230,6 +230,7 @@ end
   "u"     => :WindowUp,
   "k"     => :WindowRight,
   "S-k"   => :WindowKill,
+  "z"   => :WindowZaphod,
 
   # Programs
   "Return" => TERMINAL_EMULATOR,
