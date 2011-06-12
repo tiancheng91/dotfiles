@@ -121,11 +121,11 @@ unsetopt bang_hist # we dont need no inline history
 # aliases
 alias ls='ls -F --color=auto'
 alias d='dirs -v'
-alias cp='cp -v'
+alias cp='nocorrect cp -v'
 alias cpr='rsync -vazhP'
 alias scpr='rsync -av --progress'
 alias rm='rm -v'
-alias mv='mv -v'
+alias mv='nocorrect mv -v'
 alias grep='grep --color=auto'
 alias psgrep='nocorrect noglob echo \\033[1m"`ps auxw | head -1`" \\033[0m; ps auxw | grep -v grep | grep -i '
 alias mirror='wget -m -k -K -E'
@@ -154,8 +154,6 @@ alias ....="cd ../.."
 alias ......="cd ../../.."
 
 # no spelling correction
-alias mv='nocorrect mv'
-alias cp='nocorrect cp'
 alias mkdir='nocorrect mkdir -p'
 alias apt-cache='nocorrect apt-cache'
 alias apt-search="nocorrect apt-search"
