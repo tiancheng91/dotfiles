@@ -71,8 +71,6 @@
  '(add-log-file-name-function nil)
  '(autotest-use-ui t)
  '(blink-cursor-mode nil)
- '(c-cleanup-list (quote (list-close-comma scope-operator space-before-funcall compact-empty-funcall)))
- '(c-hanging-braces-alist (quote ((brace-list-open) (brace-list-close))))
  '(change-log-default-name nil)
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)

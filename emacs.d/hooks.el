@@ -28,6 +28,8 @@
 
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+(add-hook 'java-mode-hook 'my-java-mode-hook)
+(add-hook 'c-mode-hook 'my-c-mode-hook)
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
