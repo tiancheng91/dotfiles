@@ -173,6 +173,7 @@
  '(diff-changed ((nil nil)))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(fg:erc-color-face1 ((t (:foreground "white"))))
+ '(flymake-errline ((((class color) (background dark)) (:background "#650000"))))
  '(font-lock-yard-face ((t nil)) t)
  '(gnus-button ((t (:weight bold))))
  '(gnus-header-content ((t (:foreground "green" :slant italic))))
