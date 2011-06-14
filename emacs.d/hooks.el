@@ -30,6 +30,8 @@
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 (add-hook 'java-mode-hook 'my-java-mode-hook)
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+(add-hook 'sh-mode-hook 'flymake-shell-load)
+
 
 (add-hook 'ruby-mode-hook
           '(lambda ()

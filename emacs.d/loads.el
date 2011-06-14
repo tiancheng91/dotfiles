@@ -1,4 +1,5 @@
 (load "~/.emacs.d/contrib/flymake-ruby.el")
+(require 'flymake-shell)
 
 (require 'compile)
 (require 'etags-select)
