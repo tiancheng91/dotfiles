@@ -324,6 +324,7 @@ end
 
 tag "game" do
   match :name => "ryzom"
+  match "Dwarf_Fortress"
 end
 
 tag "gravity" do
@@ -332,6 +333,7 @@ end
 
 tag "office" do
   match "libreoffice-.+|LibreOffice"
+  match "gnucash"
 end
 
 
