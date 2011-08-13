@@ -284,7 +284,7 @@ gnuplot `script'"
   (c-toggle-hungry-state 1))
 
 (defun my-c-mode-hook ()
-   (setq c-cleanup-list (quote (empty-defun-braces defun-close-semi list-close-comma scope-operator space-before-funcall compact-empty-funcall comment-close-slash))))
+   (setq c-cleanup-list (quote (empty-defun-braces brace-else-brace brace elseif-brace defun-close-semi list-close-comma scope-operator compact-empty-funcall comment-close-slash))))
 
 (defun my-java-mode-hook ()
    (setq c-cleanup-list (quote (brace-else-brace empty-defun-braces defun-close-semi list-close-comma scope-operator compact-empty-funcall comment-close-slash))))

@@ -171,3 +171,6 @@
                (regexp . "\\(\\s-*\\)# => [^#\t\n]")
                (repeat . nil)
                (modes  . '(ruby-mode))))
+
+(setq c-default-style '((java-mode . "java") (awk-mode . "awk") (other . "bsd")))
+(setq c-basic-offset 2)
