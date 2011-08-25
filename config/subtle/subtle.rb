@@ -332,7 +332,7 @@ tag "gravity" do
 end
 
 tag "office" do
-  match "libreoffice-.+|LibreOffice"
+  match "libreoffice-.+|LibreOffice|eagle"
   match "gnucash"
 end
 
