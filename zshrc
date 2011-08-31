@@ -116,6 +116,7 @@ setopt notify
 setopt prompt_subst
 setopt pushd_ignore_dups
 setopt share_history
+setopt short_loops
 unsetopt bang_hist # we dont need no inline history
 
 # aliases
