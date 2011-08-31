@@ -1,3 +1,4 @@
+;; -*- mode: emacs-lisp -*-
 (setq gnus-select-method
       '(nntp "news.gmane.org"))
 
@@ -7,14 +8,12 @@
                 (nnimap-address "mail.fork-bomb.org")
                 (nnimap-server-port 993)
                 (nnimap-authenticator login)
-                (nnimap-expunge-on-close 'never)
+                (nnimap-expunge-on-close 'ask)
                 (nnimap-stream ssl))))
 
 (setq gnus-asynchronous t)
 
 (setq gnus-use-demon nil)
-(gnus-demon-add-handler 'gnus-demon-scan-and-update 1 nil)
-(gnus-demon-init)
 (gnus-compile)
 
 
@@ -40,9 +39,18 @@
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 
-(setq gnus-message-archive-group nil)
 (setq gnus-gcc-mark-as-read t)
 
+(setq gnus-message-archive-method '(nnimap "fork-bomb"))
+(setq gnus-message-archive-group
+      '((lambda (x)
+          (cond
+           ;; Store personal mail messages in the same group I started out in
+           ((string-match "INBOX.*" group) group)
+           ;; I receive a copy of all messages I send to a list, so there's no need to archive
+           ((string-match "MLs\..*" group) nil)
+           ;; Store everything else in misc until I can sort it out
+           (t nil)))))
 
 (setq gnus-summary-display-arrow t)
 
@@ -65,9 +73,6 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 
 
 ;;; threading
-(setq gnus-face-9 'font-lock-warning-face)
-(setq gnus-face-10 'shadow)
-
 (defun sdl-gnus-summary-line-format-unicode nil
   (interactive)
   (setq gnus-summary-line-format
@@ -82,18 +87,39 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
    gnus-sum-thread-tree-vertical        "│"
    gnus-sum-thread-tree-leaf-with-other "├─>"
    gnus-sum-thread-tree-single-leaf     "└─>"
-   gnus-sum-thread-tree-indent          "  "))
+   gnus-sum-thread-tree-indent          "  ")
+  )
 
-(sdl-gnus-summary-line-format-unicode)
+(defun oxy-unicode-threads-heavy ()
+  (interactive)
+  (setq gnus-summary-line-format "%10{%4k│%}%0{%U%R%z%u&@;%}%10{│%}%*%-23,23f%10{║%} %10{%B%} %(%s%)\n"
+        gnus-summary-dummy-line-format "    %8{│%}   %(%8{│%}                       %10{║%}%) %10{┏○%}  %S\n"
+        gnus-sum-thread-tree-indent " "
+        gnus-sum-thread-tree-root "┏● "
+        gnus-sum-thread-tree-false-root "　○ "
+        gnus-sum-thread-tree-single-indent "　● "
+        gnus-sum-thread-tree-leaf-with-other "┣━━❯ "
+        gnus-sum-thread-tree-vertical "┃"
+        gnus-sum-thread-tree-single-leaf "┗━━❯ "))
+
+(copy-face 'font-lock-constant-face 'gnus-face-8)
+(set-face-foreground 'gnus-face-8 "gray50")
+(setq gnus-face-8 'gnus-face-8)
+(setq gnus-face-9 'font-lock-warning-face)
+(setq gnus-face-10 'shadow)
+
+;; (sdl-gnus-summary-line-format-unicode)
+(oxy-unicode-threads-heavy)
 
 (setq gnus-user-date-format-alist
       '((t . "%Y-%m-%d %T")))
 
-;; (setq gnus-fetch-old-headers t)
-(setq gnus-article-sort-functions 'gnus-article-sort-by-date)
+(setq gnus-fetch-old-headers nil)
+(setq gnus-article-sort-functions '(gnus-article-sort-by-number gnus-article-sort-by-score))
+(setq gnus-thread-sort-functions '(gnus-thread-sort-by-number gnus-thread-sort-by-score))
 (setq gnus-build-sparse-threads nil)
 (setq gnus-summary-display-while-building nil)
-(setq gnus-summary-make-false-root t)
+(setq gnus-summary-make-false-root 'empty)
 
 (setq gnus-summary-gather-subject-limit 'fuzzy)
 (setq gnus-simplify-subject-functions '(gnus-simplify-subject-re
@@ -106,8 +132,8 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
       'gnus-gather-threads-by-references)
 
 ;; Threads werden nach dem Subject generiert
-(setq gnus-summary-thread-gathering-function
-      'gnus-gather-threads-by-subject)
+;; (setq gnus-summary-thread-gathering-function
+;;       'gnus-gather-threads-by-subject)
 
 ;; Christoph Conrad in <m3smud2ske.fsf@ID-24456.user.dfncis.de>
 (defun cc-fetch-whole-thread()
@@ -120,7 +146,7 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (define-key gnus-summary-mode-map (kbd "AA") 'cc-fetch-whole-thread)
 (setq gnus-article-time-format "%Y-%m-%d %T")
 (setq imap-log nil)
-(setq nnimap-nov-is-evil nil)
+(setq nnimap-nov-is-evil t)
 (setq gnus-treat-display-smileys nil)
 (gnus-start-date-timer)
 
@@ -131,3 +157,42 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
       (concat ".+"))
 
 (setq gnus-confirm-mail-reply-to-news t)
+
+(setq bbdb/mail-auto-create-p 'bbdb-ignore-some-messages-hook)
+(setq bbdb/news-auto-create-p 'bbdb-ignore-some-messages-hook)
+(setq bbdb-ignore-some-messages-alist
+      '(("From" . ".+\.invalid")
+        ("From" . "@reply\.github\.com>")))
+
+(setq gnus-score-expiry-days nil)
+(add-hook 'message-sent-hook 'gnus-score-followup-thread)
+
+(setq gnus-thread-ignore-subject t)
+
+
+(setq gnus-auto-subscribed-groups "^nnml\\|^nnfolder\\|^nnmbox\\|^nnmh\\|^nnbabyl\\|^nnmaildir\\|^nnimap")
+(setq gnus-cacheable-groups "^nntp")
+(setq gnus-novice-user nil)
+(setq gnus-select-method (quote (nntp "news.gmane.org")))
+(setq gnus-sorted-header-list (quote ("^From:" "^To:" "^Cc:" "^Subject:" "^Summary:" "^Keywords:" "^Newsgroups:" "^Followup-To:" "^Date:" "^X-Sent:" "^Organization:")))
+(setq gnus-use-cache t)
+
+(setq message-generate-headers-first t)
+(setq gnus-cache-remove-articles nil)
+
+(setq gnus-default-adaptive-score-alist '())
+
+
+
+(setq gnus-article-display-hook
+      '(gnus-article-add-buttons
+        gnus-article-emphasize
+        gnus-article-fill-cited-article
+        gnus-article-highlight-citation
+        gnus-article-hide-headers-if-wanted
+        gnus-article-hide-boring-headers
+        gnus-article-treat-overstrike
+        gnus-article-maybe-highlight))
+
+(setq gnus-score-thread-simplify t)
+(setq gnus-signature-limit 5)

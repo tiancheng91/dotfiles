@@ -1,3 +1,4 @@
+;; -*- mode: emacs-lisp -*-
 (setq warning-suppress-types nil)
 
 ;; -*- mode: emacs-lisp -*-
@@ -87,14 +88,6 @@
  '(global-company-mode t)
  '(global-hl-line-mode t)
  '(global-whitespace-mode t)
- '(gnus-auto-subscribed-groups "^nnml\\|^nnfolder\\|^nnmbox\\|^nnmh\\|^nnbabyl\\|^nnmaildir\\|^nnimap")
- '(gnus-cacheable-groups "^nntp")
- '(gnus-fetch-old-headers nil)
- '(gnus-inhibit-startup-message t)
- '(gnus-novice-user nil)
- '(gnus-select-method (quote (nntp "news.gmane.org")))
- '(gnus-sorted-header-list (quote ("^From:" "^To:" "^Cc:" "^Subject:" "^Summary:" "^Keywords:" "^Newsgroups:" "^Followup-To:" "^Date:" "^X-Sent:" "^Organization:")))
- '(gnus-use-cache t)
  '(haml-backspace-backdents-nesting t)
  '(ido-enable-flex-matching t)
  '(ido-enable-regexp nil)
@@ -176,15 +169,18 @@
  '(flymake-errline ((((class color) (background dark)) (:background "#650000"))))
  '(font-lock-yard-face ((t nil)) t)
  '(gnus-button ((t (:weight bold))))
+ '(gnus-group-mail-3 ((((class color) (background dark)) (:foreground "#82b0db" :weight bold))))
+ '(gnus-group-mail-3-empty ((((class color) (background dark)) (:foreground "#82b0db"))))
  '(gnus-header-content ((t (:foreground "green" :slant italic))))
  '(gnus-header-from ((((class color) (background dark)) (:foreground "green"))))
  '(gnus-header-name ((((class color) (background dark)) (:foreground "Red" :weight bold))))
  '(gnus-header-subject ((((class color) (background dark)) (:foreground "green"))))
  '(gnus-signature ((t (:foreground "green" :slant italic))))
  '(gnus-summary-normal-ancient ((((class color) (background dark)) (:foreground "gray50"))))
- '(gnus-summary-normal-read ((((class color) (background dark)) (:foreground "gray30"))))
+ '(gnus-summary-normal-read ((((class color) (background dark)) (:foreground "#757575"))))
  '(gnus-summary-normal-ticked ((((class color) (background dark)) (:foreground "red"))))
- '(gnus-summary-normal-unread ((t nil)))
+ '(gnus-summary-normal-unread ((t (:foreground "#82b0db"))))
+ '(gnus-summary-selected ((t nil)))
  '(linum ((t (:inherit shadow :background "grey10" :foreground "orange" :weight ultra-bold :height 0.8))))
  '(magit-diff-add ((((class color) (background dark)) (:foreground "green"))))
  '(magit-diff-file-header ((t (:inherit magit-header :background "dim grey"))))
@@ -205,3 +201,8 @@
  '(yard-param-name ((t (:weight bold))) t))
 
 (server-start)
+
+; (require 'gnus-load)
+
+(setq gnus-inhibit-startup-message t)
+
