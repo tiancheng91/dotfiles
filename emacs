@@ -72,6 +72,7 @@
  '(add-log-file-name-function nil)
  '(autotest-use-ui t)
  '(blink-cursor-mode nil)
+ '(c-hanging-semi&comma-criteria (quote (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
  '(change-log-default-name nil)
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
