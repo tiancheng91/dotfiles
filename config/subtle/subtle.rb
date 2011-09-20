@@ -294,7 +294,7 @@ tag "mail",    "mutt|thunderbird|lanikai|shredder"
 tag "news",    "newsbeuter"
 tag "browser", "uzbl|opera|firefox|navigator|chromium"
 tag "editor" do
-  match    "[g]?vim|emacs"
+  match    "[g]?vim|emacs|Eclipse"
   resize   false
 end
 
