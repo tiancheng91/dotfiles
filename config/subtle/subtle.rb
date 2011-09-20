@@ -291,6 +291,7 @@ tag "irc" do
 end
 
 tag "mail",    "mutt|thunderbird|lanikai|shredder"
+tag "fm",      "thunderbird"
 tag "news",    "newsbeuter"
 tag "browser", "uzbl|opera|firefox|navigator|chromium"
 tag "editor" do
@@ -408,6 +409,10 @@ if HAS_VM_VIEW
     icon      "#{ICONS_ROOT}/cpu.xbm"
     icon_only VIEWS_ICON_ONLY
   end
+end
+
+view "fm" do
+  match "fm"
 end
 
 # Sublets
