@@ -291,7 +291,7 @@ tag "irc" do
 end
 
 tag "mail",    "mutt|thunderbird|lanikai|shredder"
-tag "fm",      "thunderbird"
+tag "fm",      "thunderbird|tellico"
 tag "news",    "newsbeuter"
 tag "browser", "uzbl|opera|firefox|navigator|chromium"
 tag "editor" do
