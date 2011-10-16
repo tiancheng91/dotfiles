@@ -327,6 +327,7 @@ tag "game" do
   match :name => "ryzom"
   match "Dwarf_Fortress"
   match "FrozenSynapse"
+  match :name => "ePSXe"
 end
 
 tag "gravity" do
