@@ -176,9 +176,11 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (setq gnus-novice-user nil)
 (setq gnus-select-method (quote (nntp "news.gmane.org")))
 (setq gnus-sorted-header-list (quote ("^From:" "^To:" "^Cc:" "^Subject:" "^Summary:" "^Keywords:" "^Newsgroups:" "^Followup-To:" "^Date:" "^X-Sent:" "^Organization:")))
-(setq gnus-use-cache t)
 
 (setq message-generate-headers-first t)
+
+(setq gnus-use-cache t)
+(setq gnus-cache-enter-articles '(ticked dormant))
 (setq gnus-cache-remove-articles nil)
 
 (setq gnus-default-adaptive-score-alist '())
