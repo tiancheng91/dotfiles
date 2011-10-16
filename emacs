@@ -218,3 +218,4 @@
                ad-do-it)))))
 
 (yas/advise-indent-function 'ruby-indent-command)
+(load-library "~/.emacs.d/contrib/zencoding-mode.el")
