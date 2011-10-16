@@ -19,7 +19,6 @@ fi
 xrdb -merge ~/.Xdefaults &
 
 if [[ "dominikh-netbook" != `hostname` ]]; then
-    urxvt -name newsbeuter -e ssh -t cinchrb.org 'tmux -2 -u attach -t newsbeuter' &
     urxvt -name Weechat -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
 fi
 
