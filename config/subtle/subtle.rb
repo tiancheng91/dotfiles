@@ -407,9 +407,17 @@ end
 
 if HAS_VM_VIEW
   view "vm" do
-    match     "vm"
+    match "vm"
     icon      "#{ICONS_ROOT}/cpu.xbm"
     icon_only VIEWS_ICON_ONLY
+  end
+
+  1.upto(4) do |i|
+    view "vm#{i}" do
+      match     "vm#{i}"
+      icon      "#{ICONS_ROOT}/cpu.xbm"
+      icon_only VIEWS_ICON_ONLY
+    end
   end
 end
 
