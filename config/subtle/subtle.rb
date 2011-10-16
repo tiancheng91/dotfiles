@@ -44,6 +44,7 @@ PANEL_BG     = "#202020"
 PRI_PANEL_FG = "#ffffff"
 SND_PANEL_FG = "#757575"
 COLOR_THEME  = "#54728e"
+COLOR_THEME2 = "#738F54"
 ICONS_ROOT   = "/home/dominikh/.config/subtle/icons"
 FONT         = "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
 BORDER       = "#303030"
@@ -72,7 +73,6 @@ set :snap,    10
 set :gravity, :center
 set :urgent,  false
 set :resize,  true
-set :font,    FONT
 
 case DEVICE
 when "notebook", "netbook"
@@ -93,33 +93,54 @@ end
 ## [:focus, :title, :views, :sublets, :urgent, :occupied, :separator] inherit from :all
 style :all do
   padding(*PADDING)
+  font FONT
+  background PANEL_BG
+  foreground PRI_PANEL_FG
 end
 
-[:focus, :title, :urgent].each do |s|
-  style s do
-    foreground PRI_PANEL_FG
-  end
-end
+style :views do
+  foreground SND_PANEL_FG
 
-[:views, :sublets, :occupied].each do |s|
-  style s do
+  style :occupied do
     foreground SND_PANEL_FG
+
+    if BIG_PANEL
+      border_bottom "#bbbbbb", 3
+    else
+      background "#111111"
+    end
+  end
+
+  style :unoccupied do
+  end
+
+  style :visible do
+    if BIG_PANEL
+      border_bottom COLOR_THEME2, 3
+    else
+      background COLOR_THEME2
+    end
+  end
+
+  style :focus do
+    if BIG_PANEL
+      border_bottom COLOR_THEME, 3
+    else
+      background COLOR_THEME
+    end
+  end
+
+  style :urgent do
+    background "#ff6565"
   end
 end
 
-[:views, :title, :sublets, :separator].each do |s|
-  style s do
-    background PANEL_BG
-  end
+style :title do
 end
 
-style :focus do
-  if BIG_PANEL
-    background    PANEL_BG
-    border_bottom COLOR_THEME, 3
-  else
-    background COLOR_THEME
-  end
+style :sublets do
+  foreground SND_PANEL_FG
+  icon SND_PANEL_FG
 end
 
 style :separator do
@@ -128,25 +149,9 @@ style :separator do
   margin     3
 end
 
-style :title do
-end
-
 style :clients do
   active   COLOR_THEME, 2
   inactive PANEL_BG,    2
-end
-
-style :urgent do
-  background "#ff6565"
-end
-
-style :occupied do
-  if BIG_PANEL
-    background    PANEL_BG
-    border_bottom "#bbbbbb", 3
-  else
-    background "#111111"
-  end
 end
 
 style :subtle do
