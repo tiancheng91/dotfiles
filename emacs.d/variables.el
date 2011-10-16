@@ -174,3 +174,5 @@
 
 (setq c-default-style '((java-mode . "java") (awk-mode . "awk") (other . "bsd")))
 (setq c-basic-offset 2)
+
+(setq-default show-trailing-whitespace t)
