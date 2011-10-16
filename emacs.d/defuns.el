@@ -107,7 +107,7 @@ appropriately."
   (let ((color
          (if buffer-read-only "yellow"
            (if overwrite-mode "red"
-             "blue"))))
+             "#95d8ff"))))
     (unless (and
              (string= color hcz-set-cursor-color-color)
              (string= (buffer-name) hcz-set-cursor-color-buffer))
