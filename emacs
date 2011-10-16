@@ -218,4 +218,6 @@
                ad-do-it)))))
 
 (yas/advise-indent-function 'ruby-indent-command)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
 (load-library "~/.emacs.d/contrib/zencoding-mode.el")
