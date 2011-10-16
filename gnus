@@ -162,7 +162,8 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (setq bbdb/news-auto-create-p 'bbdb-ignore-some-messages-hook)
 (setq bbdb-ignore-some-messages-alist
       '(("From" . ".+\.invalid")
-        ("From" . "@reply\.github\.com>")))
+        ("From" . "@reply\.github\.com>")
+        ("From" . "@public\.gmane\.org")))
 
 (setq gnus-score-expiry-days nil)
 (add-hook 'message-sent-hook 'gnus-score-followup-thread)
