@@ -36,14 +36,6 @@ URxvt*color6: #54728e
 ! bold blue
 URxvt*color12: #3b3bff
 
-! weechat colors [Weechat is a urxvt with -name "Weechat"]
-!red
-Weechat*color1: #610000
-! cyan
-Weechat*color6: #54728e
-! magenta
-Weechat*color5: #ff6565
-
 ! fonts
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:Kochi Gothic:antialias=false
 Emacs*FontBackend: xft
