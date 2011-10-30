@@ -32,7 +32,7 @@ export SAVEHIST=25000
 
 export RUBYOPT=
 
-path=(/usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games ~/bin /sbin /usr/sbin /usr/local/sbin /var/lib/gems/1.8/bin /usr/kde/3.5/bin ~/.gem/ruby/1.9.1/bin /opt/java/jre/bin /usr/lib/perl5/vendor_perl/bin ~/projects/colfm/ /opt/java/bin/ /usr/local/texlive/2010/bin/i386-linux/ /usr/games/bin/ ~/.cabal/bin /opt/VirtualBox)
+path=(/usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games ~/bin /sbin /usr/sbin /usr/local/sbin /var/lib/gems/1.8/bin /usr/kde/3.5/bin ~/.gem/ruby/1.9.1/bin /opt/java/jre/bin /usr/lib/perl5/vendor_perl/bin ~/projects/colfm/ /opt/java/bin/ /usr/local/texlive/2010/bin/i386-linux/ /usr/games/bin/ ~/.cabal/bin /opt/VirtualBox /opt/dropbox)
 
 hosts=(`hostname` `grep "Host " ~/.ssh/config | cut -d " " -f2`)
 eval `dircolors`
