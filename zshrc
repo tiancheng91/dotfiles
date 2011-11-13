@@ -153,6 +153,7 @@ alias gplize="wget http://www.gnu.org/licenses/gpl.txt -O COPYING"
 alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
+alias ll="ls -lhs"
 
 # no spelling correction
 alias mkdir='nocorrect mkdir -p'
