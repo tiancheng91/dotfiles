@@ -198,7 +198,7 @@ end
 
 ## TODO anyone got more than 9 screens?
 1.upto(NUM_SCREENS) do |n|
-  grab "W-A-#{n}", "ScreenJump#{n}".to_sym
+  grab "W-C-#{n}", "ScreenJump#{n}".to_sym
 end
 
 ## All simple grabs that start with MODKEY
