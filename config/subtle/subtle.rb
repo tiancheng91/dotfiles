@@ -344,6 +344,12 @@ tag "office" do
   match "gnucash"
 end
 
+tag "xbmc" do
+  match "xbmc.bin"
+  full true
+  geometry [0, 0, 1920, 1080]
+end
+
 
 # Gimp
 tag "gimp_image" do
@@ -399,7 +405,7 @@ view "pdf" do
 end
 
 view "office" do
-  match     "office"
+  match     "office|xbmc"
   icon      "#{ICONS_ROOT}/notepad.xbm"
   icon_only VIEWS_ICON_ONLY
 end
