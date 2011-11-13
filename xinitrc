@@ -13,7 +13,7 @@ fi
 
 # D-bus
 if which dbus-launch >/dev/null 2>&1 && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-       eval `dbus-launch --sh-syntax --exit-with-session`
+    eval `dbus-launch --sh-syntax --exit-with-session`
 fi
 
 xrdb -merge ~/.Xdefaults &
