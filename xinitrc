@@ -17,6 +17,8 @@ if which dbus-launch >/dev/null 2>&1 && test -z "$DBUS_SESSION_BUS_ADDRESS"; the
 fi
 
 xrdb -merge ~/.Xdefaults &
+xset s off
+xset -dpms
 
 if [[ "dominikh-netbook" != `hostname` ]]; then
     urxvt -name Weechat -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
