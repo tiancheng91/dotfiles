@@ -122,14 +122,12 @@
 (setq ibuffer-saved-filter-groups
       (quote (("default"
                ("dired" (mode . dired-mode))
+               ("c/c++" (or
+                         (mode . c-mode)
+                         (mode . c++-mode)))
+               ("el" (mode . emacs-lisp-mode))
                ("perl" (mode . cperl-mode))
-               ("erc" (mode . erc-mode))
-               ("w3m" (mode . w3m-mode))
-               ("rcirc" (mode . rcirc-mode))
-               ("planner" (or
-                           (name . "^\\*Calendar\\*$")
-                           (name . "^diary$")
-                           (mode . muse-mode)))
+               ("ruby" (mode . ruby-mode))
                ("emacs" (or
                          (name . "^\\*scratch\\*$")
                          (name . "^\\*Messages\\*$")))
@@ -141,7 +139,8 @@
                         (mode . gnus-summary-mode)
                         (mode . gnus-article-mode)
                         (name . "^\\.bbdb$")
-                        (name . "^\\.newsrc-dribble")))))))
+                        (name . "^\\.newsrc-dribble")))
+               ("magit" (name . "^\\*magit.*$"))))))
 
 (delete 'try-expand-line hippie-expand-try-functions-list)
 (delete 'try-expand-list hippie-expand-try-functions-list)
