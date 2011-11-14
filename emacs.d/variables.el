@@ -6,17 +6,12 @@
 (setq column-number-mode t)
 (setq default-major-mode 'text-mode)
 (setq european-calendar-style 't)
-(setq flyspell-default-dictionary "deutsch8")
 
 ;; (setq gc-cons-threshold 50000000) ;; ← this caused massive lags and cpu spikes when typing
 
 (setq hcz-set-cursor-color-buffer "")
 (setq hcz-set-cursor-color-color "")
 (setq inhibit-startup-message t)
-(setq ispell-default-dictionary "deutsch8")
-(setq ispell-dictionary "deutsch8")
-(setq ispell-local-dictionary "deutsch8")
-(setq ispell-local-dictionary-alist nil)
 (setq ispell-program-name "aspell")
 (setq iswitchb-mode 1)
 (setq kill-whole-line t)
