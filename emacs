@@ -59,10 +59,10 @@
 (load-file "~/.emacs.d/passwords.el")
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(LaTeX-default-position "h")
  '(LaTeX-default-style "scrartcl")
  '(LaTeX-document-regexp "document\\|Artikel")
@@ -165,10 +165,10 @@
  '(whitespace-style (quote (trailing space-before-tab space-after-tab)))
  '(woman-use-own-frame nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-changed ((nil nil)))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
@@ -209,7 +209,7 @@
 
 (server-start)
 
-; (require 'gnus-load)
+;; (require 'gnus-load)
 
 (setq gnus-inhibit-startup-message t)
 
