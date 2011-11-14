@@ -349,11 +349,3 @@ fi
 
 if [[ -s /home/dominikh/.rvm/scripts/rvm ]] ; then source /home/dominikh/.rvm/scripts/rvm ; fi
 
-## NAMED DIRECTORIES
-university=~/documents/university
-semester=~/documents/university/semester_01
-digitaltechnische_grundlagen=$semester/digitaltechnische_grundlagen
-diskrete_mathematik=$semester/diskrete_mathematik
-grundlegende_programmiertechniken=$semester/grundlegende_programmiertechnicken
-modellierungsmethoden=$semester/modellierungsmethoden
-programmierparadigmen=$semester/programmierparadigmen
