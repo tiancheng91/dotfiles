@@ -80,3 +80,6 @@
 ;; duplicate a line and comment the first
 (global-set-key (kbd "C-c c") (lambda()(interactive)(djcb-duplicate-line t)))
 
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
