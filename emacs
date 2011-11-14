@@ -265,6 +265,7 @@
 (global-semantic-idle-summary-mode -1)
 (global-srecode-minor-mode 1)
 (global-semantic-idle-completions-mode)
+(semantic-toggle-decoration-style 'semantic-tag-boundary 0)
 
 (if (locate-library "edit-server")
     (progn
