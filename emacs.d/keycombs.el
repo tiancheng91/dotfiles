@@ -71,3 +71,9 @@
 (global-set-key (kbd "C-x C-r") 'find-alternative-file-with-sudo)
 (global-set-key "\M-." 'my-ido-find-tag)
 (define-key global-map "\C-cr" 'org-remember)
+;; duplicate a line
+(global-set-key (kbd "C-c y") 'djcb-duplicate-line)
+
+;; duplicate a line and comment the first
+(global-set-key (kbd "C-c c") (lambda()(interactive)(djcb-duplicate-line t)))
+
