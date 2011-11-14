@@ -256,6 +256,8 @@
 (load-library "~/.emacs.d/contrib/zencoding-mode.el")
 
 (setq show-trailing-whitespace t)
+(setq warning-minimum-level :error)
+
 (require 'semantic-gcc)
 (global-ede-mode 1)
 (semantic-load-enable-code-helpers)
