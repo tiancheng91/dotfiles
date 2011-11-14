@@ -71,6 +71,9 @@
 (global-set-key (kbd "C-x C-r") 'find-alternative-file-with-sudo)
 (global-set-key "\M-." 'my-ido-find-tag)
 (define-key global-map "\C-cr" 'org-remember)
+
+(define-key global-map (kbd "C-;") 'iedit-mode)
+
 ;; duplicate a line
 (global-set-key (kbd "C-c y") 'djcb-duplicate-line)
 

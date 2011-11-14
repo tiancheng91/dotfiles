@@ -29,3 +29,4 @@
 (require 'whattf-dt)
 (require 'align)
 (require 'undo-tree)
+(require 'iedit)
