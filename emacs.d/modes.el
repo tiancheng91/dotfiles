@@ -21,4 +21,6 @@
 (bbdb-insinuate-gnus)
 
 (global-undo-tree-mode)
+(global-rainbow-delimiters-mode)
 (autopair-global-mode)
+
