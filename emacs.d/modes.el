@@ -21,3 +21,4 @@
 (bbdb-insinuate-gnus)
 
 (global-undo-tree-mode)
+(autopair-global-mode)

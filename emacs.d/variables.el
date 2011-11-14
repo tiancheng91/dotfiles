@@ -171,3 +171,4 @@
 (setq c-basic-offset 2)
 
 (setq-default show-trailing-whitespace t)
+(setq autopair-blink nil)
