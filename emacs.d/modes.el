@@ -20,3 +20,4 @@
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-gnus)
 
+(global-undo-tree-mode)
