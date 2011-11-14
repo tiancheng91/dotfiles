@@ -265,3 +265,9 @@
 (global-semantic-idle-summary-mode -1)
 (global-srecode-minor-mode 1)
 (global-semantic-idle-completions-mode)
+
+(if (locate-library "edit-server")
+    (progn
+      (require 'edit-server)
+      (setq edit-server-new-frame nil)
+      (edit-server-start)))
