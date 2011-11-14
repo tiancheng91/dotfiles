@@ -1,4 +1,5 @@
 (load "~/.emacs.d/contrib/flymake-ruby.el")
+(load-file "~/.emacs.d/contrib/cedet/common/cedet.el")
 (require 'flymake-shell)
 
 (require 'compile)

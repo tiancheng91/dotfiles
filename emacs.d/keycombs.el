@@ -26,9 +26,8 @@
 
 (global-set-key [menu] 'idomenu)
 
-(global-set-key [f1] '(lambda ()
-                        (interactive)
-                        (find-file "~/Dokumente/emacs.org")))
+(global-set-key [f1] 'semantic-ia-show-summary)
+(global-set-key (kbd "C-c j") 'semantic-ia-fast-jump)
 
 (global-set-key [f2] '(lambda ()
                         (interactive)
