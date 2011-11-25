@@ -315,8 +315,6 @@ elinks() {
     echo -ne \\033]0\;\\007;
 }
 
-evince() { command evince ${*:-*.pdf} }
-
 clyde() {
    case $1 in
        (-Ss | -Si | -Q* | -T | -G)
