@@ -327,6 +327,8 @@ clyde() {
 # setup keys
 source ~/.zkbd/$TERM
 bindkey -e
+bindkey '\C-w' kill-region
+
 
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
