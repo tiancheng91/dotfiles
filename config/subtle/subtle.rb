@@ -160,6 +160,7 @@ style :subtle do
 end
 
 # Gravities
+## interactive
 gravity :top_left,       [   0,   0,  50,  50 ]
 gravity :top_left66,     [   0,   0,  50,  66 ]
 gravity :top_left33,     [   0,   0,  50,  34 ]
@@ -187,9 +188,12 @@ gravity :bottom33,       [   0,  67, 100,  33 ]
 gravity :bottom_right,   [  50,  50,  50,  50 ]
 gravity :bottom_right66, [  50,  34,  50,  66 ]
 gravity :bottom_right33, [  50,  67,  50,  33 ]
+# programmatically used
 gravity :gimp_image,     [  10,   0,  80, 100 ]
 gravity :gimp_toolbox,   [   0,   0,  10, 100 ]
 gravity :gimp_dock,      [  90,   0,  10, 100 ]
+gravity :gobby_main,     [   0,   0,  90, 100 ]
+gravity :gobby_list,     [  90,   0,  10, 100 ], :vert
 # Grabs
 ## ViewJump1-9
 1.upto(9) do |n|
@@ -296,12 +300,23 @@ tag "irc" do
 end
 
 tag "mail",    "mutt|thunderbird|lanikai|shredder"
-tag "fm",      "thunderbird|tellico|gobby"
+tag "fm",      "thunderbird|tellico"
 tag "news",    "newsbeuter"
 tag "browser", "uzbl|opera|firefox|navigator|chromium"
 tag "editor" do
   match    "[g]?vim|emacs|Eclipse"
   resize   false
+end
+
+tag "gobby_list" do
+  match :instance => "gobby", :name => "User\\slist"
+  match :instance => "gobby", :name => "Document\\slist"
+  gravity :gobby_list
+end
+
+tag "gobby_main" do
+  match :instance => "gobby", :name => ".*Gobby"
+  gravity :gobby_main
 end
 
 tag "pdf" do
@@ -433,7 +448,7 @@ if HAS_VM_VIEW
 end
 
 view "fm" do
-  match "fm"
+  match "fm|gobby_.+"
 end
 
 # Sublets
