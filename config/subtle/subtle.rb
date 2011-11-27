@@ -77,15 +77,15 @@ set :resize,  true
 case DEVICE
 when "notebook", "netbook"
   screen 1 do
-    top [:views, :separator, :title, :spacer, :separator, :tray, :sublets]
+    top [:views, :separator, :title, :spacer, :separator, :status, :tray, :sublets]
   end
 when "desktop"
   screen 1 do
-    top [:views, :separator, :title, :spacer, :separator, :tray, :cpuchart, :separator, :clock]
+    top [:views, :separator, :title, :spacer, :separator, :status, :tray, :cpuchart, :separator, :clock]
   end
 
   screen 2 do
-    top [:views, :separator, :title, :spacer, :separator, :tray, :temp, :separator, :mpd]
+    top [:views, :separator, :title, :spacer, :separator, :status, :tray, :temp, :separator, :mpd]
   end
 end
 
