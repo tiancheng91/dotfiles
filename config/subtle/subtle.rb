@@ -251,12 +251,8 @@ end
 ## Swap views between two screens
 ## TODO support more than two screens
 grab "#{MODKEY}-Tab" do
-  screens        = Subtlext::Screen.all
-  current_screen = Subtlext::Screen.current
-  views          = screens.map(&:view)
-  index          = screens.index(current_screen)
-
-  screens[index].view = views[(index - 1).abs]
+  other_screen = Subtlext::Screen.all.find {|s| s != Subtlext::Screen.current}
+  Subtlext::Screen.current.view = other_screen.view
 end
 
 case VOLUME_CONTROL
