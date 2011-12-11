@@ -391,10 +391,8 @@ view "www" do
   icon_only VIEWS_ICON_ONLY
 end
 
-view "news" do
-  match     "news"
-  icon      "#{ICONS_ROOT}/rss.xbm"
-  icon_only VIEWS_ICON_ONLY
+view "fm" do
+  match "fm|gobby_.+"
 end
 
 view "dev" do
@@ -441,10 +439,6 @@ if HAS_VM_VIEW
       icon_only VIEWS_ICON_ONLY
     end
   end
-end
-
-view "fm" do
-  match "fm|gobby_.+"
 end
 
 # Sublets
