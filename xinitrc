@@ -37,6 +37,8 @@ autocutsel -f &
 setxkbmap de
 xmodmap ~/.Xmodmap
 
+dropboxd &
+
 display -window root ~/wallpaper.png
 
 subtle --no-randr
