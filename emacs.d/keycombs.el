@@ -1,3 +1,15 @@
+;; xterm arrow keys
+(define-key input-decode-map "\e[1;5A" [C-up])
+(define-key input-decode-map "\e[1;5B" [C-down])
+(define-key input-decode-map "\e[1;5D" [C-left])
+(define-key input-decode-map "\e[1;5C" [C-right])
+
+(define-key input-decode-map "\e[1;2B" [S-down])
+(define-key input-decode-map "\e[1;2A" [S-up])
+;;; S-left and S-right are read from the terminfo
+
+
+
 (global-set-key "\C-m" 'reindent-then-newline-and-indent)
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
