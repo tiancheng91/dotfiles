@@ -59,10 +59,10 @@
 (load-file "~/.emacs.d/passwords.el")
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(LaTeX-default-position "h")
  '(LaTeX-default-style "scrartcl")
  '(LaTeX-document-regexp "document\\|Artikel")
@@ -165,10 +165,10 @@
  '(whitespace-style (quote (trailing space-before-tab space-after-tab)))
  '(woman-use-own-frame nil))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-changed ((nil nil)))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
@@ -199,12 +199,13 @@
  '(message-header-subject ((t (:foreground "orange" :weight bold))))
  '(message-header-to ((t (:foreground "Orange" :weight bold))))
  '(message-header-xheader ((t (:foreground "orange"))))
- '(mode-line ((((class color) (min-colors 88)) (:background "black" :foreground "white" :box -1))))
- '(mode-line-inactive ((default (:inherit mode-line :foreground "darkgrey")) (((class color) (min-colors 88) (background dark)) (:box (:line-width -1 :color "grey40") :weight light))))
+ '(mode-line ((((class color) (min-colors 88)) (:background "brightblack" :foreground "white" :box -1))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "white" :box (:line-width -1 :color "grey40") :weight light))))
  '(org-checkbox ((t (:inherit bold))))
  '(tabs-current ((t (:inherit tabs-face :background "grey40"))))
  '(tabs-face ((t (:background "grey25" :foreground "white"))))
  '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "Orange1"))))
+ '(widget-field ((((type tty)) (:background "darkorange" :foreground "black"))))
  '(yard-param-name ((t (:weight bold))) t))
 
 (server-start)
