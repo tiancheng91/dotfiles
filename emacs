@@ -229,8 +229,6 @@
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 
-(load-library "~/.emacs.d/contrib/zencoding-mode.el")
-
 (setq show-trailing-whitespace t)
 (setq warning-minimum-level :error)
 
