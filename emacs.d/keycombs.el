@@ -37,6 +37,7 @@
 (global-set-key (kbd "C-x C-f") 'ido-find-file)
 
 (global-set-key [menu] 'idomenu)
+(global-set-key [S-f6] 'idomenu)
 
 (global-set-key [f1] 'semantic-ia-show-summary)
 (global-set-key (kbd "C-c j") 'semantic-ia-fast-jump)
