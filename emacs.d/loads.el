@@ -1,5 +1,5 @@
-(load "~/.emacs.d/contrib/flymake-ruby.el")
 (load-file "~/.emacs.d/contrib/cedet/common/cedet.el")
+
 (require 'flymake-shell)
 
 (require 'compile)
@@ -7,12 +7,11 @@
 (require 'flyspell-guess)
 
 (require 'paren)
-(require 'rcodetools)
 (require 'rcov-overlay)
 (require 'run-assoc)
 (require 'saveplace)
 (require 'template)
-(require 'tramp)
+(require 'tramp) ;; cannot autoload this
 (require 'unit-test)
 
 (require 'glasses)
@@ -20,7 +19,6 @@
 (require 'which-func)
 (require 'yasnippet)
 (require 'uniquify)
-(require 'magit)
 (require 'idomenu)
 
 (require 'ruby-block)

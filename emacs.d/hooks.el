@@ -35,7 +35,7 @@
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
-
+             (require 'flymake-ruby)
              ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
              (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
                  (flymake-ruby-load))

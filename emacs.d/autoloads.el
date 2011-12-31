@@ -99,3 +99,4 @@
 
 (load "~/.emacs.d/contrib/nxhtml/autostart.el")
 
+(autoload 'magit-status "magit" nil t)

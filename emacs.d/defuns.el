@@ -191,7 +191,8 @@ Require `font-lock'."
 
 (defun xmp (&optional option)
   "Run xmpfilter for annotation/test/spec."
-  (interactive (rct-interactive))
+  (require 'rcodetools)
+  (interactive)
   (rct-save-position
    (lambda () (shell-command-on-region (point-min) (point-max) (xmpfilter-command option) t t))))
 
