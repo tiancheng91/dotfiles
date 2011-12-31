@@ -3,60 +3,60 @@
 
 ;; -*- mode: emacs-lisp -*-
 ;;;; Appearance of Emacs - Load this at first so the startup doesnt look that ugly
-(load-file "~/.emacs.d/appearance.el")
+(load "~/.emacs.d/appearance")
 
 ;;;; Own defuns
-(load-file "~/.emacs.d/defuns.el")
+(load "~/.emacs.d/defuns")
 
 ;;;; Load paths
-(load-file "~/.emacs.d/loadpaths.el")
+(load "~/.emacs.d/loadpaths")
 
 ;;;; Requires/loads
-(load-file "~/.emacs.d/loads.el")
+(load "~/.emacs.d/loads")
 
 ;;;; Autoloads
-(load-file "~/.emacs.d/autoloads.el")
+(load "~/.emacs.d/autoloads")
 
 ;;;; Hooks
-(load-file "~/.emacs.d/hooks.el")
+(load "~/.emacs.d/hooks")
 
 ;;;; Global minor-modes
 (define-globalized-minor-mode global-glasses-mode glasses-mode glasses-mode)
 
 ;;;; Variables/Options
-(load-file "~/.emacs.d/variables.el")
+(load "~/.emacs.d/variables")
 
 ;;;Change backup behavior to save in a directory, not in a miscellany
 ;;;of files all over the place.
-(load-file "~/.emacs.d/backup.el")
+(load "~/.emacs.d/backup")
 
 ;;;; Modes
-(load-file "~/.emacs.d/modes.el")
+(load "~/.emacs.d/modes")
 (set-face-background 'hl-line "#333")
 
 ;;;; auto-modes
-(load-file "~/.emacs.d/automodes.el")
+(load "~/.emacs.d/automodes")
 
 ;;;; utf8
-(load-file "~/.emacs.d/utf8.el")
+(load "~/.emacs.d/utf8")
 
 ;;;; Advices
-(load-file "~/.emacs.d/advices.el")
+(load "~/.emacs.d/advices")
 
 ;;;; Support for YARD tags
-(load-file "~/.emacs.d/yard.el")
+(load "~/.emacs.d/yard")
 
 ;;;; Key combinations
-(load-file "~/.emacs.d/keycombs.el")
+(load "~/.emacs.d/keycombs")
 
 ;;;; TRAMP
-(load-file "~/.emacs.d/tramp_config.el")
+(load "~/.emacs.d/tramp_config")
 
 ;;;; yasnippet
-(load-file "~/.emacs.d/yasnippet_config.el")
+(load "~/.emacs.d/yasnippet_config")
 
 ;;;; Passwords
-(load-file "~/.emacs.d/passwords.el")
+(load "~/.emacs.d/passwords")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
