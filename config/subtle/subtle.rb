@@ -240,6 +240,7 @@ end
   "k"     => :WindowRight,
   "S-k"   => :WindowKill,
   "z"   => :WindowZaphod,
+  "S-s" => :WindowStick,
 
   # Programs
   "Return" => TERMINAL_EMULATOR,
