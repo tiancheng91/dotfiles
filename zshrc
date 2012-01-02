@@ -39,7 +39,11 @@ cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/projects)
 path=(/usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games ~/bin /sbin /usr/sbin /usr/local/sbin /var/lib/gems/1.8/bin /usr/kde/3.5/bin ~/.gem/ruby/1.9.1/bin /opt/java/jre/bin /usr/lib/perl5/vendor_perl/bin ~/projects/colfm/ /opt/java/bin/ /usr/local/texlive/2010/bin/i386-linux/ /usr/games/bin/ ~/.cabal/bin /opt/VirtualBox /opt/dropbox)
 
 hosts=(`hostname` `grep "Host " ~/.ssh/config | cut -d " " -f2`)
-eval `dircolors`
+if [ "$TERM" = "xterm-screen-256color" ]; then
+    eval `TERM=screen-256color dircolors`
+else
+    eval `dircolors`
+fi
 eval `keychain --eval id_dsa -Q -q`
 
 zsh-mime-setup
