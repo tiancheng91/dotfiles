@@ -94,6 +94,7 @@
  '(global-semantic-idle-completions-mode nil nil (semantic-idle))
  '(global-whitespace-mode t)
  '(haml-backspace-backdents-nesting t)
+ '(ido-auto-merge-work-directories-length -1)
  '(ido-enable-flex-matching t)
  '(ido-enable-regexp nil)
  '(ido-everywhere t)
