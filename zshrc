@@ -184,6 +184,9 @@ case $TERM in
         ;;
 esac
 
+nfo() {
+    iconv -f 437 -t UTF8 $* | less
+}
 
 timestamp2date () {
     date -d @$*
