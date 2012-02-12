@@ -321,7 +321,7 @@ tag "pdf" do
 end
 
 tag "stick" do
-  match    "mplayer|imagemagick|Xmessage"
+  match    "mplayer|imagemagick|Xmessage|pinentry-gtk-2"
   float    true
   stick    true
 end
