@@ -22,5 +22,5 @@
 
 (global-undo-tree-mode)
 (global-rainbow-delimiters-mode)
-(autopair-global-mode)
+;;(autopair-global-mode)
 
