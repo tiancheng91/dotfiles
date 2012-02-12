@@ -296,6 +296,11 @@ tag "irc" do
   end
 end
 
+tag "thunderbird_dialogs" do
+  urgent true
+  match :instance => "Dialog", :class => "Thunderbird"
+end
+
 tag "mail",    "mutt|thunderbird|lanikai|shredder"
 tag "fm",      "thunderbird|tellico"
 tag "news",    "newsbeuter"
