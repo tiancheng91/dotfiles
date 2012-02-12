@@ -125,6 +125,7 @@ setopt prompt_subst
 setopt pushd_ignore_dups
 setopt share_history
 setopt short_loops
+setopt transient_rprompt
 unsetopt bang_hist # we dont need no inline history
 
 # aliases
