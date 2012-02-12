@@ -7,16 +7,10 @@ autoload colors zsh/terminfo
 # License: Public Domain
 # Modifications by: Dominik Honnef
 function precmd {
-    psvar=()
-
-    zstyle ':vcs_info:*' formats " VCS:%s [%b]"
-    zstyle ':vcs_info:*' actionformats " VCS:%s [%b|%a]"
-
+    zstyle ':vcs_info:*' formats "${PR_BRIGHT_RED}[${PR_RESET} %s${PR_RED}@${PR_RESET}%b ${PR_BRIGHT_RED}]${PR_RESET}"
+    zstyle ':vcs_info:*' actionformats "${PR_BRIGHT_RED}[${PR_RESET} %s${PR_RED}@${PR_RESET}%b${PR_RED}|${PR_RESET}%a ${PR_BRIGHT_RED}]${PR_RESET}"
+    zstyle ':vcs_info:*' nvcsformats "${PR_BRIGHT_RED}[${PR_RESET} ∅ ${PR_BRIGHT_RED}]${PR_RESET}"
     vcs_info
-    [[ -n $vcs_info_msg_0_ ]] && psvar[1]="$vcs_info_msg_0_"
-    # GITBRANCH=" $(git_ps1)"
-    GITBRANCH=%1v%f
-
 
     # The following 9 lines of code comes directly from Phil!'s ZSH prompt
     # http://aperiodic.net/phil/prompt/
@@ -32,7 +26,7 @@ function precmd {
 
     # check if jobs are executing
     if [[ $(jobs | wc -l) -gt 0 ]]; then
-        JOBS=" J:%j"
+        JOBS="${PR_RED}!${PR_RESET}J:%j"
     else
         JOBS=""
     fi
@@ -40,9 +34,9 @@ function precmd {
     RUBY=$(~/.rvm/bin/rvm-prompt)
     if [[ -n "$RUBY" ]];
     then
-        RUBY=" [ruby: ${RUBY}]";
+        RUBY="${PR_BRIGHT_RED}[${PR_RESET} ${RUBY} ${PR_BRIGHT_RED}]${PR_RESET}";
     else
-        RUBY="";
+        RUBY="${PR_BRIGHT_RED}[${PR_RESET} ∅ ${PR_BRIGHT_RED}]${PR_RESET}";
     fi
 
 
@@ -85,13 +79,8 @@ setprompt () {
     # Finally, let's set the prompt
 
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-
-${PR_BRIGHT_BLACK}<${PR_RESET}${PR_RED}<${PR_BRIGHT_RED}<\
-${PR_RESET} %n@%m${PR_RED}!${PR_RESET}${JOBS}%(?.. E:%?)\
-${PR_BATTERY}${GITBRANCH}${RUBY}\
-
-${PR_BRIGHT_BLACK}>${PR_RESET}${PR_GREEN}>${PR_BRIGHT_GREEN}>\
-${PR_RESET}${PR_WHITE} '
+${PR_RESET}%n${PR_RED}@${PR_RESET}%m${JOBS}%(?..${PR_RED}!${PR_RESET}E:%?)\
+${PR_BATTERY}${PR_WHITE} ${PR_BRIGHT_GREEN}%(!.%B#%b.\$)${PR_RESET} '
 
     # Of course we need a matching continuation prompt
     PROMPT2='\
@@ -100,7 +89,7 @@ ${PR_RESET} %_ ${PR_BRIGHT_BLACK}>${PR_RESET}${PR_GREEN}>\
 ${PR_BRIGHT_GREEN}>${PR_WHITE} '
 
     RPROMPT='${PR_BRIGHT_RED}[${PR_RESET} \
-${PR_RESET}%$PR_PWDLEN<...<%~%<<${PR_BRIGHT_RED} ]${PR_RESET}'
+${PR_RESET}%$PR_PWDLEN<...<%~%<< ${PR_BRIGHT_RED}]${PR_RESET} ${vcs_info_msg_0_} ${RUBY}'
 
     case $TERM in
         xterm*)
