@@ -62,7 +62,7 @@ end
 
 if BIG_PANEL
   PADDING = [3]
-  STRUT   = [0, 0, 16, 0]
+  STRUT   = [0, 0, 0, 0]
 else
   PADDING = [2]
   STRUT   = [0]
@@ -72,7 +72,7 @@ set :step,    5
 set :snap,    10
 set :gravity, :center
 set :urgent,  false
-set :resize,  true
+set :resize,  false
 
 case DEVICE
 when "notebook", "netbook"
