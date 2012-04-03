@@ -322,7 +322,7 @@ tag "gobby_main" do
 end
 
 tag "pdf" do
-  match "evince"
+  match "evince|fbreader|calibre"
 end
 
 tag "stick" do
