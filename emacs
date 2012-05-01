@@ -85,6 +85,7 @@
  '(font-latex-fontify-sectioning 1.1)
  '(font-latex-match-sectioning-3-keywords (quote (("Absch" ""))))
  '(font-latex-match-sectioning-4-keywords (quote (("UAbsch" ""))))
+ '(font-latex-match-sectioning-5-keywords (quote (("UUAbsch" ""))))
  '(gimp-exe "gimp")
  '(glasses-separator "")
  '(global-auto-revert-mode t)
