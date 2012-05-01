@@ -247,6 +247,9 @@
       (require 'edit-server)
       (setq edit-server-new-frame nil)
       (edit-server-start)))
+(defun my-semantic-hook ()
+  (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
 (defvar go-compiler "/home/dominikh/go/pkg/tool/linux_amd64/6g")
 
 (defun flymake-go-init ()
