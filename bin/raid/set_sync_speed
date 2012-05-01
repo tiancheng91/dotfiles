@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+require "filesize"
+
+def convert_speed(speed)
+  speed = speed.sub(/\/s$/, '')
+  Filesize.from(speed).to_f("KB").ceil
+end
+
+def set_min_speed(device, speed)
+  speed = convert_speed(speed)
+  File.open("/sys/block/#{device}/md/sync_speed_min", "w") do |f|
+    f.write speed.to_s
+  end
+end
+
+def set_max_speed(device, speed)
+  speed = convert_speed(speed)
+  File.open("/sys/block/#{device}/md/sync_speed_max", "w") do |f|
+    f.write speed.to_s
+  end
+end
+
+if `id -u`.chomp != "0"
+  $stderr.puts "root required."
+  exit 2
+end
+
+case ARGV.size
+when 2
+  set_min_speed(ARGV[0], ARGV[1])
+when 3
+  set_min_speed(ARGV[0], ARGV[1])
+  set_max_speed(ARGV[0], ARGV[2])
+else
+  $stderr.puts "Usage: #{$0} RAID MIN [MAX]"
+  exit 1
+end

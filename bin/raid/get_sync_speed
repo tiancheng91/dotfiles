@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require "filesize"
+
+case ARGV.size
+when 1
+  device = ARGV.first
+  min = File.read("/sys/block/#{device}/md/sync_speed_min").chomp
+  max = File.read("/sys/block/#{device}/md/sync_speed_max").chomp
+
+  min, max = [min, max].map {|i| Filesize.new(i.to_i * 1024)}
+
+  puts "Min: #{min.pretty}/s"
+  puts "Max: #{max.pretty}/s"
+else
+  $stderr.puts "Usage: #{$0} RAID"
+  exit 1
+end
