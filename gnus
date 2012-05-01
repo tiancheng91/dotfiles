@@ -199,3 +199,8 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 
 (setq gnus-score-thread-simplify t)
 (setq gnus-signature-limit 5)
+
+
+(setq gnus-add-to-list t)
+(setq message-subscribed-address-functions
+      '(gnus-find-subscribed-addresses))
