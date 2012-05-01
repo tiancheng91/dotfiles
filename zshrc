@@ -385,3 +385,5 @@ then
 fi
 
 if [[ -s /home/dominikh/.rvm/scripts/rvm ]] ; then source /home/dominikh/.rvm/scripts/rvm ; fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
