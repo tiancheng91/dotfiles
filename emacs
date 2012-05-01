@@ -247,3 +247,28 @@
       (require 'edit-server)
       (setq edit-server-new-frame nil)
       (edit-server-start)))
+(defvar go-compiler "/home/dominikh/go/pkg/tool/linux_amd64/6g")
+
+(defun flymake-go-init ()
+  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+         (local-file  (file-relative-name
+                       temp-file
+                       (file-name-directory buffer-file-name))))
+    (list go-compiler (list "-o" "/dev/null" temp-file))))
+
+(push '(".+\\.go$" flymake-go-init) flymake-allowed-file-name-masks)
+
+(add-hook
+ 'go-mode-hook
+ '(lambda ()
+    (setq imenu-generic-expression
+          '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
+            ("func" "^func *\\(.*\\) {" 1)))
+    (imenu-add-to-menubar "Index")
+    flymake-mode))
+
+(defun go ()
+  "run current buffer"
+  (interactive)
+  (compile (concat "go run " (buffer-file-name))))
