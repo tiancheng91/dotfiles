@@ -41,4 +41,4 @@ dropboxd &
 
 display -window root ~/wallpaper.png
 
-subtle --no-randr
+exec ck-launch-session dbus-launch subtle --no-randr
