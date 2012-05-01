@@ -255,6 +255,19 @@
 (defun my-semantic-hook ()
   (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
+(defun flymake-display-current-error ()
+  "Display errors/warnings under cursor."
+  (interactive)
+  (let ((ovs (overlays-in (point) (1+ (point)))))
+    (catch 'found
+      (dolist (ov ovs)
+        (when (flymake-overlay-p ov)
+          (message (overlay-get ov 'help-echo))
+          (throw 'found t))))))
+
+(global-set-key (kbd "C-c f") 'flymake-display-current-error)
+
+
 (defvar go-compiler "/home/dominikh/go/pkg/tool/linux_amd64/6g")
 
 (defun flymake-go-init ()
