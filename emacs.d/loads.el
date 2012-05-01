@@ -30,3 +30,4 @@
 (require 'rainbow-delimiters)
 (require 'autopair)
 (require 'iedit)
+(require 'go-mode)
