@@ -248,6 +248,10 @@
       (require 'edit-server)
       (setq edit-server-new-frame nil)
       (edit-server-start)))
+
+(setq mm-verify-option 'known)
+(setq mm-decrypt-option 'known)
+
 (defun my-semantic-hook ()
   (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
