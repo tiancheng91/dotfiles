@@ -255,6 +255,10 @@
 (defun my-semantic-hook ()
   (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
 (defun flymake-display-current-error ()
   "Display errors/warnings under cursor."
   (interactive)
