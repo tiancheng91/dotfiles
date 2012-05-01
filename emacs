@@ -256,6 +256,25 @@
   (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
 
+
+
+
+(defun djcb-snip (b e summ)
+  "remove selected lines, and replace it with [snip:summary (n lines)]"
+  (interactive "r\nsSummary:")
+  (let ((n (count-lines b e)))
+    (delete-region b e)
+    (insert (format "[snip%s (%d line%s)]"
+                    (if (= 0 (length summ)) "" (concat ": " summ))
+                    n
+                    (if (= 1 n) "" "s")))))
+
+
+
+
+
+
+
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
