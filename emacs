@@ -1,15 +1,15 @@
 ;; -*- mode: emacs-lisp -*-
 (setq warning-suppress-types nil)
 
+;;;; Load paths
+(load "~/.emacs.d/loadpaths")
+
 ;; -*- mode: emacs-lisp -*-
-;;;; Appearance of Emacs - Load this at first so the startup doesnt look that ugly
+;;;; Appearance of Emacs - Load this as soon as possible so the startup doesnt look that ugly
 (load "~/.emacs.d/appearance")
 
 ;;;; Own defuns
 (load "~/.emacs.d/defuns")
-
-;;;; Load paths
-(load "~/.emacs.d/loadpaths")
 
 ;;;; Requires/loads
 (load "~/.emacs.d/loads")
