@@ -47,7 +47,10 @@ if [ "$TERM" = "xterm-screen-256color" ]; then
 else
     eval `dircolors`
 fi
-eval `keychain --eval id_dsa -Q -q`
+
+if which keychain >/dev/null; then
+    eval `keychain --eval id_dsa -Q -q`
+fi
 
 zsh-mime-setup
 
