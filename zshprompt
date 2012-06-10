@@ -31,7 +31,13 @@ function precmd {
         JOBS=""
     fi
 
-    RUBY=$(~/.rvm/bin/rvm-prompt)
+    if [[ -e ~/.rvm/bin/rvm-prompt ]] ;
+    then
+        RUBY=$(~/.rvm/bin/rvm-prompt)
+    else
+        RUBY=""
+    fi
+
     if [[ -n "$RUBY" ]];
     then
         RUBY="${PR_BRIGHT_RED}[${PR_RESET} ${RUBY} ${PR_BRIGHT_RED}]${PR_RESET}";
