@@ -76,6 +76,7 @@
  '(blink-cursor-mode nil)
  '(c-hanging-semi&comma-criteria (quote (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
  '(change-log-default-name nil)
+ '(company-show-numbers nil)
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
@@ -171,6 +172,12 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(company-preview ((t (:foreground "darkgray" :underline t))))
+ '(company-preview-common ((t (:inherit company-preview))))
+ '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
+ '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
+ '(company-tooltip-selection ((t (:background "#7BB2E8" :foreground "black"))))
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-changed ((nil nil)))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
@@ -320,3 +327,20 @@
   "run current buffer"
   (interactive)
   (compile (concat "go run " (buffer-file-name))))
+
+
+(add-to-list 'load-path "~/.emacs.d/contrib/company/")
+(autoload 'company-mode "company" nil t)
+
+(require 'company)                                   ; load company mode
+(require 'company-go)                                ; load company mode go backend and hook it up
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-minimum-prefix-length 0)               ; autocomplete right after '.'
+(setq company-idle-delay t)                         ; shorter delay before autocompletion popup
+(setq company-echo-delay 0)                          ; removes annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
+
