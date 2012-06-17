@@ -197,7 +197,7 @@
  '(gnus-summary-normal-ticked ((((class color) (background dark)) (:foreground "red"))))
  '(gnus-summary-normal-unread ((t (:foreground "#82b0db"))))
  '(gnus-summary-selected ((t nil)))
- '(linum ((t (:inherit shadow :background "grey10" :foreground "orange" :weight ultra-bold :height 0.8))))
+ '(linum ((t (:inherit shadow :background "black" :foreground "#BED3E8" :weight ultra-bold :height 0.8))))
  '(magit-diff-add ((((class color) (background dark)) (:foreground "green"))))
  '(magit-diff-file-header ((t (:inherit magit-header :background "dim grey"))))
  '(magit-diff-hunk-header ((t (:inherit magit-header :background "dim grey" :slant italic))))
