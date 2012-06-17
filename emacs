@@ -213,7 +213,7 @@
  '(org-checkbox ((t (:inherit bold))))
  '(tabs-current ((t (:inherit tabs-face :background "grey40"))))
  '(tabs-face ((t (:background "grey25" :foreground "white"))))
- '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "Orange1"))))
+ '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "#BED3E8"))))
  '(widget-field ((((type tty)) (:background "darkorange" :foreground "black"))))
  '(yard-param-name ((t (:weight bold))) t))
 
