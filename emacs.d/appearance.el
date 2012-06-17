@@ -20,7 +20,7 @@
      (default ((t (nil))))
      (mode-line ((t (:foreground "#FFFFFF" :background "#323232"))))
      (region ((t (:background "#505050"))))
-     (font-lock-comment-face ((t (:foreground "#E8B27B"))))
+     (font-lock-comment-face ((t (:foreground "#D0F2AE"))))
      (font-lock-constant-face ((t (:foreground "#81FFFB"))))
      (font-lock-builtin-face ((t (:foreground "#B6F9FF"))))
      (font-lock-function-name-face ((t (:foreground "#A9C9E8"))))
