@@ -328,9 +328,23 @@
   (interactive)
   (compile (concat "go run " (buffer-file-name))))
 
+(defun gnus-goto-google ()
+  (interactive)
+  (when (memq major-mode '(gnus-summary-mode gnus-article-mode))
+    (when (eq major-mode 'gnus-article-mode)
+      (gnus-article-show-summary))
+    (let* ((article (gnus-summary-article-number))
+           (header (gnus-summary-article-header article))
+           (id (substring (mail-header-id header) 1 -1)))
+      (kill-new
+       (format "http://groups.google.com/groups?selm=%s" id)))))
+
+
 
 (add-to-list 'load-path "~/.emacs.d/contrib/company/")
 (autoload 'company-mode "company" nil t)
+
+
 
 (require 'company)                                   ; load company mode
 (require 'company-go)                                ; load company mode go backend and hook it up
