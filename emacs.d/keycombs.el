@@ -96,3 +96,6 @@
 (add-hook 'c-mode-common-hook
   (lambda()
     (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+
+(global-set-key (kbd "C-M-;") 'flymake-goto-prev-error)
+(global-set-key (kbd "C-M-'")'flymake-goto-next-error)
