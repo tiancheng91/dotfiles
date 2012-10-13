@@ -60,9 +60,7 @@
                            (interactive)
                            (my-print-buffer)))
 
-(global-set-key [S-Scroll_Lock] '(lambda ()
-                                   (interactive)
-                                   (revert-buffer)))
+(global-set-key [S-Scroll_Lock] 'revert-buffer)
 
 (global-set-key [Scroll_Lock] '(lambda ()
                                  (interactive)
@@ -99,3 +97,8 @@
 
 (global-set-key (kbd "C-M-;") 'flymake-goto-prev-error)
 (global-set-key (kbd "C-M-'")'flymake-goto-next-error)
+(global-set-key (kbd "C-x f") 'ido-choose-from-recentf)
+
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "C-c f") 'flymake-display-current-error)

@@ -7,8 +7,6 @@
 (setq default-major-mode 'text-mode)
 (setq european-calendar-style 't)
 
-;; (setq gc-cons-threshold 50000000) ;; ← this caused massive lags and cpu spikes when typing
-
 (setq hcz-set-cursor-color-buffer "")
 (setq hcz-set-cursor-color-color "")
 (setq inhibit-startup-message t)
@@ -98,13 +96,15 @@
 (setq smtpmail-debug-info t)
 
 (setq mm-text-html-renderer 'w3m-standalone)
+(setq mm-verify-option 'known)
+(setq mm-decrypt-option 'known)
 (setq gnus-treat-body-boundary 'head)
 (setq gnus-body-boundary-delimiter "–")
 (setq gnus-treat-hide-signature t)
 (setq gnus-treat-date-local 'head)
 (setq gnus-treat-date-lapsed 'head)
 (setq gnus-article-date-lapsed-new-header t)
-
+(setq gnus-inhibit-startup-message t)
 
 (setq imaxima-use-maxima-mode-flag t)
 (setq org-global-properties (quote (("Effort_ALL" . "0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00"))))
@@ -171,3 +171,29 @@
 
 (setq-default show-trailing-whitespace t)
 (setq autopair-blink nil)
+
+(setq android-mode-sdk-dir "~/android/android-sdk-linux/")
+(setq jde-global-classpath '("/tmp/flymake-build" "~/android/projects/" "~/android/android-sdk-linux/platforms/android-16/android.jar"))
+(setq jde-ecj-command-line-args '("-d" "/tmp/flymake-build" "-1.5" "-referenceInfo" "-enableJavadoc" "-warn:all"))
+(setq cedet-android-sdk-root "~/android/android-sdk-linux/")
+
+(setq warning-minimum-level :error)
+
+
+(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
+
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-minimum-prefix-length 0)               ; autocomplete right after '.'
+(setq company-idle-delay t)                         ; shorter delay before autocompletion popup
+(setq company-echo-delay 0)                          ; removes annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+
+
+(setq select-active-regions t)
+(setq mouse-drag-copy-region nil)
+(setq x-select-enable-primary t)
+(setq x-select-enable-clipboard nil)
+
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)

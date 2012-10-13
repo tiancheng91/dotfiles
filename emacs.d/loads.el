@@ -1,6 +1,9 @@
-(load-file "~/.emacs.d/contrib/cedet/common/cedet.el")
+;; (load-file "~/.emacs.d/contrib/cedet/common/cedet.el")
 
+(require 'flymake)
 (require 'flymake-shell)
+(require 'go-flymake)
+(require 'jde-ecj-flymake)
 
 (require 'compile)
 (require 'etags-select)
@@ -31,3 +34,17 @@
 (require 'autopair)
 (require 'iedit)
 (require 'go-mode)
+(require 'go-play)
+(require 'recentf)
+(require 'semantic-gcc)
+
+(require 'company)                                   ; load company mode
+(require 'company-go)                                ; load company mode go backend and hook it up
+(require 'company-semantic)
+(setq company-backends nil)
+
+(require 'android-mode)
+
+(require 'jde)
+
+

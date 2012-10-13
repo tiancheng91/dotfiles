@@ -49,3 +49,24 @@
 (eval-after-load "rng-loc"
   '(add-to-list 'rng-schema-locating-files "~/.emacs.d/contrib/html5-el/schemas.xml"))
 
+
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
+
+(add-hook 'gud-mode-hook
+          (lambda ()
+            (add-to-list 'gud-jdb-classpath "~/android/android-sdk-linux/platforms/android-16/android.jar")))
+(add-hook 'semantic-init-hooks 'my-semantic-hook)
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
+
+(add-hook 'go-mode-hook '(lambda ()
+                           (setq imenu-generic-expression
+                                 '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
+                                   ("func" "^func *\\(.*\\) {" 1)))
+                           (imenu-add-to-menubar "Index")
+                           flymake-mode))

@@ -22,5 +22,13 @@
 
 (global-undo-tree-mode)
 (global-rainbow-delimiters-mode)
-;;(autopair-global-mode)
+(recentf-mode 1)
+
+(global-ede-mode 1)
+(semantic-load-enable-code-helpers)
+(semantic-load-enable-excessive-code-helpers)
+(global-semantic-idle-summary-mode -1)
+(global-srecode-minor-mode 1)
+(global-semantic-idle-completions-mode)
+(semantic-toggle-decoration-style 'semantic-tag-boundary 0)
 

@@ -97,7 +97,8 @@ The credentials are retrieved at most once within the body of this macro."
 complete. The github parameters are included in the request. Optionally
 accepts additional POST `params' as a list of (key . value) conses."
   (github-with-auth-info login token
-    (let ((url-request-data (gist-make-query-string
+    (let ((url-request-extra-headers '())
+          (url-request-data (gist-make-query-string
                              `(("login" . ,login)
                                ("token" . ,token) ,@params)))
           (url-max-redirecton -1)

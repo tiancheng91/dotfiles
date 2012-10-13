@@ -4,7 +4,6 @@
 ;;;; Load paths
 (load "~/.emacs.d/loadpaths")
 
-;; -*- mode: emacs-lisp -*-
 ;;;; Appearance of Emacs - Load this as soon as possible so the startup doesnt look that ugly
 (load "~/.emacs.d/appearance")
 
@@ -59,10 +58,10 @@
 (load "~/.emacs.d/passwords")
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(LaTeX-default-position "h")
  '(LaTeX-default-style "scrartcl")
  '(LaTeX-document-regexp "document\\|Artikel")
@@ -75,12 +74,15 @@
  '(autotest-use-ui t)
  '(blink-cursor-mode nil)
  '(c-hanging-semi&comma-criteria (quote (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
+ '(cedet-android-current-version "16")
  '(change-log-default-name nil)
  '(company-show-numbers nil)
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
  '(css-indent-offset 2)
+ '(ede-project-directories (quote ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
+ '(flymake-allowed-file-name-masks (quote (("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init) ("\\.xml\\'" flymake-xml-init) ("\\.html?\\'" flymake-xml-init) ("\\.cs\\'" flymake-simple-make-init) ("\\.p[ml]\\'" flymake-perl-init) ("\\.php[345]?\\'" flymake-php-init) ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup) ("\\.java\\'" jde-ecj-server-flymake-init jde-ecj-flymake-cleanup) ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup) ("\\.tex\\'" flymake-simple-tex-init) ("\\.idl\\'" flymake-simple-make-init))))
  '(flymake-no-changes-timeout 10)
  '(font-latex-fontify-script nil)
  '(font-latex-fontify-sectioning 1.1)
@@ -112,6 +114,8 @@
  '(imenu-auto-rescan t)
  '(imenu-auto-rescan-maxout 600000)
  '(indent-tabs-mode nil)
+ '(jde-compiler (quote (("eclipse java compiler server" "/home/dominikh/android/eclipse/plugins/org.eclipse.jdt.core_3.8.1.v20120531-0637.jar"))))
+ '(jde-compiler-new-compile-el t)
  '(js-indent-level 2)
  '(js2-auto-indent-p t)
  '(js2-basic-offset 2)
@@ -168,10 +172,10 @@
  '(whitespace-style (quote (trailing space-before-tab space-after-tab)))
  '(woman-use-own-frame nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(company-preview ((t (:foreground "darkgray" :underline t))))
  '(company-preview-common ((t (:inherit company-preview))))
  '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
@@ -183,6 +187,7 @@
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(fg:erc-color-face1 ((t (:foreground "white"))))
  '(flymake-errline ((((class color) (background dark)) (:background "#650000"))))
+ '(font-lock-comment-face ((t (:foreground "#D0F2AE" :slant italic))))
  '(font-lock-yard-face ((t nil)) t)
  '(gnus-button ((t (:weight bold))))
  '(gnus-group-mail-3 ((((class color) (background dark)) (:foreground "#82b0db" :weight bold))))
@@ -219,142 +224,9 @@
 
 (server-start)
 
-;; (require 'gnus-load)
-
-(setq gnus-inhibit-startup-message t)
-
-(defun yas/advise-indent-function (function-symbol)
-  (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
-           ,(format
-             "Try to expand a snippet before point, then call `%s' as usual"
-             function-symbol)
-           (let ((yas/fallback-behavior nil))
-             (unless (and (interactive-p)
-                          (yas/expand))
-               ad-do-it)))))
-
-(yas/advise-indent-function 'ruby-indent-command)
-
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
-
-(setq show-trailing-whitespace t)
-(setq warning-minimum-level :error)
-
-(require 'semantic-gcc)
-(global-ede-mode 1)
-(semantic-load-enable-code-helpers)
-(semantic-load-enable-excessive-code-helpers)
-(global-semantic-idle-summary-mode -1)
-(global-srecode-minor-mode 1)
-(global-semantic-idle-completions-mode)
-(semantic-toggle-decoration-style 'semantic-tag-boundary 0)
-
 (if (locate-library "edit-server")
     (progn
       (require 'edit-server)
       (setq edit-server-new-frame nil)
       (edit-server-start)))
-
-(setq mm-verify-option 'known)
-(setq mm-decrypt-option 'known)
-
-(defun my-semantic-hook ()
-  (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
-(add-hook 'semantic-init-hooks 'my-semantic-hook)
-
-
-
-
-(defun djcb-snip (b e summ)
-  "remove selected lines, and replace it with [snip:summary (n lines)]"
-  (interactive "r\nsSummary:")
-  (let ((n (count-lines b e)))
-    (delete-region b e)
-    (insert (format "[snip%s (%d line%s)]"
-                    (if (= 0 (length summ)) "" (concat ": " summ))
-                    n
-                    (if (= 1 n) "" "s")))))
-
-
-
-
-
-
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
-
-(defun flymake-display-current-error ()
-  "Display errors/warnings under cursor."
-  (interactive)
-  (let ((ovs (overlays-in (point) (1+ (point)))))
-    (catch 'found
-      (dolist (ov ovs)
-        (when (flymake-overlay-p ov)
-          (message (overlay-get ov 'help-echo))
-          (throw 'found t))))))
-
-(global-set-key (kbd "C-c f") 'flymake-display-current-error)
-
-
-(defvar go-compiler "/home/dominikh/go/pkg/tool/linux_amd64/6g")
-
-(defun flymake-go-init ()
-  (let* ((temp-file   (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-         (local-file  (file-relative-name
-                       temp-file
-                       (file-name-directory buffer-file-name))))
-    (list go-compiler (list "-o" "/dev/null" temp-file))))
-
-(push '(".+\\.go$" flymake-go-init) flymake-allowed-file-name-masks)
-
-(add-hook
- 'go-mode-hook
- '(lambda ()
-    (setq imenu-generic-expression
-          '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
-            ("func" "^func *\\(.*\\) {" 1)))
-    (imenu-add-to-menubar "Index")
-    flymake-mode))
-
-(defun go ()
-  "run current buffer"
-  (interactive)
-  (compile (concat "go run " (buffer-file-name))))
-
-(defun gnus-goto-google ()
-  (interactive)
-  (when (memq major-mode '(gnus-summary-mode gnus-article-mode))
-    (when (eq major-mode 'gnus-article-mode)
-      (gnus-article-show-summary))
-    (let* ((article (gnus-summary-article-number))
-           (header (gnus-summary-article-header article))
-           (id (substring (mail-header-id header) 1 -1)))
-      (kill-new
-       (format "http://groups.google.com/groups?selm=%s" id)))))
-
-
-
-(add-to-list 'load-path "~/.emacs.d/contrib/company/")
-(autoload 'company-mode "company" nil t)
-
-
-
-(require 'company)                                   ; load company mode
-(require 'company-go)                                ; load company mode go backend and hook it up
-(setq company-tooltip-limit 20)                      ; bigger popup window
-(setq company-minimum-prefix-length 0)               ; autocomplete right after '.'
-(setq company-idle-delay t)                         ; shorter delay before autocompletion popup
-(setq company-echo-delay 0)                          ; removes annoying blinking
-(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-
-(add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
 

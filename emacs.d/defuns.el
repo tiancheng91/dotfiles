@@ -162,17 +162,6 @@ Require `font-lock'."
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
 
-(defun count-words-buffer ()
-  "Count words in buffer"
-  (interactive)
-  (shell-command-on-region (point-min) (point-max) "wc -w"))
-
-(defun count-words-region ()
-  "Count words in buffer"
-  (interactive)
-  (shell-command-on-region (point) (mark) "wc -w"))
-
-
 (defun banexpire ()
   "Calculate timestamp for ban expire"
   (interactive)
@@ -310,3 +299,95 @@ gnuplot `script'"
     (insert-string
       (concat (if (= 0 (forward-line 1)) "" "\n") str "\n"))
     (forward-line -1)))
+
+
+(defun w3m-copy-url-at-point ()
+    (interactive)
+    (let ((url (w3m-anchor)))
+      (if (w3m-url-valid url)
+      (kill-new (w3m-anchor))
+        (message "No URL at point!"))))
+
+(defun ido-choose-from-recentf ()
+  "Use ido to select a recently opened file from the `recentf-list'"
+  (interactive)
+  (let ((home (expand-file-name (getenv "HOME"))))
+    (find-file
+     (ido-completing-read "Recentf open: "
+                          (mapcar (lambda (path)
+                                    (replace-regexp-in-string home "~" path))
+                                  recentf-list)
+                          nil t))))
+
+(defun my-semantic-hook ()
+  (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
+
+(defun djcb-snip (b e summ)
+  "remove selected lines, and replace it with [snip:summary (n lines)]"
+  (interactive "r\nsSummary:")
+  (let ((n (count-lines b e)))
+    (delete-region b e)
+    (insert (format "[snip%s (%d line%s)]"
+                    (if (= 0 (length summ)) "" (concat ": " summ))
+                    n
+                    (if (= 1 n) "" "s")))))
+
+(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
+
+(defun flymake-display-current-error ()
+  "Display errors/warnings under cursor."
+  (interactive)
+  (let ((ovs (overlays-in (point) (1+ (point)))))
+    (catch 'found
+      (dolist (ov ovs)
+        (when (flymake-overlay-p ov)
+          (message (overlay-get ov 'help-echo))
+          (throw 'found t))))))
+
+(defun go ()
+  "run current buffer"
+  (interactive)
+  (compile (concat "go run " (buffer-file-name))))
+
+(defun gnus-goto-google ()
+  (interactive)
+  (when (memq major-mode '(gnus-summary-mode gnus-article-mode))
+    (when (eq major-mode 'gnus-article-mode)
+      (gnus-article-show-summary))
+    (let* ((article (gnus-summary-article-number))
+           (header (gnus-summary-article-header article))
+           (id (substring (mail-header-id header) 1 -1)))
+      (kill-new
+       (format "http://groups.google.com/groups?selm=%s" id)))))
+
+(defun show-fly-err-at-point ()
+  "If the cursor is sitting on a flymake error, display the
+message in the minibuffer"
+  (interactive)
+  (let ((line-no (line-number-at-pos)))
+    (dolist (elem flymake-err-info)
+      (if (eq (car elem) line-no)
+          (let ((err (car (second elem))))
+            (message "%s" (fly-pyflake-determine-message err)))))))
+
+(defun fly-pyflake-determine-message (err)
+  "pyflake is flakey if it has compile problems, this adjusts the
+message to display, so there is one ;)"
+  (cond ((not (or (eq major-mode 'Python) (eq major-mode 'python-mode) t)))
+        ((null (flymake-ler-file err))
+         ;; normal message do your thing
+         (flymake-ler-text err))
+        (t ;; could not compile err
+         (format "compile error, problem on line %s" (flymake-ler-line err)))))
+
+(defun yas/advise-indent-function (function-symbol)
+  (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
+           ,(format
+             "Try to expand a snippet before point, then call `%s' as usual"
+             function-symbol)
+           (let ((yas/fallback-behavior nil))
+             (unless (and (interactive-p)
+                          (yas/expand))
+               ad-do-it)))))
+
+(yas/advise-indent-function 'ruby-indent-command)
