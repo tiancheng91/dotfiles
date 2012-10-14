@@ -194,6 +194,3 @@
 (setq mouse-drag-copy-region nil)
 (setq x-select-enable-primary t)
 (setq x-select-enable-clipboard nil)
-
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
