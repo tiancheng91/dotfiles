@@ -47,4 +47,5 @@
 
 (require 'jde)
 
+(require 'package)
 
