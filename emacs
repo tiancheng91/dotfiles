@@ -1,5 +1,7 @@
 ;; -*- mode: emacs-lisp -*-
 (setq warning-suppress-types nil)
+(package-initialize)
+(setq package-enable-at-startup nil)
 
 ;;;; Load paths
 (load "~/.emacs.d/loadpaths")
@@ -230,4 +232,3 @@
       (setq edit-server-new-frame nil)
       (edit-server-start)))
 
-(package-initialize)
