@@ -86,6 +86,10 @@
                (propertize "%I" 'face 'font-lock-constant-face) ;; size
                "] "
 
+               "["
+               '(:eval (list (sml-modeline-create)))
+               "] "
+
                ;; the current major mode for the buffer.
                "["
 
