@@ -44,90 +44,65 @@
   (font-lock-add-keywords mode
                           '(("\\(XXX\\|FIXME\\|TODO\\)"
                              1 font-lock-warning-face prepend))))
-(defconst my-mode-line-buffer-identification
-  (list
-   '(:eval
-     (let ((host-name
-            (or (file-remote-p default-directory 'host)
-                (system-name))))
-       (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
-           (substring host-name 0 (match-beginning 1))
-         host-name)))
-   ": %12b"))
-
-(setq-default
- mode-line-buffer-identification
- my-mode-line-buffer-identification)
-
-(add-hook
- 'dired-mode-hook
- '(lambda ()
-    (setq
-     mode-line-buffer-identification
-     my-mode-line-buffer-identification)))
-
 
 (setq-default mode-line-format
-              (list
-               ;; the buffer name; the file name as a tool tip
-               '(:eval (propertize "%b " 'face 'font-lock-keyword-face
-                                   'help-echo (buffer-file-name)))
+              '(
+                (:propertize (:eval
+                              (let ((host-name
+                                     (or (file-remote-p default-directory 'host)
+                                         (system-name))))
+                                (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
+                                    (substring host-name 0 (match-beginning 1))
+                                  host-name)))
+                             face font-lock-keyword-face)
+                (:propertize ": %b" face font-lock-keyword-face)
 
-               ;; line and column
-               "(" ;; '%02' to set to 2 chars at least; prevents flickering
-               (propertize "%02l" 'face 'font-lock-type-face) ","
-               (propertize "%02c" 'face 'font-lock-type-face)
-               ") "
+                " "
+                (vc-mode (
+                          "("
+                          (:propertize vc-mode face font-lock-keyword-face)
+                          " )"))
+                " "
 
-               ;; relative position, size of file
-               "["
-               (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
-               "/"
-               (propertize "%I" 'face 'font-lock-constant-face) ;; size
-               "] "
+                ;; line, column, rel position, size, bar
+                "["
+                (:propertize "%03l" face font-lock-type-face)
+                ","
+                (:propertize "%03c" face font-lock-type-face)
+                ", "
+                (:propertize "%p" face font-lock-constant-face) ;; % above top
+                "/"
+                (:propertize "%I" face font-lock-constant-face) ;; size
+                " "
+                (:eval (sml-modeline-create))
+                "] "
 
-               "["
-               '(:eval (list (sml-modeline-create)))
-               "] "
+                ;; mode-line-modes
+                (
+                 "["
+                 (:propertize mode-name face font-lock-string-face)
+                 " –"
+                 mode-line-process
+                 minor-mode-alist
+                 "%n"
+                 "%["
+                 "]"
+                 )
 
-               ;; the current major mode for the buffer.
-               "["
-
-               '(:eval (propertize "%m" 'face 'font-lock-string-face
-                                   'help-echo buffer-file-coding-system))
-               " –"
-
-               ;; i don't want to see minor-modes; but if you want, uncomment this:
-               'minor-mode-alist  ;; list of minor modes
-
-               "] "
-
-
-               "[" ;; insert vs overwrite mode, input-method in a tooltip
-               '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                                   'face 'font-lock-preprocessor-face
-                                   'help-echo (concat "Buffer is in "
-                                                      (if overwrite-mode "overwrite" "insert") " mode")))
-
-               ;; was this buffer modified since the last save?
-               '(:eval (when (buffer-modified-p)
-                         (concat ","  (propertize "Mod"
-                                                  'face 'font-lock-warning-face
-                                                  'help-echo "Buffer has been modified"))))
-
-               ;; is this buffer read-only?
-               '(:eval (when buffer-read-only
-                         (concat ","  (propertize "RO"
-                                                  'face 'font-lock-type-face
-                                                  'help-echo "Buffer is read-only"))))
-               "] "
-
-               ;; add the time, with the date and the emacs uptime in the tooltip
-               '(:eval (propertize (format-time-string "%H:%M")
-                                   'help-echo
-                                   (concat (format-time-string "%c; ")
-                                           (emacs-uptime "Uptime:%hh"))))
-               " --"
-               "%-" ;; fill with '-'
-               ))
-
+                " "
+                ;; Modified/read only
+                (:eval (when (buffer-modified-p)
+                         '("["
+                           (:propertize "Mod"
+                                        face font-lock-warning-face
+                                        help-echo "Buffer has been modified")
+                           "]"
+                           )))
+                (:eval (when buffer-read-only
+                         '("["
+                           (:propertize "RO"
+                                        face font-lock-warning-face
+                                        help-echo "Buffer is read-only")
+                           "]"
+                           )))
+                ))
