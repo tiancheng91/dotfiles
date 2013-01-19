@@ -49,3 +49,4 @@
 
 (require 'package)
 
+(require 'gtags)

@@ -226,14 +226,6 @@ gnuplot `script'"
     "if(File.exist?(x))};printf ret\" "
     module)))
 
-(defun etags-select-get-tag-files ()
-  "Get tag files."
-  (if etags-select-use-xemacs-etags-p
-      (buffer-tag-table-list)
-    (mapcar 'tags-expand-table-name tags-table-list)
-    (tags-table-check-computed-list)
-    tags-table-computed-list))
-
 (defun find-changelog ()
   (let (last_filename cur_filename found_filename)
     (setq last_filename nil)
@@ -253,17 +245,6 @@ gnuplot `script'"
       (setq last_filename cur_filename)
       (setq iteration (+ iteration 1)))
     found_filename))
-
-(defun my-ido-find-tag ()
-  "Find a tag using ido"
-  (interactive)
-  (tags-completion-table)
-  (let (tag-names)
-    (mapc (lambda (x)
-            (unless (integerp x)
-              (push (prin1-to-string x t) tag-names)))
-          tags-completion-table)
-    (find-tag (ido-completing-read "Tag: " tag-names))))
 
 (defun my-make-CR-do-indent ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
@@ -391,3 +372,15 @@ message to display, so there is one ;)"
                ad-do-it)))))
 
 (yas/advise-indent-function 'ruby-indent-command)
+
+(defun gtags-create-table ()
+  "Create the GNU Global tag file"
+  (interactive)
+  (if (not (= 0 (call-process "global" nil nil nil " -p"))) ; tagfile doesn't exist?
+    (let ((olddir default-directory)
+          (topdir (read-directory-name
+                    "gtags: top of source tree:" default-directory)))
+      (cd topdir)
+      (shell-command "gtags && echo 'created tagfile'")
+      (cd olddir)) ; restore
+    (message "%s" "GTAGS already exists")))

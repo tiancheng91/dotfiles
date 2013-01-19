@@ -23,6 +23,7 @@
 
 ;;;; Global minor-modes
 (define-globalized-minor-mode global-glasses-mode glasses-mode glasses-mode)
+(define-globalized-minor-mode global-gtags-mode gtags-mode gtags-mode)
 
 ;;;; Variables/Options
 (load "~/.emacs.d/variables")
@@ -99,6 +100,8 @@
  '(global-semantic-highlight-edits-mode nil nil (semantic-util-modes))
  '(global-semantic-idle-completions-mode nil nil (semantic-idle))
  '(global-whitespace-mode t)
+ '(gtags-auto-update t)
+ '(gtags-ignore-case nil)
  '(haml-backspace-backdents-nesting t)
  '(ido-auto-merge-work-directories-length -1)
  '(ido-enable-flex-matching t)
@@ -165,6 +168,8 @@
  '(sml-modeline-numbers (quote line-numbers))
  '(standard-indent 2)
  '(tab-width 4)
+ '(tags-case-fold-search nil)
+ '(tags-table-list nil)
  '(tramp-encoding-shell "/bin/bash")
  '(user-full-name "Dominik Honnef")
  '(vc-follow-symlinks t)

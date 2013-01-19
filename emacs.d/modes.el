@@ -2,6 +2,7 @@
 (global-hl-line-mode 1)
 (global-glasses-mode t)
 (global-linum-mode t)
+(global-gtags-mode t)
 (delete-selection-mode t)
 (ido-mode 1)
 (scroll-bar-mode -1)
