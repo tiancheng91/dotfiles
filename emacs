@@ -197,7 +197,7 @@
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(fg:erc-color-face1 ((t (:foreground "white"))))
  '(flymake-errline ((((class color) (background dark)) (:background "#650000"))))
- '(font-lock-comment-face ((t (:foreground "#D0F2AE" :slant italic))))
+ '(font-lock-comment-face ((t (:foreground "#D0F2AE"))))
  '(font-lock-yard-face ((t nil)) t)
  '(gnus-button ((t (:weight bold))))
  '(gnus-group-mail-3 ((((class color) (background dark)) (:foreground "#82b0db" :weight bold))))
