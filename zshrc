@@ -79,6 +79,8 @@ zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
 zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:scp:*' ignore-line yes
 zstyle ':completion:*:ls:*' ignore-line yes
+zstyle ':completion:*:evince::' \
+    file-patterns '*.(#i)(dvi|djvu|tiff|pdf|ps|xps)(|.bz2|.gz|.xz|.z) *(-/)' '*'
 
 # kill completion
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=36=31'
