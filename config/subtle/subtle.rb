@@ -54,11 +54,6 @@ MODKEY = "W"
 TERMINAL_EMULATOR = "urxvt"
 
 # Settings
-if BIG_PANEL
-  set :separator, "◯"
-else
-  set :separator, "|"
-end
 
 if BIG_PANEL
   PADDING = [3]
@@ -111,9 +106,6 @@ style :views do
     end
   end
 
-  style :unoccupied do
-  end
-
   style :visible do
     if BIG_PANEL
       border_bottom COLOR_THEME2, 3
@@ -147,6 +139,12 @@ style :separator do
   foreground COLOR_THEME
   padding    0
   margin     3
+
+  if BIG_PANEL
+    separator "◯"
+  else
+    separator "|"
+  end
 end
 
 style :clients do
