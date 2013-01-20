@@ -29,9 +29,6 @@ if [[ "dominikh-laptop" = `hostname` ]]; then
     ~/bin/battery_monitor &
 fi
 
-if [[ "dominikh-pc" = `hostname` ]]; then
-    thunderbird &
-fi
 
 autocutsel -f &
 setxkbmap -layout "us(altgr-intl)"
