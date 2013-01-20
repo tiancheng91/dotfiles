@@ -33,6 +33,8 @@ URxvt*cursorColor: #cdc092
 ! some color adjustments
 ! cyan
 URxvt*color6: #54728e
+! blue
+URxvt*color4: CornflowerBlue
 ! bold blue
 URxvt*color12: #3b3bff
 
