@@ -326,9 +326,15 @@ tag "pdf" do
 end
 
 tag "stick" do
-  match    "mplayer|imagemagick|Xmessage|pinentry-gtk-2"
+  match    "imagemagick|Xmessage|pinentry-gtk-2"
   float    true
   stick    true
+end
+
+tag "mplayer" do
+  match "mplayer"
+  float true
+  stick 1
 end
 
 tag "splash" do
