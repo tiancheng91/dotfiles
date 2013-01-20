@@ -1,0 +1,44 @@
+! Capslock becomes Control_L, Control_L becomes ISO_Group_Shift
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = ISO_Group_Shift ISO_Group_Shift ISO_First_Group NoSymbol
+keysym Caps_Lock = Control_L
+add Control = Control_L
+
+! Modified keys:
+!
+! | Key | Group  | Group+Shift | AltGr | AltGr+Shift |
+! |-----+--------+-------------+-------+-------------|
+! | -   | endash | emdash      |       |             |
+! | e   | €      |             |       |             |
+! | r   |        |             | ®     |             |
+! | u   | ü      | Ü           |       |             |
+! | o   | ö      | Ö           |       |             |
+! | a   | ä      | Ä           |       |             |
+! | s   | ß      | ſ           | ß     | §           |
+! | v   |        |             | „     |             |
+! | b   |        |             | “     |             |
+! | m   |        |             | µ     |             |
+! | .   | …      | ·           |       |             |
+! | ↓   | ↓      |             |       |             |
+! | ↑   | ↑      |             |       |             |
+! | ←   | ←      |             |       |             |
+! | →   | →      |             |       |             |
+
+!             normal shift      group      shift-group    altgr         shift-altgr
+keycode  20 = minus  underscore endash     emdash         minus         underscore
+keycode  26 = e      E          EuroSign   EuroSign       eacute        Eacute
+keycode  27 = r      R          r          R              registered    registered
+keycode  30 = u      U          udiaeresis Udiaeresis     uacute        Uacute
+keycode  32 = o      O          odiaeresis Odiaeresis     oacute        Oacute
+keycode  38 = a      A          adiaeresis Adiaeresis     aacute        Aacute
+keycode  39 = s      S          ssharp     U017F          ssharp        section
+keycode  55 = v      V          v          V              U201E         U201E
+keycode  56 = b      B          b          B              U201C         U201C
+keycode  58 = m      M          m          M              mu            mu
+keycode  60 = period greater    ellipsis   periodcentered dead_abovedot dead_caron
+
+keysym Up    = Up    NoSymbol uparrow    NoSymbol Up    Up
+keysym Down  = Down  NoSymbol downarrow  NoSymbol Down  Down
+keysym Left  = Left  NoSymbol leftarrow  NoSymbol Left  Left
+keysym Right = Right NoSymbol rightarrow NoSymbol Right Right

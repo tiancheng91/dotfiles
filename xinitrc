@@ -34,8 +34,9 @@ if [[ "dominikh-pc" = `hostname` ]]; then
 fi
 
 autocutsel -f &
-setxkbmap de
+setxkbmap -layout "us(altgr-intl)"
 xmodmap ~/.Xmodmap
+xmodmap ~/.us-intl-german.xmodmap
 
 dropboxd &
 
