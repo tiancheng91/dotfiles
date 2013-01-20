@@ -173,6 +173,8 @@ alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
 alias ll="ls -lhs"
+alias zpool="sudo zpool"
+alias zfs="sudo zfs"
 
 # no spelling correction
 alias mkdir='nocorrect mkdir -p'
