@@ -9,6 +9,5 @@
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.emacs.d/contrib/html5-el/")
 (add-to-list 'load-path "~/.emacs.d/contrib/gnus/lisp")
-(add-to-list 'load-path "~/go/misc/emacs/")
 (add-to-list 'load-path "~/.emacs.d/contrib/company/")
 
