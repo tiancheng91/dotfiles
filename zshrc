@@ -387,6 +387,14 @@ zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_wo
 zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
 zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
 
+# Move to where the arguments belong.
+after-first-word() {
+  zle beginning-of-line
+  zle forward-word
+}
+zle -N after-first-word
+bindkey "^X1" after-first-word
+
 
 
 if [ "$TERM" = "dumb" ]
