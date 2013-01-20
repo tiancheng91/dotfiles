@@ -136,6 +136,7 @@ setopt share_history
 setopt short_loops
 setopt transient_rprompt
 setopt list_packed
+setopt no_flow_control
 unsetopt bang_hist # we dont need no inline history
 
 # aliases
@@ -361,7 +362,11 @@ bindkey '\C-w' kill-region
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-
+bindkey -M menuselect '^F' accept-and-infer-next-history
+bindkey -M menuselect '/' accept-and-infer-next-history
+bindkey -M menuselect '^?' undo
+bindkey -M menuselect ' ' accept-and-hold
+bindkey -M menuselect '^S' history-incremental-search-forward
 
 _tmux_pane_words() {
   local expl
