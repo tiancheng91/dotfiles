@@ -64,7 +64,7 @@
 (setq max-lisp-eval-depth 2000)
 (setq max-specpdl-size 2000)
 
-(setq debug-on-error nil)
+(setq debug-on-error t)
 
 (setenv "INFOPATH"
         (concat (getenv "INFOPATH") ":"
@@ -197,3 +197,5 @@
 
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets_go")
