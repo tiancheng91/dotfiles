@@ -114,6 +114,7 @@
  '(imaxima-image-type (quote png))
  '(imenu-auto-rescan t)
  '(imenu-auto-rescan-maxout 600000)
+ '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
  '(jde-compiler (quote (("eclipse java compiler server" "/home/dominikh/android/eclipse/plugins/org.eclipse.jdt.core_3.8.1.v20120531-0637.jar"))))
  '(jde-compiler-new-compile-el t)
