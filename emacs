@@ -82,7 +82,6 @@
  '(css-electric-semi-behavior t)
  '(css-indent-offset 2)
  '(ede-project-directories (quote ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
- '(flymake-allowed-file-name-masks (quote (("\\.\\(?:c\\(?:pp\\|xx\\|\\+\\+\\)?\\|CC\\)\\'" flymake-simple-make-init) ("\\.xml\\'" flymake-xml-init) ("\\.html?\\'" flymake-xml-init) ("\\.cs\\'" flymake-simple-make-init) ("\\.p[ml]\\'" flymake-perl-init) ("\\.php[345]?\\'" flymake-php-init) ("\\.h\\'" flymake-master-make-header-init flymake-master-cleanup) ("\\.java\\'" jde-ecj-server-flymake-init jde-ecj-flymake-cleanup) ("[0-9]+\\.tex\\'" flymake-master-tex-init flymake-master-cleanup) ("\\.tex\\'" flymake-simple-tex-init) ("\\.idl\\'" flymake-simple-make-init))))
  '(flymake-no-changes-timeout 10)
  '(font-latex-fontify-script nil)
  '(font-latex-fontify-sectioning 1.1)
