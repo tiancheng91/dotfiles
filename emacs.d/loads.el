@@ -33,7 +33,6 @@
 (require 'autopair)
 (require 'iedit)
 (require 'go-mode)
-(require 'go-play)
 (require 'recentf)
 (require 'semantic-gcc)
 
