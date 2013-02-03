@@ -65,8 +65,4 @@
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 
 (add-hook 'go-mode-hook '(lambda ()
-                           (setq imenu-generic-expression
-                                 '(("type" "^type *\\([^ \t\n\r\f]*\\)" 1)
-                                   ("func" "^func *\\(.*\\) {" 1)))
-                           (imenu-add-to-menubar "Index")
                            flymake-mode))

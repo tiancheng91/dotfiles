@@ -1,0 +1,1 @@
+/home/dominikh/projects/go-mode.el/go-mode.el
