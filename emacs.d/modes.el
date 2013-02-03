@@ -22,7 +22,6 @@
 (bbdb-insinuate-gnus)
 
 (global-undo-tree-mode)
-(global-rainbow-delimiters-mode)
 (recentf-mode 1)
 
 (global-ede-mode 1)

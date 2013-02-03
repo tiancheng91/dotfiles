@@ -30,7 +30,6 @@
 (require 'whattf-dt)
 (require 'align)
 (require 'undo-tree)
-(require 'rainbow-delimiters)
 (require 'autopair)
 (require 'iedit)
 (require 'go-mode)
