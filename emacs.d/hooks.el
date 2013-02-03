@@ -63,6 +63,3 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
-
-(add-hook 'go-mode-hook '(lambda ()
-                           flymake-mode))
