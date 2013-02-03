@@ -1,0 +1,4 @@
+#contributor : Dominik Honnef <dominikh@fork-bomb.org>
+#name : \SI{...}{...}
+# --
+\SI{$1}{$2}

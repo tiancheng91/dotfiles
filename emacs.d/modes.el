@@ -33,3 +33,4 @@
 (global-semantic-idle-completions-mode)
 (semantic-toggle-decoration-style 'semantic-tag-boundary 0)
 
+(yas-global-mode 1)

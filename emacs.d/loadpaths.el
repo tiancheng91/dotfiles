@@ -1,4 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/contrib/yasnippet")
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/contrib")
 (add-to-list 'load-path "~/.emacs.d/contrib/magit")

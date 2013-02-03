@@ -1,5 +1,0 @@
-#name : attr_reader ...
-#group : definitions
-# --
-attr_writer :$1
-undef_method "$1="

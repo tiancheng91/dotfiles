@@ -1,4 +1,0 @@
-#name : find { |...| ... }
-#group : collections
-# --
-find { |${e}| $0 }

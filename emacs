@@ -54,9 +54,6 @@
 ;;;; TRAMP
 (load "~/.emacs.d/tramp_config")
 
-;;;; yasnippet
-(load "~/.emacs.d/yasnippet_config")
-
 ;;;; Passwords
 (load "~/.emacs.d/passwords")
 
