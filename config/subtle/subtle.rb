@@ -91,6 +91,7 @@ style :all do
   font FONT
   background PANEL_BG
   foreground PRI_PANEL_FG
+  icon SND_PANEL_FG
 end
 
 style :views do
@@ -98,6 +99,7 @@ style :views do
 
   style :occupied do
     foreground SND_PANEL_FG
+    icon PRI_PANEL_FG
 
     if BIG_PANEL
       border_bottom "#bbbbbb", 3
@@ -115,6 +117,7 @@ style :views do
   end
 
   style :focus do
+    icon PRI_PANEL_FG
     if BIG_PANEL
       border_bottom COLOR_THEME, 3
     else
@@ -132,7 +135,7 @@ end
 
 style :sublets do
   foreground SND_PANEL_FG
-  icon SND_PANEL_FG
+  icon PRI_PANEL_FG
 end
 
 style :separator do
