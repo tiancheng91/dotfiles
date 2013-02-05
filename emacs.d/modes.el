@@ -21,7 +21,6 @@
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-gnus)
 
-(global-undo-tree-mode)
 (recentf-mode 1)
 
 (global-ede-mode 1)
