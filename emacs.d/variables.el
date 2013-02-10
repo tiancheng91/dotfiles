@@ -199,3 +199,5 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets_go")
+
+(setq recentf-max-menu-items 1000)
