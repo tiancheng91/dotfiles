@@ -52,7 +52,8 @@
 
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
+                          (company-mode)
+                          (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
 
 (add-hook 'gud-mode-hook
           (lambda ()
