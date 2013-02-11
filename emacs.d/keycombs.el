@@ -15,7 +15,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\^h\^h" 'ruby-visit-source)
 (global-set-key (quote [C-tab]) (quote other-window))
-(global-set-key "d" (quote unicode-shell))
 (global-set-key "\M-\C-y" 'kill-ring-search)
 (global-set-key "\C-x~" 'macro-math-eval-and-round-region)
 (global-set-key "\C-x=" 'macro-math-eval-region)

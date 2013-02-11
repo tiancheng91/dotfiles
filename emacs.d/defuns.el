@@ -90,16 +90,6 @@ that file in the other window and position point on that line."
 
 
 
-(defun unicode-shell ()
-  "Execute the shell buffer in UTF-8 encoding.
-Note that you'll need to set the environment variable LANG and others
-appropriately."
-  (interactive)
-  (let ((coding-system-for-read 'utf-8)
-        (coding-system-for-write 'utf-8)
-        (coding-system-require-warning t))
-    (call-interactively 'shell)))
-
 (defun hcz-set-cursor-color-according-to-mode ()
   "change cursor color according to some minor modes."
   ;;set-cursor-color is somewhat costly, so we only call it when
@@ -161,18 +151,6 @@ Require `font-lock'."
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
-
-(defun banexpire ()
-  "Calculate timestamp for ban expire"
-  (interactive)
-  (setq my-t
-        (time-to-seconds
-         (apply 'encode-time
-                (org-parse-time-string
-                 (org-read-date)))))
-  (if (< my-t (float-time))
-      0
-    (substring (number-to-string my-t) 0 -2)))
 
 (defun indent-buffer ()
   (interactive)
@@ -280,7 +258,6 @@ gnuplot `script'"
     (insert-string
       (concat (if (= 0 (forward-line 1)) "" "\n") str "\n"))
     (forward-line -1)))
-
 
 (defun w3m-copy-url-at-point ()
     (interactive)
