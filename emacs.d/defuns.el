@@ -390,3 +390,26 @@ message to display, so there is one ;)"
   (beginning-of-line)
   (open-line 1)
   (funcall indent-line-function))
+
+(defun dh-sprunge-buffer ()
+  (interactive)
+  (dh-sprunge-region (point-min) (point-max)))
+
+(defun dh-sprunge-region (start end)
+  "Send the region to the Playground and stores the resulting
+link in the kill ring."
+  (interactive "r")
+  (let* ((url-request-method "POST")
+         (url-request-extra-headers
+          '(("Content-Type" . "application/x-www-form-urlencoded")))
+         (url-request-data (concat "sprunge=" (url-hexify-string (buffer-substring-no-properties start end))))
+         (content-buf (url-retrieve
+                       "http://sprunge.us"
+                       (lambda (arg)
+                         (cond
+                          ((equal :error (car arg))
+                           (signal 'dh-sprunge-error (cdr arg)))
+                          (t
+                           (re-search-forward "\n\n")
+                           (kill-new (buffer-substring (point) (point-max)))
+                           (message "%s" (buffer-substring (point) (point-max)))))))))))
