@@ -418,6 +418,7 @@ link in the kill ring."
   (interactive "MFile suffix: ")
   (let ((tmp (make-temp-file nil nil (concat "." suffix))))
     (with-current-buffer (find-file tmp)
-      (comment-dwim nil) ;; really can't be arsed to figure out a
-                         ;; cleaner way to insert a comment
-      (insert tmp "\n"))))
+      (insert tmp)
+      (comment-region (point-min) (point-max))
+      (end-of-line)
+      (newline))))
