@@ -384,3 +384,9 @@ message to display, so there is one ;)"
       (shell-command "gtags && echo 'created tagfile'")
       (cd olddir)) ; restore
     (message "%s" "GTAGS already exists")))
+
+(defun dh-newline-before-this-line ()
+  (interactive)
+  (beginning-of-line)
+  (open-line 1)
+  (funcall indent-line-function))
