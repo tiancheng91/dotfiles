@@ -24,6 +24,7 @@
 ;;;; Global minor-modes
 (define-globalized-minor-mode global-glasses-mode glasses-mode glasses-mode)
 (define-globalized-minor-mode global-gtags-mode gtags-mode gtags-mode)
+(define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode highlight-parentheses-mode)
 
 ;;;; Variables/Options
 (load "~/.emacs.d/variables")
@@ -99,6 +100,7 @@
  '(gtags-auto-update t)
  '(gtags-ignore-case nil)
  '(haml-backspace-backdents-nesting t)
+ '(hl-paren-colors (quote ("firebrick1" "IndianRed1" "IndianRed3" "IndianRed4" "sienna")))
  '(ido-auto-merge-work-directories-length -1)
  '(ido-enable-flex-matching t)
  '(ido-enable-regexp nil)

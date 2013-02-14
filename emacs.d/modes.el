@@ -32,3 +32,5 @@
 (semantic-toggle-decoration-style 'semantic-tag-boundary 0)
 
 (yas-global-mode 1)
+
+(global-highlight-parentheses-mode 1)

@@ -47,3 +47,5 @@
 (require 'package)
 
 (require 'gtags)
+
+(require 'highlight-parentheses)
