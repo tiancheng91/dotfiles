@@ -7,11 +7,7 @@
 
 (require 'compile)
 (require 'etags-select)
-(require 'flyspell-guess)
 
-(require 'paren)
-(require 'rcov-overlay)
-(require 'run-assoc)
 (require 'saveplace)
 (require 'template)
 (require 'tramp) ;; cannot autoload this
@@ -29,7 +25,6 @@
 (require 'bbdb)
 (require 'whattf-dt)
 (require 'align)
-(require 'autopair)
 (require 'iedit)
 (require 'go-mode)
 (require 'recentf)
@@ -44,7 +39,6 @@
 
 (require 'jde)
 
-(require 'package)
 
 (require 'gtags)
 

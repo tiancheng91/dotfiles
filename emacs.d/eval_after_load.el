@@ -6,13 +6,6 @@
      (add-to-list 'change-log-version-number-regexp-list' "^# Version: \\([0-9]+.[0-9.]+\\)")
      (setq change-log-version-info-enabled t)))
 
-(eval-after-load "flyspell-guess" '(flyspell-insinuate-guess-indicator))
-
-
-(eval-after-load 'ruby-mode
-  '(progn
-     (global-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
-
 (eval-after-load 'diff-mode
   '(progn
      (set-face-foreground 'diff-added "green4")
