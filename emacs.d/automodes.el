@@ -26,7 +26,7 @@
 (add-auto-mode 'csv-mode "\\.\\(csv|CSV\\)$")
 (add-auto-mode 'procmail-mode "\\.procmailrc$")
 (add-auto-mode 'graphviz-dot-mode "\\.dot$")
-
+(add-auto-mode 'jde-mode "\\.java\\'")
 
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby1.8" . ruby-mode))

@@ -100,3 +100,7 @@
 (load "~/.emacs.d/contrib/nxhtml/autostart.el")
 
 (autoload 'magit-status "magit" nil t)
+
+(autoload 'jde-mode "jde" "JDE mode." t)
+
+(load "~/.emacs.d/go-mode/go-mode-autoloads")

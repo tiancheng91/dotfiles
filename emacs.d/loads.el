@@ -1,9 +1,9 @@
-;; (load-file "~/.emacs.d/contrib/cedet/common/cedet.el")
-
-(require 'flymake)
-(require 'flymake-shell)
-(require 'go-flymake)
-(require 'jde-ecj-flymake)
+(eval-after-load 'sh-mode '(require 'flymake-shell))
+(eval-after-load 'go-mode '(require 'go-flymake))
+(eval-after-load 'go-mode '(require 'company))
+(eval-after-load 'company '(require 'company-go))
+(eval-after-load 'company '(require 'company-semantic))
+(eval-after-load 'jde-mode-hook '(require 'jde-ecj-flymake))
 
 (require 'compile)
 (require 'etags-select)
@@ -18,28 +18,18 @@
 (require 'which-func)
 (require 'yasnippet)
 (require 'uniquify)
-(require 'idomenu)
 
 (require 'ruby-block)
 (require 'smtpmail)
 (require 'bbdb)
 (require 'whattf-dt)
-(require 'align)
 (require 'iedit)
-(require 'go-mode)
 (require 'recentf)
 (require 'semantic-gcc)
 
-(require 'company)                                   ; load company mode
-(require 'company-go)                                ; load company mode go backend and hook it up
-(require 'company-semantic)
-(setq company-backends nil)
-
 (require 'android-mode)
-
-(require 'jde)
-
 
 (require 'gtags)
 
 (require 'highlight-parentheses)
+
