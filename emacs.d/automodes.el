@@ -27,6 +27,7 @@
 (add-auto-mode 'procmail-mode "\\.procmailrc$")
 (add-auto-mode 'graphviz-dot-mode "\\.dot$")
 (add-auto-mode 'jde-mode "\\.java\\'")
+(add-auto-mode 'ssh-config-mode ".ssh/config\\'")
 
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby1.8" . ruby-mode))
