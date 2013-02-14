@@ -64,8 +64,6 @@
 (setq max-lisp-eval-depth 2000)
 (setq max-specpdl-size 2000)
 
-(setq debug-on-error t)
-
 (setenv "INFOPATH"
         (concat (getenv "INFOPATH") ":"
                 (expand-file-name "/home/dominikh/.emacs.d/gnuplot-mode")))
@@ -111,7 +109,6 @@
 (setq org-columns-default-format "%40ITEM(Task) %17Effort(Estimated Effort){:} %CLOCKSUM")
 (setq org-agenda-start-on-weekday nil)
 (setq org-read-date-prefer-future nil)
-(setq debug-on-error nil)
 (setq ruby-block-highlight-toggle t)
 (setq user-mail-address "dominikh@fork-bomb.org")
 (setq smtpmail-debug-verb t)

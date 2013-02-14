@@ -1,5 +1,6 @@
 ;; -*- mode: emacs-lisp -*-
 (setq warning-suppress-types nil)
+(setq debug-on-error t)
 (package-initialize)
 (setq package-enable-at-startup nil)
 
