@@ -193,8 +193,7 @@
 (setq x-select-enable-primary t)
 (setq x-select-enable-clipboard nil)
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets_go")
 
