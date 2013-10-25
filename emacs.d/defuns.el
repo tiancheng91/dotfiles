@@ -104,25 +104,6 @@ that file in the other window and position point on that line."
       (set-cursor-color (setq hcz-set-cursor-color-color color))
       (setq hcz-set-cursor-color-buffer (buffer-name)))))
 
-(defun My-smart-home ()
-  "Odd home to beginning of line, even home to beginning of
-text/code."
-  (interactive)
-  (if (and (eq last-command 'My-smart-home)
-           (/= (line-beginning-position) (point)))
-      (beginning-of-line)
-    (beginning-of-line-text))
-  )
-
-(defun My-smart-end ()
-  "Odd end to end of line, even end to begin of text/code."
-  (interactive)
-  (if (and (eq last-command 'My-smart-end)
-           (= (line-end-position) (point)))
-      (end-of-line-text)
-    (end-of-line))
-  )
-
 (defun end-of-line-text ()
   "Move to end of current line and skip comments and trailing space.
 Require `font-lock'."
@@ -227,18 +208,6 @@ gnuplot `script'"
 (defun my-make-CR-do-indent ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 
-(defun my-c-mode-common-hook ()
-  ;; set my personal style for the current buffer
-  (c-toggle-auto-newline 1)
-  (c-toggle-hungry-state 1))
-
-(defun my-c-mode-hook ()
-   (setq c-cleanup-list (quote (empty-defun-braces brace-else-brace brace elseif-brace defun-close-semi list-close-comma scope-operator compact-empty-funcall comment-close-slash))))
-
-(defun my-java-mode-hook ()
-   (setq c-cleanup-list (quote (brace-else-brace empty-defun-braces defun-close-semi list-close-comma scope-operator compact-empty-funcall comment-close-slash))))
-
-
 (defun find-alternative-file-with-sudo ()
   (interactive)
   (when buffer-file-name
@@ -277,9 +246,6 @@ gnuplot `script'"
                                   recentf-list)
                           nil t))))
 
-(defun my-semantic-hook ()
-  (semantic-add-system-include "/usr/local/avr/avr/include" 'c-mode))
-
 (defun djcb-snip (b e summ)
   "remove selected lines, and replace it with [snip:summary (n lines)]"
   (interactive "r\nsSummary:")
@@ -306,6 +272,16 @@ gnuplot `script'"
   "run current buffer"
   (interactive)
   (compile (concat "go run " (buffer-file-name))))
+
+(defun golint ()
+  "golint the current buffer"
+  (interactive)
+  (compile (concat "golint " (buffer-file-name))))
+
+(defun govet ()
+  "go vet the current buffer"
+  (interactive)
+  (compile (concat "go vet " (buffer-file-name))))
 
 (defun gnus-goto-google ()
   (interactive)

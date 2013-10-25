@@ -18,11 +18,12 @@
 (global-set-key "\M-\C-y" 'kill-ring-search)
 (global-set-key "\C-x~" 'macro-math-eval-and-round-region)
 (global-set-key "\C-x=" 'macro-math-eval-region)
-(global-set-key [home] 'My-smart-home)
-(global-set-key [end] 'My-smart-end)
+(global-set-key [home] 'beginning-of-line)
+(global-set-key [end] 'end-of-line)
 
-(global-set-key "\C-a" 'My-smart-home)
-(global-set-key "\C-e" 'My-smart-end)
+(global-set-key "\C-a" 'back-to-indentation)
+(global-set-key "\M-m" 'beginning-of-line)
+(global-set-key "\C-e" 'end-of-line)
 
 (global-set-key  [\M-delete] 'kill-word)
 (global-set-key (kbd "C-x <up>") 'windmove-up)
