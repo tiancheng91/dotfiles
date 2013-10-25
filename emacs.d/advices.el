@@ -1,16 +1,3 @@
-;;;;Keep cursor's pos while using pgup/down
-(defadvice scroll-up (around ewd-scroll-up first act)
-  "Keep cursor in the same column."
-  (let ((col (current-column)))
-    ad-do-it
-    (move-to-column col)))
-
-(defadvice scroll-down (around ewd-scroll-down first act)
-  "Keep cursor in the same column."
-  (let ((col (current-column)))
-    ad-do-it
-    (move-to-column col)))
-
 (delete (assoc 'which-func-mode mode-line-format) mode-line-format)
 (defadvice which-func-ff-hook (after header-line activate)
   (when which-func-mode
