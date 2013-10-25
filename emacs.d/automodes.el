@@ -21,7 +21,7 @@
 (add-auto-mode 'ruby-mode "\\.rb$")
 (add-auto-mode 'xml-mode "\\.xhtml$")
 (add-auto-mode 'yaml-mode "\\.yml$")
-(add-auto-mode 'diff-mode "COMMIT_EDITMSG$")
+(add-auto-mode 'git-commit-mode "COMMIT_EDITMSG$")
 (add-auto-mode 'pkgbuild-mode "/PKGBUILD$")
 (add-auto-mode 'csv-mode "\\.\\(csv|CSV\\)$")
 (add-auto-mode 'procmail-mode "\\.procmailrc$")
