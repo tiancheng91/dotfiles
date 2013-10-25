@@ -318,16 +318,6 @@ gnuplot `script'"
       (kill-new
        (format "http://groups.google.com/groups?selm=%s" id)))))
 
-(defun show-fly-err-at-point ()
-  "If the cursor is sitting on a flymake error, display the
-message in the minibuffer"
-  (interactive)
-  (let ((line-no (line-number-at-pos)))
-    (dolist (elem flymake-err-info)
-      (if (eq (car elem) line-no)
-          (let ((err (car (second elem))))
-            (message "%s" (fly-pyflake-determine-message err)))))))
-
 (defun fly-pyflake-determine-message (err)
   "pyflake is flakey if it has compile problems, this adjusts the
 message to display, so there is one ;)"
