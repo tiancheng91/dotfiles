@@ -340,18 +340,6 @@ message to display, so there is one ;)"
 
 (yas/advise-indent-function 'ruby-indent-command)
 
-(defun gtags-create-table ()
-  "Create the GNU Global tag file"
-  (interactive)
-  (if (not (= 0 (call-process "global" nil nil nil " -p"))) ; tagfile doesn't exist?
-    (let ((olddir default-directory)
-          (topdir (read-directory-name
-                    "gtags: top of source tree:" default-directory)))
-      (cd topdir)
-      (shell-command "gtags && echo 'created tagfile'")
-      (cd olddir)) ; restore
-    (message "%s" "GTAGS already exists")))
-
 (defun dh-newline-before-this-line ()
   (interactive)
   (beginning-of-line)

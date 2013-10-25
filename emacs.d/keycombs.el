@@ -78,7 +78,6 @@
 
 (global-set-key "\M-\C-g" 'org-plot/gnuplot)
 (global-set-key (kbd "C-x C-r") 'find-alternative-file-with-sudo)
-(global-set-key "\M-." 'gtags-find-tag)
 (define-key global-map "\C-cr" 'org-remember)
 
 (define-key global-map (kbd "C-;") 'iedit-mode)
@@ -109,4 +108,3 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "M-o") 'dh-newline-before-this-line)
-

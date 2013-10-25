@@ -29,7 +29,5 @@
 
 (require 'android-mode)
 
-(require 'gtags)
-
 (require 'highlight-parentheses)
 
