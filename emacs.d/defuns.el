@@ -299,7 +299,7 @@ gnuplot `script'"
     (catch 'found
       (dolist (ov ovs)
         (when (flymake-overlay-p ov)
-          (message (overlay-get ov 'help-echo))
+          (message "%s" (overlay-get ov 'help-echo))
           (throw 'found t))))))
 
 (defun go ()
