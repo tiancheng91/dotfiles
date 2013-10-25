@@ -4,3 +4,6 @@
 [submodule "emacs.d/snippets_go"]
 	path = emacs.d/snippets_go
 	url = https://github.com/dominikh/yasnippet-go.git
+[submodule "emacs.d/go-errcheck"]
+	path = emacs.d/go-errcheck
+	url = https://github.com/dominikh/go-errcheck.el.git
