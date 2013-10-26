@@ -28,8 +28,7 @@
      (font-lock-keyword-face ((t (:foreground "#7BB2E8"))))
      (font-lock-string-face ((t (:foreground "#FFF27D"))))
      (font-lock-doc-string-face ((t (:foreground "#B9EBB0"))))
-     (font-lock-type-face ((t (:foreground "#FFB1B3"))))
-     )))
+     (font-lock-type-face ((t (:foreground "#FFB1B3")))))))
 
 (require 'color-theme)
 (color-theme-dominikh)
