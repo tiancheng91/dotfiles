@@ -13,8 +13,6 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
-(ruby-block-mode t)
-
 (windmove-default-keybindings)
 (org-remember-insinuate)
 (bbdb-initialize 'gnus 'message)

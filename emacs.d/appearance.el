@@ -34,17 +34,6 @@
 (require 'color-theme)
 (color-theme-dominikh)
 
-(dolist (mode '(c-mode
-                java-mode
-                cperl-mode
-                html-mode-hook
-                css-mode-hook
-                emacs-lisp-mode
-                ruby-mode))
-  (font-lock-add-keywords mode
-                          '(("\\(XXX\\|FIXME\\|TODO\\)"
-                             1 font-lock-warning-face prepend))))
-
 (setq-default mode-line-format
               '(
                 (:propertize (:eval

@@ -4,6 +4,8 @@
 (package-initialize)
 (setq package-enable-at-startup nil)
 
+(load "~/.emacs.d/eval_after_load.el")
+
 ;;;; Load paths
 (load "~/.emacs.d/loadpaths")
 
