@@ -8,22 +8,18 @@
 (define-key input-decode-map "\e[1;2A" [S-up])
 ;;; S-left and S-right are read from the terminfo
 
+(global-set-key (kbd "C-m") 'reindent-then-newline-and-indent)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "M-C-y") 'kill-ring-search)
+(global-set-key (kbd "C-x ~") 'macro-math-eval-and-round-region)
+(global-set-key (kbd "C-x =") 'macro-math-eval-region)
 
-
-(global-set-key "\C-m" 'reindent-then-newline-and-indent)
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\^h\^h" 'ruby-visit-source)
-(global-set-key (quote [C-tab]) (quote other-window))
-(global-set-key "\M-\C-y" 'kill-ring-search)
-(global-set-key "\C-x~" 'macro-math-eval-and-round-region)
-(global-set-key "\C-x=" 'macro-math-eval-region)
-(global-set-key [home] 'beginning-of-line)
-(global-set-key [end] 'end-of-line)
-
-(global-set-key "\C-a" 'back-to-indentation)
-(global-set-key "\M-m" 'beginning-of-line)
-(global-set-key "\C-e" 'end-of-line)
+(global-set-key (kbd "<home>") 'beginning-of-line)
+(global-set-key (kbd "<end>") 'end-of-line)
+(global-set-key (kbd "C-a") 'back-to-indentation)
+(global-set-key (kbd "M-m") 'beginning-of-line)
+(global-set-key (kbd "C-e") 'end-of-line)
 
 (global-set-key  [\M-delete] 'kill-word)
 (global-set-key (kbd "C-x <up>") 'windmove-up)
@@ -33,55 +29,35 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "s-i") 'indent-buffer)
 (global-set-key (kbd "s-c") 'calculator)
-;; (global-set-key (kbd "C-x C-b") 'ee-buffers)
 (global-set-key (kbd "C-x C-f") 'ido-find-file)
 
-(global-set-key [menu] 'idomenu)
-(global-set-key [S-f6] 'idomenu)
+(global-set-key (kbd "<menu>") 'idomenu)
 
-(global-set-key [f1] 'semantic-ia-show-summary)
 (global-set-key (kbd "C-c j") 'semantic-ia-fast-jump)
 
-(global-set-key [f2] '(lambda ()
-                        (interactive)
-                        (find-file "~/todo.org")))
+(global-set-key (kbd "<f11>") 'magit-status)
 
-(global-set-key [f5] '(lambda ()
-                         (interactive)
-                         (add-change-log-entry-other-window nil (find-changelog))))
-
-(global-set-key [f11] 'magit-status)
-
-(global-set-key [f12] '(lambda ()
-                         (interactive)
-                         (find-file "~/.emacs")))
-
-(global-set-key [print] '(lambda ()
-                           (interactive)
-                           (my-print-buffer)))
-
-(global-set-key [S-Scroll_Lock] 'revert-buffer)
-
-(global-set-key [Scroll_Lock] '(lambda ()
+(global-set-key (kbd "<f12>") '(lambda ()
                                  (interactive)
-                                 (switch-to-buffer (other-buffer (current-buffer)))))
+                                 (find-file "~/.emacs")))
+
+(global-set-key (kbd "S-<Scroll_Lock>") 'revert-buffer)
+
+(global-set-key (kbd "<Scroll_Lock>") '(lambda ()
+                                         (interactive)
+                                         (switch-to-buffer (other-buffer (current-buffer)))))
 
 
-(global-set-key [pause] '(lambda ()
-                           (interactive)
-                           (ecb-toggle-ecb-windows)))
-(global-set-key "\C-s" 'isearch-forward-regexp)
-(global-set-key "\C-r" 'isearch-backward-regexp)
-(global-set-key "\C-\M-s" 'isearch-forward)
-(global-set-key "\C-\M-r" 'isearch-backward)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
 
-(global-set-key (kbd "M-/") 'hippie-expand)
-
-(global-set-key "\M-\C-g" 'org-plot/gnuplot)
+(global-set-key (kbd "M-C-g") 'org-plot/gnuplot)
 (global-set-key (kbd "C-x C-r") 'find-alternative-file-with-sudo)
-(define-key global-map "\C-cr" 'org-remember)
+(global-set-key (kbd "C-c r") 'org-remember)
 
-(define-key global-map (kbd "C-;") 'iedit-mode)
+(global-set-key (kbd "C-;") 'iedit-mode)
 
 ;; duplicate a line
 (global-set-key (kbd "C-c y") 'djcb-duplicate-line)
@@ -105,3 +81,5 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 (global-set-key (kbd "M-o") 'dh-newline-before-this-line)
+
+(global-set-key (kbd "M-/") 'company-complete)
