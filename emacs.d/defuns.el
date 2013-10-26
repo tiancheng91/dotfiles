@@ -33,19 +33,6 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
-(defun my-print-buffer ()
-  (interactive)
-  (if (y-or-n-p "Use postscript? ")
-      (if (y-or-n-p "Use faces? ")
-          (ps-print-buffer-with-faces)
-        (progn
-          (setq ps-print-color-p nil)
-          (ps-print-buffer)
-          (setq ps-print-color-p t)
-          ))
-    (print-buffer)))
-
-
 (defun ruby-eval-buffer () (interactive)
   "Evaluate the buffer with ruby."
   (shell-command-on-region (point-min) (point-max) "ruby"))

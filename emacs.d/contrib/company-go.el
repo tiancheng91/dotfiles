@@ -24,7 +24,7 @@
 			     nil
 			     "-f=csv"
 			     "autocomplete"
-			     (buffer-file-name)
+			     (or (buffer-file-name) "")
 			     (concat "c" (int-to-string (- (point) 1))))
 	(with-current-buffer temp-buffer (buffer-string))
       (kill-buffer temp-buffer))))
@@ -52,10 +52,6 @@
     (candidates (company-go--candidates))
     (meta (get-text-property 0 'meta arg))
     (sorted t)))
-
-(add-hook 'go-mode-hook (lambda ()
-			  (set (make-local-variable 'company-backends) '(company-go))
-			  (company-mode)))
 
 (provide 'company-go)
 ;;; company-go.el ends here

@@ -13,7 +13,6 @@
 (require 'compile)
 (require 'etags-select)
 
-(require 'saveplace)
 (require 'template)
 (require 'tramp) ;; cannot autoload this
 (require 'unit-test)

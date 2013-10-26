@@ -30,7 +30,6 @@
         ("" which-func-format
          )))
 (setq-default TeX-master nil)
-(setq-default save-place t)
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -48,7 +47,6 @@
 (setq glasses-separate-parentheses-p nil)
 (setq default-tab-width 2)
 (setq scroll-preserve-screen-position 'keep)
-(setq user-mail-address "dominikh@fork-bomb.org")
 (setq diff-switches "-c")
 (setq cursor-in-non-selected-windows nil)
 (setq read-file-name-completion-ignore-case t)
