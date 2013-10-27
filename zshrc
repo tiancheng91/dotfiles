@@ -35,13 +35,13 @@ export FM_SVNPATH=~/projects/freiesMagazin
 export FM_SVNPATH_RED=~/projects/freiesMagazin-redaktion
 
 export GOROOT=~/go/
-export GOPATH=~/projects/go_projects
+export GOPATH=~/prj/go/
 
 export GTAGSLABEL=exuberant-ctags
 
 WORDCHARS="*?_-.[]~&;$%^+"
-cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/projects /home/dominikh/projects/go_projects/src/honnef.co/go /home/dominikh/projects/go_projects/src/github.com/dominikh)
-path=(/usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games ~/bin /sbin /usr/sbin /usr/local/sbin /var/lib/gems/1.8/bin /usr/kde/3.5/bin ~/.gem/ruby/1.9.1/bin /opt/java/jre/bin /usr/lib/perl5/vendor_perl/bin ~/projects/colfm/ /opt/java/bin/ /usr/local/texlive/2010/bin/i386-linux/ /usr/games/bin/ ~/.cabal/bin /opt/VirtualBox /opt/dropbox ~/go/bin/ ~/projects/freiesMagazin-redaktion/programme/Sigil/build/bin /opt/bin/ ~/projects/go_projects/bin /opt/node/bin)
+cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/prj /home/dominikh/prj/go/src/honnef.co/go /home/dominikh/prj/go/src/github.com/dominikh)
+path=(~/bin /usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games /sbin /usr/sbin /usr/local/sbin ~/.gem/ruby/1.9.1/bin /usr/games/bin/ /opt/VirtualBox /opt/dropbox ~/go/bin/ /opt/bin/ ~/prj/go/bin /opt/node/bin)
 
 hosts=(`hostname` `grep "Host " ~/.ssh/config | cut -d " " -f2`)
 if [ "$TERM" = "xterm-screen-256color" ]; then
@@ -109,12 +109,6 @@ zstyle ':completion:*:*:mp3blaster:*' file-patterns \
 
 zstyle ':completion:*:wine:*' file-patterns '*.(exe|EXE):exe'
 
-# mutt
-if [[ -f ~/.mutt/alias ]]; then
-    zstyle ':completion:*:*:mutt:*' menu yes select
-    zstyle ':completion:*:mutt:*' users ${${${(f)"$(<~/.mutt/alias)"}#alias[[:space:]]}%%[[:space:]]*}
-fi
-
 # options
 setopt auto_cd
 setopt auto_continue
@@ -141,7 +135,7 @@ setopt no_flow_control
 unsetopt bang_hist # we dont need no inline history
 
 # aliases
-alias ls='ls -F --color=auto'
+alias ls='LC_ALL=C ls --group-directories-first -H -F --color=auto'
 alias d='dirs -v'
 alias cp='nocorrect cp -vi'
 alias cpr='rsync -vazhP'
@@ -152,25 +146,11 @@ alias grep='grep --color=auto'
 alias psgrep='nocorrect noglob echo \\033[1m"`ps auxw | head -1`" \\033[0m; ps auxw | grep -v grep | grep -i '
 alias mirror='wget -m -k -K -E'
 alias mirror-nt='wget -r --no-parent'
-alias rsget='wget --load-cookies ~/.iwget/cookies/rapidshare'
 alias history='history -i'
-alias teletext='alevt'
-alias fumount='fusermount -u'
-alias fbcursor="print $'\e[?96;0;64c'"
-alias extract=unp
-alias dvd2iso=cd2iso
-alias iso2dvd=iso2cd
-alias iso2fs=fuseiso
-alias files2dvd=files2cd
-alias rip-cd=cd2ogg
-alias mp32cd=any2audiocd
-alias ogg2cd=any2audiocd
-alias flac2cd=any2audiocd
 alias id3-remove-comment="eyeD3 --remove-comments"
 alias id3=eyeD3
 alias halt="sudo halt"
 alias reboot="sudo reboot"
-alias gplize="wget http://www.gnu.org/licenses/gpl.txt -O COPYING"
 alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
@@ -205,147 +185,6 @@ timestamp2date () {
     date -d @$*
 }
 
-cd2iso() {
-    dd if=/dev/cdrom of=$1
-}
-
-iso2cd() {
-    cdrecord $1
-}
-
-cd2cd() {
-    tmp=`tempfile -p iso`
-    cd2iso "$tmp"
-    echo "Insert empty disk"; read ans
-    iso2cd "$tmp"
-}
-
-files2cd() {
-    isofile=`tempfile -p iso`
-    mkisofs -r -R -J -l -L -o "$isofile" "$*"
-    cdrecord "$isofile"
-    rm "$isofile"
-}
-
-cd2ogg() {
-    cdrom=/dev/`readlink /dev/cdrom`
-    cdrdao read-cd --with-cddb --device ATAPI:$cdrom --datafile cd.bin cd.toc
-    oggenc -o cdimage.ogg -r --raw-endianness 1 -q 6 cd.bin
-    cueconvert cd.toc cd.cue
-    oggsplt -c cd.cue cdimage.ogg
-    rm cd.bin cd.cue cd.toc cdimage.ogg
-}
-
-
-any2wav() {
-    # $1 - which file
-    # $2 - where to
-    echo "Converting file '$1'"
-    case "${1##*.}" in
-        mp3)
-            mpg321 -q -w "$2" "$1"
-            ;;
-        flac)
-            flac -d -o "$2" "$1"
-            ;;
-        ogg)
-            oggdec -o "$2" "$1"
-            ;;
-        *)
-            return 1
-            ;;
-    esac
-    return 0
-}
-
-any2audiocd() {
-    tmpdir=`mktemp -d`
-    COUNTER_KNOWN=0
-    COUNTER_UNKNOWN=0
-
-
-    for file in *.*
-    do
-        new_name="$tmpdir/$file.wav"
-        if any2wav "$file" "$new_name"
-        then
-            COUNTER_KNOWN=$((COUNTER_KNOWN + 1))
-        else
-            COUNTER_UNKNOWN=$((COUNTER_UNKNOWN + 1))
-        fi
-
-    done
-    echo ""
-    echo "============================="
-    echo "Converted files: $COUNTER_KNOWN"
-    echo "  Ignored files: $COUNTER_UNKNOWN"
-    echo ""
-
-    if [ $COUNTER_KNOWN = 0 ]
-    then
-        echo "No supported files were found, exiting."
-        return 2
-    else
-        echo "Burn to CD?"; read ans
-        case "$ans" in
-            y*|Y*|j*|J*)
-                cdrecord speed=4 -pad -audio $tmpdir/*.wav
-                ;;
-        esac
-    fi
-
-    rm $tmpdir/*.wav
-}
-
-compress() {
-    if [ $2 ]; then
-        case $2 in
-            tgz | tar.gz)   tar -zcvf$1.$2 $1 ;;
-            tbz2 | tar.bz2) tar -jcvf$1.$2 $1 ;;
-            tar.Z)          tar -Zcvf$1.$2 $1 ;;
-            tar)            tar -cvf$1.$2  $1 ;;
-            gz | gzip)      gzip           $1 ;;
-            bz2 | bzip2)    bzip2          $1 ;;
-            *)
-                echo "Error: $2 is not a valid compression type"
-                ;;
-        esac
-    else
-        compress $1 tar.gz
-    fi
-}
-
-show-archive() {
-    if [[ -f $1 ]]
-    then
-        case $1 in
-            *.tar.gz)      gunzip -c $1 | tar -tf - -- ;;
-            *.tar.bz2)     bzip2 -d -c $1 | tar -tf - ;;
-            *.tar)         tar -tf $1 ;;
-            *.tgz)         tar -ztf $1 ;;
-            *.zip)         unzip -l $1 ;;
-            *.bz2)         bzless $1 ;;
-            *)             echo "'$1' Error. Please go away" ;;
-        esac
-    else
-        echo "'$1' is not a valid archive"
-    fi
-}
-
-elinks() {
-    STY= =elinks $*
-    echo -ne \\033]0\;\\007;
-}
-
-clyde() {
-   case $1 in
-       (-Ss | -Si | -Q* | -T | -G)
-           /usr/bin/clyde "$@" ;;
-       (-S* | -R* | -U | *)
-           /usr/bin/sudo /usr/bin/clyde "$@" ;;
-   esac
-}
-
 # setup keys
 source ~/.zkbd/$TERM
 bindkey -e
@@ -370,14 +209,14 @@ bindkey -M menuselect ' ' accept-and-hold
 bindkey -M menuselect '^S' history-incremental-search-forward
 
 _tmux_pane_words() {
-  local expl
-  local -a w
-  if [[ -z "$TMUX_PANE" ]]; then
-    _message "not running inside tmux!"
-    return 1
-  fi
-  w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
-  _wanted values expl 'words from current tmux pane' compadd -a w
+    local expl
+    local -a w
+    if [[ -z "$TMUX_PANE" ]]; then
+        _message "not running inside tmux!"
+        return 1
+    fi
+    w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
+    _wanted values expl 'words from current tmux pane' compadd -a w
 }
 
 zle -C tmux-pane-words-prefix   complete-word _generic
@@ -390,13 +229,11 @@ zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a
 
 # Move to where the arguments belong.
 after-first-word() {
-  zle beginning-of-line
-  zle forward-word
+    zle beginning-of-line
+    zle forward-word
 }
 zle -N after-first-word
 bindkey "^X1" after-first-word
-
-
 
 if [ "$TERM" = "dumb" ]
 then
@@ -407,6 +244,9 @@ then
     PS1="`hostname`$ "
 fi
 
-if [[ -s /home/dominikh/.rvm/scripts/rvm ]] ; then source /home/dominikh/.rvm/scripts/rvm ; fi
-
+[[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+[[ -s ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
