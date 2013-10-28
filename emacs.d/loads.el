@@ -39,3 +39,4 @@
 
 (require 'elscreen)
 (require 'projectile)
+(require 'deft)

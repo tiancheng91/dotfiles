@@ -87,3 +87,4 @@
                 (lambda ()
                   (interactive)
                   (join-line -1)))
+(global-set-key (kbd "<f1>") 'deft)
