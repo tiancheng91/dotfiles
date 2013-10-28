@@ -79,6 +79,8 @@
  '(c-hanging-semi&comma-criteria (quote (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
  '(cedet-android-current-version "16")
  '(change-log-default-name nil)
+ '(company-auto-complete-chars nil)
+ '(company-begin-commands nil)
  '(company-show-numbers nil)
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
