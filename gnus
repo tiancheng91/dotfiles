@@ -9,7 +9,9 @@
                 (nnimap-server-port 993)
                 (nnimap-authenticator login)
                 (nnimap-expunge-on-close 'ask)
-                (nnimap-stream ssl))))
+                (nnimap-stream ssl))
+        (nntp "news.gmane.org")
+        ))
 
 (setq gnus-asynchronous t)
 
@@ -93,7 +95,7 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (defun oxy-unicode-threads-heavy ()
   (interactive)
   (setq gnus-summary-line-format "%10{%4k│%}%0{%U%R%z%u&@;%}%10{│%}%*%-23,23f%10{║%} %10{%B%} %(%s%)\n"
-        gnus-summary-dummy-line-format "    %8{│%}   %(%8{│%}                       %10{║%}%) %10{┏○%}  %S\n"
+        gnus-summary-dummy-line-format "    %8{│%}    %(%8{│%}                       %10{║%}%) %10{┏○%}  %S\n"
         gnus-sum-thread-tree-indent " "
         gnus-sum-thread-tree-root "┏● "
         gnus-sum-thread-tree-false-root "　○ "
@@ -119,21 +121,19 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (setq gnus-thread-sort-functions '(gnus-thread-sort-by-number gnus-thread-sort-by-score))
 (setq gnus-build-sparse-threads nil)
 (setq gnus-summary-display-while-building nil)
-(setq gnus-summary-make-false-root 'empty)
+(setq gnus-summary-make-false-root 'dummy)
 
 (setq gnus-summary-gather-subject-limit 'fuzzy)
 (setq gnus-simplify-subject-functions '(gnus-simplify-subject-re
                                         gnus-simplify-subject-fuzzy
                                         gnus-simplify-whitespace))
 (setq gnus-simplify-ignored-prefixes "\\(Re?\\|AW\\): *")
-
-;; Threads werden nach den References generiert
-(setq gnus-summary-thread-gathering-function
-      'gnus-gather-threads-by-references)
-
-;; Threads werden nach dem Subject generiert
+(setq gnus-list-identifiers "\\[go-nuts\\] *\\|\\[golang-dev\\] *")
 ;; (setq gnus-summary-thread-gathering-function
-;;       'gnus-gather-threads-by-subject)
+;;       'gnus-gather-threads-by-references)
+
+(setq gnus-summary-thread-gathering-function
+      'gnus-gather-threads-by-subject)
 
 ;; Christoph Conrad in <m3smud2ske.fsf@ID-24456.user.dfncis.de>
 (defun cc-fetch-whole-thread()
@@ -174,7 +174,7 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (setq gnus-auto-subscribed-groups "^nnml\\|^nnfolder\\|^nnmbox\\|^nnmh\\|^nnbabyl\\|^nnmaildir\\|^nnimap")
 (setq gnus-cacheable-groups "^nntp")
 (setq gnus-novice-user nil)
-(setq gnus-select-method (quote (nntp "news.gmane.org")))
+;; (setq gnus-select-method (quote (nntp "news.gmane.org")))
 (setq gnus-sorted-header-list (quote ("^From:" "^To:" "^Cc:" "^Subject:" "^Summary:" "^Keywords:" "^Newsgroups:" "^Followup-To:" "^Date:" "^X-Sent:" "^Organization:")))
 
 (setq message-generate-headers-first t)
@@ -204,3 +204,6 @@ You need to add `Content-Type' to `nnmail-extra-headers' and
 (setq gnus-add-to-list t)
 (setq message-subscribed-address-functions
       '(gnus-find-subscribed-addresses))
+
+(setq gnus-confirm-mail-reply-to-news t)
+(setq gnus-confirm-treat-mail-like-news t)
