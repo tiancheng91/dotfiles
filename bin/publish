@@ -3,7 +3,7 @@ s=""
 for file in "$@"
 do
     subtle-notify "Publishing ${file}"
-    scp "$file" cinchrb.org:/srv/http/stuff.fork-bomb.org/public_html/ > /dev/null
+    scp "$file" cinchrb.org:~/stuff.fork-bomb.org/public_html/
     if [ -z "$s" ]; then
         s="http://stuff.fork-bomb.org/`basename "$file"`"
     else
