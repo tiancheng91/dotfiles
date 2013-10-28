@@ -27,3 +27,5 @@
 (yas-global-mode 1)
 
 (global-highlight-parentheses-mode 1)
+
+(projectile-global-mode)
