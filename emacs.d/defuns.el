@@ -340,3 +340,18 @@ link in the kill ring."
       (comment-region (point-min) (point-max))
       (end-of-line)
       (newline))))
+
+(defun dh-go-current-import-path ()
+  ;; +4 for src/
+  ;; Note: only works with a single gopath
+  (let ((dir (file-name-directory (file-truename buffer-file-name))))
+    (substring dir (+ 4 (length (file-truename (getenv "GOPATH")))) (1- (length dir)))))
+
+(defun go-test ()
+  (interactive)
+  (compile "go test -coverprofile=c.out"))
+
+(defun dh-go-coverage ()
+  (interactive)
+  (shell-command "go test -coverprofile=c.out")
+  (go-coverage "c.out"))
