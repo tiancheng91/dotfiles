@@ -28,7 +28,6 @@
 (require 'whattf-dt)
 (require 'iedit)
 (require 'recentf)
-(require 'semantic-gcc)
 
 (require 'android-mode)
 
