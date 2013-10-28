@@ -1,7 +1,6 @@
 (eval-after-load 'sh-mode '(require 'flymake-shell))
 (eval-after-load 'go-mode '(require 'go-flymake))
 (eval-after-load 'go-mode '(require 'company))
-(eval-after-load 'go-mode '(require 'auto-complete))
 (eval-after-load 'go-mode '(require 'go-eldoc))
 (eval-after-load 'go-mode '(require 'go-errcheck))
 (eval-after-load 'company '(require 'company-go))
@@ -34,3 +33,6 @@
 (require 'highlight-parentheses)
 
 (require 'sml-modeline)
+
+;; Loading auto-complete lazily for go-mode doesn't seem to work
+(require 'auto-complete)
