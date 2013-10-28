@@ -215,7 +215,7 @@ end
   ["KP_4", "a"] => [:left, :left66, :left33],
   ["KP_5", "s"] => [:center, :center66, :center33],
   ["KP_6", "d"] => [:right, :right66, :right33],
-  ["KP_1", "y"] => [:bottom_left, :bottom_left66, :bottom_left33],
+  ["KP_1", "z"] => [:bottom_left, :bottom_left66, :bottom_left33],
   ["KP_2", "x"] => [:bottom, :bottom66, :bottom33], # TODO qwerty
   ["KP_3", "c"] => [:bottom_right, :bottom_right66, :bottom_right33],
 
@@ -240,7 +240,7 @@ end
   "u"     => :WindowUp,
   "k"     => :WindowRight,
   "S-k"   => :WindowKill,
-  "z"   => :WindowZaphod,
+  "y"   => :WindowZaphod,
   "S-s" => :WindowStick,
 
   # Programs
@@ -357,6 +357,7 @@ tag "game" do
   match "Dwarf_Fortress"
   match "FrozenSynapse"
   match :name => "ePSXe"
+  match :class => "net-minecraft-MinecraftLauncher"
 end
 
 tag "gravity" do
