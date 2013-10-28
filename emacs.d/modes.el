@@ -29,3 +29,4 @@
 (global-highlight-parentheses-mode 1)
 
 (projectile-global-mode)
+(elscreen-start)

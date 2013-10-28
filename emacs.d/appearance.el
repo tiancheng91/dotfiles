@@ -35,6 +35,7 @@
 
 (setq-default mode-line-format
               '(
+                (elscreen-display-screen-number (" " elscreen-e21-mode-line-string))
                 (:propertize (:eval
                               (let ((host-name
                                      (or (file-remote-p default-directory 'host)
