@@ -81,4 +81,4 @@
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 (add-hook 'sh-mode-hook 'flymake-shell-load)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook `prog-mode-hook 'my-prog-mode-hook)
+(add-hook 'prog-mode-hook 'my-prog-mode-hook)

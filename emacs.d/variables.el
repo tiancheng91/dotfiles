@@ -63,10 +63,6 @@
 (setq max-lisp-eval-depth 2000)
 (setq max-specpdl-size 2000)
 
-(setenv "INFOPATH"
-        (concat (getenv "INFOPATH") ":"
-                (expand-file-name "/home/dominikh/.emacs.d/gnuplot-mode")))
-
 (setq reftex-plug-into-AUCTeX t)
 (setq selection-coding-system nil)
 (setq echo-keystrokes 0.1)
