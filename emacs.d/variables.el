@@ -35,7 +35,8 @@
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq ri-ruby-script "/usr/bin/ri-emacs")
-(setq browse-url-browser-function 'w3m-browse-url)
+(setq browse-url-generic-program "chromium-browser")
+(setq browse-url-browser-function 'browse-url-generic)
 (setq display-time-day-and-date 1)
 
 (setq glasses-separator "")
