@@ -83,3 +83,7 @@
 (global-set-key (kbd "M-o") 'dh-newline-before-this-line)
 
 (global-set-key (kbd "M-/") 'company-complete)
+(global-set-key (kbd "M-j")
+                (lambda ()
+                  (interactive)
+                  (join-line -1)))
