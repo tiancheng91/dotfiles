@@ -17,7 +17,7 @@ URxvt*scrollBar: false
 URxvt*perl-lib: /home/dominikh/.urxvt/
 URxvt*perl-ext-common: default
 URxvt*perl-ext        : default,matcher,font-size
-URxvt*urlLauncher     : /usr/bin/chromium
+URxvt*url-launcher     : /usr/bin/chromium
 URxvt*matcher.button  : 1
 URxvt*keysym.C-plus: perl:font:increase
 URxvt*keysym.C-minus: perl:font:decrease
@@ -38,9 +38,10 @@ URxvt*color4: CornflowerBlue
 ! bold blue
 URxvt*color12: #3b3bff
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:Kochi Gothic:antialias=false
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:IPAMonaPGothic:antialias=false
 Emacs*FontBackend: xft
 Emacs*font: DejaVu Sans Mono-10
+
 
 ! input methods
 URxvt.inputMethod: SCIM
