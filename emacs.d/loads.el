@@ -34,9 +34,6 @@
 
 (require 'sml-modeline)
 
-;; Loading auto-complete lazily for go-mode doesn't seem to work
-(require 'auto-complete)
-
 (require 'elscreen)
 (require 'projectile)
 (require 'deft)

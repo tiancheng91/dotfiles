@@ -4,8 +4,8 @@
 
 ;; Author: Syohei YOSHIDA <syohex@gmail.com>
 ;; URL: https://github.com/syohex/emacs-go-eldoc
-;; Version: 0.06
-;; Package-Requires: ((go-mode "0") (go-autocomplete "0"))
+;; Version: 0.10
+;; Package-Requires: ((go-mode "0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,7 +35,6 @@
 
 (require 'eldoc)
 (require 'go-mode)
-(require 'go-autocomplete)
 (require 'thingatpt)
 
 (defgroup go-eldoc nil
@@ -71,6 +70,7 @@
   (save-excursion
     (goto-char from)
     (loop while (search-forward str to t)
+          unless (go-in-string-or-comment-p)
           counting 1)))
 
 (defun go-eldoc--inside-funcall-p (from to)
@@ -125,6 +125,23 @@
           (go-goto-opening-parenthesis))
         finally return retval))
 
+;; Same as 'ac-go-invoke-autocomplete'
+(defun go-eldoc--invoke-autocomplete ()
+  (let ((temp-buffer (generate-new-buffer "*go-eldoc*")))
+    (prog2
+	(call-process-region (point-min)
+			     (point-max)
+			     "gocode"
+			     nil
+			     temp-buffer
+			     nil
+			     "-f=emacs"
+			     "autocomplete"
+			     (or (buffer-file-name) "")
+			     (concat "c" (int-to-string (- (point) 1))))
+	(with-current-buffer temp-buffer (buffer-string))
+      (kill-buffer temp-buffer))))
+
 (defun go-eldoc--get-funcinfo ()
   (let ((curpoint (point)))
     (save-excursion
@@ -134,7 +151,7 @@
         (when (and (go-eldoc--inside-funcall-p (1- (point)) curpoint)
                    (not (go-eldoc--inside-anon-function-p (1- (point)) curpoint)))
           (let ((matched (go-eldoc--match-candidates
-                          (ac-go-invoke-autocomplete) (thing-at-point 'symbol)
+                          (go-eldoc--invoke-autocomplete) (thing-at-point 'symbol)
                           curpoint)))
             (when (and matched
                        (string-match "\\`\\(.+?\\),,\\(.+\\)$" matched))
@@ -146,9 +163,18 @@
   (string-match "\\`\\s-+\\'" arg-type))
 
 (defconst go-eldoc--argument-type-regexp
-  (concat "\\(" go-identifier-regexp "\\)"                 ;; argument name
-          "\\(?: \\([]{}[:word:][:multibyte:]*.[]+\\)\\)?" ;; argument type
-          ))
+  (concat
+   "\\(" go-identifier-regexp "\\)" ;; $1 argname
+   (format "\\(?: %s%s\\)?"
+           "\\(\\(?:\\[\\]\\)?\\(?:<-\\)?chan\\(?:<-\\)? \\)?" ;; $2 channel
+           "\\(?:\\([]{}[:word:][:multibyte:]*.[]+\\)\\)?") ;; $3 argtype
+   ))
+
+(defun go-eldoc--extract-type-name (chan sym)
+  (when sym
+    (if (or (not chan) (string= chan ""))
+        sym
+      (concat chan sym))))
 
 (defun go-eldoc--split-argument-type (arg-type)
   (with-temp-buffer
@@ -157,7 +183,9 @@
     (let ((name-types nil))
       (while (re-search-forward go-eldoc--argument-type-regexp nil t)
         (let* ((name (match-string-no-properties 1))
-               (type (match-string-no-properties 2))
+               (type (go-eldoc--extract-type-name
+                      (match-string-no-properties 2)
+                      (match-string-no-properties 3)))
                (name-type (if type
                               (concat name " " type)
                             name))
