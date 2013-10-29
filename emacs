@@ -97,7 +97,6 @@
  '(gimp-exe "gimp")
  '(glasses-separator "")
  '(global-auto-revert-mode t)
- '(global-company-mode t)
  '(global-hl-line-mode t)
  '(global-semantic-highlight-edits-mode t)
  '(global-semantic-highlight-func-mode t)

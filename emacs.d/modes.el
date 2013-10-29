@@ -30,3 +30,4 @@
 
 (projectile-global-mode)
 (elscreen-start)
+(global-company-mode t)
