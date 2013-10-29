@@ -15,7 +15,7 @@
 (global-set-key (kbd "C-x ~") 'macro-math-eval-and-round-region)
 (global-set-key (kbd "C-x =") 'macro-math-eval-region)
 
-(global-set-key (kbd "<home>") 'beginning-of-line)
+(global-set-key (kbd "<home>") 'back-to-indentation)
 (global-set-key (kbd "<end>") 'end-of-line)
 (global-set-key (kbd "C-a") 'back-to-indentation)
 (global-set-key (kbd "M-m") 'beginning-of-line)
