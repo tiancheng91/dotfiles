@@ -1,0 +1,48 @@
+[user]
+  name = Dominik Honnef
+  email = dominikh@fork-bomb.org
+  signingkey = 8D4B0ED7
+[color]
+  status = auto
+  branch = auto
+  diff = auto
+  pager = true
+  ui = auto
+[color "diff"]
+  whitespace = red reverse
+[core]
+  editor = emacsclient
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	excludesfile = /home/dominikh/.gitignore
+[apply]
+  whitespace = nowarn
+[merge]
+  keepBackup = false
+  tool = emerge
+  stat = true
+[alias]
+  st = status
+  lc = log ORIG_HEAD.. --stat --no-merges
+  serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar/%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  restore = "!sh -c 'git checkout $(git rev-list -n 1 HEAD -- \"$1\")^ -- \"$1\"' -"
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  co = checkout
+[diff]
+  renames = copies
+  mnemonicprefix = true
+[difftool]
+  prompt = false
+[show]
+  pager = cat
+[advice]
+  statusHints = false
+[rerere]
+  enabled = 1
+[diff "exif"]
+  textconv = exiftool
+
+
+[push]
+	default = simple
