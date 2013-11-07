@@ -115,8 +115,6 @@ setopt auto_continue
 setopt auto_pushd
 setopt autoresume
 setopt complete_in_word
-setopt correct
-setopt correctall
 setopt extended_glob
 setopt extended_history
 setopt hist_ignore_dups
