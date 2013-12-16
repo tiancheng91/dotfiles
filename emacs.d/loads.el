@@ -4,7 +4,6 @@
 (eval-after-load 'go-mode '(require 'go-eldoc))
 (eval-after-load 'go-mode '(require 'go-errcheck))
 (eval-after-load 'company '(require 'company-go))
-(eval-after-load 'company '(require 'company-semantic))
 (eval-after-load 'jde-mode-hook '(require 'jde-ecj-flymake))
 (eval-after-load 'ruby-mode '(require 'ruby-block))
 (eval-after-load 'ruby-mode '(require 'flymake-ruby))

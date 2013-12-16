@@ -20,10 +20,6 @@
 
 (recentf-mode 1)
 
-(semantic-mode 1)
-(global-ede-mode 1)
-
-
 (yas-global-mode 1)
 
 (global-highlight-parentheses-mode 1)
