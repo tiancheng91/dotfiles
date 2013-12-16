@@ -14,7 +14,7 @@
   (winner-mode 1))
 
 (windmove-default-keybindings)
-(org-remember-insinuate)
+
 (bbdb-initialize 'gnus 'message)
 (bbdb-insinuate-gnus)
 
