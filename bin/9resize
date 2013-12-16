@@ -1,0 +1,8 @@
+#!/bin/sh
+# 9resize - 9wm style resizing/moving
+
+WIN=$(xdotool selectwindow)
+
+xrect | awk -v id=$WIN -F'[x+]' '
+  /x/ { system("xdotool windowsize "id" "$1" "$2" windowmove "id" "$3" "$4) }
+  /^+/ { system("xdotool windowmove "id" "$2" "$3) }'
