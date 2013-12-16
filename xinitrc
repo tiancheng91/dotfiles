@@ -21,7 +21,7 @@ xset s off
 xset -dpms
 
 if [[ "dominikh-netbook" != `hostname` ]]; then
-    urxvt -name Weechat -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
+    urxvt -name Weechat -geometry "273x23+0+751" -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
 fi
 
 if [[ "dominikh-laptop" = `hostname` ]]; then
