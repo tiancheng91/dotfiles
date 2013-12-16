@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+channel=$1
+if [[ -z "$3" ]]; then
+    password=""
+    resolution=$2
+else
+    password=$2
+    resolution=$3
+fi
+
+swfaddr=$(curl 2>/dev/null -I "http://www.justin.tv/widgets/live_embed_player.swf?channel=$channel&publisherGuard=$password" | grep Location | awk -F': ' '{print $2}')
+
+embed=$(echo $swfaddr | sed 's,?.*$,,')
+r_swfaddr="$embed?channel=$channel"
+
+arguments=""
+ruby -rjson -ropen-uri -e "JSON.parse(URI.parse(\"http://usher.justin.tv/find/$channel.json?type=any&channel_subscription=foo&private_code=$password\").read).each {|a| puts \"#{a['type']}: -r #{a['connect']}/#{a['play']} -j '#{a['token']}'\" if a['connect']}" | \
+  while read line; do
+    arguments=$(echo "$line --swfVf $r_swfaddr -v -o - | mplayer -" | grep "$resolution")
+    [ ! -z $arguments ] && echo $arguments | sed "s,^\w:,rtmpdump,"
+  done
