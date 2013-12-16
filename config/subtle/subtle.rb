@@ -358,6 +358,8 @@ tag "game" do
   match "FrozenSynapse"
   match :name => "ePSXe"
   match :class => "net-minecraft-MinecraftLauncher"
+  match "Steam"
+  match "dota_linux"
 end
 
 tag "gravity" do
