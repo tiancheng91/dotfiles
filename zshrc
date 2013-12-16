@@ -212,6 +212,8 @@ hl() {
 source ~/.zkbd/$TERM
 bindkey -e
 
+bindkey "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
 
 [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
