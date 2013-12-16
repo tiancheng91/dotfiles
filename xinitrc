@@ -38,5 +38,6 @@ xmodmap ~/.us-intl-german.xmodmap
 dropboxd &
 
 display -window root ~/wallpaper.png
+emacs &
 
 exec ck-launch-session dbus-launch ~/bin/cwm
