@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+require 'stringio'
+file = File.open("#{ENV['HOME']}/.config/chromium/Default/Current Session", 'rb'){|f| f.read }
+file = StringIO.new(file)
+file.read(8).unpack("a4I") # skip SNSS header
+
+command_type = Hash[*{
+    setTabWindow: 0,
+    setTabIndexInWindow: 2,
+    tabClosedObsolete: 3,
+    windowClosedObsolete: 4,
+    tabNavigationPathPrunedFromBack: 5,
+    updateTabNavigation: 6,
+    setSelectedNavigationIndex: 7,
+    setSelectedTabInIndex: 8,
+    setWindowType: 9,
+    tabNavigationPathPrunedFromFront: 11,
+    setPinnedState: 12,
+    setExtensionAppId: 13,
+    setWindowBounds3: 14,
+    setWindowAppName: 15,
+    tabClosed: 16,
+    windowClosed: 17,
+    tabUserAgentOverride: 18,
+    sessionStorageAssociated: 19,
+    setActiveWindow: 20
+}.map{|k,v| [v,k] }.flatten]
+
+tabs, window_tabs_index, active_window, tmp_window_id = {}, [], -1, -1
+
+loop{
+  length, command = file.read(3).unpack("vC") rescue break
+  raise "invalid command supplied" if command > 20
+  payload = file.read(length-1)
+
+  case command_type[command]
+  when :setTabWindow
+    tmp_window_id = payload.unpack("I")[0]
+  when :setSelectedTabInIndex
+    last_window_id, last_tab_index = payload.unpack("II")
+    window_tabs_index[last_window_id] = last_tab_index
+  when :updateTabNavigation
+    payload = StringIO.new(payload)
+    id, len = payload.read(16).unpack("x4Ix4I")
+    tabs[id] ||= {}
+    tabs[id].merge!({ url: payload.read(len), window: tmp_window_id })
+  when :setTabIndexInWindow
+    tab_id, tab_index = payload.unpack("II")
+    tabs[tab_id] ||= {}
+    tabs[tab_id].merge!({ tab_index: tab_index })
+  when :setActiveWindow
+    active_window = payload.unpack("I")[0]
+  end
+}
+
+tabs.each{|tab_id,v|
+  if v.values_at(:window, :tab_index) == [active_window, window_tabs_index[active_window]]
+    puts v[:url]; break
+  end
+}
