@@ -16,7 +16,6 @@
 (setq gnus-asynchronous t)
 
 (setq gnus-use-demon nil)
-(gnus-compile)
 
 
 (require 'pgg)
