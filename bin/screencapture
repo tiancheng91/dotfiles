@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+coords = `xrect`.chomp
+size, pos = coords.split("+", 2)
+pos.tr!("+", ",")
+exec "ffmpeg -f x11grab -r 25 -s %s -i :0.0+%s -vcodec libx264 -pix_fmt yuv444p -preset veryfast -threads 0 %s" % [size, pos, ARGV[0]]

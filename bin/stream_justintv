@@ -1,0 +1,15 @@
+#!/bin/bash
+COORDS=$(xrect | awk -F'[x+,]' '{printf("%sx%s+%s,%s", int($1/2)*2, int($2/2)*2,$3,$4)}')
+INRES=$(echo $COORDS | awk -F'+' '{print $1}')
+OFFSET=$(echo $COORDS | awk -F'+' '{print $2}')
+echo $COORDS
+echo $INRES
+echo $OFFSET
+OUTRES=$INRES
+FPS="30"
+QUAL="ultrafast"
+PIXFMT="yuv420p"
+STREAM_KEY=live_40069983_vplRWqTNv08hfWui9pleeQafNyPRXa
+ffmpeg -f x11grab -s $INRES -i :0.0+$OFFSET -r $FPS \
+  -vcodec libx264 -s $OUTRES -preset $QUAL -tune zerolatency -pix_fmt $PIXFMT -threads 0 \
+  -f flv "rtmp://live.justin.tv/app/$STREAM_KEY"

@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+coords = `xrect`.chomp
+size, pos = coords.split("+")
+pos.tr!("+", ",")
+
+system("ffmpeg -f x11grab -r 30 -s %s -i :0.0+%s -vcodec libx264 -pix_fmt yuv444p -preset ultrafast -crf 0 -threads 0 -y %s" % [size, pos, ARGV[0]])
+system("ffmpeg -v quiet -y -i %s -r 5 -pix_fmt rgb24 %s.gif" % [ARGV[0], ARGV[0]])
+system("convert %s.gif -fuzz 1%% -layers Optimize %s.gif" % [ARGV[0], ARGV[0]])
