@@ -1,0 +1,116 @@
+borderwidth 1
+snapdist 10
+color activeborder goldenrod1
+color inactiveborder grey50
+
+gap 22 0 0 0
+
+autogroup 0 Cclock
+autogroup 0 XLoad
+autogroup 0 Wmsmixer
+autogroup 0 9menu
+
+autogroup 1 URxvt
+autogroup 3 Namoroka
+autogroup 3 Firefox
+autogroup 3 Chromium-browser
+autogroup 4 Emacs
+autogroup 4 Gvim
+
+ignore xlbiff
+
+command term urxvt
+command lock "xscreensaver-command --lock"
+
+command urxvt /usr/bin/urxvt
+command emacs /usr/bin/emacs
+command gvim /usr/bin/gvim
+command firefox /usr/bin/firefox
+command pidgin /usr/bin/pidgin
+command skype /usr/bin/skype
+command '' 'true'
+command xlock "xscreensaver-command --lock"
+
+# sticky yes
+
+bind 4-Return terminal
+bind 4-grave "draw_urxvt"
+# bind 4-Return "new-term"
+bind 4-Escape delete
+bind 4-h bigmoveleft
+bind 4-j bigmovedown
+bind 4-k bigmoveup
+bind 4-l bigmoveright
+bind S4-h bigresizeleft
+bind S4-j bigresizedown
+bind S4-k bigresizeup
+bind S4-l bigresizeright
+bind 4-x maximize
+bind 4-y vmaximize
+bind 4-z vmaximize
+bind 4-f grouptoggle
+bind 4-1 group1
+bind 4-2 group2
+bind 4-3 group3
+bind 4-4 group4
+bind 4-5 group5
+bind 4-6 group6
+bind 4-7 group7
+bind 4-8 group8
+bind 4-9 group9
+bind S4-1 movetogroup1
+bind S4-2 movetogroup2
+bind S4-3 movetogroup3
+bind S4-4 movetogroup4
+bind S4-5 movetogroup5
+bind S4-6 movetogroup6
+bind S4-7 movetogroup7
+bind S4-8 movetogroup8
+bind S4-9 movetogroup9
+# bind 4-Left rcyclegroup
+# bind 4-Right cyclegroup
+bind 4-Up raise
+bind 4-Down lower
+bind 4-Tab "randrmove"
+# bind S4-Tab rcycle
+# bind M-Tab cycle
+bind 4-c hide
+bind 4-r restart
+bind S4-w exec_wm
+bind S4-q quit
+
+bind 4-s search
+# bind M-s search
+bind 4-period ssh
+bind 4-F2 exec
+
+bind CM-Return unmap
+bind CM-Delete unmap
+bind M-Return unmap
+bind M-Down unmap
+bind M-Up unmap
+bind M-Left unmap
+bind M-Right unmap
+bind C-Down unmap
+bind C-Up unmap
+bind C-Left unmap
+bind C-Right unmap
+bind C-slash unmap
+bind M-h unmap
+bind M-j unmap
+bind M-k unmap
+bind M-l unmap
+bind CM-h unmap
+bind CM-j unmap
+bind CM-k unmap
+bind CM-l unmap
+bind M-question unmap
+bind M-slash unmap
+
+mousebind 4-1 window_move
+mousebind 4-2 window_resize
+mousebind 4-3 window_lower
+mousebind M-1 unmap
+mousebind M-2 unmap
+mousebind M-3 unmap
+mousebind CM-1 unmap
