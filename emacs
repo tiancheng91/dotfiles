@@ -86,6 +86,7 @@
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
  '(css-indent-offset 2)
+ '(default-input-method "TeX")
  '(ede-project-directories (quote ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
  '(elscreen-tab-display-control nil)
  '(flymake-no-changes-timeout 10)
