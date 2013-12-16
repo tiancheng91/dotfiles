@@ -1,0 +1,4 @@
+#!/bin/sh
+scalex=7
+scaley=14
+urxvt -geometry $(xrect -x $scalex -y $scaley)
