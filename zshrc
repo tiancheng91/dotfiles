@@ -39,6 +39,8 @@ export GOPATH=~/prj/go/
 
 export GTAGSLABEL=exuberant-ctags
 
+export BROWSER=chromium-browser
+
 WORDCHARS="*?_-.[]~&;$%^+"
 cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/prj /home/dominikh/prj/go/src/honnef.co/go /home/dominikh/prj/go/src/github.com/dominikh)
 path=(~/bin /usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games /sbin /usr/sbin /usr/local/sbin ~/.gem/ruby/1.9.1/bin /usr/games/bin/ /opt/VirtualBox /opt/dropbox ~/go/bin/ /opt/bin/ ~/prj/go/bin /opt/node/bin)
