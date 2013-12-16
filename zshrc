@@ -204,6 +204,10 @@ up() {
     esac
 }
 
+hl() {
+    egrep --color=always -e '' -e${^*}
+}
+
 # setup keys
 source ~/.zkbd/$TERM
 bindkey -e
