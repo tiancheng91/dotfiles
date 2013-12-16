@@ -88,3 +88,5 @@
                   (interactive)
                   (join-line -1)))
 (global-set-key (kbd "<f1>") 'deft)
+
+(global-set-key (kbd "M-z") 'zap-up-to-char)

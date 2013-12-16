@@ -355,3 +355,14 @@ link in the kill ring."
   (interactive)
   (shell-command "go test -coverprofile=c.out")
   (go-coverage "c.out"))
+
+(defun zap-up-to-char (arg char)
+  (interactive (list (prefix-numeric-value current-prefix-arg)
+                     (read-char "Zap to char: " t)))
+  (condition-case nil
+      (progn
+        (zap-to-char arg char)
+        (insert-char char)
+        (if (< 0 arg)
+            (backward-char)))
+    (error nil)))
