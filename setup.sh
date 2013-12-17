@@ -4,6 +4,9 @@ set -e
 DOTFILES=~/dotfiles
 
 build_cwm() {
+    [ -e ~/bin/cwm ] && return
+
+    build_yacc
     cd ${DOTFILES}/tmp
     git clone https://github.com/dominikh/cwm
     cd ./cwm
@@ -11,14 +14,23 @@ build_cwm() {
     cp ./cwm ~/bin
 }
 
+build_yacc() {
+    command -v yacc >/dev/null && return
+
+    cd ${DOTFILES}/tmp
+    wget http://ftp.gnu.org/gnu/bison/bison-3.0.tar.gz
+    tar -xzvf bison-3.0.tar.gz
+    cd bison-3.0
+    ./configure --prefix=${HOME}
+    make
+    make install
+}
+
 build_wmname() {
+    [ -e ~/bin/wmname ] && return
+
     cd ${DOTFILES}/tmp
     wget http://dl.suckless.org/tools/wmname-0.1.tar.gz
-    CHECKSUM=$(sha1sum wmname-0.1.tar.gz|cut -d" " -f1)
-    if [ "$CHECKSUM" != "7bce60306ccc9c9a5fc60d9874e81a013efa8871" ]; then
-        echo "Verification of wmname archive failed"
-        exit 1
-    fi
     tar -xzvf wmname-0.1.tar.gz
     cd wmname-0.1
     make
@@ -26,6 +38,8 @@ build_wmname() {
 }
 
 build_golang() {
+    [ -d ~/go ] && return
+
     cd ~
     hg clone -u release https://code.google.com/p/go
     cd ./go/src
@@ -33,34 +47,37 @@ build_golang() {
 }
 
 build_xrect() {
-    gcc -lX11 ${DOTFILES}/src/xrect.c -o ~/bin/xrect
+    [ -e ~/bin/xrect ] && return
+
+    gcc ${DOTFILES}/src/xrect.c -lX11 -o ~/bin/xrect
 }
 
+rm -rf ${DOTFILES}/tmp
 mkdir ${DOTFILES}/tmp
-mkdir ~/.config
+mkdir -p ~/.config
 mkdir -p ~/.ssh/sockets
 chmod -R 600 ~/.ssh
 
-ln -s ${DOTFILES}/Xdefaults ~/.Xdefaults
-ln -s ${DOTFILES}/Xmodmap ~/.Xmodmap
-ln -s ${DOTFILES}/bin ~/bin
-ln -s ${DOTFILES}/config/subtle ~/.config/subtle
-ln -s ${DOTFILES}/conkyrc ~/.conkyrc
-ln -s ${DOTFILES}/cwmrc ~/.cwmrc
-ln -s ${DOTFILES}/emacs ~/.emacs
-ln -s ${DOTFILES}/emacs.d ~/.emacs.d
-ln -s ${DOTFILES}/gdb ~/.gdb
-ln -s ${DOTFILES}/gdbinit ~/.gdbinit
-ln -s ${DOTFILES}/gemrc ~/.gemrc
-ln -s ${DOTFILES}/gitconfig ~/.gitconfig
-ln -s ${DOTFILES}/gnus ~/.gnus
-ln -s ${DOTFILES}/screenrc ~/.screenrc
-ln -s ${DOTFILES}/terminfo ~/.terminfo
-ln -s ${DOTFILES}/tmux.conf ~/.tmux.conf
-ln -s ${DOTFILES}/us-intl-german.xmodmap ~/.us-intl-german.xmodmap
-ln -s ${DOTFILES}/xinitrc ~/.xinitrc
-ln -s ${DOTFILES}/zshprompt ~/.zshprompt
-ln -s ${DOTFILES}/zshrc ~/.zshrc
+ln -f -s ${DOTFILES}/Xdefaults ~/.Xdefaults
+ln -f -s ${DOTFILES}/Xmodmap ~/.Xmodmap
+ln -f -s ${DOTFILES}/bin ~/bin
+ln -f -s ${DOTFILES}/config/subtle ~/.config/subtle
+ln -f -s ${DOTFILES}/conkyrc ~/.conkyrc
+ln -f -s ${DOTFILES}/cwmrc ~/.cwmrc
+ln -f -s ${DOTFILES}/emacs ~/.emacs
+ln -f -s ${DOTFILES}/emacs.d ~/.emacs.d
+ln -f -s ${DOTFILES}/gdb ~/.gdb
+ln -f -s ${DOTFILES}/gdbinit ~/.gdbinit
+ln -f -s ${DOTFILES}/gemrc ~/.gemrc
+ln -f -s ${DOTFILES}/gitconfig ~/.gitconfig
+ln -f -s ${DOTFILES}/gnus ~/.gnus
+ln -f -s ${DOTFILES}/screenrc ~/.screenrc
+ln -f -s ${DOTFILES}/terminfo ~/.terminfo
+ln -f -s ${DOTFILES}/tmux.conf ~/.tmux.conf
+ln -f -s ${DOTFILES}/us-intl-german.xmodmap ~/.us-intl-german.xmodmap
+ln -f -s ${DOTFILES}/xinitrc ~/.xinitrc
+ln -f -s ${DOTFILES}/zshprompt ~/.zshprompt
+ln -f -s ${DOTFILES}/zshrc ~/.zshrc
 
 build_cwm
 build_golang
