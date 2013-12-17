@@ -45,10 +45,10 @@ bind S4-h bigresizeleft
 bind S4-j bigresizedown
 bind S4-k bigresizeup
 bind S4-l bigresizeright
+bind 4-f fullscreen
 bind 4-x maximize
 bind 4-y vmaximize
 bind 4-z vmaximize
-bind 4-f grouptoggle
 bind 4-1 group1
 bind 4-2 group2
 bind 4-3 group3
@@ -104,6 +104,8 @@ bind CM-h unmap
 bind CM-j unmap
 bind CM-k unmap
 bind CM-l unmap
+bind CM-f unmap
+bind CM-m unmap
 bind M-question unmap
 bind M-slash unmap
 
