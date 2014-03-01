@@ -12,8 +12,6 @@ export EDITOR="emacsclient"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export MANPAGER="less"
-export GEM_PRIVATE_KEY='~/.rubyforge/gem-private_key.pem'
-export GEM_CERTIFICATE_CHAIN='~/.rubyforge/gem-public_cert.pem'
 export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 
 # `less` colors
