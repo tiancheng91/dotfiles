@@ -133,7 +133,7 @@ setopt no_flow_control
 unsetopt bang_hist # we dont need no inline history
 
 # aliases
-alias ls='LC_ALL=C ls --group-directories-first -H -F --color=auto'
+alias ls='LC_ALL=C ls --group-directories-first -F --color=auto'
 alias d='dirs -v'
 alias cp='nocorrect cp -vi'
 alias cpr='rsync -vazhP'
