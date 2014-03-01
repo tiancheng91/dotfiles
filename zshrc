@@ -156,7 +156,7 @@ alias zpool="sudo zpool"
 alias zfs="sudo zfs"
 
 # no spelling correction
-alias mkdir='nocorrect mkdir -p'
+alias mkdir='nocorrect mkdir'
 alias apt-cache='nocorrect apt-cache'
 alias apt-search="nocorrect apt-search"
 
