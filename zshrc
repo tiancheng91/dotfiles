@@ -97,18 +97,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # man
 zstyle ':completion:*:man:*' separate-sections true
 
-# apps
-zstyle ':completion:*:*:mpg123:*' file-patterns \
-    '*.(mp3|MP3):mp3\ files *(-/):directories'
-
-zstyle ':completion:*:*:ogg123:*' file-patterns \
-    '*.(ogg|OGG):ogg\ files *(-/):directories'
-
-zstyle ':completion:*:*:mp3blaster:*' file-patterns \
-    '*.(mp3|ogg):mp3\ files *(-/):directories'
-
-zstyle ':completion:*:wine:*' file-patterns '*.(exe|EXE):exe'
-
 # options
 setopt auto_cd
 setopt auto_continue
