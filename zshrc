@@ -119,6 +119,7 @@ setopt transient_rprompt
 setopt list_packed
 setopt no_flow_control
 unsetopt bang_hist # we dont need no inline history
+unsetopt multios
 
 # aliases
 alias ls='LC_ALL=C ls --group-directories-first -F --color=auto'
