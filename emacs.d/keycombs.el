@@ -65,13 +65,13 @@
 ;; duplicate a line and comment the first
 (global-set-key (kbd "C-c c") (lambda()(interactive)(djcb-duplicate-line t)))
 
-(global-set-key (kbd "C-M-;") 'flymake-goto-prev-error)
-(global-set-key (kbd "C-M-'")'flymake-goto-next-error)
+(global-set-key (kbd "C-M-;") 'flycheck-previous-error)
+(global-set-key (kbd "C-M-'")'flycheck-next-error)
+
 (global-set-key (kbd "C-x f") 'ido-choose-from-recentf)
 
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
-(global-set-key (kbd "C-c f") 'flymake-display-current-error)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)

@@ -62,10 +62,7 @@
 	(ruby-block-mode t)
 
   ;; Overwrite RET key as something defines it as newline
-  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
-  ;; Don't want flymake mode for ruby regions in rhtml files and also on read only files
-  (if (and (not (null buffer-file-name)) (file-writable-p buffer-file-name))
-      (flymake-ruby-load)))
+  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
 
 (add-hook 'LaTeX-mode-hook 'my-LaTeX-mode-hook)
 (add-hook 'align-load-hook 'my-align-load-hook)
@@ -79,6 +76,5 @@
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 (add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
-(add-hook 'sh-mode-hook 'flymake-shell-load)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)

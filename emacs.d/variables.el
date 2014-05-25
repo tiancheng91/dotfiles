@@ -144,8 +144,8 @@
 (setq autopair-blink nil)
 
 (setq android-mode-sdk-dir "~/android/android-sdk-linux/")
-(setq jde-global-classpath '("/tmp/flymake-build" "~/android/projects/" "~/android/android-sdk-linux/platforms/android-16/android.jar"))
-(setq jde-ecj-command-line-args '("-d" "/tmp/flymake-build" "-1.5" "-referenceInfo" "-enableJavadoc" "-warn:all"))
+(setq jde-global-classpath '("~/android/projects/" "~/android/android-sdk-linux/platforms/android-16/android.jar"))
+(setq jde-ecj-command-line-args '("-d" "-1.5" "-referenceInfo" "-enableJavadoc" "-warn:all"))
 (setq cedet-android-sdk-root "~/android/android-sdk-linux/")
 
 (setq warning-minimum-level :error)

@@ -245,16 +245,6 @@ gnuplot `script'"
 
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 
-(defun flymake-display-current-error ()
-  "Display errors/warnings under cursor."
-  (interactive)
-  (let ((ovs (overlays-in (point) (1+ (point)))))
-    (catch 'found
-      (dolist (ov ovs)
-        (when (flymake-overlay-p ov)
-          (message "%s" (overlay-get ov 'help-echo))
-          (throw 'found t))))))
-
 (defun go ()
   "run current buffer"
   (interactive)
@@ -280,16 +270,6 @@ gnuplot `script'"
            (id (substring (mail-header-id header) 1 -1)))
       (kill-new
        (format "http://groups.google.com/groups?selm=%s" id)))))
-
-(defun fly-pyflake-determine-message (err)
-  "pyflake is flakey if it has compile problems, this adjusts the
-message to display, so there is one ;)"
-  (cond ((not (or (eq major-mode 'Python) (eq major-mode 'python-mode) t)))
-        ((null (flymake-ler-file err))
-         ;; normal message do your thing
-         (flymake-ler-text err))
-        (t ;; could not compile err
-         (format "compile error, problem on line %s" (flymake-ler-line err)))))
 
 (defun yas/advise-indent-function (function-symbol)
   (eval `(defadvice ,function-symbol (around yas/try-expand-first activate)
