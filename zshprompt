@@ -2,12 +2,64 @@
 autoload -Uz vcs_info
 autoload colors zsh/terminfo
 
+
 function precmd {
-    zstyle ':vcs_info:*' formats "%B%F{black}@%%b%f%b "
-    zstyle ':vcs_info:*' actionformats "%B%F{black}@%f%%b%b%B%F{black}|%f%%b%a "
-    zstyle ':vcs_info:*' nvcsformats " "
+    zstyle ':vcs_info:*' formats "%B%F{black}@%%b%f%b" "%S" "%R"
+    zstyle ':vcs_info:*' actionformats "%B%F{black}@%f%%b%b%B%F{black}|%f%%b%a" "%S" "%R"
+    zstyle ':vcs_info:*' nvcsformats ""
+    zstyle ':vcs_info:*' max-exports 9
     vcs_info
+
+    local shortened=${(D)vcs_info_msg_2_}
+    if [[ ${shortened} = ${vcs_info_msg_2_} ]]; then
+        repo=${vcs_info_msg_2_##*/}
+    else
+        repo=$(abbrev_vcs_dir "${shortened}" "n" $RNDIRS)
+    fi
+
+    if [[ -n "${vcs_info_msg_0_}" ]]; then
+        psvar=(1)
+    else
+        psvar=()
+    fi
 }
 
+RNDIRS=1
+NDIRS=2
+abbrev_vcs_dir() {
+    local -a segs
+    local levels=$3 rel=$2 dir=$1
+    : ${levels:=$NDIRS}
+    : ${rel:="y"}
+    segs=("${(Oas:/:)dir}")
+    if [[ $dir != "." && $rel = "y" ]]; then
+        print -n "./"
+    fi
+    print "${(j:/:)${(@Oa)segs[1,levels]}}"
+}
+
+
 setopt prompt_subst
-PROMPT='%m%(?.. %??)%(1j. %j&.) %(3~|./|)%2~${vcs_info_msg_0_}%(!.%B#%b.\$) '
+PROMPT='%(1V^%m%(?.. %??)%(1j. %j&.) ${repo}${vcs_info_msg_0_} $(abbrev_vcs_dir ${vcs_info_msg_1_}) ^%m%(?.. %??)%(1j. %j&.) %($((NDIRS+1))~|./|)%${NDIRS}~ )%(!.%B#%b.\$) '
+
+
+# function precmd {
+#     zstyle ':vcs_info:*' formats "%r%B%F{black}@%%b%f%b \$(abbrev_vcs_dir '%S')"
+#     zstyle ':vcs_info:*' actionformats '%B%F{black}@%f%%b%b%B%F{black}|%f%%b%a '
+#     zstyle ':vcs_info:*' nvcsformats '%($((NDIRS+1))~|./|)%${NDIRS}~'
+#     vcs_info
+# }
+
+# NDIRS=2
+# abbrev_vcs_dir() {
+#     local -a segs
+#     segs=("${(Oas:/:)1}")
+#     if [[ "$1" != "." ]]; then
+#         print -n "./"
+#     fi
+#     print "${(j:/:)${(@Oa)segs[1,NDIRS]}}"
+# }
+
+
+# setopt prompt_subst
+# PROMPT='%m%(?.. %??)%(1j. %j&.) ${(qe)vcs_info_msg_0_} %(!.%B#%b.\$) '
