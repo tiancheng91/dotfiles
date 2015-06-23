@@ -29,6 +29,8 @@
   unstage = reset HEAD --
   last = log -1 HEAD
   co = checkout
+  b = branch -v
+  puff = pull --ff-only
 [diff]
   renames = copies
   mnemonicprefix = true
