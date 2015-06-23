@@ -37,7 +37,6 @@ xmodmap ~/.us-intl-german.xmodmap
 
 dropboxd &
 
-display -window root ~/wallpaper.png
 conky &
 emacs &
 
