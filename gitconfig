@@ -47,5 +47,10 @@
 	default = simple
 [http]
 	cookiefile = /home/dominikh/.gitcookies
+
+[sendemail]
+	smtpencryption = tls
+	smtpserver = mail.fork-bomb.org
+	smtpuser = dominikh
 [rebase]
 	autosquash = true
