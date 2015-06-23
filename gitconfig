@@ -7,7 +7,6 @@
   branch = auto
   diff = auto
   pager = true
-  ui = auto
 [color "diff"]
   whitespace = red reverse
 [core]
