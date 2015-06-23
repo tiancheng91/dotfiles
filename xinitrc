@@ -39,5 +39,6 @@ dropboxd &
 
 conky &
 emacs &
+numlockx
 
 exec ck-launch-session dbus-launch ~/bin/cwm
