@@ -41,4 +41,5 @@ conky &
 emacs &
 numlockx
 
-exec ck-launch-session dbus-launch ~/bin/cwm
+~/prj/go/src/honnef.co/go/gwm/gwm ~/.cwmrc
+pause
