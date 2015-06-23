@@ -45,5 +45,7 @@
 
 [push]
 	default = simple
+[http]
+	cookiefile = /home/dominikh/.gitcookies
 [rebase]
 	autosquash = true
