@@ -1,10 +1,8 @@
 #-*- mode: sh; -*-
-autoload zsh-mime-setup
 autoload -Uz compinit
 autoload zkbd
 autoload -z edit-command-line
 zmodload -i zsh/complist
-zmodload -i zsh/zftp
 
 compinit
 
@@ -12,16 +10,6 @@ export EDITOR="emacsclient"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export MANPAGER="less"
-export LESSOPEN="|/usr/bin/lesspipe.sh %s"
-
-# `less` colors
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
 
 export HISTFILE=~/.histfile
 export HISTSIZE=25000
@@ -43,7 +31,6 @@ WORDCHARS="*?_-.[]~&;$%^+"
 cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/prj /home/dominikh/prj/go/src/honnef.co/go /home/dominikh/prj/go/src/github.com/dominikh)
 path=(~/bin ~/.rbenv/bin /usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games /sbin /usr/sbin /usr/local/sbin ~/.gem/ruby/1.9.1/bin /usr/games/bin/ /opt/VirtualBox /opt/dropbox ~/go/bin/ /opt/bin/ ~/prj/go/bin /opt/node/bin)
 
-hosts=(`hostname` `grep "Host " ~/.ssh/config | cut -d " " -f2`)
 if [ "$TERM" = "xterm-screen-256color" ]; then
     eval `TERM=screen-256color dircolors`
 else
@@ -54,12 +41,10 @@ if which keychain >/dev/null; then
     eval `keychain --eval id_dsa -Q -q`
 fi
 
-zsh-mime-setup
-
-zstyle '*' hosts $hosts
+zstyle ':completion:*' use-ip true
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*' completer _complete _match
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:*:*' menu yes select
@@ -72,7 +57,6 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle :compinstall filename '/home/dominikh/.zshrc'
 
 # Dont complete backups as executables
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
@@ -80,12 +64,8 @@ zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~'
 zstyle ':completion:*:rm:*' ignore-line yes
 zstyle ':completion:*:scp:*' ignore-line yes
 zstyle ':completion:*:ls:*' ignore-line yes
-zstyle ':completion:*:evince::' \
-    file-patterns '*.(#i)(dvi|djvu|tiff|pdf|ps|xps)(|.bz2|.gz|.xz|.z) *(-/)' '*'
 
 # kill completion
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=36=31'
-zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:kill:*' insert-ids single
@@ -251,8 +231,6 @@ then
     PS1="`hostname`$ "
 fi
 
-[[ -s ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 export RUBY_BUILD_BUILD_PATH="/tmp/rbenv-build"
 export RBENV_BUILD_ROOT="/tmp/rbenv-build-sources"
