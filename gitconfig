@@ -19,6 +19,7 @@
   keepBackup = false
   tool = emerge
   stat = true
+  conflictstyle = diff3
 [alias]
   st = status -sb
   lc = log ORIG_HEAD.. --stat --no-merges
