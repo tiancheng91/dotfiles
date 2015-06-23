@@ -139,8 +139,6 @@ alias id3=eyeD3
 alias halt="sudo halt"
 alias reboot="sudo reboot"
 alias ll="ls -lhs"
-alias zpool="sudo zpool"
-alias zfs="sudo zfs"
 
 # no spelling correction
 alias mkdir='nocorrect mkdir'
