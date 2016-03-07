@@ -1,13 +1,10 @@
 (display-time)
-(global-hl-line-mode 1)
-(global-glasses-mode t)
-(global-linum-mode t)
+;; (global-glasses-mode t)
 (delete-selection-mode t)
 (ido-mode 1)
 (scroll-bar-mode -1)
 (show-paren-mode t)
 (transient-mark-mode t)
-(template-initialize)
 (which-func-mode)
 (epa-file-enable)
 (when (fboundp 'winner-mode)
@@ -15,15 +12,13 @@
 
 (windmove-default-keybindings)
 
-(bbdb-initialize 'gnus 'message)
-(bbdb-insinuate-gnus)
-
 (recentf-mode 1)
 
 (yas-global-mode 1)
 
-(global-highlight-parentheses-mode 1)
-
 (projectile-global-mode)
 (elscreen-start)
 (global-company-mode t)
+(global-anzu-mode t)
+(rich-minority-mode t)
+(display-time-mode 0)

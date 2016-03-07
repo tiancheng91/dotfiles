@@ -34,8 +34,7 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
-(setq ri-ruby-script "/usr/bin/ri-emacs")
-(setq browse-url-generic-program "chromium-browser")
+(setq browse-url-generic-program "firefox")
 (setq browse-url-browser-function 'browse-url-generic)
 (setq display-time-day-and-date 1)
 
@@ -51,7 +50,7 @@
 (setq diff-switches "-c")
 (setq cursor-in-non-selected-windows nil)
 (setq read-file-name-completion-ignore-case t)
-(setq tramp-default-method "scpc")
+(setq tramp-default-method "scp")
 (setq-default font-lock-maximum-size nil)
 
 (setq cssm-newline-before-closing-bracket t)
@@ -83,9 +82,6 @@
         ((lambda (file)
            (browse-url (concat "file:///" (expand-file-name file)))) "\\.html?$")))
 
-(setq gnus-optional-headers 'bbdb/gnus-lines-and-from)
-(setq bbdb/news-auto-create-p t)
-
 (setq smtpmail-debug-info t)
 
 (setq mm-text-html-renderer 'w3m-standalone)
@@ -104,7 +100,6 @@
 (setq org-columns-default-format "%40ITEM(Task) %17Effort(Estimated Effort){:} %CLOCKSUM")
 (setq org-agenda-start-on-weekday nil)
 (setq org-read-date-prefer-future nil)
-(setq ruby-block-highlight-toggle t)
 (setq user-mail-address "dominikh@fork-bomb.org")
 (setq smtpmail-debug-verb t)
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
@@ -123,15 +118,6 @@
                ("emacs" (or
                          (name . "^\\*scratch\\*$")
                          (name . "^\\*Messages\\*$")))
-               ("gnus" (or
-                        (mode . message-mode)
-                        (mode . bbdb-mode)
-                        (mode . mail-mode)
-                        (mode . gnus-group-mode)
-                        (mode . gnus-summary-mode)
-                        (mode . gnus-article-mode)
-                        (name . "^\\.bbdb$")
-                        (name . "^\\.newsrc-dribble")))
                ("magit" (name . "^\\*magit.*$"))))))
 
 (delete 'try-expand-line hippie-expand-try-functions-list)

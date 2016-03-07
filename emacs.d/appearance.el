@@ -6,6 +6,32 @@
 (setq window-system-default-frame-alist
       '((x (background-color . "black") )))
 
+(defun color-theme-dominikh-minimum ()
+  (interactive)
+  (color-theme-install
+   '(color-theme-dominikh
+     ((background-color . "#000000")
+      (foreground-color . "#ffffff")
+      (background-mode . dark)
+      (border-color . "#000000")
+      (cursor-color . "#647a8e")
+      (mouse-color . "#FFFFFF"))
+     (default ((t (nil))))
+     (mode-line ((t (:foreground "#e6e9f0" :background "#323232"))))
+     (region ((t (:background "#505050"))))
+     (font-lock-comment-face ((t (:foreground "#ffffff" :weight bold))))
+     (font-lock-constant-face ((t (:foreground "#ffffff"))))
+     (font-lock-builtin-face ((t (:foreground "#ffffff"))))
+     (font-lock-function-name-face ((t (:foreground "#ffffff"))))
+     (font-lock-variable-name-face ((t (:foreground "#ffffff"))))
+     (font-lock-keyword-face ((t (:foreground "ffffff"))))
+     (font-lock-string-face ((t (:foreground "#9fff60"))))
+     (font-lock-doc-string-face ((t (:foreground "#ffffff" :weight bold))))
+     (font-lock-type-face ((t (:foreground "#ffffff"))))
+     (web-mode-html-attr-name-face ((t (:foreground "#ffffff"))))
+     (web-mode-html-tag-face ((t (:foreground "#ffffff"))))
+     (web-mode-html-tag-bracket-face ((t (:foreground "#ffffff")))))))
+
 
 (defun color-theme-dominikh ()
   (interactive)
@@ -30,68 +56,70 @@
      (font-lock-doc-string-face ((t (:foreground "#B9EBB0"))))
      (font-lock-type-face ((t (:foreground "#FFB1B3")))))))
 
+
 (require 'color-theme)
-(color-theme-dominikh)
+(color-theme-dominikh-minimum)
 
-(setq-default mode-line-format
-              '(
-                (elscreen-display-screen-number (" " elscreen-e21-mode-line-string))
-                (:propertize (:eval
-                              (let ((host-name
-                                     (or (file-remote-p default-directory 'host)
-                                         (system-name))))
-                                (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
-                                    (substring host-name 0 (match-beginning 1))
-                                  host-name)))
-                             face font-lock-keyword-face)
-                (:propertize ": %b" face font-lock-keyword-face)
+(if nil
+    (setq-default mode-line-format
+                  '(
+                    (elscreen-display-screen-number (" " elscreen-e21-mode-line-string))
+                    (:propertize (:eval
+                                  (let ((host-name
+                                         (or (file-remote-p default-directory 'host)
+                                             (system-name))))
+                                    (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
+                                        (substring host-name 0 (match-beginning 1))
+                                      host-name)))
+                                 face font-lock-keyword-face)
+                    (:propertize ": %b" face font-lock-keyword-face)
 
-                " "
-                (vc-mode (
-                          "("
-                          (:propertize vc-mode face font-lock-keyword-face)
-                          " )"))
-                " "
+                    " "
+                    (vc-mode (
+                              "("
+                              (:propertize vc-mode face font-lock-keyword-face)
+                              " )"))
+                    " "
 
-                ;; line, column, rel position, size, bar
-                "["
-                (:propertize "%03l" face font-lock-type-face)
-                ","
-                (:propertize "%03c" face font-lock-type-face)
-                ", "
-                (:propertize "%p" face font-lock-constant-face) ;; % above top
-                "/"
-                (:propertize "%I" face font-lock-constant-face) ;; size
-                " "
-                (:eval (sml-modeline-create))
-                "] "
+                    ;; line, column, rel position, size, bar
+                    "["
+                    (:propertize "%03l" face font-lock-type-face)
+                    ","
+                    (:propertize "%03c" face font-lock-type-face)
+                    ", "
+                    (:propertize "%p" face font-lock-constant-face) ;; % above top
+                    "/"
+                    (:propertize "%I" face font-lock-constant-face) ;; size
+                    " "
+                    (:eval (sml-modeline-create))
+                    "] "
 
-                ;; mode-line-modes
-                (
-                 "["
-                 (:propertize mode-name face font-lock-string-face)
-                 " –"
-                 mode-line-process
-                 minor-mode-alist
-                 "%n"
-                 "%["
-                 "]"
-                 )
+                    ;; mode-line-modes
+                    (
+                     "["
+                     (:propertize mode-name face font-lock-string-face)
+                     " –"
+                     mode-line-process
+                     minor-mode-alist
+                     "%n"
+                     "%["
+                     "]"
+                     )
 
-                " "
-                ;; Modified/read only
-                (:eval (when (buffer-modified-p)
-                         '("["
-                           (:propertize "Mod"
-                                        face font-lock-warning-face
-                                        help-echo "Buffer has been modified")
-                           "]"
-                           )))
-                (:eval (when buffer-read-only
-                         '("["
-                           (:propertize "RO"
-                                        face font-lock-warning-face
-                                        help-echo "Buffer is read-only")
-                           "]"
-                           )))
-                ))
+                    " "
+                    ;; Modified/read only
+                    (:eval (when (buffer-modified-p)
+                             '("["
+                               (:propertize "Mod"
+                                            face font-lock-warning-face
+                                            help-echo "Buffer has been modified")
+                               "]"
+                               )))
+                    (:eval (when buffer-read-only
+                             '("["
+                               (:propertize "RO"
+                                            face font-lock-warning-face
+                                            help-echo "Buffer is read-only")
+                               "]"
+                               )))
+                    )))

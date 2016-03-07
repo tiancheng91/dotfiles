@@ -8,27 +8,6 @@
         (nth 4 state)
         nil)))
 
-;; Like c-electric-backspace, only for Ruby
-(defun ruby-electric-backspace (arg)
-  (interactive "*P")
-  (if (or arg (ruby-in-literal))
-      (backward-delete-char-untabify (prefix-numeric-value arg))
-    (let ((here (point)))
-      (skip-chars-backward " \t\n")
-      (if (/= (point) here)
-          (delete-region (point) here)
-        (backward-delete-char-untabify 1)))))
-
-(defun ruby-electric-delete (arg)
-  (interactive "*P")
-  (if (or arg (ruby-in-literal))
-      (backward-delete-char-untabify (- (prefix-numeric-value arg)))
-    (let ((here (point)))
-      (skip-chars-forward " \t\n")
-      (if (/= (point) here)
-          (delete-region (point) here)
-        (backward-delete-char-untabify -1)))))
-
 (defun add-auto-mode (mode &rest patterns)
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))

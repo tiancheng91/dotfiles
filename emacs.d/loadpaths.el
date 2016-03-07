@@ -2,13 +2,10 @@
 (add-to-list 'load-path "~/.emacs.d/go-mode")
 (add-to-list 'load-path "~/.emacs.d/go-errcheck")
 (add-to-list 'load-path "~/.emacs.d/contrib")
-(add-to-list 'load-path "~/.emacs.d/contrib/magit")
-(add-to-list 'load-path "~/.emacs.d/contrib/emacs-rails")
-(add-to-list 'load-path "~/.emacs.d/contrib/gnuplot-mode")
-(add-to-list 'load-path "~/.emacs.d/contrib/bbdb/lisp")
-(add-to-list 'load-path "~/.emacs.d/contrib/mo-git-blame")
 (add-to-list 'load-path "~/.emacs.d/contrib/html5-el/")
-(add-to-list 'load-path "~/.emacs.d/contrib/gnus/lisp")
-(add-to-list 'load-path "~/.emacs.d/contrib/company/")
-(add-to-list 'load-path "~/.emacs.d/contrib/emacs-go-eldoc/")
+(add-to-list 'load-path "~/prj/go/src/golang.org/x/tools/cmd/guru")
+(add-to-list 'load-path "~/prj/go/src/golang.org/x/tools/refactor/rename")
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+(add-to-list 'load-path "~/prj/go/src/github.com/tv42/where")
+
+

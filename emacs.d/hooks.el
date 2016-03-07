@@ -58,11 +58,7 @@
   (set (make-local-variable 'indent-tabs-mode) 'nil)
   (set (make-local-variable 'tab-width) 2)
   (imenu-add-to-menubar "IMENU")
-  (define-key help-map "r" 'ri)
-	(ruby-block-mode t)
-
-  ;; Overwrite RET key as something defines it as newline
-  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
+  (define-key help-map "r" 'ri))
 
 (add-hook 'LaTeX-mode-hook 'my-LaTeX-mode-hook)
 (add-hook 'align-load-hook 'my-align-load-hook)
