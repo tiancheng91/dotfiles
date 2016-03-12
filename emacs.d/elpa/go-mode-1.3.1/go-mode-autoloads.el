@@ -1,10 +1,10 @@
 ;;; go-mode-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "go-mode" "go-mode.el" (21794 11721 157901
-;;;;;;  359000))
+;;;### (autoloads nil "go-mode" "go-mode.el" (22244 19150 526943
+;;;;;;  748000))
 ;;; Generated autoloads from go-mode.el
 
 (autoload 'go-mode "go-mode" "\
@@ -26,14 +26,22 @@ Playground (uploading and downloading pastes).
 The following extra functions are defined:
 
 - `gofmt'
-- `godoc'
+- `godoc' and `godoc-at-point'
 - `go-import-add'
 - `go-remove-unused-imports'
+- `go-goto-arguments'
+- `go-goto-docstring'
+- `go-goto-function'
+- `go-goto-function-name'
 - `go-goto-imports'
+- `go-goto-return-values'
+- `go-goto-method-receiver'
 - `go-play-buffer' and `go-play-region'
 - `go-download-play'
 - `godef-describe' and `godef-jump'
 - `go-coverage'
+- `go-set-project'
+- `go-reset-gopath'
 
 If you want to automatically run `gofmt' before saving a file,
 add the following hook to your emacs configuration:
@@ -50,7 +58,7 @@ for `find-tag':
 Please note that godef is an external dependency. You can install
 it with
 
-go get code.google.com/p/rog-go/exp/cmd/godef
+go get github.com/rogpeppe/godef
 
 
 If you're looking for even more integration with Go, namely
@@ -88,16 +96,14 @@ Tries to look for a URL at point.
 
 ;;;***
 
-;;;### (autoloads nil nil ("go-mode-pkg.el") (21794 11721 162150
-;;;;;;  326000))
+;;;### (autoloads nil nil ("go-mode-pkg.el") (22244 19150 531866
+;;;;;;  977000))
 
 ;;;***
 
-(provide 'go-mode-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; go-mode-autoloads.el ends here
