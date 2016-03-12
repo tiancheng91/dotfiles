@@ -2,7 +2,6 @@
 (add-auto-mode 'batch-mode "\\.bat$")
 (add-auto-mode 'csv-mode "\\.\\(csv|CSV\\)$")
 (add-auto-mode 'delphi-mode "\\.\\(pas\\|dpr\\|dpk\\)$")
-(add-auto-mode 'espresso-mode  "\\.json$")
 (add-auto-mode 'espresso-mode "\\.js$")
 (add-auto-mode 'git-commit-mode "COMMIT_EDITMSG$")
 (add-auto-mode 'graphviz-dot-mode "\\.dot$")
