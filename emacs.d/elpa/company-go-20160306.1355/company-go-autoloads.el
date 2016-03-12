@@ -3,14 +3,19 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "company-go" "company-go.el" (21681 10277 379021
-;;;;;;  917000))
+;;;### (autoloads nil "company-go" "company-go.el" (22244 22852 388825
+;;;;;;  478000))
 ;;; Generated autoloads from company-go.el
 
 (autoload 'company-go "company-go" "\
 
 
 \(fn COMMAND &optional ARG &rest IGNORED)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("company-go-pkg.el") (22244 22852 393254
+;;;;;;  420000))
 
 ;;;***
 
