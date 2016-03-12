@@ -37,7 +37,7 @@
 
 ;;;; Modes
 (load "~/.emacs.d/modes")
-(set-face-background 'hl-line "#333")
+;;(set-face-background 'hl-line "#333")
 
 ;;;; auto-modes
 (load "~/.emacs.d/automodes")
@@ -69,28 +69,62 @@
  '(LaTeX-default-style "scrartcl")
  '(LaTeX-document-regexp "document\\|Artikel")
  '(LaTeX-float "h")
- '(LaTeX-indent-environment-list (quote (("shell" current-indentation) ("lstlisting" current-indentation) ("ListingUmg" current-indentation) ("ListingUmgS" current-indentation) ("BefehlUmgS" current-indentation) ("BefehlUmg" current-indentation) ("verbatim" current-indentation) ("verbatim*" current-indentation) ("array") ("displaymath") ("eqnarray") ("eqnarray*") ("equation") ("equation*") ("picture") ("tabbing") ("table") ("table*") ("tabular") ("tabular*") ("enumerate"))))
+ '(LaTeX-indent-environment-list
+   (quote
+    (("shell" current-indentation)
+     ("lstlisting" current-indentation)
+     ("ListingUmg" current-indentation)
+     ("ListingUmgS" current-indentation)
+     ("BefehlUmgS" current-indentation)
+     ("BefehlUmg" current-indentation)
+     ("verbatim" current-indentation)
+     ("verbatim*" current-indentation)
+     ("array")
+     ("displaymath")
+     ("eqnarray")
+     ("eqnarray*")
+     ("equation")
+     ("equation*")
+     ("picture")
+     ("tabbing")
+     ("table")
+     ("table*")
+     ("tabular")
+     ("tabular*")
+     ("enumerate"))))
  '(LaTeX-item-indent 1)
  '(LaTeX-verbatim-regexp "verbatim\\*?\\|ListingUmg\\|BefehlUmg")
  '(TeX-newline-function (quote reindent-then-newline-and-indent))
  '(add-log-file-name-function nil)
  '(autotest-use-ui t)
  '(blink-cursor-mode nil)
- '(c-hanging-semi&comma-criteria (quote (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
+ '(c-hanging-semi&comma-criteria
+   (quote
+    (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
  '(cedet-android-current-version "16")
  '(change-log-default-name nil)
  '(company-auto-complete-chars nil)
  '(company-begin-commands nil)
+ '(company-go-insert-arguments nil)
+ '(company-go-show-annotation t)
  '(company-show-numbers nil)
+ '(company-tooltip-align-annotations t)
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
  '(css-indent-offset 2)
  '(default-input-method "TeX")
- '(ede-project-directories (quote ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
+ '(display-time-day-and-date nil)
+ '(ede-project-directories
+   (quote
+    ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(elscreen-tab-display-control nil)
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-completion-system (quote ido))
+ '(flycheck-display-errors-function (quote ignore))
+ '(flycheck-highlighting-mode nil)
+ '(flycheck-navigation-minimum-level (quote error))
  '(font-latex-fontify-script nil)
  '(font-latex-fontify-sectioning 1.1)
  '(font-latex-match-sectioning-3-keywords (quote (("Absch" ""))))
@@ -98,21 +132,36 @@
  '(font-latex-match-sectioning-5-keywords (quote (("UUAbsch" ""))))
  '(gimp-exe "gimp")
  '(glasses-separator "")
- '(global-auto-revert-mode t)
  '(global-flycheck-mode t nil (flycheck))
- '(global-hl-line-mode t)
- '(global-whitespace-mode t)
+ '(global-font-lock-mode t)
+ '(gofmt-show-errors (quote buffer))
  '(haml-backspace-backdents-nesting t)
- '(hl-paren-colors (quote ("firebrick1" "IndianRed1" "IndianRed3" "IndianRed4" "sienna")))
+ '(hl-paren-colors
+   (quote
+    ("firebrick1" "IndianRed1" "IndianRed3" "IndianRed4" "sienna")))
+ '(ibuffer-formats
+   (quote
+    ((mark modified read-only " "
+           (name 18 18 :left :elide)
+           " "
+           (size 9 -1 :right)
+           " "
+           (mode 16 16 :left :elide)
+           " " filename-and-process)
+     (vc-status 16 16 :left)
+     (mark " "
+           (name 16 -1)
+           " " filename))))
  '(ido-auto-merge-work-directories-length -1)
+ '(ido-default-buffer-method (quote selected-window))
  '(ido-enable-flex-matching t)
  '(ido-enable-regexp nil)
  '(ido-everywhere t)
  '(ido-ignore-buffers (quote ("\\` " "\\*tramp/.+")))
  '(ido-mode (quote both) nil (ido))
  '(ido-unc-hosts nil)
- '(ido-use-filename-at-point (quote guess))
- '(ido-use-url-at-point t)
+ '(ido-use-filename-at-point nil)
+ '(ido-use-url-at-point nil)
  '(imaxima-bg-color "black")
  '(imaxima-fg-color "white")
  '(imaxima-fnt-size "huge")
@@ -121,7 +170,9 @@
  '(imenu-auto-rescan-maxout 600000)
  '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
- '(jde-compiler (quote (("eclipse java compiler server" "/home/dominikh/android/eclipse/plugins/org.eclipse.jdt.core_3.8.1.v20120531-0637.jar"))))
+ '(jde-compiler
+   (quote
+    (("eclipse java compiler server" "/home/dominikh/android/eclipse/plugins/org.eclipse.jdt.core_3.8.1.v20120531-0637.jar"))))
  '(jde-compiler-new-compile-el t)
  '(js-indent-level 2)
  '(js2-auto-indent-p t)
@@ -134,8 +185,8 @@
  '(lpr-headers-switches nil)
  '(lpr-page-header-program "pr")
  '(lpr-page-header-switches (quote ("-h" "%s" "-F" "-o 5")))
- '(magit-log-cutoff-length -1)
  '(magit-process-popup-time 5)
+ '(magit-revert-buffers t)
  '(magit-save-some-buffers nil)
  '(mumamo-chunk-coloring 999)
  '(mumamo-set-major-mode-delay -1)
@@ -143,7 +194,7 @@
  '(nxhtml-skip-welcome t)
  '(nxml-bind-meta-tab-to-complete-flag t)
  '(nxml-slash-auto-complete-flag t)
- '(org-agenda-files (quote ("~/notes/private.org" "~/notes/university.org" "~/notes/projects/cinch.org")))
+ '(org-agenda-files (quote ("~/notes/agenda.org")))
  '(org-descriptive-links t)
  '(org-ellipsis (quote org-warning))
  '(org-startup-folded nil)
@@ -152,6 +203,29 @@
  '(php-basic-offset 2)
  '(php-speedbar-config nil)
  '(popcmp-group-alternatives nil)
+ '(popwin:special-display-config
+   (quote
+    (("*Miniedit Help*" :noselect t)
+     (help-mode)
+     (completion-list-mode :noselect t)
+     (compilation-mode :noselect t)
+     (grep-mode :noselect t)
+     (occur-mode :noselect t)
+     ("*Pp Macroexpand Output*" :noselect t)
+     ("*Shell Command Output*")
+     ("*vc-diff*")
+     ("*vc-change-log*")
+     (" *undo-tree*" :width 60 :position right)
+     ("^\\*anything.*\\*$" :regexp t)
+     ("*slime-apropos*")
+     ("*slime-macroexpansion*")
+     ("*slime-description*")
+     ("*slime-compilation*" :noselect t)
+     ("*slime-xref*")
+     (sldb-mode :stick t)
+     (slime-repl-mode)
+     (slime-connection-list-mode)
+     ("*Gofmt Errors*" :regexp nil))))
  '(post-email-address "dominikh@fork-bomb.org")
  '(post-jump-header t)
  '(post-kill-quoted-sig t)
@@ -159,10 +233,38 @@
  '(ps-always-build-face-reference t)
  '(ps-paper-type (quote a4))
  '(require-final-newline t)
+ '(rm-blacklist
+   (quote
+    (" yas" " hl-p" " Projectile" " Anzu" " company" " o^o" " ElDoc")))
  '(ruby-block-delay 0.1)
  '(ruby-deep-arglist 1)
  '(ruby-electric-expand-delimiters-list nil)
- '(safe-local-variable-values (quote ((TeX-brace-indent-level . 2) (LaTeX-indent-level . 2) (TeX-brace-indent-level . 0) (TeX-brace-indent-level) (LaTeX-indent-level . 0) (whitespace-action auto-cleanup) (whitespace-action quote (auto-cleanup)) (Coding . iso-2022-7bit) (whitespace-action) (encoding . utf-8))))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (make-local-variable
+            (quote process-environment))
+           (setenv "GOPATH"
+                   (expand-file-name
+                    (locate-dominating-file buffer-file-name ".dir-locals.el"))))
+     (eval progn
+           (setenv "GOPATH"
+                   (expand-file-name
+                    (locate-dominating-file buffer-file-name ".dir-locals.el"))))
+     (eval progn
+           (setenv "GOPATH"
+                   (locate-dominating-file buffer-file-name ".dir-locals.el")))
+     (TeX-brace-indent-level . 2)
+     (LaTeX-indent-level . 2)
+     (TeX-brace-indent-level . 0)
+     (TeX-brace-indent-level)
+     (LaTeX-indent-level . 0)
+     (whitespace-action auto-cleanup)
+     (whitespace-action quote
+                        (auto-cleanup))
+     (Coding . iso-2022-7bit)
+     (whitespace-action)
+     (encoding . utf-8))))
  '(sml-modeline-len 30)
  '(sml-modeline-mode t)
  '(sml-modeline-numbers (quote line-numbers))
@@ -175,58 +277,87 @@
  '(vc-follow-symlinks t)
  '(w3-use-terminal-characters t)
  '(w3m-default-display-inline-images t)
- '(which-func-modes (quote (emacs-lisp-mode c-mode c++-mode perl-mode cperl-mode python-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode diff-mode ruby-mode)))
+ '(web-mode-enable-auto-closing t)
+ '(web-mode-enable-auto-quoting nil)
+ '(which-func-modes
+   (quote
+    (emacs-lisp-mode c-mode c++-mode perl-mode cperl-mode python-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode diff-mode ruby-mode go-mode)))
  '(which-function-mode t)
- '(whitespace-action (quote (auto-cleanup)))
- '(whitespace-modes (quote (ada-mode asm-mode autoconf-mode awk-mode c-mode c++-mode cc-mode change-log-mode cperl-mode electric-nroff-mode emacs-lisp-mode f90-mode fortran-mode html-mode html3-mode java-mode jde-mode ksh-mode latex-mode LaTeX-mode lisp-mode m4-mode makefile-mode modula-2-mode nroff-mode objc-mode pascal-mode perl-mode prolog-mode python-mode scheme-mode sgml-mode sh-mode shell-script-mode simula-mode tcl-mode tex-mode texinfo-mode vrml-mode xml-mode ruby-mode)))
- '(whitespace-style (quote (trailing space-before-tab space-after-tab)))
- '(woman-use-own-frame nil))
+ '(whitespace-action nil)
+ '(whitespace-modes
+   (quote
+    (ada-mode asm-mode autoconf-mode awk-mode c-mode c++-mode cc-mode change-log-mode cperl-mode electric-nroff-mode emacs-lisp-mode f90-mode fortran-mode html-mode html3-mode java-mode jde-mode ksh-mode latex-mode LaTeX-mode lisp-mode m4-mode makefile-mode modula-2-mode nroff-mode objc-mode pascal-mode perl-mode prolog-mode python-mode scheme-mode sgml-mode sh-mode shell-script-mode simula-mode tcl-mode tex-mode texinfo-mode vrml-mode xml-mode ruby-mode)))
+ '(whitespace-style (quote (trailing space-mark tab-mark)))
+ '(whitespace-tab (quote whitespace-tab))
+ '(woman-use-own-frame nil)
+ '(yas-prompt-functions
+   (quote
+    (yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(anzu-mode-line ((t nil)))
  '(company-preview ((t (:foreground "darkgray" :underline t))))
  '(company-preview-common ((t (:inherit company-preview))))
+ '(company-template-field ((t (:inherit yas-field-highlight-face))))
  '(company-tooltip ((t (:background "lightgray" :foreground "black"))))
  '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
  '(company-tooltip-selection ((t (:background "#7BB2E8" :foreground "black"))))
- '(diff-added ((t (:inherit diff-changed :foreground "green"))))
- '(diff-changed ((nil nil)))
- '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(elscreen-tab-background-face ((t (:background "black"))))
- '(fg:erc-color-face1 ((t (:foreground "white"))))
  '(flycheck-warning ((t (:underline (:color "light goldenrod" :style wave)))))
- '(font-lock-comment-face ((t (:foreground "#D0F2AE"))))
  '(font-lock-yard-face ((t nil)) t)
- '(gnus-button ((t (:weight bold))))
- '(gnus-group-mail-3 ((((class color) (background dark)) (:foreground "#82b0db" :weight bold))))
- '(gnus-group-mail-3-empty ((((class color) (background dark)) (:foreground "#82b0db"))))
- '(gnus-header-content ((t (:foreground "green" :slant italic))))
- '(gnus-header-from ((((class color) (background dark)) (:foreground "green"))))
- '(gnus-header-name ((((class color) (background dark)) (:foreground "Red" :weight bold))))
- '(gnus-header-subject ((((class color) (background dark)) (:foreground "green"))))
- '(gnus-signature ((t (:foreground "green" :slant italic))))
- '(gnus-summary-normal-ancient ((((class color) (background dark)) (:foreground "gray50"))))
- '(gnus-summary-normal-read ((((class color) (background dark)) (:foreground "#757575"))))
- '(gnus-summary-normal-ticked ((((class color) (background dark)) (:foreground "red"))))
- '(gnus-summary-normal-unread ((t (:foreground "#82b0db"))))
- '(gnus-summary-selected ((t nil)))
+ '(ledger-font-account-directive-face ((t nil)))
+ '(ledger-font-alias-directive-face ((t nil)))
+ '(ledger-font-apply-directive-face ((t nil)))
+ '(ledger-font-assert-directive-face ((t nil)))
+ '(ledger-font-auto-xact-face ((t nil)))
+ '(ledger-font-bucket-directive-face ((t nil)))
+ '(ledger-font-capture-directive-face ((t nil)))
+ '(ledger-font-check-directive-face ((t nil)))
+ '(ledger-font-comment-face ((t nil)))
+ '(ledger-font-commodity-directive-face ((t nil)))
+ '(ledger-font-define-directive-face ((t nil)))
+ '(ledger-font-directive-face ((t nil)))
+ '(ledger-font-end-directive-face ((t nil)))
+ '(ledger-font-expr-directive-face ((t nil)))
+ '(ledger-font-fixed-directive-face ((t nil)))
+ '(ledger-font-include-directive-face ((t nil)))
+ '(ledger-font-other-face ((t nil)))
+ '(ledger-font-payee-cleared-face ((t nil)))
+ '(ledger-font-payee-directive-face ((t nil)))
+ '(ledger-font-payee-pending-face ((t nil)))
+ '(ledger-font-payee-uncleared-face ((t nil)))
+ '(ledger-font-pending-face ((t nil)))
+ '(ledger-font-periodic-xact-face ((t nil)))
+ '(ledger-font-posting-account-cleared-face ((t nil)))
+ '(ledger-font-posting-account-face ((t nil)))
+ '(ledger-font-posting-account-pending-face ((t nil)))
+ '(ledger-font-posting-amount-cleared-face ((t nil)))
+ '(ledger-font-posting-amount-face ((t nil)))
+ '(ledger-font-posting-amount-pending-face ((t nil)))
+ '(ledger-font-posting-date-face ((t nil)))
+ '(ledger-font-reconciler-cleared-face ((t nil)))
+ '(ledger-font-reconciler-pending-face ((t nil)))
+ '(ledger-font-reconciler-uncleared-face ((t nil)))
+ '(ledger-font-report-clickable-face ((t nil)))
+ '(ledger-font-tag-directive-face ((t nil)))
+ '(ledger-font-xact-cleared-face ((t nil)))
+ '(ledger-font-xact-highlight-face ((t nil)))
+ '(ledger-font-xact-open-face ((t nil)))
+ '(ledger-font-xact-pending-face ((t nil)))
+ '(ledger-font-year-directive-face ((t nil)))
+ '(ledger-occur-xact-face ((t nil)))
  '(linum ((t (:inherit shadow :background "black" :foreground "#BED3E8" :weight ultra-bold :height 0.8))))
- '(magit-diff-add ((((class color) (background dark)) (:foreground "green"))))
- '(magit-diff-file-header ((t (:inherit magit-header :background "dim grey"))))
- '(magit-diff-hunk-header ((t (:inherit magit-header :background "dim grey" :slant italic))))
- '(magit-item-highlight ((((class color) (background dark)) nil)))
- '(message-header-cc ((t (:foreground "Orange"))))
- '(message-header-newsgroups ((t (:foreground "orange" :slant italic :weight bold))))
- '(message-header-other ((t (:foreground "orange"))))
- '(message-header-subject ((t (:foreground "orange" :weight bold))))
- '(message-header-to ((t (:foreground "Orange" :weight bold))))
- '(message-header-xheader ((t (:foreground "orange"))))
+ '(magit-item-highlight ((t nil)))
  '(mode-line ((((class color) (min-colors 88)) (:background "brightblack" :foreground "white" :box -1))))
  '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "white" :box (:line-width -1 :color "grey40") :weight light))))
  '(org-checkbox ((t (:inherit bold))))
+ '(org-column ((t (:strike-through nil :underline nil :slant normal :weight normal))))
+ '(org-table ((t nil)))
  '(tabs-current ((t (:inherit tabs-face :background "grey40"))))
  '(tabs-face ((t (:background "grey25" :foreground "white"))))
  '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "#BED3E8"))))
@@ -240,3 +371,224 @@
       (require 'edit-server)
       (setq edit-server-new-frame nil)
       (edit-server-start)))
+
+(defun new-c-lineup-arglist (langelem)
+  (save-excursion
+    (goto-char (cdr langelem))
+    (setq syntax (car (car (c-guess-basic-syntax))))
+    (while (or (eq syntax 'arglist-intro)
+               (or (eq syntax 'arglist-cont)
+                   (eq syntax 'arglist-cont-nonempty)))
+      (forward-line -1)
+      (setq syntax (car (car (c-guess-basic-syntax)))))
+    (beginning-of-line)
+    (re-search-forward "[^ \t]" (c-point 'eol))
+    (goto-char (+ (match-beginning 0) 4))
+    (vector (current-column))))
+
+(c-add-style "openbsd"
+             '("bsd"
+               (c-ignore-auto-fill . '(string))
+               (c-subword-mode . 0)
+               (c-basic-offset . 8)
+               (c-label-minimum-indentation . 0)
+               (c-offsets-alist .
+                                ((arglist-intro . new-c-lineup-arglist)
+                                 (arglist-cont . new-c-lineup-arglist)
+                                 (arglist-cont-nonempty . new-c-lineup-arglist)
+                                 (arglist-close . 0)
+                                 (substatement-open . 0)
+                                 (statement-cont . *)
+                                 (case-label . 0)
+                                 (knr-argdecl . *)))
+               (fill-column . 80)
+               (tab-width . 8)
+               (indent-tabs-mode . t)))
+
+(setq gofmt-command "goimports")
+(setq case-replace nil)
+
+(defun go-find (name)
+  (interactive "MIdentifier: ")
+  (godef--find-file-line-column (shell-command-to-string (format "go-find %s" name)) nil))
+
+
+(defun go-link ()
+  "Create a golang.org/src/ link for the current file, line
+number and optionally the region. If the Go version is not a
+release version, tip.golang.org will be used instead."
+  (interactive)
+  (let* ((goroot (file-truename (car (go-root-and-paths))))
+         (path (file-truename (buffer-file-name)))
+         (base (if (go--string-prefix-p "go version devel" (shell-command-to-string (concat go-command " version")))
+                   "tip.golang.org"
+                 "golang.org"))
+         (line (line-number-at-pos))
+         (start (if (use-region-p)
+                    (1- (region-beginning))
+                  0))
+         (end (if (use-region-p)
+                  (1- (region-end))
+                0))
+         (url (concat "http://" base (substring path (length goroot)) (format"?s=%d:%d#L%d" start end line))))
+    (when (called-interactively-p 'any)
+      (deactivate-mark)
+      (kill-new url)
+      (message "%s" url))
+    url))
+
+(defun me()
+  (interactive)
+  (insert "Dominik Honnef <dominik@honnef.co>"))
+
+(defun yas/insert-by-name (name)
+  (flet ((dummy-prompt
+          (prompt choices &optional display-fn)
+          (declare (ignore prompt))
+          (or (find name choices :key display-fn :test #'string=)
+              (throw 'notfound nil))))
+    (let ((yas/prompt-functions '(dummy-prompt)))
+      (catch 'notfound
+        (yas/insert-snippet t)))))
+
+(require 'key-chord)
+(key-chord-mode 1)
+
+(key-chord-define-global "jj" 'ace-jump-char-mode)
+(key-chord-define-global "µµ" (lambda () (interactive) (yas/insert-by-name "meth")))
+
+
+;; Turn
+;;
+;;   T{foo: bar, baz: qux{}}
+;;
+;; into
+;;
+;;   T{
+;;   	foo: bar,
+;;   	baz: qux{},
+;;   }
+;;
+;; Point needs to be anywhere before, or on, the opening {
+(defun go-neat-struct ()
+  (interactive)
+  (save-excursion
+    (search-forward "{")
+    (let ((start-level (go-paren-level))
+          (start-pos (point)))
+      (reindent-then-newline-and-indent)
+      (while (and (>= (go-paren-level) start-level)
+                  (search-forward "," nil t))
+        (if (= (go-paren-level) start-level)
+            (reindent-then-newline-and-indent)))
+      (goto-char (1- start-pos))
+      (forward-list)
+      (backward-char)
+      (insert ",")
+      (reindent-then-newline-and-indent))))
+
+(defun go-peek ()
+  (interactive)
+  (let ((file (car (godef--call (point))))
+        code)
+    (string-match "\\(.+\\):\\([0-9]+\\):\\([0-9]+\\)" file)
+    (let ((filename (match-string 1 file))
+          (line (string-to-number (match-string 2 file)))
+          (column (string-to-number (match-string 3 file))))
+      (with-current-buffer (find-file-noselect filename)
+        (save-excursion
+          (go--goto-line line)
+          (beginning-of-line)
+          (forward-char (1- column))
+          (mark-defun)
+          (setq code (buffer-substring (region-beginning) (region-end)))))
+      (display-message-or-buffer code))))
+
+
+(global-set-key (kbd "<f1>") 'go-peek)
+
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+
+(require 'dropdown-list) ;; so YAS uses the right prompt function
+
+
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-vc-set-filter-groups-by-vc-root)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
+(setq ibuffer-formats
+      '((mark modified read-only " "
+              (name 18 18 :left :elide)
+              " "
+              (size 9 -1 :right)
+              " "
+              (mode 16 16 :left :elide)
+              " "
+              (vc-status 16 16 :left)
+              " "
+              filename-and-process)))
+
+
+;; (wrap-region-add-wrapper "`" "`")
+;; (wrap-region-add-wrapper "„" "“" "„")
+;; (wrap-region-global-mode t)
+
+(defun zap-between (char1 &optional char2)
+  (interactive (list (read-char "Zap between: " t)))
+  (setq char2 (or char2
+                  (cdr (assoc char1
+                              '((?< . ?>)
+                                (?( . ?))
+                                (?{ . ?})
+                                (?[ . ?]))))
+                  char1))
+    (kill-region (save-excursion
+                   (search-forward (char-to-string char1) nil nil -1)
+                   (1+ (point)))
+                 (save-excursion
+                   (search-forward (char-to-string char2) nil nil 1)
+                   (1- (point)))))
+
+(global-set-key (kbd "M-Z") 'zap-between)
+(put 'narrow-to-page 'disabled nil)
+
+
+(defun dh-chomp (str)
+  "Chomp leading and tailing whitespace from STR."
+  (replace-regexp-in-string (rx (or (: bos (* (any " \t\n")))
+                                    (: (* (any " \t\n")) eos)))
+                            ""
+                            str))
+
+;; (defun dh-default-selection (point)
+;;   (save-excursion
+;;     (goto-char point)
+;;     (let (p1 p2)
+;;       (save-excursion
+;;         (re-search-backward "^\\|[[:space:]]")
+;;         (setq p1 (point))
+;;         (if (looking-at "[[:space:]]")
+;;             (setq p1 (1+ p1))))
+;;       (save-excursion
+;;         (re-search-forward "$\\|[[:space:]]")
+;;         (setq p2 (point))
+;;         (if (looking-back "[[:space:]]")
+;;             (setq p2 (1- p2))))
+;;       (list p1 p2))))
+;;       (dh-chomp (buffer-substring-no-properties p1 p2))
+
+;; (global-set-key [mouse-3]	'dh-plumb)
+
+;; (defun dh-plumb (click)
+;;   ;; FIXME read string from buffer we clicked in
+;;   ;; FIXME set the working directory
+;;   ;; FIXME use 9p to write messages instead of shelling out
+;;   (interactive "e")
+;;   (let* ((pos (dh-default-selection (posn-point (event-start click))))
+;;          (click (- (posn-point (event-start click)) (car pos)))
+;;          (word (buffer-substring-no-properties (car pos) (nth 1 pos))))
+;;     (message "echo '%s' | /opt/plan9/bin/plumb -a 'click=%d' -i" word click)
+;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
+

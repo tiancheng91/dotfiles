@@ -36,7 +36,8 @@
 (defun my-go-mode-hook ()
   (add-to-list (make-local-variable 'company-backends) 'company-go)
   (add-hook 'before-save-hook 'gofmt-before-save nil t)
-  (go-eldoc-setup))
+  (go-eldoc-setup)
+  (go-guru-hl-identifier-mode))
 
 (defun my-gud-mode-hook ()
   (add-to-list 'gud-jdb-classpath "~/android/android-sdk-linux/platforms/android-16/android.jar"))

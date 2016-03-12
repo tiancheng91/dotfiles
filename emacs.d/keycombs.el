@@ -8,7 +8,7 @@
 (define-key input-decode-map "\e[1;2A" [S-up])
 ;;; S-left and S-right are read from the terminfo
 
-(global-set-key (kbd "C-m") 'reindent-then-newline-and-indent)
+; (global-set-key (kbd "C-m") 'reindent-then-newline-and-indent)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "M-C-y") 'kill-ring-search)
