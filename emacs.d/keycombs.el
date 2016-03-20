@@ -90,3 +90,5 @@
 (global-set-key (kbd "<f1>") 'deft)
 
 (global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
+
+(global-set-key (kbd "M-,") #'pop-tag-mark)
