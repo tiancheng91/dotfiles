@@ -10,26 +10,23 @@ export EDITOR="emacsclient"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export MANPAGER="less"
+export LESS="FRXif"
+alias fless="less -+F"
 
 export HISTFILE=~/.histfile
 export HISTSIZE=25000
 export SAVEHIST=25000
 
 export RUBYOPT=
-
-export FM_SVNPATH=~/projects/freiesMagazin
-export FM_SVNPATH_RED=~/projects/freiesMagazin-redaktion
-
-export GOROOT=~/go/
-export GOPATH=~/prj/go/
-
-export GTAGSLABEL=exuberant-ctags
-
-export BROWSER=chromium-browser
+export GOPATH=~/prj/
+export GOROOT_BOOTSTRAP=$(go env GOROOT)
+#export BROWSER=chromium-browser
+export BROWSER=firefox
+export LEDGER_FILE=~/money/cash.ledger
 
 WORDCHARS="*?_-.[]~&;$%^+"
-cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/prj /home/dominikh/prj/go/src/honnef.co/go /home/dominikh/prj/go/src/github.com/dominikh)
-path=(~/bin ~/.rbenv/bin /usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games /sbin /usr/sbin /usr/local/sbin ~/.gem/ruby/1.9.1/bin /usr/games/bin/ /opt/VirtualBox /opt/dropbox ~/go/bin/ /opt/bin/ ~/prj/go/bin /opt/node/bin)
+cdpath=(. /storage/dominikh/ /storage/dominikh/videos/ /home/dominikh/prj /home/dominikh/prj/src/honnef.co/go /home/dominikh/prj/src/github.com/dominikh /home/dominikh/prj/src/ /usr/lib/go/src/)
+path=(~/bin ~/.rbenv/bin /usr/local/avr/bin /usr/local/bin /usr/bin /bin /usr/games /sbin /usr/sbin /usr/local/sbin ~/.gem/ruby/1.9.1/bin /usr/games/bin/ /opt/VirtualBox /opt/dropbox ~/go/bin/ /opt/bin/ ~/prj/bin /opt/node/bin ~/node_modules/cordova/bin ~/adt-bundle-linux-x86_64-20140321/sdk/tools ~/adt-bundle-linux-x86_64-20140321/sdk/platform-tools ~/node_modules/.bin)
 
 if [ "$TERM" = "xterm-screen-256color" ]; then
     eval `TERM=screen-256color dircolors`
@@ -38,7 +35,7 @@ else
 fi
 
 if which keychain >/dev/null; then
-    eval `keychain --eval id_dsa -Q -q`
+    eval `keychain --eval id_rsa -Q -q`
 fi
 
 zstyle ':completion:*' use-ip true
@@ -101,7 +98,14 @@ unsetopt bang_hist # we dont need no inline history
 unsetopt multios
 
 # aliases
-alias ls='LC_ALL=C ls --group-directories-first -F --color=auto'
+case "$(uname -s)" in
+    Linux)
+        alias ls='LC_ALL=C ls --group-directories-first -F --color=auto'
+    ;;
+    FreeBSD)
+        alias ls='LC_ALL=C ls -F -G'
+    ;;
+esac
 alias d='dirs -v'
 alias cp='nocorrect cp -vi'
 alias cpr='rsync -vazhP'
@@ -189,11 +193,11 @@ bindkey "^S" history-incremental-pattern-search-forward
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
-bindkey -M menuselect '^F' accept-and-infer-next-history
-bindkey -M menuselect '/' accept-and-infer-next-history
-bindkey -M menuselect '^?' undo
-bindkey -M menuselect ' ' accept-and-hold
-bindkey -M menuselect '^S' history-incremental-search-forward
+# bindkey -M menuselect '^F' accept-and-infer-next-history
+# bindkey -M menuselect '/' accept-and-infer-next-history
+# bindkey -M menuselect '^?' undo
+# bindkey -M menuselect ' ' accept-and-hold
+# bindkey -M menuselect '^S' history-incremental-search-forward
 
 _tmux_pane_words() {
     local expl
@@ -231,7 +235,54 @@ then
     PS1="`hostname`$ "
 fi
 
+export ANDROID_SDK_ROOT=~/adt-bundle-linux-x86_64-20140321/sdk
 
-export RUBY_BUILD_BUILD_PATH="/tmp/rbenv-build"
-export RBENV_BUILD_ROOT="/tmp/rbenv-build-sources"
+hash -d cdorg=~/work/climate-data.org
+hash -d cdorggo=~/work/climate-data.org/external/go/src/climate-data.org
+
+zman() {
+    MANPAGER="less -g -s +/^\s{7}$1" man zshall
+}
+
+# imv -- interactive rename, using vared
+# 03sep2012  +chris+
+# 21jul2014  +chris+
+# 09dec2014  +chris+
+imv() {
+  local src dst
+  for src; do
+    [[ -e $src ]] || { print -u2 "$src does not exist"; continue }
+    dst=$src
+    vared dst
+    [[ $src != $dst ]] && mkdir -p $dst:h && mv -n $src $dst &&
+      print -s mv -n $src:q:q $dst:q:q   # save to history, thus M-. works
+  done
+}
+
+# autoload -Uz fzf-file-widget
+# autoload -Uz fzf-cd-widget
+# autoload -Uz fzf-history-widget
+
+# zle -N fzf-file-widget
+# zle -N fzf-cd-widget
+# zle -N fzf-history-widget
+
+# bindkey '^T' fzf-file-widget
+# bindkey '\ec' fzf-cd-widget
+
+compdef cmpv=mpv
+
+mkdir -p ~/.zarchive
+zshaddhistory() {
+  if [[ -n $1 && $1 != $'\n' && $1 != " "* ]]; then
+    print -nrP ": %D{%s}:0;$1" >> ~/.zarchive/"$(print -P %n@%m-%D{%Y-%m-%d})"
+  fi
+}
+
 eval "$(rbenv init -)"
+
+PATH="/home/dominikh/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/home/dominikh/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/dominikh/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/dominikh/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/dominikh/perl5"; export PERL_MM_OPT;
