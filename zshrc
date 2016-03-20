@@ -117,7 +117,7 @@ alias id3-remove-comment="eyeD3 --remove-comments"
 alias id3=eyeD3
 alias halt="sudo halt"
 alias reboot="sudo reboot"
-alias ll="ls -lhs"
+alias ll="ls -l -h -s"
 
 # no spelling correction
 alias mkdir='nocorrect mkdir'
