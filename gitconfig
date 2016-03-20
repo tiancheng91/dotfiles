@@ -56,3 +56,5 @@
 	smtpuser = dominikh
 [rebase]
 	autosquash = true
+[merge-pr]
+	autoclose = true
