@@ -26,6 +26,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar/%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   restore = "!sh -c 'git checkout $(git rev-list -n 1 HEAD -- \"$1\")^ -- \"$1\"' -"
   unstage = reset HEAD --
+  rank = shortlog -sne --no-merges
   last = log -1 HEAD
   co = checkout
   b = branch -v
