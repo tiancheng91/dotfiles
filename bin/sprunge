@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -sF 'sprunge=<-' http://sprunge.us | tr -d ' '
+curl -F 'sprunge=<-' http://sprunge.us | tr -d ' '
