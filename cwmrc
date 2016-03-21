@@ -111,7 +111,10 @@ bind S4-h bigresizeleft
 bind S4-j bigresizedown
 bind S4-k bigresizeup
 bind S4-l bigresizeright
-bind 4-f fullscreen
+bind 4-a above
+bind 4-b below
+bind 4-f freeze
+bind 4-space fullscreen
 bind 4-x maximize
 bind 4-y vmaximize
 bind 4-z vmaximize
@@ -154,3 +157,6 @@ bind 4-F2 exec
 mousebind 4-1 window_move
 mousebind 4-2 window_resize
 mousebind 4-3 window_lower
+
+bind 4-d debug
+bind 4-g gc
