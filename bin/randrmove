@@ -21,7 +21,8 @@ my = minfo[/y:(\d+)/, 1].to_i
 `xrandr --current`.each_line { |line|
   fields = line.split
   if fields[1] == "connected"
-    screens[fields[0]] = fields[2].split(/[x+]/).map { |n| n.to_i }
+    line =~ /(\d+)x(\d+)\+(\d+)\+(\d+)/
+    screens[fields[0]] = [$1, $2, $3, $4].map(&:to_i)
   end
 }
 
