@@ -1,2 +1,6 @@
 #!/bin/sh
-$BROWSER "http://code.google.com/p/go/issues/detail?id=$*"
+id=$1
+if [ -z "$id" ]; then
+    id=$(xclip -o)
+fi
+$BROWSER "http://code.google.com/p/go/issues/detail?id=$id"
