@@ -1,6 +1,12 @@
-#!/usr/bin/env ruby
+#!/bin/bash
+eval `slop`
+FPS="30" # target FPS
+GOP="60" # i-frame interval, should be double of FPS, 
+THREADS="0"
+CBR="3000k" # constant bitrate (should be between 1000k - 3000k)
+QUALITY="ultrafast"  # one of the many FFMPEG preset
 
-coords = `xrect`.chomp
-size, pos = coords.split("+", 2)
-pos.tr!("+", ",")
-exec "ffmpeg -f x11grab -r 25 -s %s -i :0.0+%s -vcodec libx264 -pix_fmt yuv444p -preset veryfast -threads 0 %s" % [size, pos, ARGV[0]]
+ffmpeg -f x11grab -s "${W}x${H}" -r "$FPS" -i :0.0+$X,$Y \
+       -vcodec libx264 -g $GOP -keyint_min $FPS -b $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
+       -s "${W}x${H}" -preset $QUALITY -tune film -threads $THREADS -strict normal \
+       -bufsize $CBR $*
