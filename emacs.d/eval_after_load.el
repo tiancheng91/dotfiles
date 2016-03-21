@@ -2,7 +2,8 @@
   '(progn
      (define-key go-mode-map (kbd "C-c C-r") 'go-remove-unused-imports)
      (define-key go-mode-map (kbd "M-.") (lambda () (interactive) (godef-jump (point) current-prefix-arg)))
-     (define-key go-mode-map (kbd "C-c d") 'godoc-at-point)))
+     (define-key go-mode-map (kbd "C-c d") 'godoc-at-point)
+     (define-key go-mode-map (kbd "C-c i") #'go-impl)))
 
 (eval-after-load 'ruby-mode
   '(progn
