@@ -63,7 +63,7 @@ that file in the other window and position point on that line."
   (let ((color
          (if buffer-read-only "yellow"
            (if overwrite-mode "red"
-             "#95d8ff"))))
+             "white"))))
     (unless (and
              (string= color hcz-set-cursor-color-color)
              (string= (buffer-name) hcz-set-cursor-color-buffer))

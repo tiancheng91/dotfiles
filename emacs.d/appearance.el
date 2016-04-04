@@ -14,7 +14,7 @@
       (foreground-color . "#ffffff")
       (background-mode . dark)
       (border-color . "#000000")
-      (cursor-color . "#647a8e")
+      (cursor-color . "white")
       (mouse-color . "#FFFFFF"))
      (default ((t (nil))))
      (mode-line ((t (:foreground "#e6e9f0" :background "#323232"))))
