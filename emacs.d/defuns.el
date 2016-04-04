@@ -325,3 +325,28 @@ link in the kill ring."
         (if (< 0 arg)
             (backward-char)))
     (error nil)))
+
+
+(defun go-instrument-returns ()
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (let ((cnt 0))
+        (narrow-to-defun)
+        (beginning-of-defun)
+        (while (re-search-forward "^[[:space:]]+return")
+          (setq cnt (1+ cnt))
+          (beginning-of-line)
+          (open-line 1)
+          (funcall indent-line-function)
+          (insert (format "log.Println(\"return statement %d\") /* RETURN INSTRUMENT */" cnt))
+          (forward-line 2))))))
+
+(defun go-deinstrument-returns ()
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (narrow-to-defun)
+      (beginning-of-defun)
+      (while (re-search-forward "^.+/\\* RETURN INSTRUMENT \\*/\n" nil t)
+        (replace-match "" nil nil)))))
