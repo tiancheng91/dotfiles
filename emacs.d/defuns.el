@@ -2,22 +2,6 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
-(defvar hcz-set-cursor-color-buffer "")
-(defvar hcz-set-cursor-color-color "")
-(defun hcz-set-cursor-color-according-to-mode ()
-  "change cursor color according to some minor modes."
-  ;;set-cursor-color is somewhat costly, so we only call it when
-  ;;needed:
-  (let ((color
-         (if buffer-read-only "yellow"
-           (if overwrite-mode "red"
-             "white"))))
-    (unless (and
-             (string= color hcz-set-cursor-color-color)
-             (string= (buffer-name) hcz-set-cursor-color-buffer))
-      (set-cursor-color (setq hcz-set-cursor-color-color color))
-      (setq hcz-set-cursor-color-buffer (buffer-name)))))
-
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
   (let ((name (buffer-name))
