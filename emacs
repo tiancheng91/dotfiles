@@ -15,7 +15,6 @@
 (load "~/.emacs.d/automodes")
 (load "~/.emacs.d/utf8")
 (load "~/.emacs.d/advices")
-(load "~/.emacs.d/yard")
 (load "~/.emacs.d/keycombs")
 (load "~/.emacs.d/passwords")
 

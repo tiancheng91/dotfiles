@@ -128,3 +128,5 @@ that file in the other window and position point on that line."
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby1.8" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby1.9" . ruby-mode))
+
+(load "~/.emacs.d/yard")
