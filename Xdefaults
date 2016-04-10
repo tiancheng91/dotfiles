@@ -40,9 +40,9 @@ URxvt*color4: CornflowerBlue
 ! bold blue
 URxvt*color12: #3b3bff
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12,xft:IPAMonaPGothic:antialias=false
+URxvt*font: xft:Envy Code R:size=10,xft:IPAMonaPGothic:antialias=false
 Emacs*FontBackend: xft
-Emacs*font: DejaVu Sans Mono-10
+Emacs*font: Envy Code R-10
 
 
 ! input methods
