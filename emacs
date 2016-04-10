@@ -22,6 +22,7 @@
 (load "~/.emacs.d/company.el")
 (load "~/.emacs.d/csearch.el")
 (load "~/.emacs.d/ffap.el")
+(load "~/.emacs.d/flycheck.el")
 (load "~/.emacs.d/gnus.el")
 (load "~/.emacs.d/ibuffer.el")
 (load "~/.emacs.d/isearch.el")

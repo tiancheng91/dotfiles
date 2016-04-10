@@ -47,10 +47,6 @@
 ;; duplicate a line and comment the first
 (global-set-key (kbd "C-c c") (lambda()(interactive)(djcb-duplicate-line t)))
 
-(global-set-key (kbd "C-M-;") 'flycheck-previous-error)
-(global-set-key (kbd "C-M-'")'flycheck-next-error)
-
-
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 
