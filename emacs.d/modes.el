@@ -8,8 +8,6 @@
 (when (fboundp 'winner-mode)
   (winner-mode 1))
 
-(windmove-default-keybindings)
-
 (recentf-mode 1)
 
 (projectile-global-mode)

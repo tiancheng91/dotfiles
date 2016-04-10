@@ -483,4 +483,5 @@
 (load "~/.emacs.d/latex.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/ruby.el")
+(load "~/.emacs.d/windmove.el")
 (load "~/.emacs.d/yasnippet.el")

@@ -20,10 +20,6 @@
 (global-set-key (kbd "C-e") 'end-of-line)
 
 (global-set-key  [\M-delete] 'kill-word)
-(global-set-key (kbd "C-x <up>") 'windmove-up)
-(global-set-key (kbd "C-x <down>") 'windmove-down)
-(global-set-key (kbd "C-x <left>") 'windmove-left)
-(global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "s-i") 'indent-buffer)
 (global-set-key (kbd "s-c") 'calculator)
 
