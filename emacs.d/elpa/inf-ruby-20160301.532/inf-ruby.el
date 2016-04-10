@@ -8,7 +8,7 @@
 ;;         Dmitry Gutov <dgutov@yandex.ru>
 ;;         Kyle Hargraves <pd@krh.me>
 ;; URL: http://github.com/nonsequitur/inf-ruby
-;; Package-Version: 20150403.946
+;; Package-Version: 20160301.532
 ;; Created: 8 April 1998
 ;; Keywords: languages ruby
 ;; Version: 2.4.0
@@ -48,9 +48,9 @@
 ;;
 ;; Additionally, consider adding
 ;;
-;;    (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+;;    (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 ;;
-;; to your init file to easily switch from common Ruby compilation
+;; to your init file to automatically switch from common Ruby compilation
 ;; modes to interact with a debugger.
 ;;
 ;; To call `inf-ruby-console-auto' more easily, you can, for example,
@@ -69,7 +69,8 @@
 
 (eval-when-compile
   (defvar rspec-compilation-mode-map)
-  (defvar ruby-compilation-mode-map))
+  (defvar ruby-compilation-mode-map)
+  (defvar projectile-rails-server-mode-map))
 
 (defgroup inf-ruby nil
   "Run Ruby process in a buffer"
@@ -342,9 +343,9 @@ Must not contain ruby meta characters.")
 
 (defconst ruby-eval-separator "")
 
-(defun ruby-send-region (start end)
+(defun ruby-send-region (start end &optional print)
   "Send the current region to the inferior Ruby process."
-  (interactive "r")
+  (interactive "r\nP")
   (let (term (file (or buffer-file-name (buffer-name))) line)
     (save-excursion
       (save-restriction
@@ -366,7 +367,28 @@ Must not contain ruby meta characters.")
                                                 term inf-ruby-eval-binding
                                                 file line))
     (comint-send-region (inf-ruby-proc) start end)
-    (comint-send-string (inf-ruby-proc) (concat "\n" term "\n"))))
+    (comint-send-string (inf-ruby-proc) (concat "\n" term "\n"))
+    (when print (ruby-print-result))))
+
+(defun ruby-print-result ()
+  "Print the result of the last evaluation in the current buffer."
+  (let ((proc (inf-ruby-proc)))
+    (insert
+     (with-current-buffer inf-ruby-buffer
+       (while (not (and comint-last-prompt
+                        (goto-char (car comint-last-prompt))
+                        (looking-at inf-ruby-first-prompt-pattern)))
+         (accept-process-output proc))
+       (re-search-backward inf-ruby-prompt-pattern)
+       (or (re-search-forward " => " (car comint-last-prompt) t)
+           ;; Evaluation seems to have failed.
+           ;; Try to extract the error string.
+           (let* ((inhibit-field-text-motion t)
+                  (s (buffer-substring-no-properties (point) (line-end-position))))
+             (while (string-match inf-ruby-prompt-pattern s)
+               (setq s (replace-match "" t t s)))
+             (error "%s" s)))
+       (buffer-substring-no-properties (point) (line-end-position))))))
 
 (defun ruby-send-definition ()
   "Send the current definition to the inferior Ruby process."
@@ -377,20 +399,22 @@ Must not contain ruby meta characters.")
       (ruby-beginning-of-defun)
       (ruby-send-region (point) end))))
 
-(defun ruby-send-last-sexp ()
+(defun ruby-send-last-sexp (&optional print)
   "Send the previous sexp to the inferior Ruby process."
-  (interactive)
-  (ruby-send-region (save-excursion (ruby-backward-sexp) (point)) (point)))
+  (interactive "P")
+  (ruby-send-region (save-excursion (ruby-backward-sexp) (point)) (point))
+  (when print (ruby-print-result)))
 
-(defun ruby-send-block ()
+(defun ruby-send-block (&optional print)
   "Send the current block to the inferior Ruby process."
-  (interactive)
+  (interactive "P")
   (save-excursion
     (ruby-end-of-block)
     (end-of-line)
     (let ((end (point)))
       (ruby-beginning-of-block)
-      (ruby-send-region (point) end))))
+      (ruby-send-region (point) end)))
+  (when print (ruby-print-result)))
 
 (defvar ruby-last-ruby-buffer nil
   "The last buffer we switched to `inf-ruby' from.")
@@ -452,6 +476,13 @@ Then switch to the process buffer."
                                               file-name
                                               "\"\)\n")))
 
+(defun ruby-send-buffer ()
+  "Send the current buffer to the inferior Ruby process."
+  (interactive)
+  (save-restriction
+    (widen)
+    (ruby-send-region (point-min) (point-max))))
+
 (defun ruby-escape-single-quoted (str)
   "Escape single quotes, double quotes and newlines in STR."
   (replace-regexp-in-string "'" "\\\\'"
@@ -479,7 +510,7 @@ Then switch to the process buffer."
                    "  old_wp = defined?(Bond) && Bond.started? && Bond.agent.weapon;"
                    "  begin"
                    "    Bond.agent.instance_variable_set('@weapon',"
-                   "      OpenStruct.new(line_buffer: line)) if old_wp;"
+                   "      OpenStruct.new(:line_buffer => line)) if old_wp;"
                    "    if defined?(_pry_.complete) then"
                    "      puts _pry_.complete(expr)"
                    "    else"
@@ -547,10 +578,12 @@ interactive mode, i.e. hits a debugger breakpoint."
   (interactive)
   (setq buffer-read-only nil)
   (buffer-enable-undo)
-  (let ((mode major-mode))
+  (let ((mode major-mode)
+        (arguments compilation-arguments))
     (inf-ruby-mode)
     (make-local-variable 'inf-ruby-orig-compilation-mode)
-    (setq inf-ruby-orig-compilation-mode mode))
+    (setq inf-ruby-orig-compilation-mode mode)
+    (set (make-local-variable 'compilation-arguments) arguments))
   (let ((proc (get-buffer-process (current-buffer))))
     (when proc
       (make-local-variable 'inf-ruby-orig-process-filter)
@@ -569,9 +602,11 @@ Otherwise, just toggle read-only status."
   (if inf-ruby-orig-compilation-mode
       (let ((orig-mode-line-process mode-line-process)
             (proc (get-buffer-process (current-buffer)))
+            (arguments compilation-arguments)
             (filter inf-ruby-orig-process-filter))
         (funcall inf-ruby-orig-compilation-mode)
         (setq mode-line-process orig-mode-line-process)
+        (set (make-local-variable 'compilation-arguments) arguments)
         (when proc
           (set-process-filter proc filter)))
     (toggle-read-only)))
@@ -585,6 +620,9 @@ keymaps to bind `inf-ruby-switch-from-compilation' to `С-x C-q'."
        'inf-ruby-switch-from-compilation))
   (eval-after-load 'ruby-compilation
     '(define-key ruby-compilation-mode-map (kbd "C-x C-q")
+       'inf-ruby-switch-from-compilation))
+  (eval-after-load 'projectile-rails
+    '(define-key projectile-rails-server-mode-map (kbd "C-x C-q")
        'inf-ruby-switch-from-compilation)))
 
 (defvar inf-ruby-console-patterns-alist
@@ -596,6 +634,10 @@ keymaps to bind `inf-ruby-switch-from-compilation' to `С-x C-q'."
 `inf-ruby-console-auto' walks up from the current directory until
 one of the predicates matches, then calls `inf-ruby-console-NAME',
 passing it the found directory.")
+
+(defvar inf-ruby-breakpoint-pattern "\\(\\[1\\] pry(\\)\\|\\((rdb:1)\\)"
+  "Pattern found when a breakpoint is triggered in a compilation session.
+This checks if the current line is a pry or ruby-debug prompt.")
 
 (defun inf-ruby-console-match (dir)
   "Find matching console command for DIR, if any."
@@ -693,6 +735,40 @@ Gemfile, it should use the `gemspec' instruction."
   (interactive "D")
   (let ((default-directory (file-name-as-directory dir)))
     (run-ruby "bundle exec racksh" "racksh")))
+
+(defun inf-ruby-in-ruby-compilation-modes (mode)
+  "Check if MODE is a Ruby compilation mode."
+  (member mode '(rspec-compilation-mode
+                 ruby-compilation-mode
+                 projectile-rails-server-mode)))
+
+;;;###autoload
+(defun inf-ruby-auto-enter ()
+  "Switch to `inf-ruby-mode' if the breakpoint pattern matches the current line."
+  (when (and (inf-ruby-in-ruby-compilation-modes major-mode)
+             (save-excursion
+               (beginning-of-line)
+               (re-search-forward inf-ruby-breakpoint-pattern nil t)))
+    ;; Exiting excursion before this call to get the prompt fontified.
+    (inf-ruby-switch-from-compilation)
+    (add-hook 'comint-input-filter-functions 'inf-ruby-auto-exit nil t)))
+
+;;;###autoload
+(defun inf-ruby-auto-exit (input)
+  "Return to the previous compilation mode if INPUT is a debugger exit command."
+  (when (inf-ruby-in-ruby-compilation-modes inf-ruby-orig-compilation-mode)
+    (if (member input '("quit\n" "exit\n" ""))
+        ;; After the current command completes, otherwise we get a
+        ;; marker error.
+        (run-with-idle-timer 0 nil #'inf-ruby-maybe-switch-to-compilation))))
+
+(defun inf-ruby-enable-auto-breakpoint ()
+  (interactive)
+  (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter))
+
+(defun inf-ruby-disable-auto-breakpoint ()
+  (interactive)
+  (remove-hook 'compilation-filter-hook 'inf-ruby-auto-enter))
 
 ;;;###autoload
 (defun inf-ruby-console-default (dir)
