@@ -34,7 +34,7 @@
   (c-set-offset 'arglist-cont-nonempty '++))
 
 (defun my-go-mode-hook ()
-  (add-to-list (make-local-variable 'company-backends) 'company-go)
+  (add-to-list (make-local-variable 'company-backends) (list 'company-go 'company-dabbrev))
   (add-hook 'before-save-hook 'gofmt-before-save nil t)
   (go-eldoc-setup)
   (go-guru-hl-identifier-mode)
