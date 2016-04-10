@@ -6,7 +6,6 @@
 (add-auto-mode 'git-commit-mode "COMMIT_EDITMSG$")
 (add-auto-mode 'graphviz-dot-mode "\\.dot$")
 (add-auto-mode 'haml-mode "\\.haml$")
-(add-auto-mode 'haskell-mode "\\.hs$")
 (add-auto-mode 'jde-mode "\\.java\\'")
 (add-auto-mode 'ledger-mode "\\.ledger$")
 (add-auto-mode 'lua-mode "\\.lua$")

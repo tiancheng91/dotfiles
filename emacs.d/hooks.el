@@ -15,10 +15,6 @@
 (defun my-gud-mode-hook ()
   (add-to-list 'gud-jdb-classpath "~/android/android-sdk-linux/platforms/android-16/android.jar"))
 
-(defun my-haskell-mode-hook ()
-  (turn-on-haskell-doc-mode)
-  (turn-on-haskell-indentation))
-
 (defun my-ibuffer-mode-hook ()
   (ibuffer-switch-to-saved-filter-groups "default"))
 
@@ -33,7 +29,6 @@
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 (add-hook 'gud-mode-hook 'my-gud-mode-hook)
-(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 (add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 (add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
