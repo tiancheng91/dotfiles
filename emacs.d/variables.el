@@ -58,7 +58,6 @@
 (delete 'try-expand-list hippie-expand-try-functions-list)
 
 (setq-default show-trailing-whitespace t)
-(setq autopair-blink nil)
 
 (setq android-mode-sdk-dir "~/android/android-sdk-linux/")
 (setq jde-global-classpath '("~/android/projects/" "~/android/android-sdk-linux/platforms/android-16/android.jar"))
