@@ -47,3 +47,11 @@ Emacs*font: Envy Code R-10
 
 ! input methods
 URxvt.inputMethod: SCIM
+
+Xft.autohint: 0
+Xft.lcdfilter:  lcdnone
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
