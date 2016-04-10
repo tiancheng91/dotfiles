@@ -9,7 +9,6 @@
 (load "~/.emacs.d/loads")
 (load "~/.emacs.d/autoloads")
 (load "~/.emacs.d/hooks")
-(load "~/.emacs.d/variables")
 (load "~/.emacs.d/backup")
 (load "~/.emacs.d/modes")
 (load "~/.emacs.d/automodes")
@@ -80,10 +79,15 @@
  '(LaTeX-verbatim-regexp "verbatim\\*?\\|ListingUmg\\|BefehlUmg")
  '(TeX-newline-function (quote reindent-then-newline-and-indent))
  '(add-log-file-name-function nil)
+ '(android-mode-sdk-dir "~/android/android-sdk-linux/")
  '(autotest-use-ui t)
+ '(browse-url-browser-function (quote browse-url-chromium))
  '(c-hanging-semi&comma-criteria
    (quote
     (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
+ '(calendar-date-style (quote iso))
+ '(calendar-week-start-day 1)
+ '(case-replace nil)
  '(cedet-android-current-version "16")
  '(change-log-default-name nil)
  '(company-auto-complete-chars nil)
@@ -95,19 +99,34 @@
  '(company-begin-commands nil)
  '(company-go-insert-arguments t)
  '(company-go-show-annotation t)
+ '(company-idle-delay 0)
+ '(company-minimum-prefix-length 0)
  '(company-show-numbers nil)
  '(company-tooltip-align-annotations t)
+ '(company-tooltip-limit 20)
  '(company-transformers (quote (company-sort-by-backend-importance)))
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
  '(css-indent-offset 2)
+ '(default-frame-alist
+    (quote
+     ((background-color . "#000000")
+      (foreground-color . "#ffffff")
+      (background-mode . dark)
+      (border-color . "#000000")
+      (cursor-color . "white")
+      (mouse-color . "#FFFFFF")
+      (vertical-scroll-bars))))
  '(default-input-method "TeX")
  '(display-time-day-and-date nil)
+ '(echo-keystrokes 0.1)
  '(ede-project-directories
    (quote
     ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(elscreen-tab-display-control nil)
+ '(fci-rule-color "darkred")
+ '(fci-rule-column 113)
  '(flycheck-check-syntax-automatically (quote (save mode-enabled)))
  '(flycheck-checkers
    (quote
@@ -131,6 +150,9 @@
  '(gofmt-command "goimports")
  '(gofmt-show-errors (quote buffer))
  '(haml-backspace-backdents-nesting t)
+ '(hippie-expand-try-functions-list
+   (quote
+    (try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
  '(hl-paren-colors
    (quote
     ("firebrick1" "IndianRed1" "IndianRed3" "IndianRed4" "sienna")))
@@ -165,6 +187,9 @@
  '(imenu-auto-rescan-maxout 600000)
  '(imenu-max-item-length nil)
  '(indent-tabs-mode nil)
+ '(indicate-empty-lines t)
+ '(inhibit-startup-screen t)
+ '(ispell-program-name "aspell")
  '(jde-compiler
    (quote
     (("eclipse java compiler server" "/home/dominikh/android/eclipse/plugins/org.eclipse.jdt.core_3.8.1.v20120531-0637.jar"))))
@@ -177,12 +202,19 @@
  '(js2-enter-indents-newline t)
  '(js2-highlight-level 3)
  '(js2-indent-on-enter-key t)
+ '(kill-whole-line t)
+ '(line-move-visual t)
  '(lpr-headers-switches nil)
  '(lpr-page-header-program "pr")
  '(lpr-page-header-switches (quote ("-h" "%s" "-F" "-o 5")))
  '(magit-process-popup-time 5)
  '(magit-revert-buffers t)
  '(magit-save-some-buffers nil)
+ '(major-mode (quote text-mode))
+ '(max-lisp-eval-depth 2000)
+ '(max-specpdl-size 2000)
+ '(message-log-max -1)
+ '(mouse-yank-at-point t)
  '(mumamo-chunk-coloring 999)
  '(mumamo-set-major-mode-delay -1)
  '(nxhtml-default-encoding (quote utf-8))
@@ -195,6 +227,10 @@
  '(org-startup-folded nil)
  '(org-startup-truncated nil)
  '(org-tab-follows-link t)
+ '(package-archives
+   (quote
+    (("gnu" . "http://elpa.gnu.org/packages/")
+     ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(php-basic-offset 2)
  '(php-speedbar-config nil)
  '(popcmp-group-alternatives nil)
@@ -227,6 +263,8 @@
  '(pr-print-using-ghostscript nil)
  '(ps-always-build-face-reference t)
  '(ps-paper-type (quote a4))
+ '(read-file-name-completion-ignore-case t)
+ '(recentf-max-menu-items 1000)
  '(require-final-newline t)
  '(rm-blacklist
    (quote
@@ -260,17 +298,26 @@
      (Coding . iso-2022-7bit)
      (whitespace-action)
      (encoding . utf-8))))
+ '(scroll-conservatively 5)
+ '(scroll-preserve-screen-position (quote keep))
+ '(scroll-step 1)
+ '(sentence-end-double-space nil)
+ '(show-trailing-whitespace t)
  '(sml-modeline-len 30)
  '(sml-modeline-numbers (quote line-numbers))
+ '(spelln-country (quote united-states))
+ '(spelln-language (quote english-us))
  '(standard-indent 2)
  '(tab-width 4)
  '(tags-case-fold-search nil)
  '(tags-table-list nil)
+ '(textstats-auto-hide-secs 0)
  '(tramp-encoding-shell "/bin/bash")
  '(user-full-name "Dominik Honnef")
  '(vc-follow-symlinks t)
  '(w3-use-terminal-characters t)
  '(w3m-default-display-inline-images t)
+ '(warning-minimum-level :error)
  '(web-mode-enable-auto-closing t)
  '(web-mode-enable-auto-quoting nil)
  '(which-func-modes
@@ -284,6 +331,8 @@
  '(whitespace-style (quote (trailing space-mark tab-mark)))
  '(whitespace-tab (quote whitespace-tab))
  '(woman-use-own-frame nil)
+ '(x-select-enable-clipboard nil)
+ '(x-select-enable-primary t)
  '(yas-fallback-behavior (quote return-nil))
  '(yas-prompt-functions
    (quote
@@ -367,3 +416,9 @@
  '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "#BED3E8"))))
  '(widget-field ((((type tty)) (:background "darkorange" :foreground "black"))))
  '(yard-param-name ((t (:weight bold))) t))
+
+(fset 'yes-or-no-p 'y-or-n-p)
+(put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'upcase-region 'disabled nil)

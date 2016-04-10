@@ -22,3 +22,4 @@
 
 (blink-cursor-mode -1)
 (global-font-lock-mode t)
+(column-number-mode t)

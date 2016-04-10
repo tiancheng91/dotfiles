@@ -2,6 +2,8 @@
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
+(defvar hcz-set-cursor-color-buffer "")
+(defvar hcz-set-cursor-color-color "")
 (defun hcz-set-cursor-color-according-to-mode ()
   "change cursor color according to some minor modes."
   ;;set-cursor-color is somewhat costly, so we only call it when

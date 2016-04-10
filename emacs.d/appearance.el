@@ -1,7 +1,6 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (setq-default frame-title-format (list "Emacs: %b [%f]"))
-(add-to-list 'default-frame-alist '(foreground-color . "white"))
 
 (setq window-system-default-frame-alist
       '((x (background-color . "black") )))
