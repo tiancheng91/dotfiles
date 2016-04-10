@@ -100,6 +100,3 @@
 
 (setq-default fci-rule-column 113)
 (setq fci-rule-color "darkred")
-
-(setq ace-jump-mode-move-keys
-      (loop for i from ?a to ?z collect i))

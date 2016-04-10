@@ -72,7 +72,6 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 (global-set-key (kbd "C-=") 'er/expand-region)
 
@@ -84,6 +83,5 @@
                   (join-line -1)))
 (global-set-key (kbd "<f1>") 'deft)
 
-(global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
 
 (global-set-key (kbd "M-,") #'pop-tag-mark)

@@ -403,8 +403,6 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
-(key-chord-define-global "jj" 'ace-jump-char-mode)
-(key-chord-define-global "JJ" 'ace-jump-mode-pop-mark)
 
 
 
@@ -493,6 +491,7 @@
 ;;     (message "echo '%s' | /opt/plan9/bin/plumb -a 'click=%d' -i" word click)
 ;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
 
+(load "~/.emacs.d/ace.el")
 (load "~/.emacs.d/c.el")
 (load "~/.emacs.d/company.el")
 (load "~/.emacs.d/go.el")
