@@ -16,21 +16,6 @@
       (set-cursor-color (setq hcz-set-cursor-color-color color))
       (setq hcz-set-cursor-color-buffer (buffer-name)))))
 
-(defun end-of-line-text ()
-  "Move to end of current line and skip comments and trailing space.
-Require `font-lock'."
-  (interactive)
-  (end-of-line)
-  (let ((bol (line-beginning-position)))
-    (unless (eq font-lock-comment-face (get-text-property bol 'face))
-      (while (and (/= bol (point))
-                  (eq font-lock-comment-face
-                      (get-text-property (point) 'face)))
-        (backward-char 1))
-      (unless (= (point) bol)
-        (forward-char 1) (skip-chars-backward " \t\n"))))
-  ) ;;;;Done with home and end keys.
-
 (defun rename-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME." (interactive "sNew name: ")
   (let ((name (buffer-name))
@@ -48,26 +33,6 @@ Require `font-lock'."
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
-
-(defun find-changelog ()
-  (let (last_filename cur_filename found_filename)
-    (setq last_filename nil)
-    (setq cur_filename  "")
-    (setq found_filename nil)
-    (setq iteration 1)
-    (while (not (or
-                 (equal last_filename
-                        (setq cur_filename
-                              (file-truename
-                               (concat (buffer-file-name)
-                                       (mapconcat 'identity (make-list iteration "/..") "")
-                                       "/ChangeLog"))))
-                 found_filename))
-      (if (file-exists-p cur_filename)
-          (setq found_filename cur_filename))
-      (setq last_filename cur_filename)
-      (setq iteration (+ iteration 1)))
-    found_filename))
 
 (defun find-alternative-file-with-sudo ()
   (interactive)
@@ -88,13 +53,6 @@ Require `font-lock'."
     (insert-string
       (concat (if (= 0 (forward-line 1)) "" "\n") str "\n"))
     (forward-line -1)))
-
-(defun w3m-copy-url-at-point ()
-    (interactive)
-    (let ((url (w3m-anchor)))
-      (if (w3m-url-valid url)
-      (kill-new (w3m-anchor))
-        (message "No URL at point!"))))
 
 (defun djcb-snip (b e summ)
   "remove selected lines, and replace it with [snip:summary (n lines)]"
@@ -134,15 +92,6 @@ link in the kill ring."
                            (re-search-forward "\n\n")
                            (kill-new (buffer-substring (point) (point-max)))
                            (message "%s" (buffer-substring (point) (point-max)))))))))))
-
-(defun dh-open-temp-file (suffix)
-  (interactive "MFile suffix: ")
-  (let ((tmp (make-temp-file nil nil (concat "." suffix))))
-    (with-current-buffer (find-file tmp)
-      (insert tmp)
-      (comment-region (point-min) (point-max))
-      (end-of-line)
-      (newline))))
 
 (defun zap-up-to-char (arg char)
   (interactive (list (prefix-numeric-value current-prefix-arg)
