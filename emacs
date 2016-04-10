@@ -25,7 +25,6 @@
 (load "~/.emacs.d/hooks")
 
 ;;;; Global minor-modes
-(define-globalized-minor-mode global-glasses-mode glasses-mode glasses-mode)
 (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode highlight-parentheses-mode)
 
 ;;;; Variables/Options
@@ -140,7 +139,6 @@
  '(font-latex-match-sectioning-4-keywords (quote (("UAbsch" ""))))
  '(font-latex-match-sectioning-5-keywords (quote (("UUAbsch" ""))))
  '(gimp-exe "gimp")
- '(glasses-separator "")
  '(global-flycheck-mode t nil (flycheck))
  '(global-font-lock-mode t)
  '(go-impl-aliases-alist

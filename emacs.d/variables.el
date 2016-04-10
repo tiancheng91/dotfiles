@@ -28,11 +28,6 @@
 (setq browse-url-browser-function 'browse-url-generic)
 (setq display-time-day-and-date 1)
 
-(setq glasses-separator "")
-(setq glasses-face "bold")
-(setq glasses-original-separator "")
-(setq glasses-separate-parentheses-p nil)
-
 (setq spelln-language 'english-us)
 (setq spelln-country 'united-states)
 (setq default-tab-width 2)

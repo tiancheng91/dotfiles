@@ -1,5 +1,4 @@
 (display-time)
-;; (global-glasses-mode t)
 (delete-selection-mode t)
 (ido-mode 1)
 (scroll-bar-mode -1)
