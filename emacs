@@ -79,7 +79,6 @@
  '(LaTeX-verbatim-regexp "verbatim\\*?\\|ListingUmg\\|BefehlUmg")
  '(TeX-newline-function (quote reindent-then-newline-and-indent))
  '(add-log-file-name-function nil)
- '(android-mode-sdk-dir "~/android/android-sdk-linux/")
  '(autotest-use-ui t)
  '(browse-url-browser-function (quote browse-url-chromium))
  '(c-hanging-semi&comma-criteria
@@ -88,7 +87,6 @@
  '(calendar-date-style (quote iso))
  '(calendar-week-start-day 1)
  '(case-replace nil)
- '(cedet-android-current-version "16")
  '(change-log-default-name nil)
  '(company-auto-complete-chars nil)
  '(company-backends
@@ -120,9 +118,6 @@
  '(default-input-method "TeX")
  '(display-time-day-and-date nil)
  '(echo-keystrokes 0.1)
- '(ede-project-directories
-   (quote
-    ("/home/dominikh/android/projects/HelloWorld" "/home/dominikh/android/projects")))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(elscreen-tab-display-control nil)
  '(fci-rule-color "darkred")
@@ -190,10 +185,6 @@
  '(indicate-empty-lines t)
  '(inhibit-startup-screen t)
  '(ispell-program-name "aspell")
- '(jde-compiler
-   (quote
-    (("eclipse java compiler server" "/home/dominikh/android/eclipse/plugins/org.eclipse.jdt.core_3.8.1.v20120531-0637.jar"))))
- '(jde-compiler-new-compile-el t)
  '(js-indent-level 2)
  '(js2-auto-indent-p t)
  '(js2-basic-offset 2)
