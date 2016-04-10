@@ -134,6 +134,7 @@
  '(glasses-separator "")
  '(global-flycheck-mode t nil (flycheck))
  '(global-font-lock-mode t)
+ '(godoc-at-point-function (quote godoc-gogetdoc))
  '(gofmt-show-errors (quote buffer))
  '(haml-backspace-backdents-nesting t)
  '(hl-paren-colors
