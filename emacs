@@ -496,6 +496,7 @@
 ;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
 
 (load "~/.emacs.d/c.el")
+(load "~/.emacs.d/company.el")
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/gnus.el")
 (load "~/.emacs.d/haskell.el")

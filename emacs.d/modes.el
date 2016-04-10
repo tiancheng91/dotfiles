@@ -16,7 +16,6 @@
 
 (projectile-global-mode)
 (elscreen-start)
-(global-company-mode t)
 (global-anzu-mode t)
 (rich-minority-mode t)
 (display-time-mode 0)
