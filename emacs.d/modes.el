@@ -19,3 +19,6 @@
 
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
+
+(blink-cursor-mode -1)
+(global-font-lock-mode t)

@@ -80,7 +80,6 @@
  '(TeX-newline-function (quote reindent-then-newline-and-indent))
  '(add-log-file-name-function nil)
  '(autotest-use-ui t)
- '(blink-cursor-mode nil)
  '(c-hanging-semi&comma-criteria
    (quote
     (c-semi&comma-no-newlines-before-nonblanks c-semi&comma-inside-parenlist)))
@@ -98,7 +97,6 @@
  '(company-show-numbers nil)
  '(company-tooltip-align-annotations t)
  '(company-transformers (quote (company-sort-by-backend-importance)))
- '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
  '(css-indent-offset 2)
@@ -123,8 +121,6 @@
  '(font-latex-match-sectioning-4-keywords (quote (("UAbsch" ""))))
  '(font-latex-match-sectioning-5-keywords (quote (("UUAbsch" ""))))
  '(gimp-exe "gimp")
- '(global-flycheck-mode t nil (flycheck))
- '(global-font-lock-mode t)
  '(go-impl-aliases-alist
    (quote
     (("sort" . "sort.Interface")
@@ -264,7 +260,6 @@
      (whitespace-action)
      (encoding . utf-8))))
  '(sml-modeline-len 30)
- '(sml-modeline-mode t)
  '(sml-modeline-numbers (quote line-numbers))
  '(standard-indent 2)
  '(tab-width 4)
