@@ -7,7 +7,6 @@
 (require 'glasses)
 (require 'linum)
 (require 'which-func)
-(require 'uniquify)
 
 (require 'iedit)
 (require 'recentf)

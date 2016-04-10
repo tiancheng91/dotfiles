@@ -49,10 +49,6 @@
 
 (setq selection-coding-system nil)
 (setq echo-keystrokes 0.1)
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator "|")
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
 (setq Info-directory-list Info-default-directory-list)
 (setq line-move-visual t)
 (setq w3m-home-page "http://www.google.com/")

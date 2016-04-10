@@ -36,6 +36,7 @@
 (load "~/.emacs.d/ruby.el")
 (load "~/.emacs.d/server.el")
 (load "~/.emacs.d/tramp")
+(load "~/.emacs.d/uniquify")
 (load "~/.emacs.d/windmove.el")
 (load "~/.emacs.d/yasnippet.el")
 
