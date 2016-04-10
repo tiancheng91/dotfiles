@@ -286,3 +286,14 @@ PERL5LIB="/home/dominikh/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5L
 PERL_LOCAL_LIB_ROOT="/home/dominikh/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/dominikh/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/dominikh/perl5"; export PERL_MM_OPT;
+relevant_env() {
+    export | grep -Ev "^PWD=" | grep -Ev "^OLDPWD="
+}
+
+env_diff() {
+    #comm -3 <(relevant_env | sort) <(echo "${_dh_orig_env}" | sort)
+    diff -U 0 <(echo "${_dh_orig_env}" | sort) <(relevant_env | sort)  | grep -v "^[^-+]" | tail -n +3
+}
+
+_dh_orig_env="$(relevant_env)"
+

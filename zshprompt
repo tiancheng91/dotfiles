@@ -22,6 +22,11 @@ function precmd {
     else
         psvar=()
     fi
+
+    envmarker=""
+    if [ "$(relevant_env)" != "${_dh_orig_env}" ]; then
+        envmarker="^"
+    fi
 }
 
 RNDIRS=1
@@ -40,7 +45,7 @@ abbrev_vcs_dir() {
 
 
 setopt prompt_subst
-PROMPT='%(1V^%m%(?.. %??)%(1j. %j&.) ${repo}${vcs_info_msg_0_} $(abbrev_vcs_dir ${vcs_info_msg_1_}) ^%m%(?.. %??)%(1j. %j&.) %($((NDIRS+1))~|./|)%${NDIRS}~ )%(!.%B#%b.\$) '
+PROMPT='%(1V^%m%(?.. %??)%(1j. %j&.) ${repo}${vcs_info_msg_0_} $(abbrev_vcs_dir ${vcs_info_msg_1_}) ^%m%(?.. %??)%(1j. %j&.) %($((NDIRS+1))~|./|)%${NDIRS}~ )${envmarker}%(!.%B#%b.\$) '
 
 
 # function precmd {
