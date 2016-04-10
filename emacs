@@ -20,24 +20,27 @@
 (load "~/.emacs.d/passwords")
 
 (load "~/.emacs.d/ace.el")
-(load "~/.emacs.d/c.el")
 (load "~/.emacs.d/company.el")
 (load "~/.emacs.d/csearch.el")
 (load "~/.emacs.d/ffap.el")
-(load "~/.emacs.d/go.el")
 (load "~/.emacs.d/gnus.el")
-(load "~/.emacs.d/haskell.el")
 (load "~/.emacs.d/ibuffer.el")
 (load "~/.emacs.d/ido.el")
-(load "~/.emacs.d/latex.el")
-(load "~/.emacs.d/org.el")
 (load "~/.emacs.d/projectile.el")
-(load "~/.emacs.d/ruby.el")
 (load "~/.emacs.d/server.el")
 (load "~/.emacs.d/tramp")
 (load "~/.emacs.d/uniquify")
 (load "~/.emacs.d/windmove.el")
 (load "~/.emacs.d/yasnippet.el")
+
+;; Languages
+(load "~/.emacs.d/c.el")
+(load "~/.emacs.d/go.el")
+(load "~/.emacs.d/haskell.el")
+(load "~/.emacs.d/latex.el")
+(load "~/.emacs.d/org.el")
+(load "~/.emacs.d/ruby.el")
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
