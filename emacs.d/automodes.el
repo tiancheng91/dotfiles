@@ -17,7 +17,6 @@
 (add-auto-mode 'nxml-mode "\\.html.erb$")
 (add-auto-mode 'nxml-mode "\\.rhtml$")
 (add-auto-mode 'nxml-mode "\\.rhtml$")
-(add-auto-mode 'org-mode "\\.org$")
 (add-auto-mode 'php-mode "\\.\\(\\php|php5\\)$")
 (add-auto-mode 'pkgbuild-mode "/PKGBUILD$")
 (add-auto-mode 'pov-mode "\\.pov$")
@@ -25,4 +24,3 @@
 (add-auto-mode 'ssh-config-mode ".ssh/config\\'")
 (add-auto-mode 'xml-mode "\\.xhtml$")
 (add-auto-mode 'yaml-mode "\\.yml$")
-

@@ -499,5 +499,6 @@
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/haskell.el")
 (load "~/.emacs.d/latex.el")
+(load "~/.emacs.d/org.el")
 (load "~/.emacs.d/ruby.el")
 (load "~/.emacs.d/yasnippet.el")

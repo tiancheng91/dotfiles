@@ -49,22 +49,6 @@ Require `font-lock'."
   (interactive)
   (indent-region (point-min) (point-max)))
 
-(defun ahkt-plot-table (script)
-  "util function to export and plot a table using the supplied
-gnuplot `script'"
-  (org-table-export)
-  (let ((cbuf (current-buffer))
-        (cwin (selected-window)))
-    (save-restriction
-      (save-excursion
-        (find-file script)
-        (gnuplot-send-buffer-to-gnuplot)
-        (bury-buffer)
-        (bury-buffer (get-buffer "*gnuplot*"))))
-    (and (window-live-p cwin) (select-window cwin))
-    (switch-to-buffer cbuf)
-    (delete-other-windows)))
-
 (defun find-changelog ()
   (let (last_filename cur_filename found_filename)
     (setq last_filename nil)

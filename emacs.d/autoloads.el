@@ -24,12 +24,6 @@
 (autoload 'macro-math-eval-and-round-region "macro-math" nil t)
 (autoload 'macro-math-eval-region "macro-math" nil t)
 
-;; Org mode
-(autoload 'org-agenda "org-agenda" nil t)
-(autoload 'org-agenda-list "org-agenda" nil t)
-(autoload 'org-mode "org" nil t)
-(autoload 'orgtbl-mode "org-table" nil t)
-
 (autoload 'spelln-currency-in-words "spell-number")
 (autoload 'spelln-currency-string-in-words "spell-number")
 (autoload 'spelln-integer-in-words "spell-number")

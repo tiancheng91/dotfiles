@@ -9,8 +9,6 @@
 ;;; S-left and S-right are read from the terminfo
 
 ; (global-set-key (kbd "C-m") 'reindent-then-newline-and-indent)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "M-C-y") 'kill-ring-search)
 (global-set-key (kbd "C-x ~") 'macro-math-eval-and-round-region)
 (global-set-key (kbd "C-x =") 'macro-math-eval-region)
@@ -53,9 +51,7 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
-(global-set-key (kbd "M-C-g") 'org-plot/gnuplot)
 (global-set-key (kbd "C-x C-r") 'find-alternative-file-with-sudo)
-(global-set-key (kbd "C-c r") 'org-remember)
 
 (global-set-key (kbd "C-;") 'iedit-mode)
 

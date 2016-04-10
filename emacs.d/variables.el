@@ -11,11 +11,6 @@
 (setq kill-whole-line t)
 (setq lpr-switches '("-PCLP-315"))
 (setq mouse-yank-at-point t)
-(setq org-hide-leading-stars t)
-(setq org-log-done t)
-(setq org-return-follows-link t)
-
-(setq org-todo-keywords '((sequence "TODO" "|" "DONE" "SKIPPED" "COPIED")))
 (setq scroll-conservatively 5)
 (setq scroll-step 1)
 (setq sentence-end-double-space nil)
@@ -64,8 +59,6 @@
 (setq uniquify-after-kill-buffer-p t)
 (setq uniquify-ignore-buffers-re "^\\*")
 (setq Info-directory-list Info-default-directory-list)
-(setq org-directory "~/notes")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq line-move-visual t)
 (setq w3m-home-page "http://www.google.com/")
 (setq associated-program-alist
@@ -90,10 +83,6 @@
 (setq gnus-inhibit-startup-message t)
 
 (setq imaxima-use-maxima-mode-flag t)
-(setq org-global-properties (quote (("Effort_ALL" . "0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00"))))
-(setq org-columns-default-format "%40ITEM(Task) %17Effort(Estimated Effort){:} %CLOCKSUM")
-(setq org-agenda-start-on-weekday nil)
-(setq org-read-date-prefer-future nil)
 (setq user-mail-address "dominikh@fork-bomb.org")
 (setq smtpmail-debug-verb t)
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
