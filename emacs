@@ -305,6 +305,7 @@
  '(whitespace-style (quote (trailing space-mark tab-mark)))
  '(whitespace-tab (quote whitespace-tab))
  '(woman-use-own-frame nil)
+ '(yas-fallback-behavior (quote return-nil))
  '(yas-prompt-functions
    (quote
     (yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt))))
