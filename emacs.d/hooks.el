@@ -33,12 +33,6 @@
         c-backspace-function 'delete-backward-char)
   (c-set-offset 'arglist-cont-nonempty '++))
 
-(defun my-go-mode-hook ()
-  (add-to-list (make-local-variable 'company-backends) (list 'company-go 'company-dabbrev))
-  (add-hook 'before-save-hook 'gofmt-before-save nil t)
-  (go-eldoc-setup)
-  (go-guru-hl-identifier-mode)
-  (subword-mode 1))
 
 (defun my-gud-mode-hook ()
   (add-to-list 'gud-jdb-classpath "~/android/android-sdk-linux/platforms/android-16/android.jar"))
@@ -67,7 +61,6 @@
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
-(add-hook 'go-mode-hook 'my-go-mode-hook)
 (add-hook 'gud-mode-hook 'my-gud-mode-hook)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 (add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)

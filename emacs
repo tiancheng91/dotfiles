@@ -149,6 +149,7 @@
      ("string" . "fmt.Stringer"))))
  '(go-impl-enter-function t)
  '(godoc-at-point-function (quote godoc-gogetdoc))
+ '(gofmt-command "goimports")
  '(gofmt-show-errors (quote buffer))
  '(haml-backspace-backdents-nesting t)
  '(hl-paren-colors
@@ -426,37 +427,8 @@
                (tab-width . 8)
                (indent-tabs-mode . t)))
 
-(setq gofmt-command "goimports")
 (setq case-replace nil)
 
-(defun go-find (name)
-  (interactive "MIdentifier: ")
-  (godef--find-file-line-column (shell-command-to-string (format "go-find %s" name)) nil))
-
-
-(defun go-link ()
-  "Create a golang.org/src/ link for the current file, line
-number and optionally the region. If the Go version is not a
-release version, tip.golang.org will be used instead."
-  (interactive)
-  (let* ((goroot (file-truename (car (go-root-and-paths))))
-         (path (file-truename (buffer-file-name)))
-         (base (if (go--string-prefix-p "go version devel" (shell-command-to-string (concat go-command " version")))
-                   "tip.golang.org"
-                 "golang.org"))
-         (line (line-number-at-pos))
-         (start (if (use-region-p)
-                    (1- (region-beginning))
-                  0))
-         (end (if (use-region-p)
-                  (1- (region-end))
-                0))
-         (url (concat "http://" base (substring path (length goroot)) (format"?s=%d:%d#L%d" start end line))))
-    (when (called-interactively-p 'any)
-      (deactivate-mark)
-      (kill-new url)
-      (message "%s" url))
-    url))
 
 (defun me()
   (interactive)
@@ -480,54 +452,8 @@ release version, tip.golang.org will be used instead."
 (key-chord-define-global "µµ" (lambda () (interactive) (yas/insert-by-name "meth")))
 
 
-;; Turn
-;;
-;;   T{foo: bar, baz: qux{}}
-;;
-;; into
-;;
-;;   T{
-;;   	foo: bar,
-;;   	baz: qux{},
-;;   }
-;;
-;; Point needs to be anywhere before, or on, the opening {
-(defun go-neat-struct ()
-  (interactive)
-  (save-excursion
-    (search-forward "{")
-    (let ((start-level (go-paren-level))
-          (start-pos (point)))
-      (reindent-then-newline-and-indent)
-      (while (and (>= (go-paren-level) start-level)
-                  (search-forward "," nil t))
-        (if (= (go-paren-level) start-level)
-            (reindent-then-newline-and-indent)))
-      (goto-char (1- start-pos))
-      (forward-list)
-      (backward-char)
-      (insert ",")
-      (reindent-then-newline-and-indent))))
-
-(defun go-peek ()
-  (interactive)
-  (let ((file (car (godef--call (point))))
-        code)
-    (string-match "\\(.+\\):\\([0-9]+\\):\\([0-9]+\\)" file)
-    (let ((filename (match-string 1 file))
-          (line (string-to-number (match-string 2 file)))
-          (column (string-to-number (match-string 3 file))))
-      (with-current-buffer (find-file-noselect filename)
-        (save-excursion
-          (go--goto-line line)
-          (beginning-of-line)
-          (forward-char (1- column))
-          (mark-defun)
-          (setq code (buffer-substring (region-beginning) (region-end)))))
-      (display-message-or-buffer code))))
 
 
-(global-set-key (kbd "<f1>") 'go-peek)
 
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
@@ -614,3 +540,4 @@ release version, tip.golang.org will be used instead."
 ;;     (message "echo '%s' | /opt/plan9/bin/plumb -a 'click=%d' -i" word click)
 ;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
 
+(load "~/.emacs.d/go.el")

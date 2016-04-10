@@ -1,13 +1,3 @@
-(eval-after-load 'go-mode
-  (lambda ()
-    (require 'company)
-    (require 'go-eldoc)
-    (require 'go-errcheck)
-    (require 'company-go)
-    (require 'go-where)
-    (require 'go-rename)
-    (require 'go-guru)))
-
 (require 'compile)
 (require 'etags-select)
 

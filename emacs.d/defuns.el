@@ -224,21 +224,6 @@ gnuplot `script'"
 
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 
-(defun go ()
-  "run current buffer"
-  (interactive)
-  (compile (concat "go run " (buffer-file-name))))
-
-(defun golint ()
-  "golint the current buffer"
-  (interactive)
-  (compile (concat "golint " (buffer-file-name))))
-
-(defun govet ()
-  "go vet the current buffer"
-  (interactive)
-  (compile (concat "go vet " (buffer-file-name))))
-
 (defun gnus-goto-google ()
   (interactive)
   (when (memq major-mode '(gnus-summary-mode gnus-article-mode))
@@ -300,21 +285,6 @@ link in the kill ring."
       (end-of-line)
       (newline))))
 
-(defun dh-go-current-import-path ()
-  ;; +4 for src/
-  ;; Note: only works with a single gopath
-  (let ((dir (file-name-directory (file-truename buffer-file-name))))
-    (substring dir (+ 4 (length (file-truename (getenv "GOPATH")))) (1- (length dir)))))
-
-(defun go-test ()
-  (interactive)
-  (compile "go test -coverprofile=c.out"))
-
-(defun dh-go-coverage ()
-  (interactive)
-  (shell-command "go test -coverprofile=c.out")
-  (go-coverage "c.out"))
-
 (defun zap-up-to-char (arg char)
   (interactive (list (prefix-numeric-value current-prefix-arg)
                      (read-char "Zap to char: " t)))
@@ -326,27 +296,3 @@ link in the kill ring."
             (backward-char)))
     (error nil)))
 
-
-(defun go-instrument-returns ()
-  (interactive)
-  (save-excursion
-    (save-restriction
-      (let ((cnt 0))
-        (narrow-to-defun)
-        (beginning-of-defun)
-        (while (re-search-forward "^[[:space:]]+return")
-          (setq cnt (1+ cnt))
-          (beginning-of-line)
-          (open-line 1)
-          (funcall indent-line-function)
-          (insert (format "log.Println(\"return statement %d\") /* RETURN INSTRUMENT */" cnt))
-          (forward-line 2))))))
-
-(defun go-deinstrument-returns ()
-  (interactive)
-  (save-excursion
-    (save-restriction
-      (narrow-to-defun)
-      (beginning-of-defun)
-      (while (re-search-forward "^.+/\\* RETURN INSTRUMENT \\*/\n" nil t)
-        (replace-match "" nil nil)))))
