@@ -122,6 +122,7 @@ alias id3=eyeD3
 alias halt="sudo halt"
 alias reboot="sudo reboot"
 alias ll="ls -l -h -s"
+alias killbg='kill ${${(v)jobstates##*:*:}%=*}'
 
 # no spelling correction
 alias mkdir='nocorrect mkdir'
