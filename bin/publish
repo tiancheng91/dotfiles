@@ -2,7 +2,6 @@
 s=""
 for file in "$@"
 do
-    subtle-notify "Publishing ${file}"
     scp "$file" cinchrb.org:~/stuff.fork-bomb.org/public_html/
     if [ -z "$s" ]; then
         s="http://stuff.fork-bomb.org/`basename "$file"`"
@@ -13,4 +12,3 @@ done
 
 echo -e $s
 echo -en $s | xclip -i
-subtle-notify "Published ${file}"
