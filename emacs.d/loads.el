@@ -7,7 +7,6 @@
 (require 'glasses)
 (require 'linum)
 (require 'which-func)
-(require 'yasnippet)
 (require 'uniquify)
 
 (require 'whattf-dt)

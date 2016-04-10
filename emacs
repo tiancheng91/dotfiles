@@ -434,22 +434,12 @@
   (interactive)
   (insert "Dominik Honnef <dominik@honnef.co>"))
 
-(defun yas/insert-by-name (name)
-  (flet ((dummy-prompt
-          (prompt choices &optional display-fn)
-          (declare (ignore prompt))
-          (or (find name choices :key display-fn :test #'string=)
-              (throw 'notfound nil))))
-    (let ((yas/prompt-functions '(dummy-prompt)))
-      (catch 'notfound
-        (yas/insert-snippet t)))))
 
 (require 'key-chord)
 (key-chord-mode 1)
 
 (key-chord-define-global "jj" 'ace-jump-char-mode)
 (key-chord-define-global "JJ" 'ace-jump-mode-pop-mark)
-(key-chord-define-global "µµ" (lambda () (interactive) (yas/insert-by-name "meth")))
 
 
 
@@ -457,8 +447,6 @@
 
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
-
-(require 'dropdown-list) ;; so YAS uses the right prompt function
 
 
 (add-hook 'ibuffer-hook
@@ -544,3 +532,4 @@
 (load "~/.emacs.d/haskell.el")
 (load "~/.emacs.d/latex.el")
 (load "~/.emacs.d/ruby.el")
+(load "~/.emacs.d/yasnippet.el")

@@ -14,8 +14,6 @@
 
 (recentf-mode 1)
 
-(yas-global-mode 1)
-
 (projectile-global-mode)
 (elscreen-start)
 (global-company-mode t)

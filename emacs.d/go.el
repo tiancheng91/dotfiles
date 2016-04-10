@@ -158,4 +158,5 @@ release version, tip.golang.org will be used instead."
     (define-key go-mode-map (kbd "C-=") #'go-guru-expand-region)
     (define-key go-mode-map (kbd "<f1>") #'go-peek)))
 
-(add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets_go")
+(eval-after-load 'yasnippet
+  (add-to-list 'yas-snippet-dirs "~/.emacs.d/snippets_go"))
