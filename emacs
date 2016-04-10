@@ -105,7 +105,7 @@
  '(change-log-default-name nil)
  '(company-auto-complete-chars nil)
  '(company-begin-commands nil)
- '(company-go-insert-arguments nil)
+ '(company-go-insert-arguments t)
  '(company-go-show-annotation t)
  '(company-show-numbers nil)
  '(company-tooltip-align-annotations t)
