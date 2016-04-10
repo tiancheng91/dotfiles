@@ -3,7 +3,7 @@
 (add-to-list 'load-path "~/prj/src/github.com/tv42/where")
 
 (defun my-go-mode-hook ()
-  (add-to-list (make-local-variable 'company-backends) (list 'company-go 'company-dabbrev))
+  (set (make-local-variable 'company-backends) (list 'company-go))
   (add-hook 'before-save-hook 'gofmt-before-save nil t)
   (go-eldoc-setup)
   (go-guru-hl-identifier-mode)
