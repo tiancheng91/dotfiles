@@ -85,9 +85,6 @@ gnuplot `script'"
       (setq iteration (+ iteration 1)))
     found_filename))
 
-(defun my-make-CR-do-indent ()
-  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
-
 (defun find-alternative-file-with-sudo ()
   (interactive)
   (when buffer-file-name

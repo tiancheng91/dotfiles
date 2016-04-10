@@ -394,39 +394,6 @@
       (setq edit-server-new-frame nil)
       (edit-server-start)))
 
-(defun new-c-lineup-arglist (langelem)
-  (save-excursion
-    (goto-char (cdr langelem))
-    (setq syntax (car (car (c-guess-basic-syntax))))
-    (while (or (eq syntax 'arglist-intro)
-               (or (eq syntax 'arglist-cont)
-                   (eq syntax 'arglist-cont-nonempty)))
-      (forward-line -1)
-      (setq syntax (car (car (c-guess-basic-syntax)))))
-    (beginning-of-line)
-    (re-search-forward "[^ \t]" (c-point 'eol))
-    (goto-char (+ (match-beginning 0) 4))
-    (vector (current-column))))
-
-(c-add-style "openbsd"
-             '("bsd"
-               (c-ignore-auto-fill . '(string))
-               (c-subword-mode . 0)
-               (c-basic-offset . 8)
-               (c-label-minimum-indentation . 0)
-               (c-offsets-alist .
-                                ((arglist-intro . new-c-lineup-arglist)
-                                 (arglist-cont . new-c-lineup-arglist)
-                                 (arglist-cont-nonempty . new-c-lineup-arglist)
-                                 (arglist-close . 0)
-                                 (substatement-open . 0)
-                                 (statement-cont . *)
-                                 (case-label . 0)
-                                 (knr-argdecl . *)))
-               (fill-column . 80)
-               (tab-width . 8)
-               (indent-tabs-mode . t)))
-
 (setq case-replace nil)
 
 
@@ -528,6 +495,7 @@
 ;;     (message "echo '%s' | /opt/plan9/bin/plumb -a 'click=%d' -i" word click)
 ;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
 
+(load "~/.emacs.d/c.el")
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/haskell.el")
 (load "~/.emacs.d/latex.el")

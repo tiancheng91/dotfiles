@@ -1,13 +1,3 @@
-
-(defun my-c-mode-hook ()
-  (setq comment-start "//"
-        comment-end   ""
-        c-basic-offset 4
-        indent-tabs-mode t
-        c-backspace-function 'delete-backward-char)
-  (c-set-offset 'arglist-cont-nonempty '++))
-
-
 (defun my-gud-mode-hook ()
   (add-to-list 'gud-jdb-classpath "~/android/android-sdk-linux/platforms/android-16/android.jar"))
 
@@ -19,9 +9,6 @@
                           '(("\\(XXX\\|FIXME\\|TODO\\)"
                              1 font-lock-warning-face prepend))))
 
-
-(add-hook 'c-initialization-hook 'my-make-CR-do-indent)
-(add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 (add-hook 'gud-mode-hook 'my-gud-mode-hook)
 (add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
