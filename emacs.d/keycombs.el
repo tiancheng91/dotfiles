@@ -1,29 +1,10 @@
-;; xterm arrow keys
-(define-key input-decode-map "\e[1;5A" [C-up])
-(define-key input-decode-map "\e[1;5B" [C-down])
-(define-key input-decode-map "\e[1;5D" [C-left])
-(define-key input-decode-map "\e[1;5C" [C-right])
-
-(define-key input-decode-map "\e[1;2B" [S-down])
-(define-key input-decode-map "\e[1;2A" [S-up])
-;;; S-left and S-right are read from the terminfo
-
-; (global-set-key (kbd "C-m") 'reindent-then-newline-and-indent)
-(global-set-key (kbd "M-C-y") 'kill-ring-search)
-(global-set-key (kbd "C-x ~") 'macro-math-eval-and-round-region)
-(global-set-key (kbd "C-x =") 'macro-math-eval-region)
-
 (global-set-key (kbd "<home>") 'back-to-indentation)
 (global-set-key (kbd "<end>") 'end-of-line)
 (global-set-key (kbd "C-a") 'back-to-indentation)
 (global-set-key (kbd "M-m") 'beginning-of-line)
 (global-set-key (kbd "C-e") 'end-of-line)
 
-(global-set-key  [\M-delete] 'kill-word)
 (global-set-key (kbd "s-i") 'indent-buffer)
-(global-set-key (kbd "s-c") 'calculator)
-
-(global-set-key (kbd "C-c j") 'semantic-ia-fast-jump)
 
 (global-set-key (kbd "<f11>") 'magit-status)
 
@@ -38,8 +19,6 @@
                                          (switch-to-buffer (other-buffer (current-buffer)))))
 
 (global-set-key (kbd "C-x C-r") 'find-alternative-file-with-sudo)
-
-(global-set-key (kbd "C-;") 'iedit-mode)
 
 ;; duplicate a line
 (global-set-key (kbd "C-c y") 'djcb-duplicate-line)
@@ -62,7 +41,6 @@
                 (lambda ()
                   (interactive)
                   (join-line -1)))
-(global-set-key (kbd "<f1>") 'deft)
 
 
 (global-set-key (kbd "M-,") #'pop-tag-mark)
