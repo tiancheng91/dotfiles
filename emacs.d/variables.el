@@ -55,13 +55,6 @@
 (setq Info-directory-list Info-default-directory-list)
 (setq line-move-visual t)
 (setq w3m-home-page "http://www.google.com/")
-(setq associated-program-alist
-      '(("gnochm" "\\.chm$")
-        ("evince" "\\.pdf$")
-        ("mocp-play" "\\.mp3$")
-        ("evince" "\\.ps$")
-        ((lambda (file)
-           (browse-url (concat "file:///" (expand-file-name file)))) "\\.html?$")))
 
 (setq imaxima-use-maxima-mode-flag t)
 
