@@ -307,6 +307,7 @@
  '(company-tooltip-common ((((type x)) (:inherit company-tooltip :weight bold)) (t (:inherit company-tooltip))))
  '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
  '(company-tooltip-selection ((t (:background "#7BB2E8" :foreground "black"))))
+ '(cursor ((t (:background "white"))))
  '(elscreen-tab-background-face ((t (:background "black"))))
  '(flycheck-warning ((t (:underline (:color "light goldenrod" :style wave)))))
  '(font-lock-yard-face ((t nil)) t)
