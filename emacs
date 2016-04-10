@@ -24,6 +24,7 @@
 (load "~/.emacs.d/ffap.el")
 (load "~/.emacs.d/gnus.el")
 (load "~/.emacs.d/ibuffer.el")
+(load "~/.emacs.d/isearch.el")
 (load "~/.emacs.d/ido.el")
 (load "~/.emacs.d/projectile.el")
 (load "~/.emacs.d/server.el")
