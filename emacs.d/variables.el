@@ -22,6 +22,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq browse-url-generic-program "chromium")
 (setq browse-url-browser-function 'browse-url-generic)
@@ -83,3 +84,6 @@
 
 (setq-default fci-rule-column 113)
 (setq fci-rule-color "darkred")
+
+(setq case-replace nil)
+

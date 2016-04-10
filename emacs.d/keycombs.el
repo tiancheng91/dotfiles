@@ -76,3 +76,8 @@
 
 
 (global-set-key (kbd "M-,") #'pop-tag-mark)
+
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+
+(global-set-key (kbd "M-Z") 'zap-between)

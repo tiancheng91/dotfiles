@@ -15,3 +15,8 @@
 (global-anzu-mode t)
 (rich-minority-mode t)
 (display-time-mode 0)
+
+(key-chord-mode 1)
+
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)

@@ -1,63 +1,44 @@
 ;; -*- mode: emacs-lisp -*-
 (setq warning-suppress-types nil)
-(setq debug-on-error t)
 (package-initialize)
 (setq package-enable-at-startup nil)
 
 (load "~/.emacs.d/eval_after_load.el")
-
-;;;; Load paths
 (load "~/.emacs.d/loadpaths")
-
-;;;; Appearance of Emacs - Load this as soon as possible so the startup doesnt look that ugly
 (load "~/.emacs.d/appearance")
-
-;;;; Own defuns
 (load "~/.emacs.d/defuns")
-
-;;;; Requires/loads
 (load "~/.emacs.d/loads")
-
-;;;; Autoloads
 (load "~/.emacs.d/autoloads")
-
-;;;; Hooks
 (load "~/.emacs.d/hooks")
 
-;;;; Global minor-modes
 (define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode highlight-parentheses-mode)
 
-;;;; Variables/Options
 (load "~/.emacs.d/variables")
-
-;;;Change backup behavior to save in a directory, not in a miscellany
-;;;of files all over the place.
 (load "~/.emacs.d/backup")
-
-;;;; Modes
 (load "~/.emacs.d/modes")
-;;(set-face-background 'hl-line "#333")
-
-;;;; auto-modes
 (load "~/.emacs.d/automodes")
-
-;;;; utf8
 (load "~/.emacs.d/utf8")
-
-;;;; Advices
 (load "~/.emacs.d/advices")
-
-;;;; Support for YARD tags
 (load "~/.emacs.d/yard")
-
-;;;; Key combinations
 (load "~/.emacs.d/keycombs")
-
-;;;; TRAMP
-(load "~/.emacs.d/tramp_config")
-
-;;;; Passwords
 (load "~/.emacs.d/passwords")
+
+(load "~/.emacs.d/ace.el")
+(load "~/.emacs.d/c.el")
+(load "~/.emacs.d/company.el")
+(load "~/.emacs.d/csearch.el")
+(load "~/.emacs.d/go.el")
+(load "~/.emacs.d/gnus.el")
+(load "~/.emacs.d/haskell.el")
+(load "~/.emacs.d/ibuffer.el")
+(load "~/.emacs.d/ido.el")
+(load "~/.emacs.d/latex.el")
+(load "~/.emacs.d/org.el")
+(load "~/.emacs.d/ruby.el")
+(load "~/.emacs.d/server.el")
+(load "~/.emacs.d/tramp")
+(load "~/.emacs.d/windmove.el")
+(load "~/.emacs.d/yasnippet.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -329,6 +310,7 @@
  '(go-guru-hl-identifier-face ((t (:inherit highlight))))
  '(highlight ((t (:underline t))))
  '(isearch ((t (:underline t :slant italic))))
+ '(js2-function-param ((t nil)))
  '(lazy-highlight ((t (:underline t))))
  '(ledger-font-account-directive-face ((t nil)))
  '(ledger-font-alias-directive-face ((t nil)))
@@ -383,105 +365,3 @@
  '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "#BED3E8"))))
  '(widget-field ((((type tty)) (:background "darkorange" :foreground "black"))))
  '(yard-param-name ((t (:weight bold))) t))
-
-(server-start)
-
-(if (locate-library "edit-server")
-    (progn
-      (require 'edit-server)
-      (setq edit-server-new-frame nil)
-      (edit-server-start)))
-
-(setq case-replace nil)
-
-
-(defun me()
-  (interactive)
-  (insert "Dominik Honnef <dominik@honnef.co>"))
-
-
-(require 'key-chord)
-(key-chord-mode 1)
-
-
-
-
-
-
-(global-set-key [C-mouse-4] 'text-scale-increase)
-(global-set-key [C-mouse-5] 'text-scale-decrease)
-
-;; (wrap-region-add-wrapper "`" "`")
-;; (wrap-region-add-wrapper "„" "“" "„")
-;; (wrap-region-global-mode t)
-
-(defun zap-between (char1 &optional char2)
-  (interactive (list (read-char "Zap between: " t)))
-  (setq char2 (or char2
-                  (cdr (assoc char1
-                              '((?< . ?>)
-                                (?( . ?))
-                                (?{ . ?})
-                                (?[ . ?]))))
-                  char1))
-    (kill-region (save-excursion
-                   (search-forward (char-to-string char1) nil nil -1)
-                   (1+ (point)))
-                 (save-excursion
-                   (search-forward (char-to-string char2) nil nil 1)
-                   (1- (point)))))
-
-(global-set-key (kbd "M-Z") 'zap-between)
-(put 'narrow-to-page 'disabled nil)
-
-
-(defun dh-chomp (str)
-  "Chomp leading and tailing whitespace from STR."
-  (replace-regexp-in-string (rx (or (: bos (* (any " \t\n")))
-                                    (: (* (any " \t\n")) eos)))
-                            ""
-                            str))
-
-;; (defun dh-default-selection (point)
-;;   (save-excursion
-;;     (goto-char point)
-;;     (let (p1 p2)
-;;       (save-excursion
-;;         (re-search-backward "^\\|[[:space:]]")
-;;         (setq p1 (point))
-;;         (if (looking-at "[[:space:]]")
-;;             (setq p1 (1+ p1))))
-;;       (save-excursion
-;;         (re-search-forward "$\\|[[:space:]]")
-;;         (setq p2 (point))
-;;         (if (looking-back "[[:space:]]")
-;;             (setq p2 (1- p2))))
-;;       (list p1 p2))))
-;;       (dh-chomp (buffer-substring-no-properties p1 p2))
-
-;; (global-set-key [mouse-3]	'dh-plumb)
-
-;; (defun dh-plumb (click)
-;;   ;; FIXME read string from buffer we clicked in
-;;   ;; FIXME set the working directory
-;;   ;; FIXME use 9p to write messages instead of shelling out
-;;   (interactive "e")
-;;   (let* ((pos (dh-default-selection (posn-point (event-start click))))
-;;          (click (- (posn-point (event-start click)) (car pos)))
-;;          (word (buffer-substring-no-properties (car pos) (nth 1 pos))))
-;;     (message "echo '%s' | /opt/plan9/bin/plumb -a 'click=%d' -i" word click)
-;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
-
-(load "~/.emacs.d/ace.el")
-(load "~/.emacs.d/c.el")
-(load "~/.emacs.d/company.el")
-(load "~/.emacs.d/go.el")
-(load "~/.emacs.d/gnus.el")
-(load "~/.emacs.d/haskell.el")
-(load "~/.emacs.d/ibuffer.el")
-(load "~/.emacs.d/ido.el")
-(load "~/.emacs.d/latex.el")
-(load "~/.emacs.d/org.el")
-(load "~/.emacs.d/ruby.el")
-(load "~/.emacs.d/windmove.el")
-(load "~/.emacs.d/yasnippet.el")

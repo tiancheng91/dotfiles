@@ -104,3 +104,22 @@ link in the kill ring."
             (backward-char)))
     (error nil)))
 
+(defun zap-between (char1 &optional char2)
+  (interactive (list (read-char "Zap between: " t)))
+  (setq char2 (or char2
+                  (cdr (assoc char1
+                              '((?< . ?>)
+                                (?( . ?))
+                                (?{ . ?})
+                                (?[ . ?]))))
+                  char1))
+    (kill-region (save-excursion
+                   (search-forward (char-to-string char1) nil nil -1)
+                   (1+ (point)))
+                 (save-excursion
+                   (search-forward (char-to-string char2) nil nil 1)
+                   (1- (point)))))
+
+(defun me()
+  (interactive)
+  (insert "Dominik Honnef <dominik@honnef.co>"))

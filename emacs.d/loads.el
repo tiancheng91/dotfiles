@@ -21,3 +21,7 @@
 (require 'projectile)
 (require 'deft)
 (require 'rich-minority)
+
+(require 'key-chord)
+
+(require 'keyfreq)
