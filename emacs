@@ -288,7 +288,10 @@
  '(yas-fallback-behavior (quote return-nil))
  '(yas-prompt-functions
    (quote
-    (yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt))))
+    (yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)))
+ '(yas-snippet-dirs
+   (quote
+    ("~/.emacs.d/snippets" "~/.emacs.d/snippets_go" yas-installed-snippets-dir "/home/dominikh/.emacs.d/elpa/haskell-mode-20150403.1144/snippets")) nil (yasnippet)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
