@@ -27,7 +27,8 @@ URxvt*keysym.C-minus: perl:font:decrease
 URxvt*secondaryScroll:  true
 
 URxvt*background:  #000000
-URxvt*foreground:  #cfcfcf
+URxvt*foreground:  #ffffff
+
 ! a somewhat less aggressive cursor
 URxvt*cursorColor: #cdc092
 
