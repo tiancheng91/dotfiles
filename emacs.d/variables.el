@@ -7,7 +7,6 @@
 (setq hcz-set-cursor-color-color "")
 (setq inhibit-startup-message t)
 (setq ispell-program-name "aspell")
-(setq iswitchb-mode 1)
 (setq kill-whole-line t)
 (setq mouse-yank-at-point t)
 (setq scroll-conservatively 5)
