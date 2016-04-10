@@ -36,6 +36,7 @@
 
 ;; Languages
 (load "~/.emacs.d/c.el")
+(load "~/.emacs.d/css.el")
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/haskell.el")
 (load "~/.emacs.d/latex.el")

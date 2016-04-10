@@ -37,8 +37,6 @@
 (setq tramp-default-method "scp")
 (setq-default font-lock-maximum-size nil)
 
-(setq cssm-newline-before-closing-bracket t)
-(setq cssm-indent-function #'cssm-c-style-indenter)
 (setq indicate-empty-lines t)
 (setq message-log-max -1)
 (setq textstats-auto-hide-secs 0)
