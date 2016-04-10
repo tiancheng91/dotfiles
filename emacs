@@ -411,25 +411,6 @@
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 
-
-(add-hook 'ibuffer-hook
-          (lambda ()
-            (ibuffer-vc-set-filter-groups-by-vc-root)
-            (unless (eq ibuffer-sorting-mode 'alphabetic)
-              (ibuffer-do-sort-by-alphabetic))))
-(setq ibuffer-formats
-      '((mark modified read-only " "
-              (name 18 18 :left :elide)
-              " "
-              (size 9 -1 :right)
-              " "
-              (mode 16 16 :left :elide)
-              " "
-              (vc-status 16 16 :left)
-              " "
-              filename-and-process)))
-
-
 ;; (wrap-region-add-wrapper "`" "`")
 ;; (wrap-region-add-wrapper "„" "“" "„")
 ;; (wrap-region-global-mode t)
@@ -497,6 +478,7 @@
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/gnus.el")
 (load "~/.emacs.d/haskell.el")
+(load "~/.emacs.d/ibuffer.el")
 (load "~/.emacs.d/latex.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/ruby.el")

@@ -24,7 +24,6 @@
 (global-set-key (kbd "C-x <down>") 'windmove-down)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 (global-set-key (kbd "C-x <right>") 'windmove-right)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "s-i") 'indent-buffer)
 (global-set-key (kbd "s-c") 'calculator)
 (global-set-key (kbd "C-x C-f") 'ido-find-file)

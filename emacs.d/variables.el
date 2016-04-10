@@ -58,20 +58,6 @@
 
 (setq imaxima-use-maxima-mode-flag t)
 
-(setq ibuffer-saved-filter-groups
-      (quote (("default"
-               ("dired" (mode . dired-mode))
-               ("c/c++" (or
-                         (mode . c-mode)
-                         (mode . c++-mode)))
-               ("el" (mode . emacs-lisp-mode))
-               ("perl" (mode . cperl-mode))
-               ("ruby" (mode . ruby-mode))
-               ("emacs" (or
-                         (name . "^\\*scratch\\*$")
-                         (name . "^\\*Messages\\*$")))
-               ("magit" (name . "^\\*magit.*$"))))))
-
 (delete 'try-expand-line hippie-expand-try-functions-list)
 (delete 'try-expand-list hippie-expand-try-functions-list)
 
