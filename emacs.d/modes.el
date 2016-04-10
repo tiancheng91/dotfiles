@@ -1,6 +1,5 @@
 (display-time)
 (delete-selection-mode t)
-(ido-mode 1)
 (scroll-bar-mode -1)
 (show-paren-mode t)
 (transient-mark-mode t)

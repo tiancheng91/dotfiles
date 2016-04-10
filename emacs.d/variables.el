@@ -71,9 +71,6 @@
 
 (setq warning-minimum-level :error)
 
-
-(setq ido-decorations (quote ("\n-> " "" "\n   " "\n   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
-
 (setq select-active-regions t)
 (setq mouse-drag-copy-region nil)
 (setq x-select-enable-primary t)

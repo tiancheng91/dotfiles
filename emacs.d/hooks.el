@@ -10,7 +10,6 @@
 
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 (add-hook 'gud-mode-hook 'my-gud-mode-hook)
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 (add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)

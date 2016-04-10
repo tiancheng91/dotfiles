@@ -26,9 +26,6 @@
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "s-i") 'indent-buffer)
 (global-set-key (kbd "s-c") 'calculator)
-(global-set-key (kbd "C-x C-f") 'ido-find-file)
-
-(global-set-key (kbd "<menu>") 'idomenu)
 
 (global-set-key (kbd "C-c j") 'semantic-ia-fast-jump)
 
@@ -63,7 +60,6 @@
 (global-set-key (kbd "C-M-;") 'flycheck-previous-error)
 (global-set-key (kbd "C-M-'")'flycheck-next-error)
 
-(global-set-key (kbd "C-x f") 'ido-choose-from-recentf)
 
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)

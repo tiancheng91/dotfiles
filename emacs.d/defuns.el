@@ -96,17 +96,6 @@ Require `font-lock'."
       (kill-new (w3m-anchor))
         (message "No URL at point!"))))
 
-(defun ido-choose-from-recentf ()
-  "Use ido to select a recently opened file from the `recentf-list'"
-  (interactive)
-  (let ((home (expand-file-name (getenv "HOME"))))
-    (find-file
-     (ido-completing-read "Recentf open: "
-                          (mapcar (lambda (path)
-                                    (replace-regexp-in-string home "~" path))
-                                  recentf-list)
-                          nil t))))
-
 (defun djcb-snip (b e summ)
   "remove selected lines, and replace it with [snip:summary (n lines)]"
   (interactive "r\nsSummary:")
@@ -116,8 +105,6 @@ Require `font-lock'."
                     (if (= 0 (length summ)) "" (concat ": " summ))
                     n
                     (if (= 1 n) "" "s")))))
-
-(defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 
 (defun dh-newline-before-this-line ()
   (interactive)
