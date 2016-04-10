@@ -10,7 +10,6 @@
 
 (recentf-mode 1)
 
-(projectile-global-mode)
 (elscreen-start)
 (global-anzu-mode t)
 (rich-minority-mode t)

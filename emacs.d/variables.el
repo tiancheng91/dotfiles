@@ -74,7 +74,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (setq recentf-max-menu-items 1000)
-(setq projectile-indexing-method 'alien)
 
 (setq-default fci-rule-column 113)
 (setq fci-rule-color "darkred")

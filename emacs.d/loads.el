@@ -16,7 +16,6 @@
 (require 'highlight-parentheses)
 
 (require 'elscreen)
-(require 'projectile)
 (require 'deft)
 (require 'rich-minority)
 

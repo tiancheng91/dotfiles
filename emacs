@@ -33,6 +33,7 @@
 (load "~/.emacs.d/ido.el")
 (load "~/.emacs.d/latex.el")
 (load "~/.emacs.d/org.el")
+(load "~/.emacs.d/projectile.el")
 (load "~/.emacs.d/ruby.el")
 (load "~/.emacs.d/server.el")
 (load "~/.emacs.d/tramp")
