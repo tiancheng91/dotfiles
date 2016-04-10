@@ -23,12 +23,7 @@
 (add-auto-mode 'pkgbuild-mode "/PKGBUILD$")
 (add-auto-mode 'pov-mode "\\.pov$")
 (add-auto-mode 'procmail-mode "\\.procmailrc$")
-(add-auto-mode 'ruby-mode "\\.gemspec$")
-(add-auto-mode 'ruby-mode "\\.rb$")
 (add-auto-mode 'ssh-config-mode ".ssh/config\\'")
 (add-auto-mode 'xml-mode "\\.xhtml$")
 (add-auto-mode 'yaml-mode "\\.yml$")
 
-(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
-(add-to-list 'interpreter-mode-alist '("ruby1.8" . ruby-mode))
-(add-to-list 'interpreter-mode-alist '("ruby1.9" . ruby-mode))

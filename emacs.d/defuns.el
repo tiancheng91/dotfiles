@@ -1,60 +1,6 @@
-;; Like c-in-literal, only for Ruby
-(defun ruby-in-literal ()
-  (let* ((here (point))
-         (state (save-excursion
-                  (ruby-beginning-of-defun)
-                  (parse-partial-sexp (point) here))))
-    (or (nth 3 state)
-        (nth 4 state)
-        nil)))
-
 (defun add-auto-mode (mode &rest patterns)
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
-
-(defun ruby-eval-buffer () (interactive)
-  "Evaluate the buffer with ruby."
-  (shell-command-on-region (point-min) (point-max) "ruby"))
-
-
-(defun ruby-visit-source ()
-  "If the current line contains text like '../src/program.rb:34', visit
-that file in the other window and position point on that line."
-  (interactive)
-  (let* ((start-boundary (save-excursion (beginning-of-line) (point)))
-         (regexp (concat "\\([ \t\n\r\"'([<{]\\|^\\)" ; non file chars or
-                                        ; effective
-                                        ; beginning of file
-                         "\\(.+\\.rb\\):\\([0-9]+\\)")) ; file.rb:NNN
-         (matchp (save-excursion
-                   (end-of-line)
-                   ;; if two matches on line, the second is most likely
-                   ;; to be useful, so search backward.
-                   (re-search-backward regexp start-boundary t))))
-    (cond (matchp
-           (let ((file (buffer-substring (match-beginning 2)
-                                         (match-end 2)))
-                 (line (buffer-substring (match-beginning 3)
-                                         (match-end 3))))
-                                        ; Windows: Find-file doesn't seem to work with Cygwin
-                                        ; //<drive>/ format or the odd /cygdrive/<drive>/ format
-             (if (or (string-match "//\\(.\\)\\(.*\\)" file)
-                     (string-match "/cygdrive/\\(.\\)\\(.*\\)" file))
-                 (setq file
-                       (concat (substring file
-                                          (match-beginning 1)
-                                          (match-end 1))
-                               ":"
-                               (substring file
-                                          (match-beginning 2)
-                                          (match-end 2)))))
-
-             (find-file-other-window file)
-             (goto-line (string-to-number line))))
-          (t
-           (error "No ruby location on line.")))))
-
-
 
 (defun hcz-set-cursor-color-according-to-mode ()
   "change cursor color according to some minor modes."
@@ -103,28 +49,6 @@ Require `font-lock'."
   (interactive)
   (indent-region (point-min) (point-max)))
 
-(defun xmp (&optional option)
-  "Run xmpfilter for annotation/test/spec."
-  (require 'rcodetools)
-  (interactive)
-  (rct-save-position
-   (lambda () (shell-command-on-region (point-min) (point-max) (xmpfilter-command option) t t))))
-
-(defun xmpfilter-command (&optional option)
-  "The xmpfilter command line, DWIM."
-  (setq option (or option ""))
-  (cond ((save-excursion
-           (goto-char 1)
-           (search-forward "< Test::Unit::TestCase" nil t))
-         (format "%s --unittest %s" xmpfilter-command-name option))
-        ((save-excursion
-           (goto-char 1)
-           (re-search-forward "^context.+do$" nil t))
-         (format "%s --spec %s" xmpfilter-command-name option))
-        (t
-         (format "%s %s" xmpfilter-command-name option))))
-
-
 (defun ahkt-plot-table (script)
   "util function to export and plot a table using the supplied
 gnuplot `script'"
@@ -140,16 +64,6 @@ gnuplot `script'"
     (and (window-live-p cwin) (select-window cwin))
     (switch-to-buffer cbuf)
     (delete-other-windows)))
-
-(defun ruby-module-path(module)
-  (shell-command-to-string
-   (concat
-    "ruby -e"
-    "\"require 'rubygems'; ret='()';\\$LOAD_PATH.each{|p| "
-    "x=p+'/'+ARGV[0].gsub('.rb', '')+'.rb';"
-    "ret=File.expand_path(x)"
-    "if(File.exist?(x))};printf ret\" "
-    module)))
 
 (defun find-changelog ()
   (let (last_filename cur_filename found_filename)

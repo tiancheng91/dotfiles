@@ -18,12 +18,6 @@
 (autoload 'http-get-debug "http-get" nil t)
 
 
-;; Ruby
-(autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
-(autoload 'ri "ri-ruby" nil t)
-(autoload 'ri-ruby-complete-symbol "ri-ruby" nil t)
-(autoload 'ruby-mode "ruby-mode" nil t)
-(autoload 'run-ruby "inf-ruby" nil t)
 
 (autoload 'kill-ring-search "kill-ring-search" nil t) ;; XXX broken/missing
 

@@ -3,28 +3,6 @@
   (font-latex-match-sectioning-2-make)
   (turn-on-reftex))
 
-(defun my-align-load-hook ()
-  (add-to-list 'align-rules-list
-               '(ruby-comma-delimiter
-                 (regexp . ",\\(\\s-*\\)[^# \t\n]")
-                 (repeat . t)
-                 (modes  . '(ruby-mode))))
-  (add-to-list 'align-rules-list
-               '(ruby-hash-literal
-                 (regexp . "\\(\\s-*\\)=>\\s-*[^# \t\n]")
-                 (repeat . t)
-                 (modes  . '(ruby-mode))))
-  (add-to-list 'align-rules-list
-               '(ruby-assignment-literal
-                 (regexp . "\\(\\s-*\\)=\\s-*[^# \t\n]")
-                 (repeat . t)
-                 (modes  . '(ruby-mode))))
-  (add-to-list 'align-rules-list
-               '(ruby-xmpfilter-mark
-                 (regexp . "\\(\\s-*\\)# => [^#\t\n]")
-                 (repeat . nil)
-                 (modes  . '(ruby-mode)))))
-
 (defun my-c-mode-hook ()
   (setq comment-start "//"
         comment-end   ""
@@ -49,15 +27,8 @@
                           '(("\\(XXX\\|FIXME\\|TODO\\)"
                              1 font-lock-warning-face prepend))))
 
-(defun my-ruby-mode-hook ()
-  (local-set-key "\M-\C-i" 'ri-ruby-complete-symbol)
-  (set (make-local-variable 'indent-tabs-mode) 'nil)
-  (set (make-local-variable 'tab-width) 2)
-  (imenu-add-to-menubar "IMENU")
-  (define-key help-map "r" 'ri))
 
 (add-hook 'LaTeX-mode-hook 'my-LaTeX-mode-hook)
-(add-hook 'align-load-hook 'my-align-load-hook)
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
@@ -66,6 +37,5 @@
 (add-hook 'ibuffer-mode-hook 'my-ibuffer-mode-hook)
 (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-trucation)
 (add-hook 'post-command-hook 'hcz-set-cursor-color-according-to-mode)
-(add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'prog-mode-hook 'my-prog-mode-hook)

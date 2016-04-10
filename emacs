@@ -541,3 +541,4 @@
 ;;     (shell-command (format "/opt/plan9/bin/plumb -s acme -a 'click=%d' '%s'" click word))))
 
 (load "~/.emacs.d/go.el")
+(load "~/.emacs.d/ruby.el")
