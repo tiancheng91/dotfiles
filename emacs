@@ -104,11 +104,17 @@
  '(cedet-android-current-version "16")
  '(change-log-default-name nil)
  '(company-auto-complete-chars nil)
+ '(company-backends
+   (quote
+    (company-irony-c-headers company-irony company-bbdb company-nxml company-css company-eclim company-semantic company-xcode company-cmake company-capf
+                             (company-dabbrev-code company-gtags company-etags company-keywords)
+                             company-oddmuse company-files company-dabbrev)))
  '(company-begin-commands nil)
  '(company-go-insert-arguments t)
  '(company-go-show-annotation t)
  '(company-show-numbers nil)
  '(company-tooltip-align-annotations t)
+ '(company-transformers (quote (company-sort-by-backend-importance)))
  '(css-color-global-mode t)
  '(css-electric-brace-behavior t)
  '(css-electric-semi-behavior t)
