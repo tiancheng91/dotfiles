@@ -119,18 +119,6 @@ Require `font-lock'."
 
 (defun ido-disable-line-trucation () (set (make-local-variable 'truncate-lines) nil))
 
-(defun gnus-goto-google ()
-  (interactive)
-  (when (memq major-mode '(gnus-summary-mode gnus-article-mode))
-    (when (eq major-mode 'gnus-article-mode)
-      (gnus-article-show-summary))
-    (let* ((article (gnus-summary-article-number))
-           (header (gnus-summary-article-header article))
-           (id (substring (mail-header-id header) 1 -1)))
-      (kill-new
-       (format "http://groups.google.com/groups?selm=%s" id)))))
-
-
 (defun dh-newline-before-this-line ()
   (interactive)
   (beginning-of-line)

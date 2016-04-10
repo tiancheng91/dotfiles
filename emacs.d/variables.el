@@ -69,25 +69,7 @@
         ((lambda (file)
            (browse-url (concat "file:///" (expand-file-name file)))) "\\.html?$")))
 
-(setq smtpmail-debug-info t)
-
-(setq mm-text-html-renderer 'w3m-standalone)
-(setq mm-verify-option 'known)
-(setq mm-decrypt-option 'known)
-(setq gnus-treat-body-boundary 'head)
-(setq gnus-body-boundary-delimiter "–")
-(setq gnus-treat-hide-signature t)
-(setq gnus-treat-date-local 'head)
-(setq gnus-treat-date-lapsed 'head)
-(setq gnus-article-date-lapsed-new-header t)
-(setq gnus-inhibit-startup-message t)
-
 (setq imaxima-use-maxima-mode-flag t)
-(setq user-mail-address "dominikh@fork-bomb.org")
-(setq smtpmail-debug-verb t)
-(setq message-send-mail-function 'message-send-mail-with-sendmail)
-(setq sendmail-program "/usr/bin/msmtp")
-(setq message-sendmail-extra-arguments '("-a" "fork-bomb"))
 
 (setq ibuffer-saved-filter-groups
       (quote (("default"
