@@ -9,7 +9,6 @@
 (setq ispell-program-name "aspell")
 (setq iswitchb-mode 1)
 (setq kill-whole-line t)
-(setq lpr-switches '("-PCLP-315"))
 (setq mouse-yank-at-point t)
 (setq scroll-conservatively 5)
 (setq scroll-step 1)
