@@ -134,6 +134,11 @@
  '(glasses-separator "")
  '(global-flycheck-mode t nil (flycheck))
  '(global-font-lock-mode t)
+ '(go-impl-aliases-alist
+   (quote
+    (("sort" . "sort.Interface")
+     ("string" . "fmt.Stringer"))))
+ '(go-impl-enter-function t)
  '(godoc-at-point-function (quote godoc-gogetdoc))
  '(gofmt-show-errors (quote buffer))
  '(haml-backspace-backdents-nesting t)
