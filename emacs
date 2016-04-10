@@ -14,9 +14,9 @@
 (load "~/.emacs.d/modes")
 (load "~/.emacs.d/automodes")
 (load "~/.emacs.d/utf8")
-(load "~/.emacs.d/advices")
 (load "~/.emacs.d/keycombs")
 (load "~/.emacs.d/passwords")
+(load "~/.emacs.d/which-func-mode")
 
 (load "~/.emacs.d/ace.el")
 (load "~/.emacs.d/company.el")

@@ -14,10 +14,6 @@
 (setq sentence-end-double-space nil)
 (setq tab-stop-list '(2 4 6 8 10 12 14 16 18 20))
 (setq vc-initial-comment t vc-diff-switches diff-switches)
-(setq which-func-header-line-format
-      '(which-func-mode
-        ("" which-func-format
-         )))
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
