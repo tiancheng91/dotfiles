@@ -37,6 +37,7 @@
 (load "~/.emacs.d/css.el")
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/haskell.el")
+(load "~/.emacs.d/html.el")
 (load "~/.emacs.d/latex.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/ruby.el")
@@ -198,7 +199,7 @@
  '(lpr-page-header-program "pr")
  '(lpr-page-header-switches (quote ("-h" "%s" "-F" "-o 5")))
  '(magit-process-popup-time 5)
- '(magit-revert-buffers t)
+ '(magit-revert-buffers t t)
  '(magit-save-some-buffers nil)
  '(major-mode (quote text-mode))
  '(max-lisp-eval-depth 2000)
@@ -311,6 +312,8 @@
  '(warning-minimum-level :error)
  '(web-mode-enable-auto-closing t)
  '(web-mode-enable-auto-quoting nil)
+ '(web-mode-script-padding 2)
+ '(web-mode-style-padding 2)
  '(which-func-modes
    (quote
     (emacs-lisp-mode c-mode c++-mode perl-mode cperl-mode python-mode makefile-mode sh-mode fortran-mode f90-mode ada-mode diff-mode ruby-mode go-mode)))
