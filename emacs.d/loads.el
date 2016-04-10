@@ -9,7 +9,6 @@
 (require 'which-func)
 (require 'uniquify)
 
-(require 'whattf-dt)
 (require 'iedit)
 (require 'recentf)
 

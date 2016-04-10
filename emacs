@@ -3,7 +3,6 @@
 (package-initialize)
 (setq package-enable-at-startup nil)
 
-(load "~/.emacs.d/eval_after_load.el")
 (load "~/.emacs.d/loadpaths")
 (load "~/.emacs.d/appearance")
 (load "~/.emacs.d/defuns")
