@@ -10,7 +10,7 @@ xrdb -merge ~/.Xdefaults &
 xset s off
 xset -dpms
 
-urxvt -name Weechat -geometry "273x23+0+751" -e ssh -t cinchrb.org 'tmux -2 -u attach -t irc' &
+urxvt -name Weechat -geometry "273x23+0+751" -e ssh -t honnef.co 'tmux -2 -u attach -t irc' &
 
 autocutsel -f &
 setxkbmap -layout "us(altgr-intl)"
@@ -23,5 +23,5 @@ conky &
 emacs &
 numlockx
 
-~/prj/go/src/honnef.co/go/gwm/gwm ~/.cwmrc
+gwm ~/.cwmrc
 pause
