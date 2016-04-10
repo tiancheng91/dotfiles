@@ -23,6 +23,7 @@
 (load "~/.emacs.d/c.el")
 (load "~/.emacs.d/company.el")
 (load "~/.emacs.d/csearch.el")
+(load "~/.emacs.d/ffap.el")
 (load "~/.emacs.d/go.el")
 (load "~/.emacs.d/gnus.el")
 (load "~/.emacs.d/haskell.el")
