@@ -9,9 +9,6 @@
 (load "~/.emacs.d/loads")
 (load "~/.emacs.d/autoloads")
 (load "~/.emacs.d/hooks")
-
-(define-globalized-minor-mode global-highlight-parentheses-mode highlight-parentheses-mode highlight-parentheses-mode)
-
 (load "~/.emacs.d/variables")
 (load "~/.emacs.d/backup")
 (load "~/.emacs.d/modes")
