@@ -18,7 +18,8 @@ URxvt*perl-lib: /home/dominikh/.urxvt/
 URxvt*perl-ext-common: default
 URxvt*perl-ext        : default,matcher,font-size
 URxvt*url-launcher     : /usr/bin/chromium
-URxvt*matcher.button  : 1
+URxvt*matcher.rend.0: -Uline
+URxvt*matcher.button  : 3
 URxvt*keysym.C-plus: perl:font:increase
 URxvt*keysym.C-minus: perl:font:decrease
 
