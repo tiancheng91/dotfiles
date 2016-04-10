@@ -2,8 +2,8 @@
 (setq warning-suppress-types nil)
 (package-initialize)
 (setq package-enable-at-startup nil)
+(add-to-list 'load-path "~/.emacs.d/contrib")
 
-(load "~/.emacs.d/loadpaths")
 (load "~/.emacs.d/appearance")
 (load "~/.emacs.d/defuns")
 (load "~/.emacs.d/loads")
