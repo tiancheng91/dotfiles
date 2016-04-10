@@ -456,6 +456,7 @@ release version, tip.golang.org will be used instead."
 (key-chord-mode 1)
 
 (key-chord-define-global "jj" 'ace-jump-char-mode)
+(key-chord-define-global "JJ" 'ace-jump-mode-pop-mark)
 (key-chord-define-global "µµ" (lambda () (interactive) (yas/insert-by-name "meth")))
 
 
