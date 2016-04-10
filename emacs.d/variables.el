@@ -1,7 +1,3 @@
-(setq TeX-auto-save t)
-(setq TeX-close-quote "\"'")
-(setq TeX-open-quote "\"`")
-(setq TeX-parse-self t)
 (setq calendar-week-start-day 1)
 (setq column-number-mode t)
 (setq default-major-mode 'text-mode)
@@ -29,7 +25,6 @@
       '(which-func-mode
         ("" which-func-format
          )))
-(setq-default TeX-master nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -62,7 +57,6 @@
 (setq max-lisp-eval-depth 2000)
 (setq max-specpdl-size 2000)
 
-(setq reftex-plug-into-AUCTeX t)
 (setq selection-coding-system nil)
 (setq echo-keystrokes 0.1)
 (setq uniquify-buffer-name-style 'reverse)

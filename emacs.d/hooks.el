@@ -1,7 +1,3 @@
-(defun my-LaTeX-mode-hook ()
-  (add-to-list 'font-latex-match-sectioning-2-keywords-local "Absch")
-  (font-latex-match-sectioning-2-make)
-  (turn-on-reftex))
 
 (defun my-c-mode-hook ()
   (setq comment-start "//"
@@ -24,7 +20,6 @@
                              1 font-lock-warning-face prepend))))
 
 
-(add-hook 'LaTeX-mode-hook 'my-LaTeX-mode-hook)
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 (add-hook 'c-mode-hook 'my-c-mode-hook)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
