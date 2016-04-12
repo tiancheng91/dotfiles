@@ -1,6 +1,7 @@
 (add-to-list 'load-path "~/prj/src/golang.org/x/tools/cmd/guru")
 (add-to-list 'load-path "~/prj/src/golang.org/x/tools/refactor/rename")
 (add-to-list 'load-path "~/prj/src/github.com/tv42/where")
+(add-to-list 'load-path "~/prj/src/honnef.co/go/keyify/cmd/keyify")
 
 (defun my-go-mode-hook ()
   (set (make-local-variable 'company-backends) (list 'company-go))
@@ -150,6 +151,7 @@ release version, tip.golang.org will be used instead."
     (require 'go-where)
     (require 'go-rename)
     (require 'go-guru)
+    (require 'go-keyify)
 
     (define-key go-mode-map (kbd "C-c C-r") #'go-remove-unused-imports)
     (define-key go-mode-map (kbd "M-.") (lambda () (interactive) (godef-jump (point) current-prefix-arg)))
