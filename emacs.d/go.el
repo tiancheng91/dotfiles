@@ -140,6 +140,35 @@ release version, tip.golang.org will be used instead."
           (setq code (buffer-substring (region-beginning) (region-end)))))
       (display-message-or-buffer code))))
 
+
+(defun go-extract-variable (&optional identifier)
+  "Extract the function call under point into its own variable."
+  (interactive)
+  (let ((undo-inhibit-record-point t)
+        (call (go-guru--find-enclosing '("function call (or conversion)"))))
+    (when call
+      (let* ((start (1+ (cdr (assoc 'start call))))
+            (end (1+ (cdr (assoc 'end call))))
+            (code (buffer-substring-no-properties start end)))
+        (if (not identifier)
+            (setq identifier (read-string (format "Extract %s into variable: " code))))
+        (delete-region start end)
+        (save-excursion
+          (goto-char start)
+          (insert identifier)
+          (let (prev found)
+            (dolist (el (append (go-guru--enclosing) nil))
+              (when (and (not found)
+                         (or
+                          (equal (cdr (assoc 'desc el)) "block")
+                          (equal (cdr (assoc 'desc el)) "case clause")
+                          (equal (cdr (assoc 'desc el)) "communication clause")))
+                (goto-char (1+ (cdr (assoc 'start prev))))
+                (insert (format "%s := %s\n" identifier code))
+                (funcall indent-line-function)
+                (setq found t))
+              (setq prev el))))))))
+
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 (eval-after-load 'go-mode
