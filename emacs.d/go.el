@@ -140,6 +140,11 @@ release version, tip.golang.org will be used instead."
           (setq code (buffer-substring (region-beginning) (region-end)))))
       (display-message-or-buffer code))))
 
+(defun go-guru--find-enclosing (elems)
+  (let* ((enclosing (go-guru--enclosing)))
+    (cl-find-if (lambda (el)
+                  (member (cdr (assoc 'desc el)) elems))
+                enclosing)))
 
 (defun go-extract-variable (&optional identifier)
   "Extract the function call under point into its own variable."
